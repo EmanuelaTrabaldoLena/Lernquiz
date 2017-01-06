@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		889502E51E200CE500A67A67 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 889502E41E200CE500A67A67 /* small-check.png */; };
+		88D478AC1E200BE500BB0C57 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D478AA1E200BE500BB0C57 /* Bolts.framework */; };
+		88D478AD1E200BE500BB0C57 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D478AB1E200BE500BB0C57 /* Parse.framework */; };
 		88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */; };
 		88E0EB6D1E1FFEFF006BAA78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB6C1E1FFEFF006BAA78 /* ViewController.swift */; };
 		88E0EB721E1FFEFF006BAA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB711E1FFEFF006BAA78 /* Assets.xcassets */; };
@@ -15,7 +18,6 @@
 		88E0EB821E20004F006BAA78 /* Duell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB811E20004F006BAA78 /* Duell.swift */; };
 		88E0EB841E200075006BAA78 /* Fach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB831E200075006BAA78 /* Fach.swift */; };
 		88E0EB861E200089006BAA78 /* Frage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB851E200089006BAA78 /* Frage.swift */; };
-		88E0EB9A1E2001E4006BAA78 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB871E2001E4006BAA78 /* small-check.png */; };
 		88E0EBAC1E20029E006BAA78 /* Faecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAB1E20029E006BAA78 /* Faecher.swift */; };
 		88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */; };
 		88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */; };
@@ -23,11 +25,12 @@
 		88E0EBB41E200385006BAA78 /* SpielModusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB31E200385006BAA78 /* SpielModusViewController.swift */; };
 		88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */; };
 		88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */; };
-		88E0EBBB1E20062F006BAA78 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0EBB91E20062F006BAA78 /* Bolts.framework */; };
-		88E0EBBC1E20062F006BAA78 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88E0EBBA1E20062F006BAA78 /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		889502E41E200CE500A67A67 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-check.png"; path = "Lernquiz/small-check.png"; sourceTree = SOURCE_ROOT; };
+		88D478AA1E200BE500BB0C57 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		88D478AB1E200BE500BB0C57 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		88E0EB671E1FFEFF006BAA78 /* Lernquiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lernquiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88E0EB6C1E1FFEFF006BAA78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,7 +41,6 @@
 		88E0EB811E20004F006BAA78 /* Duell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duell.swift; sourceTree = "<group>"; };
 		88E0EB831E200075006BAA78 /* Fach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fach.swift; sourceTree = "<group>"; };
 		88E0EB851E200089006BAA78 /* Frage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frage.swift; sourceTree = "<group>"; };
-		88E0EB871E2001E4006BAA78 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "small-check.png"; sourceTree = "<group>"; };
 		88E0EBAB1E20029E006BAA78 /* Faecher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Faecher.swift; sourceTree = "<group>"; };
 		88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlleFaecherViewController.swift; sourceTree = "<group>"; };
 		88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FachTableViewCell.swift; sourceTree = "<group>"; };
@@ -46,8 +48,6 @@
 		88E0EBB31E200385006BAA78 /* SpielModusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielModusViewController.swift; sourceTree = "<group>"; };
 		88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellViewController.swift; sourceTree = "<group>"; };
 		88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EinzelSpielerViewController.swift; sourceTree = "<group>"; };
-		88E0EBB91E20062F006BAA78 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../Bolts.framework; sourceTree = "<group>"; };
-		88E0EBBA1E20062F006BAA78 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = ../Parse.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +55,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E0EBBC1E20062F006BAA78 /* Parse.framework in Frameworks */,
-				88E0EBBB1E20062F006BAA78 /* Bolts.framework in Frameworks */,
+				88D478AD1E200BE500BB0C57 /* Parse.framework in Frameworks */,
+				88D478AC1E200BE500BB0C57 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,7 +131,7 @@
 		88E0EB881E2001E4006BAA78 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				88E0EB871E2001E4006BAA78 /* small-check.png */,
+				889502E41E200CE500A67A67 /* small-check.png */,
 			);
 			name = "Supporting Files";
 			path = "../Aktuell/iOS Praktikum/QuizDuell/QuizDuell";
@@ -140,8 +140,8 @@
 		88E0EBBD1E20063D006BAA78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				88E0EBB91E20062F006BAA78 /* Bolts.framework */,
-				88E0EBBA1E20062F006BAA78 /* Parse.framework */,
+				88D478AA1E200BE500BB0C57 /* Bolts.framework */,
+				88D478AB1E200BE500BB0C57 /* Parse.framework */,
 			);
 			name = Frameworks;
 			path = Lernquiz;
@@ -208,7 +208,7 @@
 			files = (
 				88E0EB751E1FFEFF006BAA78 /* LaunchScreen.storyboard in Resources */,
 				88E0EB721E1FFEFF006BAA78 /* Assets.xcassets in Resources */,
-				88E0EB9A1E2001E4006BAA78 /* small-check.png in Resources */,
+				889502E51E200CE500A67A67 /* small-check.png in Resources */,
 				88E0EB7D1E1FFF1F006BAA78 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,6 +347,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Lernquiz",
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -363,6 +364,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Lernquiz",
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -391,6 +393,7 @@
 				88E0EB7B1E1FFEFF006BAA78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
