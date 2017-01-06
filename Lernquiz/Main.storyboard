@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meine Fächer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZd-3Q-CBU">
-                                <rect key="frame" x="98" y="84" width="180" height="90"/>
+                                <rect key="frame" x="97.5" y="84" width="180" height="90"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HXw-gm-Y5Q">
-                                <rect key="frame" x="51" y="254" width="272" height="383"/>
+                                <rect key="frame" x="51" y="254" width="273" height="383"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="383" id="DJR-QQ-DbD"/>
@@ -113,7 +113,7 @@
                                         <rect key="frame" x="0.0" y="28" width="298" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSS-jm-9gH" id="cqL-4p-SA3">
-                                            <rect key="frame" x="0.0" y="0.0" width="298" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="298" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qht-wI-S0j">
@@ -371,7 +371,7 @@
         <!--FrageErstellen-->
         <scene sceneID="5Xp-Yd-bI9">
             <objects>
-                <viewController id="5xR-3u-UD1" userLabel="FrageErstellen" customClass="SinglePlayerViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5xR-3u-UD1" userLabel="FrageErstellen" customClass="FragenErstellenViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uP9-tv-afJ"/>
                         <viewControllerLayoutGuide type="bottom" id="75p-Fs-GoS"/>
@@ -457,6 +457,13 @@
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
+                    <connections>
+                        <outlet property="antwortAerstellen" destination="6U1-j0-GWg" id="TE7-TH-eFI"/>
+                        <outlet property="antwortBerstellen" destination="71S-X0-0P7" id="23F-1m-Xni"/>
+                        <outlet property="antwortCerstellen" destination="wWe-0z-K2p" id="o7E-KO-FI1"/>
+                        <outlet property="frageErstellen" destination="kdF-BA-IXc" id="gn9-Dq-ILE"/>
+                        <outlet property="frageErstellenButton" destination="Hvg-2t-KVN" id="HhN-uk-MWK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4W-dA-78L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -997,7 +1004,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4OD-Lw-qWD"/>
+        <segue reference="5sY-AZ-dfB"/>
         <segue reference="R9d-Y7-isO"/>
         <segue reference="rsY-f8-lBA"/>
         <segue reference="ge4-7l-ftz"/>

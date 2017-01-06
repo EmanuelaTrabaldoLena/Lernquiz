@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		889502E51E200CE500A67A67 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 889502E41E200CE500A67A67 /* small-check.png */; };
-		88D478AC1E200BE500BB0C57 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D478AA1E200BE500BB0C57 /* Bolts.framework */; };
-		88D478AD1E200BE500BB0C57 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D478AB1E200BE500BB0C57 /* Parse.framework */; };
+		889502E71E200FA100A67A67 /* FragenErstellenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */; };
+		889502E91E200FE500A67A67 /* LViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E81E200FE500A67A67 /* LViewController.swift */; };
+		889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EA1E20126300A67A67 /* Bolts.framework */; };
+		889502ED1E20126300A67A67 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EB1E20126300A67A67 /* Parse.framework */; };
 		88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */; };
 		88E0EB6D1E1FFEFF006BAA78 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB6C1E1FFEFF006BAA78 /* ViewController.swift */; };
 		88E0EB721E1FFEFF006BAA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB711E1FFEFF006BAA78 /* Assets.xcassets */; };
@@ -29,8 +31,10 @@
 
 /* Begin PBXFileReference section */
 		889502E41E200CE500A67A67 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-check.png"; path = "Lernquiz/small-check.png"; sourceTree = SOURCE_ROOT; };
-		88D478AA1E200BE500BB0C57 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
-		88D478AB1E200BE500BB0C57 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FragenErstellenViewController.swift; sourceTree = "<group>"; };
+		889502E81E200FE500A67A67 /* LViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LViewController.swift; sourceTree = "<group>"; };
+		889502EA1E20126300A67A67 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
+		889502EB1E20126300A67A67 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		88E0EB671E1FFEFF006BAA78 /* Lernquiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lernquiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		88E0EB6C1E1FFEFF006BAA78 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -55,8 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D478AD1E200BE500BB0C57 /* Parse.framework in Frameworks */,
-				88D478AC1E200BE500BB0C57 /* Bolts.framework in Frameworks */,
+				889502ED1E20126300A67A67 /* Parse.framework in Frameworks */,
+				889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +128,8 @@
 				88E0EBB31E200385006BAA78 /* SpielModusViewController.swift */,
 				88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */,
 				88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */,
+				889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */,
+				889502E81E200FE500A67A67 /* LViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -140,8 +146,8 @@
 		88E0EBBD1E20063D006BAA78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				88D478AA1E200BE500BB0C57 /* Bolts.framework */,
-				88D478AB1E200BE500BB0C57 /* Parse.framework */,
+				889502EA1E20126300A67A67 /* Bolts.framework */,
+				889502EB1E20126300A67A67 /* Parse.framework */,
 			);
 			name = Frameworks;
 			path = Lernquiz;
@@ -230,8 +236,10 @@
 				88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */,
 				88E0EBAC1E20029E006BAA78 /* Faecher.swift in Sources */,
 				88E0EB841E200075006BAA78 /* Fach.swift in Sources */,
+				889502E71E200FA100A67A67 /* FragenErstellenViewController.swift in Sources */,
 				88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
+				889502E91E200FE500A67A67 /* LViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
