@@ -469,10 +469,10 @@
             </objects>
             <point key="canvasLocation" x="2176.8000000000002" y="1177.961019490255"/>
         </scene>
-        <!--Einzelspiel-->
+        <!--EinzelSpieler-->
         <scene sceneID="eJC-qS-PSa">
             <objects>
-                <viewController id="2Yb-MH-JLd" userLabel="Einzelspiel" customClass="EinzelspielViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="2Yb-MH-JLd" userLabel="EinzelSpieler" customClass="EinzelSpielerViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="VNd-ne-9EM"/>
                         <viewControllerLayoutGuide type="bottom" id="vCX-Vf-xfk"/>
@@ -564,11 +564,11 @@
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
-                        <outlet property="AntwortAButton" destination="dLZ-Cy-XHv" id="yL6-8o-dhr"/>
-                        <outlet property="AntwortBButton" destination="XzG-E6-XHV" id="bli-ps-xiG"/>
-                        <outlet property="AntwortCButton" destination="9zV-iz-oBk" id="g45-JP-WBQ"/>
-                        <outlet property="FrageLabel" destination="px7-3g-Kfy" id="Tks-PB-IA1"/>
-                        <outlet property="HighscoreLabel" destination="jmq-Lv-sNS" id="Pea-Fb-Uhp"/>
+                        <outlet property="AntwortAButton" destination="dLZ-Cy-XHv" id="1nM-CZ-FcZ"/>
+                        <outlet property="AntwortBButton" destination="XzG-E6-XHV" id="QfV-T9-BkI"/>
+                        <outlet property="AntwortCButton" destination="9zV-iz-oBk" id="kv6-Dg-Y3X"/>
+                        <outlet property="FrageLabel" destination="px7-3g-Kfy" id="NX9-mG-xiH"/>
+                        <outlet property="HighscoreLabel" destination="jmq-Lv-sNS" id="HMs-4h-Yyz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCr-Kr-LSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
