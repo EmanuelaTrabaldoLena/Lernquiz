@@ -25,7 +25,7 @@ class CheckBoxView: UIView {
         setup()
     }
     
-    // Erkennung der Gesten/ Bewegungen
+    // Erstellung der CheckBox und Erkennung der Gesten/ Bewegungen
     func setup() {
         
         // Macht einen Rand

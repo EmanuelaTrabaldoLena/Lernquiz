@@ -18,17 +18,19 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     // Erweiterbares Array vom Vorlesungsverzeichnis
     let vorlesungsverzeichnis = NSMutableArray()
     
+    
     override func viewDidLoad() {
         alleFaecher.dataSource = self
         alleFaecher.delegate = self
         
         super.viewDidLoad()
         
-        setup()
+        tableFuellen()
     }
     
-    // Verantwortlich zu kontrollieren welche Zelle ausgewaehlt ist
-    func setup() {
+    
+    // Zeilen der TableView mit dem Vorlesungsverzeichnis fuellen
+    func tableFuellen() {
         
         // Array mit Vorlesungsverzeichnis
         let verzeichnis = ["Einführung in die Programmierung", "Digitale Medien", "Betriebssysteme", "Grundlagen der Analysis", "Softwaretechnik", "Datenbanksysteme", "Zeichnen und Skizzieren",  "Concept Development", "Softwareentwicklungspraktikum", "Systempraktikum", "Projektkompetenz Multimedia", "Lineare Algebra für Informatiker", "Statistik für Medieninformatiker", "Javakurs für Anfänger", "IT Sicherheit", "Mobilkommunikation", "Automatentheorie", "Codierungstheorie", "Mensch-Maschine-Interaktion", "Multimedia im Netz" ]
@@ -42,6 +44,30 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
             vorlesungsverzeichnis.add(fach)
         }
     }
+    
+    
+    // Zeilen werden gezaehlt, Anzahl der Zeilen wird zurueckgegeben
+    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return vorlesungsverzeichnis.count
+    }
+    
+    
+    // Vorlesungsverzeichnis in einzelne Zellen geladen, Checkboxen anwaehlbar und TableView scrollbar
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell {
+            
+            let fach = vorlesungsverzeichnis[indexPath.row] as! Faecher
+            fachCell.configure(fach: fach)
+            
+            return fachCell
+            
+        } else {
+            
+            return FachTableViewCell()
+            
+        }
+    }
+    
     
     // Alle ausgewaehlten Faecher in ein Array speichern
     func saveSelectedItems(fach :Faecher) -> NSMutableArray{
@@ -57,26 +83,11 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         return gewaehlteFaecher
     }
     
-    // Zeilen werden gezaehlt, Anzahl der Zeilen wird zurueckgegeben
-    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return vorlesungsverzeichnis.count
-    }
     
-    // Vorlesungsverzeichnis in einzelne Zellen geladen, Checkboxen anwaehlbar und TableView scrollbar
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        
-        if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell {
-            
-            let fach = vorlesungsverzeichnis[indexPath.row] as! Faecher
-            fachCell.configure(fach: fach)
-            
-            return fachCell
-            
-        } else {
-            
-            return FachTableViewCell()
-            
-        }
+    // Ausgewaehlte Zeile in Console ausgeben
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let indexPath = tableView.indexPathForSelectedRow
+        let currentCell = tableView.cellForRow(at: indexPath!) as! FachTableViewCell
+        print((currentCell.name?.text)! as String)
     }
 }
