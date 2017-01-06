@@ -815,10 +815,10 @@
             </objects>
             <point key="canvasLocation" x="1412" y="2664.9175412293857"/>
         </scene>
-        <!--View Controller-->
+        <!--DuellErgebnis-->
         <scene sceneID="hUK-zB-G86">
             <objects>
-                <viewController id="Nxt-aF-vG4" sceneMemberID="viewController">
+                <viewController id="Nxt-aF-vG4" userLabel="DuellErgebnis" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dOZ-XA-in9"/>
                         <viewControllerLayoutGuide type="bottom" id="ipH-Mr-McZ"/>
@@ -900,10 +900,10 @@
             </objects>
             <point key="canvasLocation" x="582" y="2665"/>
         </scene>
-        <!--DuellMatch-->
+        <!--Duell-->
         <scene sceneID="wDG-8P-Jx8">
             <objects>
-                <viewController id="fa5-Ga-zjY" userLabel="DuellMatch" sceneMemberID="viewController">
+                <viewController id="fa5-Ga-zjY" userLabel="Duell" customClass="DuellViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QZ9-ct-Yjn"/>
                         <viewControllerLayoutGuide type="bottom" id="xMM-Qp-9S5"/>
@@ -1005,7 +1005,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5sY-AZ-dfB"/>
-        <segue reference="R9d-Y7-isO"/>
+        <segue reference="8jq-IU-pnv"/>
         <segue reference="rsY-f8-lBA"/>
         <segue reference="ge4-7l-ftz"/>
         <segue reference="0Pe-vB-y2b"/>

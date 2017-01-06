@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		889502E51E200CE500A67A67 /* small-check.png in Resources */ = {isa = PBXBuildFile; fileRef = 889502E41E200CE500A67A67 /* small-check.png */; };
 		889502E71E200FA100A67A67 /* FragenErstellenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */; };
-		889502E91E200FE500A67A67 /* LViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E81E200FE500A67A67 /* LViewController.swift */; };
+		889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E81E200FE500A67A67 /* LoginViewController.swift */; };
 		889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EA1E20126300A67A67 /* Bolts.framework */; };
 		889502ED1E20126300A67A67 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EB1E20126300A67A67 /* Parse.framework */; };
 		88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */; };
@@ -32,7 +32,7 @@
 /* Begin PBXFileReference section */
 		889502E41E200CE500A67A67 /* small-check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "small-check.png"; path = "Lernquiz/small-check.png"; sourceTree = SOURCE_ROOT; };
 		889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FragenErstellenViewController.swift; sourceTree = "<group>"; };
-		889502E81E200FE500A67A67 /* LViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LViewController.swift; sourceTree = "<group>"; };
+		889502E81E200FE500A67A67 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		889502EA1E20126300A67A67 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		889502EB1E20126300A67A67 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		88E0EB671E1FFEFF006BAA78 /* Lernquiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lernquiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +121,7 @@
 			isa = PBXGroup;
 			children = (
 				88E0EB6C1E1FFEFF006BAA78 /* ViewController.swift */,
+				889502E81E200FE500A67A67 /* LoginViewController.swift */,
 				88E0EBAB1E20029E006BAA78 /* Faecher.swift */,
 				88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */,
 				88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */,
@@ -129,7 +130,6 @@
 				88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */,
 				88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */,
 				889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */,
-				889502E81E200FE500A67A67 /* LViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -239,7 +239,7 @@
 				889502E71E200FA100A67A67 /* FragenErstellenViewController.swift in Sources */,
 				88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
-				889502E91E200FE500A67A67 /* LViewController.swift in Sources */,
+				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
