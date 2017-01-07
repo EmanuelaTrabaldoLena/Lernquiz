@@ -8,12 +8,16 @@
 
 import UIKit
 
+// Controller fuer die gesamte View von AlleFaecher
 class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var alleFaecher: UITableView!
     @IBAction func hinzufuegen(_ sender: Any) {
         navigationController?.popViewController(animated: true)
+        
     }
+    
+    var meineFaecherVC: MeineFaecherViewController!
     
     // Erweiterbares Array vom Vorlesungsverzeichnis
     let vorlesungsverzeichnis = NSMutableArray()
@@ -26,6 +30,12 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         tableFuellen()
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "embededTableVC" {
+            meineFaecherVC = segue.destination as! MeineFaecherViewController
+        }
     }
     
     
@@ -66,21 +76,6 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
             return FachTableViewCell()
             
         }
-    }
-    
-    
-    // Alle ausgewaehlten Faecher in ein Array speichern
-    func saveSelectedItems(fach :Faecher) -> NSMutableArray{
-        let gewaehlteFaecher = NSMutableArray()
-        
-        for index in 0 ..< vorlesungsverzeichnis.count {
-            
-            if (fach.isSelected == true) {
-                gewaehlteFaecher.add(vorlesungsverzeichnis[index])
-            }
-        }
-        print(gewaehlteFaecher)
-        return gewaehlteFaecher
     }
     
     

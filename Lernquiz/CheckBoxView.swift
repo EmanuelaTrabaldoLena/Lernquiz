@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Controller fuer die CheckBoxen von AlleFaecher
 class CheckBoxView: UIView {
     
     var isChecked :Bool
@@ -41,6 +42,7 @@ class CheckBoxView: UIView {
         let tapRecognizer = UITapGestureRecognizer(target: self, action: selector)
         
         self.addGestureRecognizer(tapRecognizer)
+        
     }
     
     func checkBoxTapped() {

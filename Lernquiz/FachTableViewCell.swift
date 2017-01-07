@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Controller fuer die TableViewCell von AlleFaecher
 class FachTableViewCell: UITableViewCell {
     
     @IBOutlet weak var name :UILabel?
@@ -16,7 +17,7 @@ class FachTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
+
     // Ueberpruefung und Umsetzung des Anwaehlens der Checkboxen
     func configure(fach :Faecher) {
         

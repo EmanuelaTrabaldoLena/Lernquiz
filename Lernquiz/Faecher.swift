@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Objekte Faecher, mit den Eigenschaften Namen und ob diese ausgewaehlt sind fuer die Checkboxen
 class Faecher: NSObject {
     
     var name: String?
