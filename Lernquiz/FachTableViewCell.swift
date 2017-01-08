@@ -36,9 +36,12 @@ class FachTableViewCell: UITableViewCell {
                 fach.isSelected = true
                 
                 // Angewaehlte Faecher in Array speichern
-                gewaehlteFaecher.append(fach.name!)
-                print(gewaehlteFaecher)
-                
+                if gewaehlteFaecher.contains(fach.name!) {
+                    print(gewaehlteFaecher)
+                } else {
+                    gewaehlteFaecher.append(fach.name!)
+                    print(gewaehlteFaecher)
+                }
             } else {
                 self.checkbox!.markAsUnChecked()
                 fach.isSelected = false

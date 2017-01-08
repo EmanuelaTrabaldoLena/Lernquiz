@@ -16,6 +16,9 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     // Erweiterbares Array vom Vorlesungsverzeichnis
     let gewaehlteVorlesungen = NSMutableArray()
     
+    @IBAction func hinzufuegen(_ sender: Any) {
+        performSegue(withIdentifier: "AlleFaecherViewController", sender: self)
+    }
     @IBAction func auswaehlen(_ sender: UIButton) {
          
     }
@@ -51,11 +54,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
             let fach = Faecher()
             fach.name = gewaehlteFaecher[i]
             
-            if gewaehlteVorlesungen.contains(fach.name!) {
-                print(gewaehlteVorlesungen)
-            } else {
-                gewaehlteVorlesungen.add(fach)
-            }
+            gewaehlteVorlesungen.add(fach)
         }
     }
     
