@@ -19,6 +19,9 @@ class EinzelSpielerViewController: UIViewController {
     // Counter fuer Score, wird lokal gespeichert
     var Score: Int = 0
     
+    // Sorgt dafür, dass der Score nicht hochgeht, wenn erst eine falsche Antwort ausgewählt wird
+    var hasSelected = false;
+    
     // Outlets fuer Buttons und Labels, die mit Storyboard verknuepft sind
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet weak var FrageLabel: UILabel!
@@ -41,7 +44,7 @@ class EinzelSpielerViewController: UIViewController {
                      Question(Question: "Wieviel Byte hat der IPv6 Header?", Answers: ["Beliebig viele", "32" ,"40" ], Answer: 2),
                      Question(Question: "Zu welcher Schicht gehört das Protokoll TCP?", Answers: ["Transportschicht", "Vermittlungsschicht" ,"Anwendungsschicht" ], Answer: 0)]
         
-        //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern loka gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
+        //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
         let ScoreDefault = UserDefaults.standard
         
         if (ScoreDefault.value(forKey: "Score") != nil){
@@ -55,6 +58,10 @@ class EinzelSpielerViewController: UIViewController {
     
     //Weist den Buttons den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
     func PickQuestion(){
+        
+        //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird
+        
+        hasSelected = false
         
         AntwortAButton.backgroundColor = UIColor.white
         AntwortBButton.backgroundColor = UIColor.white
@@ -81,45 +88,54 @@ class EinzelSpielerViewController: UIViewController {
         PickQuestion()
     }
     
+    //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
+    
     @IBAction func AntwortA(_ sender: Any) {
-        if AnswerNumber == 0{
-            Score += 1
+        if AnswerNumber == 0 {
+            if (hasSelected != true) {Score += 1
             ScoreLabel.text = NSString(format: "Score : %i", Score) as String
             let ScoreDefault = UserDefaults.standard
             ScoreDefault.set(Score, forKey: "Score")
             ScoreDefault.synchronize()
+            }
             AntwortAButton.backgroundColor = UIColor.green
-            
+            hasSelected = true
         }else{
             AntwortAButton.backgroundColor = UIColor.red
+            hasSelected = true
         }
     }
     
     @IBAction func AntwortB(_ sender: Any) {
-        if AnswerNumber == 1{
-            Score += 1
+        if AnswerNumber == 1 {
+            if (hasSelected != true) {Score += 1
             ScoreLabel.text = NSString(format: "Score : %i", Score) as String
             let ScoreDefault = UserDefaults.standard
             ScoreDefault.set(Score, forKey: "Score")
             ScoreDefault.synchronize()
+            }
             AntwortBButton.backgroundColor = UIColor.green
-            
+            hasSelected=true
         }else{
             AntwortBButton.backgroundColor = UIColor.red
+            hasSelected = true
         }
     }
     
     @IBAction func AntwortC(_ sender: Any) {
-        if AnswerNumber == 2{
-            Score += 1
+        if AnswerNumber == 2 {
+            if (hasSelected != true) { Score += 1;
             ScoreLabel.text = NSString(format: "Score : %i", Score) as String
             let ScoreDefault = UserDefaults.standard
             ScoreDefault.set(Score, forKey: "Score")
             ScoreDefault.synchronize()
-            AntwortCButton.backgroundColor = UIColor.green
+            }
             
+            AntwortCButton.backgroundColor = UIColor.green
+            hasSelected=true
         }else{
             AntwortCButton.backgroundColor = UIColor.red
+            hasSelected = true
         }
     }
     
@@ -128,6 +144,7 @@ class EinzelSpielerViewController: UIViewController {
     var gewaehltesFach = [Fach]()
     var vorhandeneFächer = [Fach]()
     
+    // Frage bewerten (oder vllt nennen wir es eher Frage melden bzw schlechte Frage?): Auf dem Server muss gespeichert werden, wie oft er gedrückt wurde, bei 5 Mal von unterschiedlichen Usern wird die Frage aus dem System genommen
     
     
     // Gewaehlte Antwort
