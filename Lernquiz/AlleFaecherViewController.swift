@@ -33,7 +33,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "embededTableVC" {
+        if segue.identifier == "meineFaecherVC" {
             meineFaecherVC = segue.destination as! MeineFaecherViewController
         }
     }

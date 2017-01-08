@@ -34,9 +34,20 @@ class FachTableViewCell: UITableViewCell {
             if(!fach.isSelected) {
                 self.checkbox!.markAsChecked()
                 fach.isSelected = true
+                
+                // Angewaehlte Faecher in Array speichern
+                gewaehlteFaecher.append(fach.name!)
+                print(gewaehlteFaecher)
+                
             } else {
                 self.checkbox!.markAsUnChecked()
                 fach.isSelected = false
+                
+                // Abgewaehlte Faecher aus Array entfernen
+                if gewaehlteFaecher.contains(fach.name!) {
+                        self.entfernen(id: [fach.name!])
+                }
+                print(gewaehlteFaecher)
             }
         }
     }
@@ -44,6 +55,17 @@ class FachTableViewCell: UITableViewCell {
     // Haken wird gezeichnet, falls ein Fach gewaehlt wird
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+    }
+    
+    // Funktion, um Elemente korrekt aus Array zu entfernen
+    func entfernen (id: [String]) {
+        for i in id.indices {
+            for j in gewaehlteFaecher.indices.reversed() {
+                if gewaehlteFaecher[j] == id[i] {
+                    gewaehlteFaecher.remove(at: j)
+                }
+            }
+        }
     }
     
 }
