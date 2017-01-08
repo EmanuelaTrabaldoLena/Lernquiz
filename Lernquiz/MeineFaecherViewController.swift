@@ -13,6 +13,9 @@ var gewaehlteFaecher = [String]()
 // Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    // Erweiterbares Array vom Vorlesungsverzeichnis
+    let gewaehlteVorlesungen = NSMutableArray()
+    
     @IBAction func auswaehlen(_ sender: UIButton) {
          
     }
@@ -24,7 +27,11 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     }
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        tableFuellen()
+        
         meineFaecher.dataSource = self
         meineFaecher.delegate = self
         meineFaecher.register(GewaehltesFachTableViewCell.self, forCellReuseIdentifier: "GewaehltesFachTableViewCell")
@@ -35,16 +42,39 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         meineFaecher.reloadData()
     }
     
+    // Zeilen der TableView mit dem Array der gewaehlten Vorlesungen fuellen
+    func tableFuellen() {
+        
+        // Ueber die Laenge des Arrays iterieren und die Namen der Vorlesungen in den einzelnen Zellen einfuegen
+        for i in 0 ..< gewaehlteFaecher.count {
+            
+            let fach = Faecher()
+            fach.name = gewaehlteFaecher[i]
+            
+            if gewaehlteVorlesungen.contains(fach.name!) {
+                print(gewaehlteVorlesungen)
+            } else {
+                gewaehlteVorlesungen.add(fach)
+            }
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gewaehlteFaecher.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as! GewaehltesFachTableViewCell
-        
-        fachCell.textLabel?.text = gewaehlteFaecher[indexPath.item]
-        
-        return fachCell
+    // Vorlesungsverzeichnis in einzelne Zellen geladen, Checkboxen anwaehlbar und TableView scrollbar
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell {
+
+            fachCell.textLabel?.text = gewaehlteFaecher[indexPath.item]
+            
+            return fachCell
+            
+        } else {
+            
+            return GewaehltesFachTableViewCell()
+            
+        }
     }
 }
-
