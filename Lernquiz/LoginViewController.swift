@@ -1,5 +1,5 @@
 //
-//  LViewController.swift
+//  LoginViewController.swift
 //  Lernquiz
 //
 //  Created by Emanuela Trabaldo Lena on 06.01.17.
@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 
-class LViewController: UIViewController  {
+class LoginViewController: UIViewController  {
     
     //eine Variable, die trackt in welchem Modus man sich befindet
     var signupMode = false
@@ -71,9 +71,9 @@ class LViewController: UIViewController  {
                         
                         //-allgemeine- Fehlermeldung
                         var displayErrorMessage = "Bitte versuche es später nochmal."
-                         
-                         //-spezielle- Fehlermeldung
-                         displayErrorMessage = e.localizedDescription
+                        
+                        //-spezielle- Fehlermeldung
+                        displayErrorMessage = e.localizedDescription
                         
                         self.createAlert(title: "Fehler bei der Registrierung", message: displayErrorMessage)
                     }
@@ -97,10 +97,10 @@ class LViewController: UIViewController  {
                         //-allgemeine- Fehlermeldung
                         var displayErrorMessage = "Bitte versuche es später nochmal."
                         
-                         
-                         //-spezielle- Fehlermeldung
-                         displayErrorMessage = e.localizedDescription
- 
+                        
+                        //-spezielle- Fehlermeldung
+                        displayErrorMessage = e.localizedDescription
+                        
                         self.createAlert(title: "Fehler bei der Anmledung", message: displayErrorMessage)
                         
                     }
@@ -165,6 +165,13 @@ class LViewController: UIViewController  {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        //Berührungserkennung um das Keyboard verschwinden zu lassen
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard()
+    {
+        view.endEditing(true)
     }
 }

@@ -961,7 +961,8 @@
         <!--LogIn-->
         <scene sceneID="pJN-er-r5n">
             <objects>
-                <viewController title="LogIn" id="Xmp-9E-8la" customClass="LViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="27g-sM-oiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController title="LogIn" id="Xmp-9E-8la" customClass="LoginViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rzW-El-9BR"/>
                         <viewControllerLayoutGuide type="bottom" id="gFJ-UK-XEB"/>
@@ -991,7 +992,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tso-18-KTb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tso-18-KTb">
                                 <rect key="frame" x="38" y="504" width="275" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -1018,7 +1019,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="test"/>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="test@example.com" placeholder="Email Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-Z6-QxB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-Z6-QxB">
                                 <rect key="frame" x="38" y="466" width="275" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
@@ -1073,7 +1074,6 @@
                         <segue destination="Nb4-4H-c9G" kind="show" identifier="LoginView2MeineFaecher" id="9om-TQ-V83"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="27g-sM-oiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="409" y="-1055"/>
         </scene>
@@ -1084,7 +1084,7 @@
         <image name="fb-art" width="125" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5sY-AZ-dfB"/>
+        <segue reference="4OD-Lw-qWD"/>
         <segue reference="ge4-7l-ftz"/>
         <segue reference="0Pe-vB-y2b"/>
     </inferredMetricsTieBreakers>

@@ -42,7 +42,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
             try testObject.save()
         } catch {}
     }
-
+    
     // Erkennung in welchem Textfeld man sich gerade befindet
     func textViewTagging()
     {
@@ -52,11 +52,11 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         antwortCerstellen.tag = FrageKartenID.AntwortC.rawValue;
     }
     
-
+    
     // textfield: placeholder
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-       
+        
         //textView.text = ""
         frageErstellen.becomeFirstResponder()
     }
@@ -83,7 +83,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         return true
     }
     
-
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -104,6 +104,9 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     }
     
 }
+
+
+
 extension UITextView
 {
     //var idS : FrageKartenID {get set}
