@@ -15,19 +15,18 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     // Erweiterbares Array vom Vorlesungsverzeichnis
     let gewaehlteVorlesungen = NSMutableArray()
+
+    @IBAction func hinzufuegen(_ sender: UIButton) {
+        performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
+    }
     
-    @IBAction func hinzufuegen(_ sender: Any) {
-        performSegue(withIdentifier: "AlleFaecherViewController", sender: self)
-    }
-    @IBAction func auswaehlen(_ sender: UIButton) {
-         
-    }
     @IBOutlet weak var meineFaecher: UITableView! {
         didSet {
             meineFaecher.dataSource = self
             meineFaecher.delegate = self
         }
     }
+    
 
     override func viewDidLoad() {
         
@@ -40,10 +39,12 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         meineFaecher.register(GewaehltesFachTableViewCell.self, forCellReuseIdentifier: "GewaehltesFachTableViewCell")
     }
 
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         meineFaecher.reloadData()
     }
+    
     
     // Zeilen der TableView mit dem Array der gewaehlten Vorlesungen fuellen
     func tableFuellen() {

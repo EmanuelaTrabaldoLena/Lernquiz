@@ -13,7 +13,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var alleFaecher: UITableView!
     @IBAction func hinzufuegen(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+       _ = navigationController?.popViewController(animated: true)
         
     }
     

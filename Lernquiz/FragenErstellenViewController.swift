@@ -22,7 +22,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var frageErstellenButton: UIButton!
     
     //textfield: keyboard
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    @nonobjc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "/n"){
             textView.resignFirstResponder()
             return false
