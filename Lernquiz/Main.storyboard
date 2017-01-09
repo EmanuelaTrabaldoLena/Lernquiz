@@ -413,7 +413,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Nach dieser Runde Stoppen"/>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Frage" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kdF-BA-IXc">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Schreibe deine Frage hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="kdF-BA-IXc">
                                 <rect key="frame" x="33" y="72" width="301" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -425,7 +425,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Antwort A" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6U1-j0-GWg">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Schreibe die richtige Antwort hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6U1-j0-GWg">
                                 <rect key="frame" x="33" y="207" width="301" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -437,7 +437,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Antwort B" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="71S-X0-0P7">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Schreibe eine falsche Antwort hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="71S-X0-0P7">
                                 <rect key="frame" x="33" y="331" width="301" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -465,7 +465,7 @@
                                     <segue destination="rZY-1E-0Eq" kind="show" id="5sY-AZ-dfB"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Antwort C" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-0z-K2p">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Schreibe eine weitere falsche Antwort hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-0z-K2p">
                                 <rect key="frame" x="33" y="455" width="301" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
@@ -1084,7 +1084,7 @@
         <image name="fb-art" width="125" height="125"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4OD-Lw-qWD"/>
+        <segue reference="5sY-AZ-dfB"/>
         <segue reference="ge4-7l-ftz"/>
         <segue reference="0Pe-vB-y2b"/>
     </inferredMetricsTieBreakers>

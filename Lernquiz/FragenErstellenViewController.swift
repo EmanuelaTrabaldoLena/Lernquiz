@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
@@ -21,6 +22,8 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var frageErstellenButton: UIButton!
     
+    var frageKarte : Frage = Frage()
+    
     //textfield: keyboard
     @nonobjc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
         if(text == "/n"){
@@ -31,31 +34,86 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         
     }
     
-    //textfield: placeholder
+    func speichernFrage (){
+        // Objekte werden im Server erstellt und gespeichert
+        let testObject = PFObject(className: "Fragekarte")
+        testObject["Name"] = "bar"
+        do{
+            try testObject.save()
+        } catch {}
+    }
+
+    // Erkennung in welchem Textfeld man sich gerade befindet
+    func textViewTagging()
+    {
+        frageErstellen.tag = FrageKartenID.Frage.rawValue;
+        antwortAerstellen.tag = FrageKartenID.AntwortA.rawValue;
+        antwortBerstellen.tag = FrageKartenID.AntwortB.rawValue;
+        antwortCerstellen.tag = FrageKartenID.AntwortC.rawValue;
+    }
+    
+
+    // textfield: placeholder
     func textViewDidBeginEditing(_ textView: UITextView) {
         
-        if(frageErstellen.text == "Schreibe deine Frage rein.")
-        {
-            frageErstellen.text = ""
-        }
+       
+        //textView.text = ""
         frageErstellen.becomeFirstResponder()
     }
     
-    func textViewDidEndEditing(_ textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
         
-        if(frageErstellen.text == "")
+        switch textView.tag
         {
-            frageErstellen.text = "Schreibe deine Frage rein."
+        case 0: frageKarte.Fragentext = frageErstellen.text
+        case 1: frageKarte.AntwortA = antwortAerstellen.text
+        case 2: frageKarte.AntwortB = antwortBerstellen.text
+        case 3: frageKarte.AntwortC = antwortCerstellen.text
+        default: fatalError("Fehler in FrageErstellenVC - textViewShouldEndEditing - switch - wrong case")
         }
+        
+        print(frageKarte.toString())
         frageErstellen.resignFirstResponder()
     }
     
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        
+        print("HAllO")
+        return true
+    }
     
-    
-    
-    override func viewDidLoad() {
+
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        frageErstellen.delegate = self
+        antwortAerstellen.delegate = self
+        antwortBerstellen.delegate = self
+        antwortCerstellen.delegate = self
+        
+        //Berührungserkennung um das Keyboard verschwinden zu lassen
+        let tap = UITapGestureRecognizer(target: self, action: #selector(FragenErstellenViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
     }
+    
+    func dismissKeyboard()
+    {
+        view.endEditing(true)
+    }
+    
+}
+extension UITextView
+{
+    //var idS : FrageKartenID {get set}
+}
+
+//als Identifikator/Nummerierung für textViewDidEndEditing
+enum FrageKartenID : Int
+{
+    case Frage
+    case AntwortA
+    case AntwortB
+    case AntwortC
 }
