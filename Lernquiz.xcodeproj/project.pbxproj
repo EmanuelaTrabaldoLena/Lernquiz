@@ -95,6 +95,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		618ADDD41E2551F600F69012 /* FaecherVCs & TVCs */ = {
+			isa = PBXGroup;
+			children = (
+				618ADDD61E25522200F69012 /* TVCs */,
+				618ADDD51E25520F00F69012 /* VCs */,
+			);
+			name = "FaecherVCs & TVCs";
+			sourceTree = "<group>";
+		};
+		618ADDD51E25520F00F69012 /* VCs */ = {
+			isa = PBXGroup;
+			children = (
+				88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */,
+				88E0EB6C1E1FFEFF006BAA78 /* MeineFaecherViewController.swift */,
+			);
+			name = VCs;
+			sourceTree = "<group>";
+		};
+		618ADDD61E25522200F69012 /* TVCs */ = {
+			isa = PBXGroup;
+			children = (
+				88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */,
+				8834B4E41E21090C00A89182 /* GewaehltesFachTableViewCell.swift */,
+			);
+			name = TVCs;
+			sourceTree = "<group>";
+		};
 		88E0EB5E1E1FFEFF006BAA78 = {
 			isa = PBXGroup;
 			children = (
@@ -130,6 +157,7 @@
 				88E0EB811E20004F006BAA78 /* Duell.swift */,
 				88E0EB831E200075006BAA78 /* Fach.swift */,
 				88E0EB851E200089006BAA78 /* Fragekarte.swift */,
+				88E0EBAB1E20029E006BAA78 /* Faecher.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -140,6 +168,7 @@
 				88E0EB7C1E1FFF1F006BAA78 /* Main.storyboard */,
 				88E0EB711E1FFEFF006BAA78 /* Assets.xcassets */,
 				88E0EB731E1FFEFF006BAA78 /* LaunchScreen.storyboard */,
+				88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -148,12 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				889502E81E200FE500A67A67 /* LoginViewController.swift */,
-				88E0EB6C1E1FFEFF006BAA78 /* MeineFaecherViewController.swift */,
-				8834B4E41E21090C00A89182 /* GewaehltesFachTableViewCell.swift */,
-				88E0EBAB1E20029E006BAA78 /* Faecher.swift */,
-				88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */,
-				88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */,
-				88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */,
+				618ADDD41E2551F600F69012 /* FaecherVCs & TVCs */,
 				88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */,
 				88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */,
 				889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */,
@@ -213,7 +237,6 @@
 				TargetAttributes = {
 					88E0EB661E1FFEFF006BAA78 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 7NW58L4LF8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -380,7 +403,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7NW58L4LF8;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -398,7 +421,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7NW58L4LF8;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
