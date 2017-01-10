@@ -7,14 +7,18 @@
 //
 
 import UIKit
+import Parse
 
-struct Question {
-    var Question : String!
-    var Answers : [String]!
-    var Answer : Int!
-}
+
 
 class EinzelSpielerViewController: UIViewController {
+    
+    var gewaehltesFach = [Fach]()
+    
+    // Gewaehlte Antwort
+    var EineAntwort: Bool = true
+    // Aktuelle Frage
+    var CurrentQuestion: Int = 0
     
     // Counter fuer Score, wird lokal gespeichert
     var Score: Int = 0
@@ -31,18 +35,20 @@ class EinzelSpielerViewController: UIViewController {
     @IBOutlet var FrageBewerten: UIButton!
     @IBOutlet weak var NaechsteFrage: UIButton!
     
-    var Questions = [Question]()
     var QNumber = Int()
-    var AnswerNumber = Int()
+    var frageKarten = [Fragekarte]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        Questions = [Question(Question: "Welchen Dezimalwert hat 10011?", Answers: ["19", "23" ,"31" ], Answer: 0),
-                     Question(Question: "Wieviel Bit haben IPv6-Adressen?", Answers: ["12", "6" ,"128" ], Answer: 2),
-                     Question(Question: "Wieviele Schichten hat das ISO/OSI Modell?", Answers: ["4", "7" ,"6" ], Answer: 1),
-                     Question(Question: "Wieviel Byte hat der IPv6 Header?", Answers: ["Beliebig viele", "32" ,"40" ], Answer: 2),
-                     Question(Question: "Zu welcher Schicht gehört das Protokoll TCP?", Answers: ["Transportschicht", "Vermittlungsschicht" ,"Anwendungsschicht" ], Answer: 0)]
+        download()
+        
+        
+       // Questions = [Question(Question: "Welchen Dezimalwert hat 10011?", Answers: ["19", "23" ,"31" ], Answer: 0),
+                     //Question(Question: "Wieviel Bit haben IPv6-Adressen?", Answers: ["12", "6" ,"128" ], Answer: 2),
+                    // Question(Question: "Wieviele Schichten hat das ISO/OSI Modell?", Answers: ["4", "7" ,"6" ], Answer: 1),
+                   //  Question(Question: "Wieviel Byte hat der IPv6 Header?", Answers: ["Beliebig viele", "32" ,"40" ], Answer: 2),
+                     //Question(Question: "Zu welcher Schicht gehört das Protokoll TCP?", Answers: ["Transportschicht", "Vermittlungsschicht" ,"Anwendungsschicht" ], Answer: 0)]
         
         //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
         let ScoreDefault = UserDefaults.standard
@@ -67,17 +73,17 @@ class EinzelSpielerViewController: UIViewController {
         AntwortBButton.backgroundColor = UIColor.white
         AntwortCButton.backgroundColor = UIColor.white
         
-        if Questions.count > 0 {
-            QNumber = 0
-            FrageLabel.text = Questions[QNumber].Question
+        if QNumber < frageKarten.count
+        {
+            FrageLabel.text = frageKarten[QNumber].Fragentext
+            AntwortAButton.setTitle(frageKarten[QNumber].AntwortA, for: UIControlState.normal)
+            AntwortBButton.setTitle(frageKarten[QNumber].AntwortB, for: UIControlState.normal)
+            AntwortCButton.setTitle(frageKarten[QNumber].AntwortC, for: UIControlState.normal)
+
+            print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
+            print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
             
-            AnswerNumber = Questions[QNumber].Answer
-            
-            AntwortAButton.setTitle(Questions[QNumber].Answers[0], for: UIControlState.normal)
-            AntwortBButton.setTitle(Questions[QNumber].Answers[1], for: UIControlState.normal)
-            AntwortCButton.setTitle(Questions[QNumber].Answers[2], for: UIControlState.normal)
-            
-            Questions.remove(at: QNumber)
+            QNumber = QNumber + 1
         }
         else{
             NSLog("Keine weiteren Fragen")
@@ -90,76 +96,65 @@ class EinzelSpielerViewController: UIViewController {
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
     
-    @IBAction func AntwortA(_ sender: Any) {
-        if AnswerNumber == 0 {
-            if (hasSelected != true) {Score += 1
-            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-            let ScoreDefault = UserDefaults.standard
-            ScoreDefault.set(Score, forKey: "Score")
-            ScoreDefault.synchronize()
+    enum Antwort : Int { case A ; case B ; case C }
+    
+    func antwortAuswerten(antwort : Antwort)
+    {
+        var button : UIButton!
+        switch antwort { case .A: button = AntwortAButton; case .B: button = AntwortBButton; case .C: button = AntwortCButton }
+        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue)
+        {
+            if (hasSelected != true)
+            {
+                Score += 1
+                ScoreLabel.text = NSString(format: "Score : %i", Score) as String
+                let ScoreDefault = UserDefaults.standard
+                ScoreDefault.set(Score, forKey: "Score")
+                ScoreDefault.synchronize()
             }
-            AntwortAButton.backgroundColor = UIColor.green
+            button.backgroundColor = UIColor.green
             hasSelected = true
         }else{
-            AntwortAButton.backgroundColor = UIColor.red
+            button.backgroundColor = UIColor.red
             hasSelected = true
         }
     }
     
-    @IBAction func AntwortB(_ sender: Any) {
-        if AnswerNumber == 1 {
-            if (hasSelected != true) {Score += 1
-            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-            let ScoreDefault = UserDefaults.standard
-            ScoreDefault.set(Score, forKey: "Score")
-            ScoreDefault.synchronize()
-            }
-            AntwortBButton.backgroundColor = UIColor.green
-            hasSelected=true
-        }else{
-            AntwortBButton.backgroundColor = UIColor.red
-            hasSelected = true
-        }
+    
+    @IBAction func AntwortA(_ sender: Any)
+    {
+        antwortAuswerten(antwort: .A)
     }
     
-    @IBAction func AntwortC(_ sender: Any) {
-        if AnswerNumber == 2 {
-            if (hasSelected != true) { Score += 1;
-            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-            let ScoreDefault = UserDefaults.standard
-            ScoreDefault.set(Score, forKey: "Score")
-            ScoreDefault.synchronize()
-            }
+    @IBAction func AntwortB(_ sender: Any)
+    {
+        antwortAuswerten(antwort: .B)
+    }
+    
+    @IBAction func AntwortC(_ sender: Any)
+    {
+        antwortAuswerten(antwort: .C)
+    }
+    
+    func download()
+    {
+            let projectQuery = PFQuery(className: "Fragekarte")
+            //projectQuery.includeKey("Fach")
+            //projectQuery.whereKey("Fach", equalTo: gewaehltesFach)
             
-            AntwortCButton.backgroundColor = UIColor.green
-            hasSelected=true
-        }else{
-            AntwortCButton.backgroundColor = UIColor.red
-            hasSelected = true
-        }
+            do {
+                let results = try projectQuery.findObjects()
+                for result in results
+                {
+                    let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
+                    let frageKarte = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
+                    frageKarten.append(frageKarte)
+                    print(frageKarte.toString())
+                }
+                
+            } catch {}
     }
-    
-    
-    // var gewaehltesFach : Fach = Fach(Titel:"Medientechnik", DozentName: "Manninger", VorhandeneFragen: 0, Fragen: [])
-    var gewaehltesFach = [Fach]()
-    var vorhandeneFächer = [Fach]()
+
     
     // Frage bewerten (oder vllt nennen wir es eher Frage melden bzw schlechte Frage?): Auf dem Server muss gespeichert werden, wie oft er gedrückt wurde, bei 5 Mal von unterschiedlichen Usern wird die Frage aus dem System genommen
-    
-    
-    // Gewaehlte Antwort
-    var EineAntwort: Bool = true
-    // Aktuelle Frage
-    var CurrentQuestion: Int = 0
-    
-    //override func viewDidLoad() {
-    //  super.viewDidLoad()
-    // Folgender Code noch fehlerhaft, was genau soll er tun? Wie koennen wir das fixen?
-    // self.FrageLabel.text = gewaehltesFach[0].Fragen[0].Fragentext
-    // self.AntwortAButton.setTitle(gewaehltesFach[0].Fragen[0].AntwortA, for: .normal)
-    // self.AntwortBButton.setTitle(gewaehltesFach[0].Fragen[0].AntwortB, for: .normal)
-    // self.AntwortCButton.setTitle(gewaehltesFach[0].Fragen[0].AntwortC, for: .normal)
-    
-    
-    // Beispielfragen erstellen und zu den Faechern hinzufuegen
 }

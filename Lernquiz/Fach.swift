@@ -10,14 +10,14 @@ import Foundation
 
 class Fach{
     
-    var Fragen = [Frage]()
+    var Fragen = [Fragekarte]()
     
     var Titel: String = ""
     var DozentName: String = ""
     
     var VorhandeneFragen: Int = 0
     
-    init(Titel:String, DozentName: String, VorhandeneFragen: Int, Fragen: [Frage]) {
+    init(Titel:String, DozentName: String, VorhandeneFragen: Int, Fragen: [Fragekarte]) {
         self.Titel = Titel
         self.DozentName = DozentName
         self.VorhandeneFragen = VorhandeneFragen
@@ -25,13 +25,13 @@ class Fach{
     }
     
     
-    func frageHinzufügen(Frage: Frage){
+    func frageHinzufügen(Frage: Fragekarte){
         Fragen.append(Frage)
         VorhandeneFragen = VorhandeneFragen + 1
     }
     
     
-    func frageLöschen(Frage: Frage){
+    func frageLöschen(Frage: Fragekarte){
         var counting = 0
         while counting < Fragen.count{
             if Fragen[counting].FragenId ==  Frage.FragenId{

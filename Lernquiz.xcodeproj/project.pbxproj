@@ -29,12 +29,11 @@
 		88E0EB7D1E1FFF1F006BAA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB7C1E1FFF1F006BAA78 /* Main.storyboard */; };
 		88E0EB821E20004F006BAA78 /* Duell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB811E20004F006BAA78 /* Duell.swift */; };
 		88E0EB841E200075006BAA78 /* Fach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB831E200075006BAA78 /* Fach.swift */; };
-		88E0EB861E200089006BAA78 /* Frage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB851E200089006BAA78 /* Frage.swift */; };
+		88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB851E200089006BAA78 /* Fragekarte.swift */; };
 		88E0EBAC1E20029E006BAA78 /* Faecher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAB1E20029E006BAA78 /* Faecher.swift */; };
 		88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */; };
 		88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */; };
 		88E0EBB21E20035C006BAA78 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */; };
-		88E0EBB41E200385006BAA78 /* SpielModusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB31E200385006BAA78 /* SpielModusViewController.swift */; };
 		88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */; };
 		88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */; };
 /* End PBXBuildFile section */
@@ -64,12 +63,11 @@
 		88E0EB7C1E1FFF1F006BAA78 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		88E0EB811E20004F006BAA78 /* Duell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duell.swift; sourceTree = "<group>"; };
 		88E0EB831E200075006BAA78 /* Fach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fach.swift; sourceTree = "<group>"; };
-		88E0EB851E200089006BAA78 /* Frage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frage.swift; sourceTree = "<group>"; };
+		88E0EB851E200089006BAA78 /* Fragekarte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fragekarte.swift; sourceTree = "<group>"; };
 		88E0EBAB1E20029E006BAA78 /* Faecher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Faecher.swift; sourceTree = "<group>"; };
 		88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlleFaecherViewController.swift; sourceTree = "<group>"; };
 		88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FachTableViewCell.swift; sourceTree = "<group>"; };
 		88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
-		88E0EBB31E200385006BAA78 /* SpielModusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielModusViewController.swift; sourceTree = "<group>"; };
 		88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellViewController.swift; sourceTree = "<group>"; };
 		88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EinzelSpielerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -131,7 +129,7 @@
 			children = (
 				88E0EB811E20004F006BAA78 /* Duell.swift */,
 				88E0EB831E200075006BAA78 /* Fach.swift */,
-				88E0EB851E200089006BAA78 /* Frage.swift */,
+				88E0EB851E200089006BAA78 /* Fragekarte.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -156,7 +154,6 @@
 				88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */,
 				88E0EBAF1E200335006BAA78 /* FachTableViewCell.swift */,
 				88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */,
-				88E0EBB31E200385006BAA78 /* SpielModusViewController.swift */,
 				88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */,
 				88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */,
 				889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */,
@@ -257,10 +254,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88E0EB861E200089006BAA78 /* Frage.swift in Sources */,
+				88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */,
 				88E0EB6D1E1FFEFF006BAA78 /* MeineFaecherViewController.swift in Sources */,
 				88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */,
-				88E0EBB41E200385006BAA78 /* SpielModusViewController.swift in Sources */,
 				88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */,
 				88E0EBB21E20035C006BAA78 /* CheckBoxView.swift in Sources */,
 				88E0EB821E20004F006BAA78 /* Duell.swift in Sources */,

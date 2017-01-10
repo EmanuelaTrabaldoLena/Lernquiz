@@ -10,7 +10,18 @@ import UIKit
 import Parse
 
 class FragenErstellenViewController: UIViewController, UITextViewDelegate {
-    
+  
+   // Frage wird erstellt und wenn auf den Button geklickt wird, werden überall die Texteingaben beendet und hochgeladen
+    @IBAction func Upload(_ sender: Any) {
+        textViewDidEndEditing(frageErstellen)
+        textViewDidEndEditing(antwortAerstellen)
+        textViewDidEndEditing(antwortBerstellen)
+        textViewDidEndEditing(antwortCerstellen)
+        
+        frageKarte.swap()
+        frageKarte.ermittleRichtigeAntwortIndex()
+        upload()
+    }
     
     @IBOutlet var frageErstellen: UITextView!
     
@@ -22,26 +33,12 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
     @IBOutlet var frageErstellenButton: UIButton!
     
-    var frageKarte : Frage = Frage()
+    var frageKarte : Fragekarte = Fragekarte()
+    var fach = String()
     
-    //textfield: keyboard
-    @nonobjc func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
-        if(text == "/n"){
-            textView.resignFirstResponder()
-            return false
-        }
-        return true
-        
-    }
-    
-    func speichernFrage (){
-        // Objekte werden im Server erstellt und gespeichert
-        let testObject = PFObject(className: "Fragekarte")
-        testObject["Name"] = "bar"
-        do{
-            try testObject.save()
-        } catch {}
-    }
+    //als Identifikator/Nummerierung für textViewTagging()
+    enum FrageKartenID : Int { case Frage, AntwortA, AntwortB, AntwortC}
+
     
     // Erkennung in welchem Textfeld man sich gerade befindet
     func textViewTagging()
@@ -53,36 +50,44 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    // textfield: placeholder
+    /* Loescht den Text im Feld, sobald dieses angewaehlt wird, sobald das Keyboard erscheint, schreibt
+     man im ausgewaehlten Feld */
     func textViewDidBeginEditing(_ textView: UITextView) {
-        
-        
-        //textView.text = ""
-        frageErstellen.becomeFirstResponder()
+        switch textView.tag{
+        case 0: frageErstellen.text = ""; frageErstellen.becomeFirstResponder()
+        case 1: antwortAerstellen.text = ""; antwortAerstellen.becomeFirstResponder()
+        case 2: antwortBerstellen.text = ""; antwortBerstellen.becomeFirstResponder()
+        case 3: antwortCerstellen.text = ""; antwortCerstellen.becomeFirstResponder()
+        default: fatalError("Fehler in FrageErstellenVC - textViewShouldEndEditing - switch - wrong case")
+        }
     }
-    
+
+    /* Der Text wird in der zu erstellenden Fragekarte gespeichert und man wird anschliessend von der
+    ausgewaehlten Textview abgemeldet */
     func textViewDidEndEditing(_ textView: UITextView)
     {
-        
         switch textView.tag
         {
-        case 0: frageKarte.Fragentext = frageErstellen.text
-        case 1: frageKarte.AntwortA = antwortAerstellen.text
-        case 2: frageKarte.AntwortB = antwortBerstellen.text
-        case 3: frageKarte.AntwortC = antwortCerstellen.text
+        case 0: frageKarte.Fragentext = frageErstellen.text; frageErstellen.resignFirstResponder()
+        case 1: frageKarte.AntwortA = antwortAerstellen.text; frageKarte.RichtigeAntwort = antwortAerstellen.text ; antwortAerstellen.resignFirstResponder()
+        case 2: frageKarte.AntwortB = antwortBerstellen.text; antwortBerstellen.resignFirstResponder()
+        case 3: frageKarte.AntwortC = antwortCerstellen.text; antwortCerstellen.resignFirstResponder()
         default: fatalError("Fehler in FrageErstellenVC - textViewShouldEndEditing - switch - wrong case")
         }
         
         print(frageKarte.toString())
-        frageErstellen.resignFirstResponder()
-    }
-    
-    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
         
-        print("HAllO")
-        return true
     }
     
+    // Fragekarte wird im Server hochgeladen, wird ausgefuehrt wenn frageErstellenButton ausgewaehlt wird
+    func upload()
+    {
+        let hochzuladendesObjekt = PFObject(className: "Fragekarte")
+        hochzuladendesObjekt["Frage"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: frageKarte))
+        hochzuladendesObjekt["Fach"] = fach
+        hochzuladendesObjekt.saveInBackground()
+    }
+
     
     override func viewDidLoad()
     {
@@ -93,30 +98,16 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         antwortBerstellen.delegate = self
         antwortCerstellen.delegate = self
         
+        textViewTagging()
+        
         //Berührungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(FragenErstellenViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    // Keyboard verschwindet, nach Ende der Textbearbeitung
     func dismissKeyboard()
     {
         view.endEditing(true)
     }
-    
-}
-
-
-
-extension UITextView
-{
-    //var idS : FrageKartenID {get set}
-}
-
-//als Identifikator/Nummerierung für textViewDidEndEditing
-enum FrageKartenID : Int
-{
-    case Frage
-    case AntwortA
-    case AntwortB
-    case AntwortC
 }
