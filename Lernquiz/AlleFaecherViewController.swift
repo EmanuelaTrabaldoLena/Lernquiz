@@ -48,7 +48,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
         for i in 0 ..< verzeichnis.count {
             
-            let fach = Faecher()
+            let fach = Fach()
             fach.name = verzeichnis[i]
             
             vorlesungsverzeichnis.add(fach)
@@ -66,7 +66,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell {
             
-            let fach = vorlesungsverzeichnis[indexPath.row] as! Faecher
+            let fach = vorlesungsverzeichnis[indexPath.row] as! Fach
             fachCell.configure(fach: fach)
             
             return fachCell

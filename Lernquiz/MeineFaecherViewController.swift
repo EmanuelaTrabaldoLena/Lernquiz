@@ -52,7 +52,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         // Ueber die Laenge des Arrays iterieren und die Namen der Vorlesungen in den einzelnen Zellen einfuegen
         for i in 0 ..< gewaehlteFaecher.count {
             
-            let fach = Faecher()
+            let fach = Fach()
             fach.name = gewaehlteFaecher[i]
             
             gewaehlteVorlesungen.add(fach)

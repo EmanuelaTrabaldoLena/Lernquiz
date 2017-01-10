@@ -10,12 +10,19 @@ import Foundation
 
 class Fach{
     
+    var name: String?
+    var isSelected: Bool = false
+    
     var Fragen = [Fragekarte]()
     
     var Titel: String = ""
     var DozentName: String = ""
     
     var VorhandeneFragen: Int = 0
+    
+    init() {
+        
+    }
     
     init(Titel:String, DozentName: String, VorhandeneFragen: Int, Fragen: [Fragekarte]) {
         self.Titel = Titel

@@ -19,7 +19,7 @@ class FachTableViewCell: UITableViewCell {
     }
 
     // Ueberpruefung und Umsetzung des Anwaehlens der Checkboxen
-    func configure(fach :Faecher) {
+    func configure(fach :Fach) {
         
         if(fach.isSelected) {
             self.checkbox!.markAsChecked()

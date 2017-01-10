@@ -1372,6 +1372,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="JQs-Z6-QxB" firstAttribute="leading" secondItem="Uwk-O8-Yq0" secondAttribute="leadingMargin" constant="10" id="06t-su-7k1"/>
+                            <constraint firstItem="gyo-FV-5ke" firstAttribute="top" secondItem="Tso-18-KTb" secondAttribute="bottom" constant="12" id="0MA-pS-MaH"/>
                             <constraint firstItem="Dm4-84-djS" firstAttribute="top" secondItem="gyo-FV-5ke" secondAttribute="bottom" constant="39" id="2U1-C2-tSD"/>
                             <constraint firstItem="Dm4-84-djS" firstAttribute="trailing" secondItem="Uwk-O8-Yq0" secondAttribute="trailingMargin" id="4Nj-cj-Qk0"/>
                             <constraint firstItem="Tso-18-KTb" firstAttribute="top" secondItem="JQs-Z6-QxB" secondAttribute="bottom" constant="8" symbolic="YES" id="7Jm-QH-7XQ"/>
@@ -1391,6 +1392,7 @@
                             <constraint firstItem="XsC-CS-uH7" firstAttribute="centerY" secondItem="Dm4-84-djS" secondAttribute="centerY" id="c7c-h4-PEs"/>
                             <constraint firstItem="1eA-Qa-KXu" firstAttribute="centerX" secondItem="wZv-Cm-dUz" secondAttribute="centerX" id="dvV-d5-pU1"/>
                             <constraint firstItem="XsC-CS-uH7" firstAttribute="leading" secondItem="Uwk-O8-Yq0" secondAttribute="leadingMargin" constant="-5" id="jFx-h4-cw3"/>
+                            <constraint firstItem="gFJ-UK-XEB" firstAttribute="top" secondItem="Tso-18-KTb" secondAttribute="bottom" constant="121" id="k7E-NN-t2P"/>
                             <constraint firstAttribute="bottom" secondItem="JQs-Z6-QxB" secondAttribute="bottom" constant="159" id="pCu-2x-Zgo"/>
                             <constraint firstItem="JQs-Z6-QxB" firstAttribute="trailing" secondItem="Tso-18-KTb" secondAttribute="trailing" id="pji-bU-vnW"/>
                             <constraint firstItem="Dm4-84-djS" firstAttribute="leading" secondItem="XsC-CS-uH7" secondAttribute="trailing" constant="23" id="r7D-Aa-4E8"/>
@@ -1398,6 +1400,8 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomConstraint" destination="pCu-2x-Zgo" id="Lmv-WB-Uff"/>
+                        <outlet property="bottomConstraint2" destination="k7E-NN-t2P" id="qiz-aa-GsF"/>
                         <outlet property="changeSignupModeButton" destination="Dm4-84-djS" id="X30-Bh-vUp"/>
                         <outlet property="emailTextField" destination="JQs-Z6-QxB" id="rTN-nm-Zzd"/>
                         <outlet property="messageLabel" destination="XsC-CS-uH7" id="6iu-WH-tTJ"/>

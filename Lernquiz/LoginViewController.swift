@@ -12,7 +12,9 @@ import Parse
 
 class LoginViewController: UIViewController  {
     
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     //eine Variable, die trackt in welchem Modus man sich befindet
+    @IBOutlet weak var bottomConstraint2: NSLayoutConstraint!
     var signupMode = false
     
     @IBOutlet var emailTextField: UITextField!
@@ -170,8 +172,28 @@ class LoginViewController: UIViewController  {
         view.addGestureRecognizer(tap)
     }
     
+    
     func dismissKeyboard()
     {
         view.endEditing(true)
     }
+    
+    
+//    // Wenn Textfeld angewählt wird und Keyboard erscheint, wird auf das Feld fokussiert
+//    func textFieldDidBeginEditing(textField: UITextField) {
+//        animateViewMoving(up: true, moveValue: 100)
+//    }
+//    func textFieldDidEndEditing(textField: UITextField) {
+//        animateViewMoving(up: false, moveValue: 100)
+//    }
+//    
+//    func animateViewMoving (up:Bool, moveValue :CGFloat){
+//        let movementDuration:TimeInterval = 0.3
+//        let movement:CGFloat = ( up ? -moveValue : moveValue)
+//        UIView.beginAnimations("animateView", context: nil)
+//        UIView.setAnimationBeginsFromCurrentState(true)
+//        UIView.setAnimationDuration(movementDuration)
+//        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
+//        UIView.commitAnimations()
+//    }
 }
