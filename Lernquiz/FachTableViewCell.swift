@@ -17,7 +17,7 @@ class FachTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-
+    
     // Ueberpruefung und Umsetzung des Anwaehlens der Checkboxen
     func configure(fach :Fach) {
         
@@ -37,6 +37,7 @@ class FachTableViewCell: UITableViewCell {
                 
                 // Angewaehlte Faecher in Array speichern
                 if gewaehlteFaecher.contains(fach.name!) {
+                    self.checkbox!.markAsChecked()
                     print(gewaehlteFaecher)
                 } else {
                     gewaehlteFaecher.append(fach.name!)
@@ -48,12 +49,20 @@ class FachTableViewCell: UITableViewCell {
                 
                 // Abgewaehlte Faecher aus Array entfernen
                 if gewaehlteFaecher.contains(fach.name!) {
-                        self.entfernen(id: [fach.name!])
+                    self.entfernen(id: [fach.name!])
                 }
                 print(gewaehlteFaecher)
             }
         }
     }
+    
+    // Falls Faecher bereits gespeichert sind, sollen die Checkboxen bereits ausgewaehlt sein, wenn man auf AlleFaecher kommt
+    func gewaehlt(gewaehltesFach :NSMutableArray) {
+        if (vorlesungsverzeichnis.contains(gewaehltesFach)){
+            self.checkbox?.markAsChecked()
+        }
+    }
+    
     
     // Haken wird gezeichnet, falls ein Fach gewaehlt wird
     override func setSelected(_ selected: Bool, animated: Bool) {

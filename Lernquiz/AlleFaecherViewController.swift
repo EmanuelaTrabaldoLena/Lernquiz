@@ -8,19 +8,18 @@
 
 import UIKit
 
+// Erweiterbares Array vom Vorlesungsverzeichnis
+let vorlesungsverzeichnis = NSMutableArray()
+
 // Controller fuer die gesamte View von AlleFaecher
 class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var alleFaecher: UITableView!
     @IBAction func hinzufuegen(_ sender: Any) {
-       _ = navigationController?.popViewController(animated: true)
-        
+        _ = navigationController?.popViewController(animated: true)
     }
-    
+
     var meineFaecherVC: MeineFaecherViewController!
-    
-    // Erweiterbares Array vom Vorlesungsverzeichnis
-    let vorlesungsverzeichnis = NSMutableArray()
     
     
     override func viewDidLoad() {
@@ -30,6 +29,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         super.viewDidLoad()
         
         tableFuellen()
+        
     }
     
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -67,6 +67,8 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell {
             
             let fach = vorlesungsverzeichnis[indexPath.row] as! Fach
+            // Falls bereits Faecher ausgewaehlt sind, werden die Checkboxen gefuellt
+            fachCell.gewaehlt(gewaehltesFach: gewaehlteVorlesungen)
             fachCell.configure(fach: fach)
             
             return fachCell
@@ -78,11 +80,4 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    
-    // Ausgewaehlte Zeile in Console ausgeben
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let indexPath = tableView.indexPathForSelectedRow
-        let currentCell = tableView.cellForRow(at: indexPath!) as! FachTableViewCell
-        print((currentCell.name?.text)! as String)
-    }
 }

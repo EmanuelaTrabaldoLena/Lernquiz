@@ -10,11 +10,11 @@ import UIKit
 
 var gewaehlteFaecher = [String]()
 
+// Erweiterbares Array vom Vorlesungsverzeichnis
+let gewaehlteVorlesungen = NSMutableArray()
+
 // Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    // Erweiterbares Array vom Vorlesungsverzeichnis
-    let gewaehlteVorlesungen = NSMutableArray()
 
     @IBAction func hinzufuegen(_ sender: UIButton) {
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
@@ -63,7 +63,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         return gewaehlteFaecher.count
     }
     
-    // Vorlesungsverzeichnis in einzelne Zellen geladen, Checkboxen anwaehlbar und TableView scrollbar
+    // Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell {
 
