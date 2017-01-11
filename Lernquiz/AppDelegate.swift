@@ -37,13 +37,13 @@
             
             
             // Objekte werden im Server erstellt und gespeichert
-            let testObject = PFObject(className: "General")
-            testObject["Name"] = "bar"
-            do{
-                try testObject.save()
-            } catch {}
+//            let testObject = PFObject(className: "General")
+//            testObject["Name"] = "bar"
+//            do{
+//                try testObject.save()
+//            } catch {}
             return true
-        }
+       }
         
         func applicationWillResignActive(_ application: UIApplication) {
             // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
