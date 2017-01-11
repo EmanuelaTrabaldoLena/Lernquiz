@@ -34,14 +34,7 @@
             let defaultACL = PFACL()
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
-            
-            
-            // Objekte werden im Server erstellt und gespeichert
-            let testObject = PFObject(className: "General")
-            testObject["Name"] = "bar"
-            do{
-                try testObject.save()
-            } catch {}
+
             return true
         }
         

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DuellViewController {
+class DuellViewController: UIViewController {
     
     // Schleife basteln, damit pro Runde 3 zufällige Fragen gestellt werden, für die jeweils ein Countdown von 60 Sekunden läuft
     
@@ -21,7 +21,7 @@ class DuellViewController {
     
     // Wir brauchen einen Befehl, der bei einem Event (Drücken der Antwort, egal ob richtig oder falsch) den Timer abbricht.
     
-     func viewDidLoad() {
+    override func viewDidLoad() {
         
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(DuellViewController.update), userInfo: nil, repeats: true)
         
