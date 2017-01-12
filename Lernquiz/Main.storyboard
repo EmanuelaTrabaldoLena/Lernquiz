@@ -1155,11 +1155,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EyS-ZB-FIY">
-                                <rect key="frame" x="10" y="84" width="300" height="230.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="EyS-ZB-FIY">
+                                <rect key="frame" x="10" y="80" width="300" height="271"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welchen Dezimalwert hat 10011?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bRy-Fx-C57">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="60.5"/>
                                         <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="iex-Bg-No0"/>
@@ -1174,7 +1174,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GlY-Z8-6bf">
-                                        <rect key="frame" x="0.0" y="30.5" width="300" height="60"/>
+                                        <rect key="frame" x="0.0" y="70.5" width="300" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="68G-Pu-4kV"/>
@@ -1192,7 +1192,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fGD-G0-LDk">
-                                        <rect key="frame" x="0.0" y="100.5" width="300" height="60"/>
+                                        <rect key="frame" x="0.0" y="140.5" width="300" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="Qty-yP-Rhj"/>
@@ -1210,7 +1210,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0l5-vy-Giw">
-                                        <rect key="frame" x="0.0" y="170.5" width="300" height="60"/>
+                                        <rect key="frame" x="0.0" y="210.5" width="300" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="dw7-dh-3mv"/>
@@ -1244,47 +1244,58 @@
                                     <constraint firstItem="0l5-vy-Giw" firstAttribute="top" secondItem="fGD-G0-LDk" secondAttribute="bottom" constant="10" id="zAo-6W-51w"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-Bt-k2B">
-                                <rect key="frame" x="139" y="358" width="42" height="38"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOB-xR-692">
+                                <rect key="frame" x="165" y="361" width="145" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <state key="normal" title="nächste Frage">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                            </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mwz-7J-VvS">
-                                <rect key="frame" x="100" y="431" width="50" height="50"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Qgq-UO-gze">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="Qgq-UO-gze" firstAttribute="top" secondItem="mwz-7J-VvS" secondAttribute="top" constant="20" id="Vgw-Me-6BJ"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qgq-UO-gze" secondAttribute="bottom" constant="20" id="dz2-h3-rMv"/>
-                                </constraints>
-                            </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gOB-xR-692">
-                                <rect key="frame" x="80" y="320" width="171" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="naechste Frage"/>
                                 <connections>
                                     <action selector="naechsteFrage:" destination="fa5-Ga-zjY" eventType="touchUpInside" id="Ixu-lC-Afy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-Bt-k2B">
+                                <rect key="frame" x="130" y="399" width="60" height="56"/>
+                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="contentStretch" x="1" y="0.5" width="1" height="1"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="hDz-Lm-deb"/>
+                                    <constraint firstAttribute="height" constant="56" id="iKS-mh-nOO"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="top" secondItem="gOB-xR-692" secondAttribute="bottom" constant="8" id="01v-tz-zWm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dZn-Bt-k2B" secondAttribute="trailing" constant="121" id="4aq-Ev-8yI"/>
                             <constraint firstAttribute="trailing" secondItem="EyS-ZB-FIY" secondAttribute="trailing" constant="10" id="9Gi-yv-4fk"/>
+                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="top" secondItem="gOB-xR-692" secondAttribute="bottom" constant="8" id="Ayg-gR-72E"/>
                             <constraint firstItem="EyS-ZB-FIY" firstAttribute="top" secondItem="QZ9-ct-Yjn" secondAttribute="bottom" constant="20" id="F7F-n9-cIV"/>
                             <constraint firstItem="EyS-ZB-FIY" firstAttribute="leading" secondItem="1le-6P-nti" secondAttribute="leading" constant="10" id="IIm-Qz-ISt"/>
-                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="centerY" secondItem="1le-6P-nti" secondAttribute="centerY" id="m2a-BE-j43"/>
-                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="centerX" secondItem="1le-6P-nti" secondAttribute="centerX" id="tIR-vu-0LF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dZn-Bt-k2B" secondAttribute="trailing" constant="114" id="Oed-oE-9bT"/>
+                            <constraint firstItem="gOB-xR-692" firstAttribute="leading" secondItem="1le-6P-nti" secondAttribute="leading" constant="10" id="Wrl-Mk-sIe"/>
+                            <constraint firstItem="xMM-Qp-9S5" firstAttribute="top" secondItem="dZn-Bt-k2B" secondAttribute="bottom" constant="113" id="Wsd-0e-AIf"/>
+                            <constraint firstAttribute="trailing" secondItem="gOB-xR-692" secondAttribute="trailing" constant="10" id="cGV-2F-fAW"/>
+                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="leading" secondItem="1le-6P-nti" secondAttribute="leadingMargin" constant="107" id="eey-n3-xNW"/>
+                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="leading" secondItem="1le-6P-nti" secondAttribute="leadingMargin" constant="114" id="jvc-SH-Yj3"/>
+                            <constraint firstItem="dZn-Bt-k2B" firstAttribute="top" secondItem="EyS-ZB-FIY" secondAttribute="bottom" constant="44.5" id="oNK-AL-Qvr"/>
+                            <constraint firstItem="gOB-xR-692" firstAttribute="top" secondItem="EyS-ZB-FIY" secondAttribute="bottom" constant="10" id="paL-Hb-pdT"/>
+                            <constraint firstItem="xMM-Qp-9S5" firstAttribute="top" secondItem="dZn-Bt-k2B" secondAttribute="bottom" constant="113" id="sSX-ng-lSr"/>
+                            <constraint firstItem="xMM-Qp-9S5" firstAttribute="top" secondItem="dZn-Bt-k2B" secondAttribute="bottom" constant="113" id="yMY-yh-dUp"/>
                         </constraints>
                     </view>
                     <connections>
@@ -1340,8 +1351,8 @@
                                     <constraint firstAttribute="height" constant="55" id="AEb-kC-h3J"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-84-djS">
-                                <rect key="frame" x="208" y="527" width="96" height="27"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dm4-84-djS">
+                                <rect key="frame" x="185" y="528" width="119" height="26"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="27" id="Gym-qY-fS3"/>
@@ -1351,6 +1362,11 @@
                                 <state key="normal" title="Registriere dich">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="changeSignupMode:" destination="Xmp-9E-8la" eventType="touchUpInside" id="cYU-tM-BVC"/>
                                 </connections>
@@ -1368,6 +1384,11 @@
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phantom1" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tso-18-KTb">
                                 <rect key="frame" x="26" y="417" width="250" height="30"/>
@@ -1378,20 +1399,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyo-FV-5ke">
-                                <rect key="frame" x="234" y="459" width="70" height="29"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gyo-FV-5ke">
+                                <rect key="frame" x="206" y="459" width="98" height="29"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 <state key="normal" title="Anmelden">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="signupOrLogin:" destination="Xmp-9E-8la" eventType="touchUpInside" id="3SI-Gs-bZ4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Du hast noch kein Konto?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XsC-CS-uH7">
-                                <rect key="frame" x="11" y="522" width="174" height="38"/>
+                                <rect key="frame" x="11" y="521" width="174" height="39"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
