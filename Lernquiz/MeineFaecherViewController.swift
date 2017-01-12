@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 var gewaehlteFaecher = [String]()
 
@@ -16,6 +17,15 @@ let gewaehlteVorlesungen = NSMutableArray()
 // Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
+    
+   //User kann sich ausloggen und landet wieder auf der LoginView
+    
+    @IBAction func logout(_ sender: Any) {
+        PFUser .logOut()
+        performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
+    }
+    
+    
     @IBAction func hinzufuegen(_ sender: UIButton) {
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
@@ -43,6 +53,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         meineFaecher.reloadData()
+        self.navigationController?.navigationBar.isHidden = false
     }
     
     

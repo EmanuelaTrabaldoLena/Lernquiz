@@ -171,6 +171,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         if PFUser.current() != nil{
              performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
         }
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
