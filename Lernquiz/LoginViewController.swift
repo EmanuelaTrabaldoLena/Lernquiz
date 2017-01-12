@@ -166,6 +166,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
+    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert udn angemeldet ist
+    override func viewDidAppear(_ animated: Bool) {
+        if PFUser.current() != nil{
+             performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
