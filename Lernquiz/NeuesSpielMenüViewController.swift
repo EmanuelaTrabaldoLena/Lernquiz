@@ -26,7 +26,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         
         query?.findObjectsInBackground(block: { (objects, error) in
             if error != nil {
-                print(error)
+                print(error!)
             }
             else if let users = objects {
                 self.usernames.removeAll()
