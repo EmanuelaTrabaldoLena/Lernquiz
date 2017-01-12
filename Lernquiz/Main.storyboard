@@ -937,9 +937,6 @@
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstItem="w6X-Xl-muf" firstAttribute="top" secondItem="uPS-ml-cTo" secondAttribute="bottom" constant="5" id="N8w-yV-kr9"/>
-                                            <constraint firstAttribute="trailing" secondItem="w6X-Xl-muf" secondAttribute="trailing" constant="1" id="PFN-Ej-tfU"/>
-                                            <constraint firstAttribute="bottom" secondItem="w6X-Xl-muf" secondAttribute="bottom" id="hY6-wW-Lmt"/>
                                             <constraint firstItem="w6X-Xl-muf" firstAttribute="leading" secondItem="vUq-UW-nuR" secondAttribute="leading" constant="1" id="jPk-Wb-dfP"/>
                                             <constraint firstAttribute="width" constant="120" id="x4U-lC-OMF"/>
                                         </constraints>
