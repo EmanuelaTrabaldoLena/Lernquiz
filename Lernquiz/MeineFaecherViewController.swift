@@ -48,7 +48,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         meineFaecher.delegate = self
         meineFaecher.register(GewaehltesFachTableViewCell.self, forCellReuseIdentifier: "GewaehltesFachTableViewCell")
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -78,7 +78,8 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell {
 
-            fachCell.textLabel?.text = gewaehlteFaecher[indexPath.item]
+            let row = indexPath.row
+            fachCell.textLabel?.text = gewaehlteFaecher[row]
             
             return fachCell
             
@@ -87,5 +88,17 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
             return GewaehltesFachTableViewCell()
             
         }
+    }
+    
+    // Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let row = indexPath.row
+        print(gewaehlteFaecher[row])
+        
+        let menueViewController = self.storyboard?.instantiateViewController(withIdentifier: "Menue") as! MenueViewController
+        
+        self.navigationController?.pushViewController(menueViewController, animated: true)
     }
 }

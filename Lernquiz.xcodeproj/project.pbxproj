@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */; };
 		6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */; };
+		8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */; };
 		88274DBF1E23B9DE0092B516 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */; };
 		88274DC11E23B9E80092B516 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC01E23B9E80092B516 /* CFNetwork.framework */; };
 		88274DC31E23B9F20092B516 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC21E23B9F20092B516 /* CoreGraphics.framework */; };
@@ -42,6 +43,7 @@
 /* Begin PBXFileReference section */
 		6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielmodusViewController.swift; sourceTree = "<group>"; };
 		6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NeuesSpielMenüViewController.swift"; sourceTree = "<group>"; };
+		8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenueViewController.swift; sourceTree = "<group>"; };
 		88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		88274DC01E23B9E80092B516 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		88274DC21E23B9F20092B516 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -110,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */,
-				6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */,
 				88E0EB6C1E1FFEFF006BAA78 /* MeineFaecherViewController.swift */,
 			);
 			name = VCs;
@@ -123,6 +124,16 @@
 				8834B4E41E21090C00A89182 /* GewaehltesFachTableViewCell.swift */,
 			);
 			name = TVCs;
+			sourceTree = "<group>";
+		};
+		8822A3CE1E28017500ACDDD2 /* SpielmodusVCs */ = {
+			isa = PBXGroup;
+			children = (
+				6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */,
+				88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */,
+				88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */,
+			);
+			name = SpielmodusVCs;
 			sourceTree = "<group>";
 		};
 		88E0EB5E1E1FFEFF006BAA78 = {
@@ -180,10 +191,10 @@
 			children = (
 				889502E81E200FE500A67A67 /* LoginViewController.swift */,
 				618ADDD41E2551F600F69012 /* FaecherVCs & TVCs */,
-				88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */,
-				88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */,
+				8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */,
+				8822A3CE1E28017500ACDDD2 /* SpielmodusVCs */,
+				6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */,
 				889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */,
-				6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -294,6 +305,7 @@
 				6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */,
 				8834B4E51E21090C00A89182 /* GewaehltesFachTableViewCell.swift in Sources */,
 				88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */,
+				8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
 				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
 			);
