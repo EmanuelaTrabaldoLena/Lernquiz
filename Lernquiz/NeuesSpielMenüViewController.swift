@@ -29,9 +29,13 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                 print(error)
             }
             else if let users = objects {
+                self.usernames.removeAll()
+                
                 for object in users {
                     if let user = object as? PFUser{
-                        self.usernames.append(user.username!)
+                        //schneidet den usernamen vor dem @Zeichen ab
+                        let usernameArray = user.username!.components(separatedBy: "@")
+                        self.usernames.append(usernameArray[0])
                     }
                 }
             }
