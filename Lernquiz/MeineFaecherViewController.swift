@@ -96,13 +96,12 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row
-        print(gewaehlteFaecher[row])
         
         let menueVC = self.storyboard?.instantiateViewController(withIdentifier: "Menue") as! MenueViewController
         
         // Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
         fachName = gewaehlteFaecher[row]
-        print(fachName)
+        print("Gewaehltes Fach: \(fachName)")
         
         self.navigationController?.pushViewController(menueVC, animated: true)
     }
