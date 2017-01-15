@@ -8,11 +8,11 @@
 
 import UIKit
 
-class MenueViewController: UIViewController {
+var fachName = String()
 
-    @IBOutlet weak var fachLabel: UILabel!
+class MenueViewController: UIViewController {
     
-    var fachName = String()
+    @IBOutlet weak var fachLabel: UILabel!
     
     override func viewWillAppear(_ animated: Bool) {
         fachLabel.text = fachName
@@ -21,5 +21,5 @@ class MenueViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
 }

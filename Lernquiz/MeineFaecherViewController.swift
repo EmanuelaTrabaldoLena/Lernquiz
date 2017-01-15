@@ -11,21 +11,20 @@ import Parse
 
 var gewaehlteFaecher = [String]()
 
-// Erweiterbares Array vom Vorlesungsverzeichnis
+// Erweiterbares Array von eigenen gewaehlten Faechern
 let gewaehlteVorlesungen = NSMutableArray()
 
 // Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
-   //User kann sich ausloggen und landet wieder auf der LoginView
-    
+   // User kann sich ausloggen und landet wieder auf der LoginView
     @IBAction func logout(_ sender: Any) {
         PFUser .logOut()
         performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
     }
     
-    
+    // Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
     @IBAction func hinzufuegen(_ sender: UIButton) {
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
@@ -70,9 +69,11 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return gewaehlteFaecher.count
     }
+    
     
     // Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -95,10 +96,13 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row
-        print(gewaehlteFaecher[row])
         
-        let menueViewController = self.storyboard?.instantiateViewController(withIdentifier: "Menue") as! MenueViewController
+        let menueVC = self.storyboard?.instantiateViewController(withIdentifier: "Menue") as! MenueViewController
         
-        self.navigationController?.pushViewController(menueViewController, animated: true)
+        // Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
+        fachName = gewaehlteFaecher[row]
+        print("Gewaehltes Fach: \(fachName)")
+        
+        self.navigationController?.pushViewController(menueVC, animated: true)
     }
 }
