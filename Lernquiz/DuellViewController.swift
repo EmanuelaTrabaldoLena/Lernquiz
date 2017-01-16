@@ -34,8 +34,7 @@ class DuellViewController: UIViewController {
     var frageKarten = [Fragekarte]()
     
     
-    var spieler = Spieler()
-    var gegner = Spieler()
+    var spiel = Spiel()
     
     
     func download()

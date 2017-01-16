@@ -55,6 +55,18 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         return cell
     }
     
+    // Fragekarte wird im Server hochgeladen, wird ausgefuehrt wenn frageErstellenButton ausgewaehlt wird
+    func upload(spiel: Spiel)
+    {
+        let hochzuladendesObjekt = PFObject(className: "Spiele")
+        hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
+        do {
+            try hochzuladendesObjekt.save()
+        } catch {
+            print("Fehler beim Upload der Spieldateien!")
+        }
+    }
+    
     // Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
@@ -65,9 +77,9 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         
         // Label Gegenspieler in DuellSpielstandView wird auf gewaehlten Mitspieler aus der TableView gesetzt
         
-        let mitSpieler = Spieler(username: usernames[row])
+        let mitSpieler = Spieler(username: usernames[row], istDran: false)
         
-        print("Gewaehlter Gegenspieler: \(mitSpieler)")
+        print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
         
         performSegue(withIdentifier: "NeuesSpielMenüVC2DuellSpielstandVC", sender: mitSpieler)
@@ -75,11 +87,17 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         //self.navigationController?.pushViewController(duellSpielstandVC, animated: true)
     }
     
+    
+    // Beim Viewwechsel werden die
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        let destination = segue.destination as! DuellViewController
-        destination.spieler = Spieler(username: "Du")
-        destination.gegner = sender as! Spieler
+        if segue.identifier == "NeuesSpielMenüVC2DuellSpielstandVC"
+        {
+            let destination = segue.destination as! DuellSpielstandViewController
+            let spiel = Spiel(spieler: Spieler(username: "Du", istDran: true), gegner: sender as! Spieler)
+            destination.spiel = spiel
+            upload(spiel: spiel)
+        }
     }
     
 }

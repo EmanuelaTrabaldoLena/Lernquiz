@@ -425,6 +425,10 @@
                             <constraint firstItem="ddx-wL-Og1" firstAttribute="top" secondItem="b9q-ck-8pj" secondAttribute="bottom" constant="34" id="vDW-Hl-MLG"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="aktiveSpieleTV" destination="ECX-KH-1eb" id="6nm-HK-MV8"/>
+                        <outlet property="inaktiveSpieleTV" destination="RnW-Wi-tIG" id="hHI-Sl-mRg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsx-4K-Y7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -834,7 +838,7 @@
                                 <rect key="frame" x="16" y="214" width="288" height="307"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="k3d-Z6-25E" customClass="RundenTableViewCell" customModule="Lernquiz" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RundenCell" id="k3d-Z6-25E" customClass="RundenTableViewCell" customModule="Lernquiz" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3d-Z6-25E" id="Stg-Dt-iof">
@@ -919,6 +923,15 @@
                                                 <constraint firstItem="Pb3-AF-8Li" firstAttribute="leading" secondItem="Stg-Dt-iof" secondAttribute="leadingMargin" id="zN1-YH-EMT"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="duS1" destination="Pb3-AF-8Li" id="UgY-D9-MLo"/>
+                                            <outlet property="duS2" destination="cBq-Vz-Pub" id="HW7-NP-SDm"/>
+                                            <outlet property="duS3" destination="JA2-Vj-awT" id="qVi-Ij-0gh"/>
+                                            <outlet property="gsS1" destination="L8K-mn-9gb" id="O1z-Sr-10k"/>
+                                            <outlet property="gsS2" destination="1Pq-bm-8RP" id="EzP-7X-U4S"/>
+                                            <outlet property="gsS3" destination="4bE-Nq-1yn" id="rg0-Z9-StD"/>
+                                            <outlet property="rundenLabel" destination="K8T-tv-eEq" id="MUU-ex-gE1"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1014,6 +1027,7 @@
                     </view>
                     <connections>
                         <outlet property="gegenSpieler" destination="wqV-mU-ivz" id="a9b-2h-EeQ"/>
+                        <outlet property="rundenTable" destination="d07-3Z-rKN" id="ysJ-Uk-Jqq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IcT-RB-dXi" userLabel="First Responder" sceneMemberID="firstResponder"/>
