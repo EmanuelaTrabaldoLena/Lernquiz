@@ -9,16 +9,11 @@
 import UIKit
 import Parse
 
-var gewaehlteFaecher = [String]()
-
-// Erweiterbares Array von eigenen gewaehlten Faechern
-let gewaehlteVorlesungen = NSMutableArray()
-
 // Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
     
-   // User kann sich ausloggen und landet wieder auf der LoginView
+    
+    // User kann sich ausloggen und landet wieder auf der LoginView
     @IBAction func logout(_ sender: Any) {
         PFUser .logOut()
         performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
@@ -26,6 +21,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     // Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
     @IBAction func hinzufuegen(_ sender: UIButton) {
+        
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
     
@@ -36,7 +32,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -62,11 +58,11 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         // Ueber die Laenge des Arrays iterieren und die Namen der Vorlesungen in den einzelnen Zellen einfuegen
         for i in 0 ..< gewaehlteFaecher.count {
             
-            let fach = Fach()
-            fach.name = gewaehlteFaecher[i]
+            let fach = Fach( name: gewaehlteFaecher[i])
             
             gewaehlteVorlesungen.add(fach)
         }
+        
     }
     
     
@@ -78,7 +74,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     // Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell {
-
+            
             let row = indexPath.row
             fachCell.textLabel?.text = gewaehlteFaecher[row]
             
@@ -102,7 +98,10 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         // Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
         fachName = gewaehlteFaecher[row]
         print("Gewaehltes Fach: \(fachName)")
-        
+                
         self.navigationController?.pushViewController(menueVC, animated: true)
     }
+    
+    
+    
 }

@@ -25,6 +25,7 @@
 		889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E81E200FE500A67A67 /* LoginViewController.swift */; };
 		889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EA1E20126300A67A67 /* Bolts.framework */; };
 		889502ED1E20126300A67A67 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EB1E20126300A67A67 /* Parse.framework */; };
+		88A234E11E2CFD80008B9E95 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */; };
 		88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F31E2BB65300146934 /* DuellMenueViewController.swift */; };
 		88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F51E2BB6ED00146934 /* DuellSpielstandViewController.swift */; };
 		88B876F81E2BB99500146934 /* GegenspielerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F71E2BB99500146934 /* GegenspielerTableViewCell.swift */; };
@@ -42,6 +43,8 @@
 		88E0EBB21E20035C006BAA78 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */; };
 		88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */; };
 		88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */; };
+		88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */; };
+		88FF0EB81E2CE63D00513373 /* Spieler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF0EB71E2CE63D00513373 /* Spieler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +66,7 @@
 		889502E81E200FE500A67A67 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		889502EA1E20126300A67A67 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		889502EB1E20126300A67A67 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		88B876F31E2BB65300146934 /* DuellMenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellMenueViewController.swift; sourceTree = "<group>"; };
 		88B876F51E2BB6ED00146934 /* DuellSpielstandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellSpielstandViewController.swift; sourceTree = "<group>"; };
 		88B876F71E2BB99500146934 /* GegenspielerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GegenspielerTableViewCell.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 		88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellViewController.swift; sourceTree = "<group>"; };
 		88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EinzelSpielerViewController.swift; sourceTree = "<group>"; };
+		88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
+		88FF0EB71E2CE63D00513373 /* Spieler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spieler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,10 +205,10 @@
 		88E0EB691E1FFEFF006BAA78 /* Lernquiz */ = {
 			isa = PBXGroup;
 			children = (
+				88FF0EB41E2CE48C00513373 /* Global */,
 				88E0EB7E1E1FFFAD006BAA78 /* Model */,
 				88E0EB7F1E1FFFB4006BAA78 /* View */,
 				88E0EB801E1FFFBB006BAA78 /* Controller */,
-				88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */,
 				88E0EB761E1FFEFF006BAA78 /* Info.plist */,
 			);
 			path = Lernquiz;
@@ -214,6 +220,7 @@
 				88E0EB811E20004F006BAA78 /* Duell.swift */,
 				88E0EB831E200075006BAA78 /* Fach.swift */,
 				88E0EB851E200089006BAA78 /* Fragekarte.swift */,
+				88FF0EB71E2CE63D00513373 /* Spieler.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -261,6 +268,16 @@
 			);
 			name = Frameworks;
 			path = Lernquiz;
+			sourceTree = "<group>";
+		};
+		88FF0EB41E2CE48C00513373 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */,
+				88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */,
+				88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */,
+			);
+			name = Global;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -337,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */,
+				88A234E11E2CFD80008B9E95 /* Model.xcdatamodeld in Sources */,
 				88E0EB6D1E1FFEFF006BAA78 /* MeineFaecherViewController.swift in Sources */,
 				88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */,
 				88B876FB1E2BBBB000146934 /* RundenTableViewCell.swift in Sources */,
@@ -350,10 +368,12 @@
 				6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */,
 				8834B4E51E21090C00A89182 /* GewaehltesFachTableViewCell.swift in Sources */,
 				88B876F81E2BB99500146934 /* GegenspielerTableViewCell.swift in Sources */,
+				88FF0EB81E2CE63D00513373 /* Spieler.swift in Sources */,
 				88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */,
 				8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */,
 				88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
+				88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */,
 				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
 				88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */,
 			);
@@ -522,6 +542,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */,
+			);
+			currentVersion = 88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 88E0EB5F1E1FFEFF006BAA78 /* Project object */;
 }

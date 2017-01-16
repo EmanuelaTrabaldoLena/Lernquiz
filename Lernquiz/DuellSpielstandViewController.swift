@@ -8,8 +8,6 @@
 
 import UIKit
 
-var mitSpieler = String()
-
 class DuellSpielstandViewController: UIViewController {
     
     @IBOutlet weak var gegenSpieler: UILabel!
