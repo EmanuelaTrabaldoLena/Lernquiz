@@ -10,6 +10,15 @@ import UIKit
 
 class RundenTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var rundenLabel: UILabel!
+    @IBOutlet weak var duS1: UIButton!
+    @IBOutlet weak var duS2: UIButton!
+    @IBOutlet weak var duS3: UIButton!
+    @IBOutlet weak var gsS1: UIButton!
+    @IBOutlet weak var gsS2: UIButton!
+    @IBOutlet weak var gsS3: UIButton!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

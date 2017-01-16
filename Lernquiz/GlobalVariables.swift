@@ -20,5 +20,8 @@ var gewaehlteVorlesungen = NSMutableArray()
 // Name des Faches, dass man zum Spielen ausgewaehlt hat
 var fachName = String()
 
-// Name des gewahlten Gegenspielers
+// Name des gewaehlten Gegenspielers
 var mitSpieler = String()
+
+// Eigener Username
+var eigenerName = String()

@@ -26,6 +26,7 @@
 		889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EA1E20126300A67A67 /* Bolts.framework */; };
 		889502ED1E20126300A67A67 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EB1E20126300A67A67 /* Parse.framework */; };
 		88A234E11E2CFD80008B9E95 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */; };
+		88A234E31E2D03DF008B9E95 /* Spiel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A234E21E2D03DF008B9E95 /* Spiel.swift */; };
 		88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F31E2BB65300146934 /* DuellMenueViewController.swift */; };
 		88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F51E2BB6ED00146934 /* DuellSpielstandViewController.swift */; };
 		88B876F81E2BB99500146934 /* GegenspielerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F71E2BB99500146934 /* GegenspielerTableViewCell.swift */; };
@@ -67,6 +68,7 @@
 		889502EA1E20126300A67A67 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		889502EB1E20126300A67A67 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		88A234E21E2D03DF008B9E95 /* Spiel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spiel.swift; sourceTree = "<group>"; };
 		88B876F31E2BB65300146934 /* DuellMenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellMenueViewController.swift; sourceTree = "<group>"; };
 		88B876F51E2BB6ED00146934 /* DuellSpielstandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellSpielstandViewController.swift; sourceTree = "<group>"; };
 		88B876F71E2BB99500146934 /* GegenspielerTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GegenspielerTableViewCell.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				88E0EB831E200075006BAA78 /* Fach.swift */,
 				88E0EB851E200089006BAA78 /* Fragekarte.swift */,
 				88FF0EB71E2CE63D00513373 /* Spieler.swift */,
+				88A234E21E2D03DF008B9E95 /* Spiel.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -372,6 +375,7 @@
 				88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */,
 				8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */,
 				88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */,
+				88A234E31E2D03DF008B9E95 /* Spiel.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
 				88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */,
 				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
