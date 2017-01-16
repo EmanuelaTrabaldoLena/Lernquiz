@@ -116,14 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="C65-pr-8rt">
-                                <rect key="frame" x="0.0" y="69" width="320" height="46"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="dkZ-At-AEk"/>
-                                </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YbM-oi-a9j">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YbM-oi-a9j">
                                 <rect key="frame" x="16" y="130" width="288" height="370"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -169,7 +162,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UL-jQ-gsk">
-                                <rect key="frame" x="14" y="519" width="292" height="41"/>
+                                <rect key="frame" x="14" y="519" width="219" height="41"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="41" id="AdU-Qy-KWe"/>
@@ -187,15 +180,10 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C65-pr-8rt" firstAttribute="centerX" secondItem="YbM-oi-a9j" secondAttribute="centerX" id="0Ch-x0-5B3"/>
                             <constraint firstItem="9UL-jQ-gsk" firstAttribute="top" secondItem="YbM-oi-a9j" secondAttribute="bottom" constant="19" id="95v-zG-5lF"/>
                             <constraint firstItem="9UL-jQ-gsk" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leadingMargin" constant="-2" id="Deq-Q7-XNh"/>
-                            <constraint firstItem="YbM-oi-a9j" firstAttribute="top" secondItem="C65-pr-8rt" secondAttribute="bottom" constant="15" id="K0f-YX-iDD"/>
-                            <constraint firstAttribute="trailing" secondItem="C65-pr-8rt" secondAttribute="trailing" id="QNX-b1-ZwL"/>
-                            <constraint firstItem="C65-pr-8rt" firstAttribute="top" secondItem="TdP-4d-YW3" secondAttribute="bottom" constant="5" id="Vtg-vQ-eve"/>
                             <constraint firstItem="YbM-oi-a9j" firstAttribute="centerX" secondItem="9UL-jQ-gsk" secondAttribute="centerX" id="b0C-Pg-IxS"/>
                             <constraint firstItem="5yk-N8-Mg1" firstAttribute="top" secondItem="9UL-jQ-gsk" secondAttribute="bottom" constant="8" symbolic="YES" id="hTX-W4-tVS"/>
-                            <constraint firstItem="C65-pr-8rt" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leading" id="q2Z-8w-3VI"/>
                             <constraint firstItem="YbM-oi-a9j" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leadingMargin" id="uhG-zR-CB4"/>
                         </constraints>
                     </view>
@@ -772,12 +760,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tJV-1A-kbM">
                                 <rect key="frame" x="16" y="262" width="288" height="278"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-UW-5lz">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pjR-Lx-lhf">
-                                        <rect key="frame" x="0.0" y="54" width="288" height="224"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="278"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="25" id="xzr-H3-qix" customClass="GegenspielerTableViewCell" customModule="Lernquiz" customModuleProvider="target">
