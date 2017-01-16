@@ -9,17 +9,13 @@
 import UIKit
 import Parse
 
-class DuellViewController: UIViewController {
-    
+class DuellViewController: UIViewController {    
     
     @IBOutlet weak var naechsteFrageButton: UIButton!
     @IBOutlet weak var FrageLabel: UILabel!
     @IBOutlet weak var AntwortAButton: UIButton!
     @IBOutlet weak var AntwortBButton: UIButton!
     @IBOutlet weak var AntwortCButton: UIButton!
-    
-    
-
 
     var gewaehltesFach = [Fach]()
     

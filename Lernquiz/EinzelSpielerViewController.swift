@@ -9,8 +9,6 @@
 import UIKit
 import Parse
 
-
-
 class EinzelSpielerViewController:  UIViewController {
     
     var gewaehltesFach = [Fach]()

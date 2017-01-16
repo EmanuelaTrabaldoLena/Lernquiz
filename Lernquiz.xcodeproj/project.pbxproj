@@ -42,6 +42,7 @@
 		88E0EBB21E20035C006BAA78 /* CheckBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */; };
 		88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */; };
 		88E0EBB81E2003FE006BAA78 /* EinzelSpielerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */; };
+		88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -82,6 +83,7 @@
 		88E0EBB11E20035C006BAA78 /* CheckBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxView.swift; sourceTree = "<group>"; };
 		88E0EBB51E2003C4006BAA78 /* DuellViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellViewController.swift; sourceTree = "<group>"; };
 		88E0EBB71E2003FE006BAA78 /* EinzelSpielerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EinzelSpielerViewController.swift; sourceTree = "<group>"; };
+		88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,10 +201,10 @@
 		88E0EB691E1FFEFF006BAA78 /* Lernquiz */ = {
 			isa = PBXGroup;
 			children = (
+				88FF0EB41E2CE48C00513373 /* Global */,
 				88E0EB7E1E1FFFAD006BAA78 /* Model */,
 				88E0EB7F1E1FFFB4006BAA78 /* View */,
 				88E0EB801E1FFFBB006BAA78 /* Controller */,
-				88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */,
 				88E0EB761E1FFEFF006BAA78 /* Info.plist */,
 			);
 			path = Lernquiz;
@@ -261,6 +263,15 @@
 			);
 			name = Frameworks;
 			path = Lernquiz;
+			sourceTree = "<group>";
+		};
+		88FF0EB41E2CE48C00513373 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */,
+				88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */,
+			);
+			name = Global;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,6 +365,7 @@
 				8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */,
 				88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
+				88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */,
 				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
 				88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */,
 			);

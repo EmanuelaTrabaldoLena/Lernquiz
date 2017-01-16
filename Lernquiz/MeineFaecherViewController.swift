@@ -9,11 +9,6 @@
 import UIKit
 import Parse
 
-var gewaehlteFaecher = [String]()
-
-// Erweiterbares Array von eigenen gewaehlten Faechern
-let gewaehlteVorlesungen = NSMutableArray()
-
 // Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 

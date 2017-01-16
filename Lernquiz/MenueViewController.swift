@@ -8,8 +8,6 @@
 
 import UIKit
 
-var fachName = String()
-
 class MenueViewController: UIViewController {
     
     @IBOutlet weak var fachLabel: UILabel!

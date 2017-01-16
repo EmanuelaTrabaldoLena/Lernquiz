@@ -8,9 +8,6 @@
 
 import UIKit
 
-// Erweiterbares Array vom Vorlesungsverzeichnis
-let vorlesungsverzeichnis = NSMutableArray()
-
 // Controller fuer die gesamte View von AlleFaecher
 class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     

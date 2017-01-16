@@ -11,9 +11,7 @@ import Parse
 
 class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
-    
     // Frage wird erstellt und wenn auf den Button geklickt wird, werden überall die Texteingaben beendet und hochgeladen
-
     @IBAction func upload_A(_ sender: UIButton) {
         textViewDidEndEditing(frageErstellen)
         textViewDidEndEditing(antwortAerstellen)
