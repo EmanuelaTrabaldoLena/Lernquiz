@@ -15,7 +15,7 @@ let vorlesungsverzeichnis = NSMutableArray()
 var gewaehlteFaecher = [String]()
 
 // Erweiterbares Array von eigenen gewaehlten Faechern
-let gewaehlteVorlesungen = NSMutableArray()
+var gewaehlteVorlesungen = NSMutableArray()
 
 // Name des Faches, dass man zum Spielen ausgewaehlt hat
 var fachName = String()

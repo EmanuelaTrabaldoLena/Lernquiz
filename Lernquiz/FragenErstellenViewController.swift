@@ -36,7 +36,6 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     @IBOutlet var frageErstellenButton: UIButton!
     
     var frageKarte : Fragekarte = Fragekarte()
-    var fach = String()
     
     //als Identifikator/Nummerierung für textViewTagging()
     enum FrageKartenID : Int { case Frage, AntwortA, AntwortB, AntwortC}
@@ -86,7 +85,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     {
         let hochzuladendesObjekt = PFObject(className: "Fragekarte")
         hochzuladendesObjekt["Frage"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: frageKarte))
-        hochzuladendesObjekt["Fach"] = fach
+        hochzuladendesObjekt["Fach"] = fachName
         hochzuladendesObjekt.saveInBackground()
     }
 

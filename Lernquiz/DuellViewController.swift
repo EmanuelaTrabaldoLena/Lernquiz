@@ -33,6 +33,11 @@ class DuellViewController: UIViewController {
     var QNumber = Int()
     var frageKarten = [Fragekarte]()
     
+    
+    var spieler = Spieler()
+    var gegner = Spieler()
+    
+    
     func download()
     {
         let projectQuery = PFQuery(className: "Fragekarte")

@@ -133,8 +133,8 @@ class EinzelSpielerViewController:  UIViewController {
     func download()
     {
             let projectQuery = PFQuery(className: "Fragekarte")
-            //projectQuery.includeKey("Fach")
-            //projectQuery.whereKey("Fach", equalTo: gewaehltesFach)
+            projectQuery.includeKey("Fach")
+            projectQuery.whereKey("Fach", equalTo: fachName)
             
             do {
                 let results = try projectQuery.findObjects()

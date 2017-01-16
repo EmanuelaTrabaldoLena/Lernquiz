@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import Parse
 
 // Controller fuer die gesamte View von AlleFaecher
 class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var alleFaecher: UITableView!
     @IBAction func hinzufuegen(_ sender: Any) {
+        save()
         _ = navigationController?.popViewController(animated: true)
     }
 
@@ -45,8 +47,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
         for i in 0 ..< verzeichnis.count {
             
-            let fach = Fach()
-            fach.name = verzeichnis[i]
+            let fach = Fach(name: verzeichnis[i])
             
             vorlesungsverzeichnis.add(fach)
         }
@@ -65,6 +66,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
             
             let fach = vorlesungsverzeichnis[indexPath.row] as! Fach
             // Falls bereits Faecher ausgewaehlt sind, werden die Checkboxen gefuellt
+            
             fachCell.gewaehlt(gewaehltesFach: gewaehlteVorlesungen)
             fachCell.configure(fach: fach)
             
@@ -75,6 +77,25 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
             return FachTableViewCell()
             
         }
+    }
+    
+    // Gewaehlte Faecher werden in Parse hochgeladen und lokal im Systemspeicher abgelegt
+    func save() {
+        
+        let meineFaecherDefault = UserDefaults.standard
+        meineFaecherDefault.set(gewaehlteFaecher, forKey: "gewaehlteFaecher")
+        meineFaecherDefault.synchronize()
+        
+        
+        let userTable = PFObject(className: "User")
+        userTable ["MeineFaecher"] = gewaehlteFaecher
+        userTable.saveInBackground()
+        do {
+            try userTable.save()
+        } catch {
+            print("Fehler beim Hochladen!")
+        }
+        
     }
     
 }

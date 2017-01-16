@@ -61,13 +61,25 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         
         let row = indexPath.row
         
-        let duellSpielstandVC = self.storyboard?.instantiateViewController(withIdentifier: "DuellSpielstand") as! DuellSpielstandViewController
+        //let duellSpielstandVC = self.storyboard?.instantiateViewController(withIdentifier: "DuellSpielstand") as! DuellSpielstandViewController
         
         // Label Gegenspieler in DuellSpielstandView wird auf gewaehlten Mitspieler aus der TableView gesetzt
-        mitSpieler = usernames[row]
+        
+        let mitSpieler = Spieler(username: usernames[row])
+        
         print("Gewaehlter Gegenspieler: \(mitSpieler)")
         
-        self.navigationController?.pushViewController(duellSpielstandVC, animated: true)
+        
+        performSegue(withIdentifier: "NeuesSpielMenüVC2DuellSpielstandVC", sender: mitSpieler)
+        
+        //self.navigationController?.pushViewController(duellSpielstandVC, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let destination = segue.destination as! DuellViewController
+        destination.spieler = Spieler(username: "Du")
+        destination.gegner = sender as! Spieler
     }
     
 }

@@ -36,11 +36,11 @@ class FachTableViewCell: UITableViewCell {
                 fach.isSelected = true
                 
                 // Angewaehlte Faecher in Array speichern
-                if gewaehlteFaecher.contains(fach.name!) {
+                if gewaehlteFaecher.contains(fach.name) {
                     self.checkbox!.markAsChecked()
                     print(gewaehlteFaecher)
                 } else {
-                    gewaehlteFaecher.append(fach.name!)
+                    gewaehlteFaecher.append(fach.name)
                     print(gewaehlteFaecher)
                 }
             } else {
@@ -48,8 +48,8 @@ class FachTableViewCell: UITableViewCell {
                 fach.isSelected = false
                 
                 // Abgewaehlte Faecher aus Array entfernen
-                if gewaehlteFaecher.contains(fach.name!) {
-                    self.entfernen(id: [fach.name!])
+                if gewaehlteFaecher.contains(fach.name) {
+                    self.entfernen(id: [fach.name])
                 }
                 print(gewaehlteFaecher)
             }

@@ -16,8 +16,13 @@
         
         var window: UIWindow?
         
+        // Wird gebraucht, wemm die App zum ersten Mal gespeichert wird
+        
         
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+            
+            UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
+            
             // Override point for customization after application launch.
             // ssh -i "/Users/emanuela/Downloads/LernquizKey.pem" ubuntu@35.157.28.174
             // cd parse/htdocs
@@ -35,15 +40,15 @@
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
+            loadData()
             
-            // Objekte werden im Server erstellt und gespeichert
-//            let testObject = PFObject(className: "General")
-//            testObject["Name"] = "bar"
-//            do{
-//                try testObject.save()
-//            } catch {}
             return true
        }
+        
+        func loadData() {
+            let meineFaecherDefault = UserDefaults.standard
+            gewaehlteFaecher = meineFaecherDefault.value(forKey: "gewaehlteFaecher") as! [String]
+        }
         
         func applicationWillResignActive(_ application: UIApplication) {
             // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
