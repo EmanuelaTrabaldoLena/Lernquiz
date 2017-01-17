@@ -51,7 +51,7 @@
 /* Begin PBXFileReference section */
 		6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielmodusViewController.swift; sourceTree = "<group>"; };
 		6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NeuesSpielMenüViewController.swift"; sourceTree = "<group>"; };
-		61A8257F1E2E884A00471CB9 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
+		61A8257F1E2E884A00471CB9 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MPCHandler.swift; path = ../MPCHandler.swift; sourceTree = "<group>"; };
 		8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenueViewController.swift; sourceTree = "<group>"; };
 		88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		88274DC01E23B9E80092B516 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -189,7 +189,6 @@
 		88E0EB5E1E1FFEFF006BAA78 = {
 			isa = PBXGroup;
 			children = (
-				61A8257F1E2E884A00471CB9 /* MPCHandler.swift */,
 				88E0EB691E1FFEFF006BAA78 /* Lernquiz */,
 				88E0EB681E1FFEFF006BAA78 /* Products */,
 				88E0EBBD1E20063D006BAA78 /* Frameworks */,
@@ -278,6 +277,7 @@
 				88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */,
 				88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */,
 				88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */,
+				61A8257F1E2E884A00471CB9 /* MPCHandler.swift */,
 			);
 			name = Global;
 			sourceTree = "<group>";
