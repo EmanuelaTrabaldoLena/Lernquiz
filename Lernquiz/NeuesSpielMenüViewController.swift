@@ -9,9 +9,9 @@
 import UIKit
 import Parse
 
-class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
+class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating{
 
-    let searchBar = UISearchBar()
+    var searchController = UISearchController()
     var usernames = [String]()
     var gefilterterInhalt = [String]()
     var solltegefilterteErgebnissezeigen = false
@@ -23,37 +23,24 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-    func createSearchBar(){
-        searchBar.showsCancelButton = false
-        searchBar.placeholder = "Welchen Spieler suchst du?"
-        searchBar.delegate = self
-        self.navigationItem.titleView = searchBar
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        gefilterterInhalt = usernames.filter({ (names: String) -> Bool in
-            return names.lowercased().range(of: searchText.lowercased()) != nil
-        })
-        if searchText != ""
-        {
-            solltegefilterteErgebnissezeigen = true
-            self.spielerSuchen.reloadData()
-        }
-        else {
-            solltegefilterteErgebnissezeigen = false
-            self.spielerSuchen.reloadData()
-        }
-    }
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        solltegefilterteErgebnissezeigen = true
-        searchBar.endEditing(true)
+    func updateSearchResults(for searchController: UISearchController) {
+        self.gefilterterInhalt.removeAll(keepingCapacity: false)
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (self.usernames as NSArray).filtered(using: searchPredicate)
+        self.gefilterterInhalt = array as! [String]
         self.spielerSuchen.reloadData()
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        createSearchBar()
+     
+        self.searchController = UISearchController(searchResultsController: nil)
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.spielerSuchen.tableHeaderView = self.searchController.searchBar
+        self.spielerSuchen.reloadData()
         
         let query = PFUser.query()
         
@@ -80,23 +67,22 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if solltegefilterteErgebnissezeigen{
-            return gefilterterInhalt.count
-        }
-        else{
-        return usernames.count
+        if self.searchController.isActive{
+            return self.gefilterterInhalt.count
+        }else{
+            return self.usernames.count
         }
     }
     
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        if solltegefilterteErgebnissezeigen{
-           cell.textLabel!.text = gefilterterInhalt[indexPath.row]
+        if self.searchController.isActive{
+           cell.textLabel!.text = self.gefilterterInhalt[indexPath.row]
             return cell
         }
         else{
-        cell.textLabel?.text = usernames[indexPath.row]
+        cell.textLabel?.text = self.usernames[indexPath.row]
         return cell
         }
     }
