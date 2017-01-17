@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */; };
 		6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */; };
+		61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A8257F1E2E884A00471CB9 /* MPCHandler.swift */; };
 		8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */; };
 		88274DBF1E23B9DE0092B516 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */; };
 		88274DC11E23B9E80092B516 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC01E23B9E80092B516 /* CFNetwork.framework */; };
@@ -16,7 +17,6 @@
 		88274DC51E23B9FB0092B516 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC41E23B9FB0092B516 /* CoreLocation.framework */; };
 		88274DC71E23BA040092B516 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC61E23BA040092B516 /* QuartzCore.framework */; };
 		88274DC91E23BA0C0092B516 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC81E23BA0C0092B516 /* Security.framework */; };
-		88274DCB1E23BA150092B516 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCA1E23BA150092B516 /* StoreKit.framework */; };
 		88274DCD1E23BA1D0092B516 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCC1E23BA1D0092B516 /* SystemConfiguration.framework */; };
 		88274DCF1E23BA250092B516 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCE1E23BA250092B516 /* libz.tbd */; };
 		88274DD11E23BA2E0092B516 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DD01E23BA2E0092B516 /* libsqlite3.tbd */; };
@@ -51,6 +51,7 @@
 /* Begin PBXFileReference section */
 		6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielmodusViewController.swift; sourceTree = "<group>"; };
 		6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NeuesSpielMenüViewController.swift"; sourceTree = "<group>"; };
+		61A8257F1E2E884A00471CB9 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MPCHandler.swift; sourceTree = "<group>"; };
 		8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenueViewController.swift; sourceTree = "<group>"; };
 		88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		88274DC01E23B9E80092B516 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -100,7 +101,6 @@
 				88274DD11E23BA2E0092B516 /* libsqlite3.tbd in Frameworks */,
 				88274DCF1E23BA250092B516 /* libz.tbd in Frameworks */,
 				88274DCD1E23BA1D0092B516 /* SystemConfiguration.framework in Frameworks */,
-				88274DCB1E23BA150092B516 /* StoreKit.framework in Frameworks */,
 				88274DC91E23BA0C0092B516 /* Security.framework in Frameworks */,
 				88274DC71E23BA040092B516 /* QuartzCore.framework in Frameworks */,
 				88274DC51E23B9FB0092B516 /* CoreLocation.framework in Frameworks */,
@@ -190,6 +190,7 @@
 		88E0EB5E1E1FFEFF006BAA78 = {
 			isa = PBXGroup;
 			children = (
+				61A8257F1E2E884A00471CB9 /* MPCHandler.swift */,
 				88E0EB691E1FFEFF006BAA78 /* Lernquiz */,
 				88E0EB681E1FFEFF006BAA78 /* Products */,
 				88E0EBBD1E20063D006BAA78 /* Frameworks */,
@@ -315,7 +316,7 @@
 				TargetAttributes = {
 					88E0EB661E1FFEFF006BAA78 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 7NW58L4LF8;
+						DevelopmentTeam = XP8YAJV2B2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -363,6 +364,7 @@
 				88B876FB1E2BBBB000146934 /* RundenTableViewCell.swift in Sources */,
 				6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */,
 				88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */,
+				61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */,
 				88E0EBB21E20035C006BAA78 /* CheckBoxView.swift in Sources */,
 				88E0EB821E20004F006BAA78 /* Duell.swift in Sources */,
 				88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */,
@@ -418,6 +420,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -467,6 +470,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -492,7 +496,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7NW58L4LF8;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XP8YAJV2B2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -500,7 +505,7 @@
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.emanuela.Lernquiz;
+				PRODUCT_BUNDLE_IDENTIFIER = de.lisa.lernquiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -510,7 +515,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7NW58L4LF8;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = XP8YAJV2B2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -518,7 +524,7 @@
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.emanuela.Lernquiz;
+				PRODUCT_BUNDLE_IDENTIFIER = de.lisa.lernquiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

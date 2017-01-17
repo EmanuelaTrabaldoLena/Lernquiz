@@ -774,12 +774,8 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="tJV-1A-kbM">
                                 <rect key="frame" x="16" y="262" width="288" height="278"/>
                                 <subviews>
-                                    <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="yQf-UW-5lz">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </searchBar>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="pjR-Lx-lhf">
-                                        <rect key="frame" x="0.0" y="54" width="288" height="224"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="278"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="UserCell" rowHeight="25" id="xzr-H3-qix" customClass="GegenspielerTableViewCell" customModule="Lernquiz" customModuleProvider="target">

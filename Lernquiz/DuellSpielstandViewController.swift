@@ -8,12 +8,12 @@
 
 import UIKit
 
+
 class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var gegenSpieler: UILabel!
     @IBOutlet weak var rundenTable: UITableView!
-    
-    
+
 
     var spiel = Spiel()
     

@@ -15,10 +15,10 @@
     class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var window: UIWindow?
+        var mpcHandler:MCPHandler = MPCHandler()
+        
         
         // Wird gebraucht, wemm die App zum ersten Mal gespeichert wird
-        
-        
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
             
             UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
@@ -40,15 +40,16 @@
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
-            loadData()
+            //Auskommentieren wenn die App zum ersten Mal gestartet wird
+//            loadData()
             
             return true
        }
-        
-        func loadData() {
-            let meineFaecherDefault = UserDefaults.standard
-            gewaehlteFaecher = meineFaecherDefault.value(forKey: "gewaehlteFaecher") as! [String]
-        }
+        //Auskommentieren wenn die App zum ersten Mal gestartet wird
+//     func loadData() {
+//           let meineFaecherDefault = UserDefaults.standard
+//            gewaehlteFaecher = meineFaecherDefault.value(forKey: "gewaehlteFaecher") as! [String]
+//        }
         
         func applicationWillResignActive(_ application: UIApplication) {
             // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
