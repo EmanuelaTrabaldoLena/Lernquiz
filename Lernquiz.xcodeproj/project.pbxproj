@@ -16,7 +16,6 @@
 		88274DC51E23B9FB0092B516 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC41E23B9FB0092B516 /* CoreLocation.framework */; };
 		88274DC71E23BA040092B516 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC61E23BA040092B516 /* QuartzCore.framework */; };
 		88274DC91E23BA0C0092B516 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC81E23BA0C0092B516 /* Security.framework */; };
-		88274DCB1E23BA150092B516 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCA1E23BA150092B516 /* StoreKit.framework */; };
 		88274DCD1E23BA1D0092B516 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCC1E23BA1D0092B516 /* SystemConfiguration.framework */; };
 		88274DCF1E23BA250092B516 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCE1E23BA250092B516 /* libz.tbd */; };
 		88274DD11E23BA2E0092B516 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DD01E23BA2E0092B516 /* libsqlite3.tbd */; };
@@ -58,7 +57,6 @@
 		88274DC41E23B9FB0092B516 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		88274DC61E23BA040092B516 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		88274DC81E23BA0C0092B516 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		88274DCA1E23BA150092B516 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		88274DCC1E23BA1D0092B516 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		88274DCE1E23BA250092B516 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		88274DD01E23BA2E0092B516 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -100,7 +98,6 @@
 				88274DD11E23BA2E0092B516 /* libsqlite3.tbd in Frameworks */,
 				88274DCF1E23BA250092B516 /* libz.tbd in Frameworks */,
 				88274DCD1E23BA1D0092B516 /* SystemConfiguration.framework in Frameworks */,
-				88274DCB1E23BA150092B516 /* StoreKit.framework in Frameworks */,
 				88274DC91E23BA0C0092B516 /* Security.framework in Frameworks */,
 				88274DC71E23BA040092B516 /* QuartzCore.framework in Frameworks */,
 				88274DC51E23B9FB0092B516 /* CoreLocation.framework in Frameworks */,
@@ -259,7 +256,6 @@
 				88274DD01E23BA2E0092B516 /* libsqlite3.tbd */,
 				88274DCE1E23BA250092B516 /* libz.tbd */,
 				88274DCC1E23BA1D0092B516 /* SystemConfiguration.framework */,
-				88274DCA1E23BA150092B516 /* StoreKit.framework */,
 				88274DC81E23BA0C0092B516 /* Security.framework */,
 				88274DC61E23BA040092B516 /* QuartzCore.framework */,
 				88274DC41E23B9FB0092B516 /* CoreLocation.framework */,
@@ -315,7 +311,7 @@
 				TargetAttributes = {
 					88E0EB661E1FFEFF006BAA78 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = 7NW58L4LF8;
+						DevelopmentTeam = F9D7M7QL2K;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -492,7 +488,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7NW58L4LF8;
+				DEVELOPMENT_TEAM = F9D7M7QL2K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -500,7 +496,7 @@
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.emanuela.Lernquiz;
+				PRODUCT_BUNDLE_IDENTIFIER = de.trabaldo.Lernquiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -510,7 +506,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 7NW58L4LF8;
+				DEVELOPMENT_TEAM = F9D7M7QL2K;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -518,7 +514,7 @@
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.emanuela.Lernquiz;
+				PRODUCT_BUNDLE_IDENTIFIER = de.trabaldo.Lernquiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

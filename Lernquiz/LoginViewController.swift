@@ -108,8 +108,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         //für den Fall dass es keine Fehler gibt
                     else{
+                        eigenerName = self.emailTextField.text!
+                        // eigenerName.components(separatedBy: "@")
                         self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-                        print("Anmeldung erfolgreich.")
+                        print("Anmeldung mit Usernamen \(eigenerName) erfolgreich.")
                     }
                 })
                 
@@ -163,7 +165,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert udn angemeldet ist
+    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert und angemeldet ist
     override func viewDidAppear(_ animated: Bool) {
         if PFUser.current() != nil{
             performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)

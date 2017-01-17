@@ -12,8 +12,6 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     @IBOutlet weak var gegenSpieler: UILabel!
     @IBOutlet weak var rundenTable: UITableView!
-    
-    
 
     var spiel = Spiel()
     

@@ -15,6 +15,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     var usernames = [String]()
     var gefilterterInhalt = [String]()
     var solltegefilterteErgebnissezeigen = false
+    var duellMenueVC: DuellMenueViewController!
     
     @IBOutlet weak var spielerSuchen: UITableView!{
         didSet {
@@ -75,17 +76,29 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     
 
+    // Beim auswaehlen eines Spielers aus der Suchtableview, wird man direkt in das DuellMenue weitergeleitet und das Spiel steht bei "Du bist dran"
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath)
-        if self.searchController.isActive{
-           cell.textLabel!.text = self.gefilterterInhalt[indexPath.row]
-            return cell
-        }
-        else{
-        cell.textLabel?.text = self.usernames[indexPath.row]
-        return cell
+        
+        if let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? GegenspielerTableViewCell {
+            
+            let row = indexPath.row
+            userCell.textLabel?.text = usernames[row]
+            
+            if self.searchController.isActive{
+                userCell.textLabel!.text = self.gefilterterInhalt[indexPath.row]
+                return userCell
+            } else {
+                userCell.textLabel?.text = self.usernames[indexPath.row]
+                return userCell
+            }
+            
+        } else {
+            
+            return GewaehltesFachTableViewCell()
+            
         }
     }
+    
     
     // Fragekarte wird im Server hochgeladen, wird ausgefuehrt wenn frageErstellenButton ausgewaehlt wird
     func upload(spiel: Spiel)
@@ -104,31 +117,18 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row
-        
-        //let duellSpielstandVC = self.storyboard?.instantiateViewController(withIdentifier: "DuellSpielstand") as! DuellSpielstandViewController
-        
-        // Label Gegenspieler in DuellSpielstandView wird auf gewaehlten Mitspieler aus der TableView gesetzt
-        
         let mitSpieler = Spieler(username: usernames[row], istDran: false)
-        
         print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
-        
-        performSegue(withIdentifier: "NeuesSpielMenüVC2DuellSpielstandVC", sender: mitSpieler)
-        
-        //self.navigationController?.pushViewController(duellSpielstandVC, animated: true)
+        performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
     }
     
     
     // Beim Viewwechsel werden die
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
-        if segue.identifier == "NeuesSpielMenüVC2DuellSpielstandVC"
-        {
-            let destination = segue.destination as! DuellSpielstandViewController
-            let spiel = Spiel(spieler: Spieler(username: "Du", istDran: true), gegner: sender as! Spieler)
-            destination.spiel = spiel
-            upload(spiel: spiel)
+        if segue.identifier == "NeuesSpiel2DuellMenue" {
+            duellMenueVC = segue.destination as! DuellMenueViewController
         }
     }
     
