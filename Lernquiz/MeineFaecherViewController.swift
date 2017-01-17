@@ -21,7 +21,6 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     // Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
     @IBAction func hinzufuegen(_ sender: UIButton) {
-        
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
     
