@@ -40,6 +40,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         self.spielerSuchen.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchBar.placeholder = "Welchen Spieler suchst du?"
         self.spielerSuchen.reloadData()
         
         let query = PFUser.query()

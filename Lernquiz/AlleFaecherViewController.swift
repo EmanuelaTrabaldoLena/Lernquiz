@@ -37,6 +37,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         self.alleFaecher.tableHeaderView = self.searchController.searchBar
+        self.searchController.searchBar.placeholder = "Welches Fach suchst du?"
         self.alleFaecher.reloadData()
     }
     
