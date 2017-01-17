@@ -23,6 +23,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         didSet{passwordTextField.delegate = self}
     }
     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Beruehrungserkennung um das Keyboard verschwinden zu lassen
+        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    
+    
     //Methode, die eine Fehlermeldung anzeigt wenn irgendwo etwas falsches eigegeben wurde z.B. Passwort, Emailadresse
     func createAlert(title: String, message: String){
         
@@ -39,28 +49,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet var signupOrLogin: UIButton!
     @IBAction func signupOrLogin(_ sender: AnyObject) {
-        
-        /* als Test
-         print(signupMode)
-         */
-        
         //Test ob Username oder Passwort fehlen
         if emailTextField.text == "" || passwordTextField.text == "" {
             
             //Die Methode die eine Fehlermeldung anzeigt wird aufgerufen
             createAlert(title: "Fehler", message: "Bitte gebe deine Emailadress und Passwort an")
-            
         }
+        //nachdem Username und Passwort eingegeben sind, jetzt eigentliche Anmeldung (weil wir Parse importiert haben, müssen wir nicht extra checken ob die Mailadresse gültig ist, das macht Parse für uns)
             
-            //nachdem Username und Passwort eingegeben sind, jetzt eigentliche Anmeldung (weil wir Parse importiert haben, müssen wir nicht extra checken ob die Mailadresse gültig ist, das macht Parse für uns)
-            
-        else{
-            
+        else {
             //das passiert wenn man im Registrieren-Modus ist
             if signupMode{
-                
                 //im folgenden passiert die Registrierung
-                
                 //als erstes Erstellen eines users vom Typ "PFUser" (ist speziell geeignet für Emailaccounts)
                 let user = PFUser()
                 
@@ -82,18 +82,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         
                         self.createAlert(title: "Fehler bei der Registrierung", message: displayErrorMessage)
                     }
-                        
                         //für den Fall dass es keine Fehler gibt
-                    else{
+                    else {
                         print("Registrierung erfolgreich.")
                     }
                 })
             }
                 //das passiert wenn man nicht im Registriern-Modus (Anmelden-Modus) ist
-            else{
-                
+            else {
                 //im folgenden passiert die Anmeldung
-                
                 PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!, block: {(user, error) in
                     
                     //zuerst checken ob es einen Fehler während der Registrierung gibt
@@ -107,7 +104,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                         displayErrorMessage = e.localizedDescription
                         
                         self.createAlert(title: "Fehler bei der Anmledung", message: displayErrorMessage)
-                        
                     }
                         
                         //für den Fall dass es keine Fehler gibt
@@ -121,30 +117,29 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBOutlet var messageLabel: UILabel!
     
+    @IBOutlet var messageLabel: UILabel!
     @IBOutlet var changeSignupModeButton: UIButton!
+    
     
     //Methode, die den changeSignupModeButton verändert, je nachdem in welchem Modus man sich befindet
     @IBAction func changeSignupMode(_ sender: Any) {
-        
         //das soll passieren wenn man im Registrieren-Modus ist
         if signupMode {
             
             //Wechsel in den Anmelden-Modus
             
-            //nehme den signupOrLogin Button und ändere den Text
+            //nehme den signupOrLogin Button und aendere den Text
             signupOrLogin.setTitle("Anmelden", for:[])
             
-            //nehme den changeSignupModeButton und ändere den Text
+            //nehme den changeSignupModeButton und aendere den Text
             changeSignupModeButton.setTitle("Registrieren", for: [])
             
-            //ändere das messageLabel
+            //aendere das messageLabel
             messageLabel.text = "Du hast noch kein Konto?"
             
             //aktualisiere den Registrieren-Modus nun als falsch
             signupMode = false
-            
         }
             
             //das soll passieren wenn man nicht im Registriern-Modus (Anmelden) ist
@@ -152,13 +147,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
             //Wechsel in den Registrieren-Modus (genau umgekehrt)
             
-            //nehme den signupOrLogin Button und ändere den Text
+            //nehme den signupOrLogin Button und aendere den Text
             signupOrLogin.setTitle("Registrieren", for:[])
             
-            //nehme den changeSignupModeButton und ändere den Text
+            //nehme den changeSignupModeButton und aendere den Text
             changeSignupModeButton.setTitle("Anmelden", for: [])
             
-            //ändere das messageLabel
+            //aendere das messageLabel
             messageLabel.text = "Du hast bereits ein Konto?"
             
             //aktualisiere den Registrieren-Modus nun wieder als richtig
@@ -166,31 +161,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             
         }
     }
-//    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert udn angemeldet ist
-//    override func viewDidAppear(_ animated: Bool) {
-//        if PFUser.current() != nil{
-//             performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-//        }
-//        self.navigationController?.navigationBar.isHidden = true
-//    }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Berührungserkennung um das Keyboard verschwinden zu lassen
-        let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
+    
+    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert udn angemeldet ist
+    override func viewDidAppear(_ animated: Bool) {
+        if PFUser.current() != nil{
+            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+        }
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     
-    func dismissKeyboard()
-    {
+    func dismissKeyboard() {
         view.endEditing(true)
     }
+    
     
     func textFieldDidBeginEditing(_ textField: UITextField) {
         animateViewMoving(up: true, moveValue: 100)
     }
+    
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         animateViewMoving(up: false, moveValue: 100)
     }
@@ -205,5 +196,5 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
         UIView.commitAnimations()
     }
-
+    
 }

@@ -116,15 +116,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="C65-pr-8rt">
-                                <rect key="frame" x="0.0" y="69" width="320" height="46"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UL-jQ-gsk">
+                                <rect key="frame" x="14" y="519" width="292" height="41"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="46" id="dkZ-At-AEk"/>
+                                    <constraint firstAttribute="height" constant="41" id="AdU-Qy-KWe"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
+                                <state key="normal" title="Ausgewählte Fächer hinzufügen"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="hinzufuegen:" destination="xfP-uG-3Cn" eventType="touchUpInside" id="hFh-KG-95p"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vorlesungsverzeichnis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDK-Vl-M6o">
+                                <rect key="frame" x="11" y="72" width="298" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YbM-oi-a9j">
-                                <rect key="frame" x="16" y="130" width="288" height="370"/>
+                                <rect key="frame" x="16" y="122" width="288" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FachTableViewCell" rowHeight="80" id="FSS-jm-9gH" customClass="FachTableViewCell" customModule="Lernquiz" customModuleProvider="target">
@@ -168,35 +183,22 @@
                                     <outlet property="delegate" destination="xfP-uG-3Cn" id="ZgB-cL-5EL"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UL-jQ-gsk">
-                                <rect key="frame" x="14" y="519" width="292" height="41"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="AdU-Qy-KWe"/>
-                                </constraints>
-                                <state key="normal" title="Ausgewählte Fächer hinzufügen"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="hinzufuegen:" destination="xfP-uG-3Cn" eventType="touchUpInside" id="hFh-KG-95p"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="C65-pr-8rt" firstAttribute="centerX" secondItem="YbM-oi-a9j" secondAttribute="centerX" id="0Ch-x0-5B3"/>
+                            <constraint firstItem="YbM-oi-a9j" firstAttribute="centerX" secondItem="XaK-zR-LVK" secondAttribute="centerX" id="6yU-jR-O4f"/>
                             <constraint firstItem="9UL-jQ-gsk" firstAttribute="top" secondItem="YbM-oi-a9j" secondAttribute="bottom" constant="19" id="95v-zG-5lF"/>
+                            <constraint firstItem="YbM-oi-a9j" firstAttribute="trailing" secondItem="XaK-zR-LVK" secondAttribute="trailingMargin" id="Cuy-Kl-Qmh"/>
                             <constraint firstItem="9UL-jQ-gsk" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leadingMargin" constant="-2" id="Deq-Q7-XNh"/>
-                            <constraint firstItem="YbM-oi-a9j" firstAttribute="top" secondItem="C65-pr-8rt" secondAttribute="bottom" constant="15" id="K0f-YX-iDD"/>
-                            <constraint firstAttribute="trailing" secondItem="C65-pr-8rt" secondAttribute="trailing" id="QNX-b1-ZwL"/>
-                            <constraint firstItem="C65-pr-8rt" firstAttribute="top" secondItem="TdP-4d-YW3" secondAttribute="bottom" constant="5" id="Vtg-vQ-eve"/>
+                            <constraint firstItem="YbM-oi-a9j" firstAttribute="top" secondItem="VDK-Vl-M6o" secondAttribute="bottom" constant="20" id="P3y-ZV-B2f"/>
+                            <constraint firstItem="VDK-Vl-M6o" firstAttribute="top" secondItem="TdP-4d-YW3" secondAttribute="bottom" constant="8" id="SI6-87-Sqf"/>
+                            <constraint firstItem="YbM-oi-a9j" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leadingMargin" id="UUa-eH-DlQ"/>
                             <constraint firstItem="YbM-oi-a9j" firstAttribute="centerX" secondItem="9UL-jQ-gsk" secondAttribute="centerX" id="b0C-Pg-IxS"/>
+                            <constraint firstItem="VDK-Vl-M6o" firstAttribute="centerX" secondItem="XaK-zR-LVK" secondAttribute="centerX" id="gV9-8z-buY"/>
                             <constraint firstItem="5yk-N8-Mg1" firstAttribute="top" secondItem="9UL-jQ-gsk" secondAttribute="bottom" constant="8" symbolic="YES" id="hTX-W4-tVS"/>
-                            <constraint firstItem="C65-pr-8rt" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leading" id="q2Z-8w-3VI"/>
+                            <constraint firstItem="VDK-Vl-M6o" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leading" constant="11" id="nMd-bk-ZcC"/>
                             <constraint firstItem="YbM-oi-a9j" firstAttribute="leading" secondItem="XaK-zR-LVK" secondAttribute="leadingMargin" id="uhG-zR-CB4"/>
+                            <constraint firstAttribute="trailing" secondItem="VDK-Vl-M6o" secondAttribute="trailing" constant="11" id="w5H-oS-1dS"/>
                         </constraints>
                     </view>
                     <connections>
