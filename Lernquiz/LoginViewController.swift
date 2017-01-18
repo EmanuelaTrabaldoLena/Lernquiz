@@ -30,16 +30,14 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         super.viewDidLoad()
         
         if (FBSDKAccessToken.current() != nil){
-            print ("Du bist eingeloggt")
-        }else {
+            print("Du bist eingeloggt")
+        } else {
             let loginButton = FBSDKLoginButton()
             loginButton.center = self.view.center
-            loginButton.readPermissions = ["public_proile", "email"]
+            loginButton.readPermissions = ["public_profile", "email"]
             loginButton.delegate = self
             self.view.addSubview(loginButton)
-            
-            
-        }
+            }
         
         // Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
@@ -58,8 +56,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         if error != nil {
                             print(error)
                         }else {
-                            if let userDetails = result {
-                                print(userDetails)
+                            self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+                            if let userDetails = result as? [String: String] {
+                                print(userDetails["email"])
                             }
                         }
                     })
