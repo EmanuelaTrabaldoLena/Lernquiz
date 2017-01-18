@@ -37,8 +37,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             loginButton.readPermissions = ["public_proile", "email"]
             loginButton.delegate = self
             self.view.addSubview(loginButton)
-            
-            
         }
         
         // Beruehrungserkennung um das Keyboard verschwinden zu lassen
@@ -56,7 +54,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
                     graphRequest.start(completionHandler: { (connection, result, error) in
                         if error != nil {
-                            print(error)
+                            print(error!)
                         }else {
                             if let userDetails = result {
                                 print(userDetails)
@@ -210,31 +208,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     //        }
     //        self.navigationController?.navigationBar.isHidden = true
     //    }
-    
+
     
     func dismissKeyboard() {
         view.endEditing(true)
-    }
-    
-    
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateViewMoving(up: true, moveValue: 100)
-    }
-    
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        animateViewMoving(up: false, moveValue: 100)
-    }
-    
-    
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        let movementDuration:TimeInterval = 0.3
-        let movement:CGFloat = ( up ? -moveValue : moveValue)
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
-        UIView.commitAnimations()
     }
     
 }
