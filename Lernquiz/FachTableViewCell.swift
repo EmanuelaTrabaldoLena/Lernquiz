@@ -36,31 +36,44 @@ class FachTableViewCell: UITableViewCell {
                 fach.isSelected = true
                 
                 // Angewaehlte Faecher in Array speichern
-                if gewaehlteFaecher.contains(fach.name) {
+                if gewaehlteVorlesungen.contains(fach) {
                     self.checkbox!.markAsChecked()
-                    print(gewaehlteFaecher)
+                    print(gewaehlteVorlesungen)
                 } else {
-                    gewaehlteFaecher.append(fach.name)
-                    print(gewaehlteFaecher)
+                    gewaehlteVorlesungen.append(fach)
+                    print(gewaehlteVorlesungen)
                 }
             } else {
                 self.checkbox!.markAsUnChecked()
                 fach.isSelected = false
                 
                 // Abgewaehlte Faecher aus Array entfernen
-                if gewaehlteFaecher.contains(fach.name) {
-                    self.entfernen(id: [fach.name])
+                if gewaehlteVorlesungen.contains(fach) {
+                    self.entfernen(id: fach)
                 }
-                print(gewaehlteFaecher)
+                print(gewaehlteVorlesungen)
             }
         }
     }
     
+    
     // Falls Faecher bereits gespeichert sind, sollen die Checkboxen bereits ausgewaehlt sein, wenn man auf AlleFaecher kommt
-    func gewaehlt(gewaehltesFach :NSMutableArray) {
-        if (vorlesungsverzeichnis.contains(gewaehltesFach)){
-            self.checkbox?.markAsChecked()
+    func gewaehlt(cellFach : Fach) {
+        for fach in gewaehlteVorlesungen {
+            if fach.name == cellFach.name {
+                self.checkbox?.markAsChecked()
+            }
         }
+    }
+    
+    
+    // Ausgabe der gewaehlten markierten Faecher in Konsole
+    func printAr(_ gewVor : [Fach]) {
+        var str = "[ "
+        for i in gewVor {
+            str += i.name + "; "
+        }
+        print(str + " ]")
     }
     
     
@@ -70,12 +83,10 @@ class FachTableViewCell: UITableViewCell {
     }
     
     // Funktion, um Elemente korrekt aus Array zu entfernen
-    func entfernen (id: [String]) {
-        for i in id.indices {
-            for j in gewaehlteFaecher.indices.reversed() {
-                if gewaehlteFaecher[j] == id[i] {
-                    gewaehlteFaecher.remove(at: j)
-                }
+    func entfernen (id: Fach) {
+        for j in gewaehlteVorlesungen.indices.reversed() {
+            if (gewaehlteVorlesungen[j].name == id.name) {
+                gewaehlteVorlesungen.remove(at: j)
             }
         }
     }

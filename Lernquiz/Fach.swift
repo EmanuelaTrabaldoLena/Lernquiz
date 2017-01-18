@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Fach{
+class Fach : NSObject, NSCoding {
     
     var name: String
     var isSelected: Bool = false
@@ -16,11 +16,13 @@ class Fach{
     var VorhandeneFragen: Int = 0
     
     
-    init(name : String)
-    {
+    // Konstruktor nur mit uebergebenen Namen
+    init(name : String) {
         self.name = name
     }
     
+    
+    // Konstruktor mit uebergebenen Namen, Anzahl der Fragen und der Fragenkarten selbst
     init(name:String, VorhandeneFragen: Int, Fragen: [Fragekarte]) {
         self.name = name
         self.VorhandeneFragen = VorhandeneFragen
@@ -28,6 +30,25 @@ class Fach{
     }
     
     
+    // Benoetigter Konstruktor fuer das entpacken der Daten
+    required init?(coder aDecoder: NSCoder) {
+        self.name = aDecoder.decodeObject(forKey:"name") as! String
+        self.isSelected = aDecoder.decodeObject(forKey:"isSelected") as? Bool ?? false
+        self.VorhandeneFragen = aDecoder.decodeObject(forKey:"VorhandeneFragen") as? Int ?? 0
+        self.Fragen = aDecoder.decodeObject(forKey:"Fragen") as! [Fragekarte]
+    }
+    
+    
+    // Daten werden verpackt, um an den Server geschickt zu werden
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(name, forKey: "name")
+        aCoder.encode(isSelected, forKey: "isSelected")
+        aCoder.encode(Fragen, forKey: "Fragen")
+        aCoder.encode(VorhandeneFragen, forKey: "VorhandeneFragen")
+    }
+    
+    
+    // Sobald eine Frage hinzugefuegt wird, wird die Anzahl der Fragen hochgezaehlt
     func frageHinzufügen(Frage: Fragekarte){
         Fragen.append(Frage)
         VorhandeneFragen = VorhandeneFragen + 1

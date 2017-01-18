@@ -9,13 +9,10 @@
 import Foundation
 
 // Erweiterbares Array vom Vorlesungsverzeichnis
-let vorlesungsverzeichnis = NSMutableArray()
-
-// Stringarray der bereits gewaehlten Faecher
-var gewaehlteFaecher = [String]()
+var vorlesungsverzeichnis = [Fach]()
 
 // Erweiterbares Array von eigenen gewaehlten Faechern
-var gewaehlteVorlesungen = NSMutableArray()
+var gewaehlteVorlesungen : [Fach]!
 
 // Name des Faches, dass man zum Spielen ausgewaehlt hat
 var fachName = String()
@@ -25,3 +22,6 @@ var mitSpieler = String()
 
 // Eigener Username
 var eigenerName = String()
+
+//"Notizblockseite" vgl. Metaphorische Erklärung in AppDelegate localFetch()
+var allgemein : Allgemein!

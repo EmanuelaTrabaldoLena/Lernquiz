@@ -24,19 +24,11 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
     
-    @IBOutlet weak var meineFaecher: UITableView! {
-        didSet {
-            meineFaecher.dataSource = self
-            meineFaecher.delegate = self
-        }
-    }
+    @IBOutlet weak var meineFaecher: UITableView!
     
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        tableFuellen()
         
         meineFaecher.dataSource = self
         meineFaecher.delegate = self
@@ -46,27 +38,14 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         meineFaecher.reloadData()
         self.navigationController?.navigationBar.isHidden = false
     }
     
     
-    // Zeilen der TableView mit dem Array der gewaehlten Vorlesungen fuellen
-    func tableFuellen() {
-        
-        // Ueber die Laenge des Arrays iterieren und die Namen der Vorlesungen in den einzelnen Zellen einfuegen
-        for i in 0 ..< gewaehlteFaecher.count {
-            
-            let fach = Fach( name: gewaehlteFaecher[i])
-            
-            gewaehlteVorlesungen.add(fach)
-        }
-        
-    }
-    
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return gewaehlteFaecher.count
+        return gewaehlteVorlesungen.count
     }
     
     
@@ -75,7 +54,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell {
             
             let row = indexPath.row
-            fachCell.textLabel?.text = gewaehlteFaecher[row]
+            fachCell.textLabel?.text = gewaehlteVorlesungen[row].name
             
             return fachCell
             
@@ -91,16 +70,13 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row
-        
         let menueVC = self.storyboard?.instantiateViewController(withIdentifier: "Menue") as! MenueViewController
         
         // Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
-        fachName = gewaehlteFaecher[row]
+        fachName = gewaehlteVorlesungen[row].name
         print("Gewaehltes Fach: \(fachName)")
                 
         self.navigationController?.pushViewController(menueVC, animated: true)
     }
-    
-    
     
 }

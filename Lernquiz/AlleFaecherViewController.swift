@@ -12,24 +12,18 @@ import Parse
 // Controller fuer die gesamte View von AlleFaecher
 class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating {
     
-    @IBOutlet weak var alleFaecher: UITableView!
-    @IBAction func hinzufuegen(_ sender: Any) {
-        save()
-        _ = navigationController?.popViewController(animated: true)
-    }
-    
-    // Array mit Vorlesungsverzeichnis
-    var verzeichnis = ["Einführung in die Programmierung", "Digitale Medien", "Betriebssysteme", "Grundlagen der Analysis", "Softwaretechnik", "Datenbanksysteme", "Zeichnen und Skizzieren",  "Concept Development", "Softwareentwicklungspraktikum", "Systempraktikum", "Projektkompetenz Multimedia", "Lineare Algebra für Informatiker", "Statistik für Medieninformatiker", "Javakurs für Anfänger", "IT Sicherheit", "Mobilkommunikation", "Automatentheorie", "Codierungstheorie", "Mensch-Maschine-Interaktion", "Multimedia im Netz" ]
-    
     var meineFaecherVC: MeineFaecherViewController!
     var searchController = UISearchController()
     var gefilterterInhalt = [String]()
     
+    @IBOutlet weak var alleFaecher: UITableView!
+    
+    
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         alleFaecher.dataSource = self
         alleFaecher.delegate = self
-        
-        super.viewDidLoad()
         
         tableFuellen()
         
@@ -41,6 +35,14 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         self.alleFaecher.reloadData()
     }
     
+    
+    //
+    @IBAction func hinzufuegen(_ sender: Any) {
+        save()
+        _ = navigationController?.popViewController(animated: true)
+    }
+    
+    
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "meineFaecherVC" {
             meineFaecherVC = segue.destination as! MeineFaecherViewController
@@ -50,11 +52,11 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     // Zeilen der TableView mit dem Vorlesungsverzeichnis fuellen
     func tableFuellen() {
+        // Array mit Vorlesungsverzeichnis
+        let verzeichnis = ["Einführung in die Programmierung", "Digitale Medien", "Betriebssysteme", "Grundlagen der Analysis", "Softwaretechnik", "Datenbanksysteme", "Zeichnen und Skizzieren",  "Concept Development", "Softwareentwicklungspraktikum", "Systempraktikum", "Projektkompetenz Multimedia", "Lineare Algebra für Informatiker", "Statistik für Medieninformatiker", "Javakurs für Anfänger", "IT Sicherheit", "Mobilkommunikation", "Automatentheorie", "Codierungstheorie", "Mensch-Maschine-Interaktion", "Multimedia im Netz" ]
         // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
-        for i in 0 ..< verzeichnis.count {
-            
-            let fach = Fach(name: verzeichnis[i])
-            vorlesungsverzeichnis.add(fach)
+        for i in verzeichnis {
+            vorlesungsverzeichnis.append(Fach(name: i))
         }
     }
     
@@ -74,17 +76,19 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         // Ansonsten ganz normal die gesamte Liste
         if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell {
             
-            let fach = vorlesungsverzeichnis[indexPath.row] as! Fach
-            // Falls bereits Faecher ausgewaehlt sind, werden die Checkboxen gefuellt
-            fachCell.gewaehlt(gewaehltesFach: gewaehlteVorlesungen)
+            let fach = vorlesungsverzeichnis[indexPath.row]
             fachCell.configure(fach: fach)
+            // Falls bereits Faecher ausgewaehlt sind, werden die Checkboxen gefuellt
+            fachCell.gewaehlt(cellFach: fach)
 
             // Falls man in der Searchbar ist, wird nur der gefilterte Inhalt angezeigt
             if self.searchController.isActive {
-                fachCell.textLabel!.text = self.gefilterterInhalt[indexPath.row]
-                fachCell.gewaehlt(gewaehltesFach: gewaehlteVorlesungen)
-                fachCell.configure(fach: fach)
-                return fachCell
+                for i in 0 ..< gewaehlteVorlesungen.count {
+                    fachCell.textLabel!.text = self.gefilterterInhalt[indexPath.row]
+                    fachCell.gewaehlt(cellFach: gewaehlteVorlesungen[i])
+                    fachCell.configure(fach: fach)
+                    return fachCell
+                }
             }
             
             return fachCell
@@ -96,16 +100,16 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     // Gewaehlte Faecher werden in Parse hochgeladen und lokal im Systemspeicher abgelegt
     func save() {
-        
-        let meineFaecherDefault = UserDefaults.standard
-        meineFaecherDefault.set(gewaehlteFaecher, forKey: "gewaehlteFaecher")
-        meineFaecherDefault.synchronize()
+        allgemein.gewaehlteVorlesungenLS = gewaehlteVorlesungen as NSObject?
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        appDelegate.saveContext()
         
         
         let userTable = PFObject(className: "User")
-        userTable ["MeineFaecher"] = gewaehlteFaecher
+        userTable ["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: gewaehlteVorlesungen))
         userTable.saveInBackground()
         do {
+            print("Versuche gewaehlteVorlesungen in User hochzuladen")
             try userTable.save()
         } catch {
             print("Fehler beim Hochladen!")
@@ -117,7 +121,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     func updateSearchResults(for searchController: UISearchController) {
         self.gefilterterInhalt.removeAll(keepingCapacity: false)
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (self.verzeichnis as NSArray).filtered(using: searchPredicate)
+        let array = (gewaehlteVorlesungen as NSArray).filtered(using: searchPredicate)
         self.gefilterterInhalt = array as! [String]
         self.alleFaecher.reloadData()
     }

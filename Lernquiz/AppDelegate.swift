@@ -9,18 +9,20 @@
     import UIKit
     import Parse
     import Bolts
-   
+    import CoreData
+    
     
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var window: UIWindow?
-        var mpcHandler:MCPHandler = MPCHandler()
+//        var mpcHandler: MCPHandler = MPCHandler()
         
         
         // Wird gebraucht, wemm die App zum ersten Mal gespeichert wird
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
             
+            // Damit Fehler fuer Constraints nicht immer in der Konsole angezeigt werden
             UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
             
             // Override point for customization after application launch.
@@ -40,16 +42,81 @@
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
-            //Auskommentieren wenn die App zum ersten Mal gestartet wird
-//            loadData()
-            
+            initiateDefaultValues()
+            localFetch()
             return true
-       }
-        //Auskommentieren wenn die App zum ersten Mal gestartet wird
-//     func loadData() {
-//           let meineFaecherDefault = UserDefaults.standard
-//            gewaehlteFaecher = meineFaecherDefault.value(forKey: "gewaehlteFaecher") as! [String]
-//        }
+        }
+        
+        
+        //Core Data Setup:
+        
+        //Erstelle das erste Speicherobjekt, worauf später zugegriffen wird. Diese Methode wird effektiv nur beim ersten App-Start seit der Installation ausgeführt, sonst passiert nichts.
+        //Metaphorisch: Nimm deinen leeren Block und füge eine neue leere Seite hinzu mit der du später arbeiten möchtest.
+        func initiateDefaultValues() {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Allgemein")
+            
+            //Überprüfe ob jemals ein Element abgespeichert wurde
+            do {
+                let count = try persistentContainer.viewContext.count(for: fetchRequest)
+                if count > 0 { return }
+            } catch {}
+            
+            //Erstelle ein neues Speicherelement
+            let entity = NSEntityDescription.entity(forEntityName: "Allgemein", in: persistentContainer.viewContext)
+            allgemein = Allgemein(entity: entity!, insertInto: persistentContainer.viewContext)
+            
+            allgemein.gewaehlteVorlesungenLS = [Fach]() as NSObject?
+        }
+        
+        
+        //Hiermit wird alles was auf der Notizblockseite verändert wurde gespeichert.
+        //Diese Methode sollte aus Effizienzgründen nur dann ausgeführt werden wenn der User die App verlässt, beendet etc.
+        func saveContext () {
+            let context = persistentContainer.viewContext
+            if context.hasChanges {
+                do {
+                    try context.save()
+                } catch {
+                    fatalError("Unresolved error \((error as NSError)), \((error as NSError).userInfo)")
+                }
+            }
+        }
+        
+        
+        public func localFetch() {
+            //Erstelle Suche welche Notizblockseiten der Kategorie "Allgemein finden soll.
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Allgemein")
+            //Greife auf den Hauptnotizblock zu
+            let context = persistentContainer.viewContext
+            //Lade unsere gefunden Hauptnotizblockseiten hier herein
+            var result = [Allgemein]()
+            
+            do {
+                //Führe nun die Suche durch und speichere das Resultat
+                result = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [Allgemein]
+            } catch let error as NSError {
+                NSLog(error.domain, error.localizedDescription)
+            }
+            
+            //Da wir immer nur mit einer Seite arbeiten interessiert uns immer das erste Element des Resultats, da schlichtweg keine anderen vorhanden sind.
+            allgemein = result.first!
+            
+            //Greife nun auf den Inhalt der geladenen Seite zu, indem unsere globalen Variablen jeweils die Werte zugeschrieben bekommen:
+            gewaehlteVorlesungen = allgemein.gewaehlteVorlesungenLS as! [Fach]
+        }
+        
+        
+        // Core Data Stack (oberstes Stack Element)
+        lazy var persistentContainer: NSPersistentContainer = {
+                let container = NSPersistentContainer(name: "Model") //Verknüpfung zu unserem Model
+                container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                    if let error = error as NSError? {
+                        fatalError("Unresolved error \(error), \(error.userInfo)")
+                    }
+                })
+                return container
+        }()
+        //@End: CoreData Setup
         
         func applicationWillResignActive(_ application: UIApplication) {
             // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -59,6 +126,7 @@
         func applicationDidEnterBackground(_ application: UIApplication) {
             // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
             // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+            self.saveContext()
         }
         
         func applicationWillEnterForeground(_ application: UIApplication) {
@@ -71,5 +139,6 @@
         
         func applicationWillTerminate(_ application: UIApplication) {
             // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+            self.saveContext()
         }
     }

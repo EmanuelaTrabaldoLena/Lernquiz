@@ -11,6 +11,9 @@
 		6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */; };
 		61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A8257F1E2E884A00471CB9 /* MPCHandler.swift */; };
 		8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */; };
+		88250A411E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88250A401E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift */; };
+		88250A431E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88250A421E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift */; };
+		88250A461E2F97B800B6E1AB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88250A441E2F97B800B6E1AB /* Model.xcdatamodeld */; };
 		88274DBF1E23B9DE0092B516 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */; };
 		88274DC11E23B9E80092B516 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC01E23B9E80092B516 /* CFNetwork.framework */; };
 		88274DC31E23B9F20092B516 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC21E23B9F20092B516 /* CoreGraphics.framework */; };
@@ -25,7 +28,6 @@
 		889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E81E200FE500A67A67 /* LoginViewController.swift */; };
 		889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EA1E20126300A67A67 /* Bolts.framework */; };
 		889502ED1E20126300A67A67 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EB1E20126300A67A67 /* Parse.framework */; };
-		88A234E11E2CFD80008B9E95 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */; };
 		88A234E31E2D03DF008B9E95 /* Spiel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88A234E21E2D03DF008B9E95 /* Spiel.swift */; };
 		88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F31E2BB65300146934 /* DuellMenueViewController.swift */; };
 		88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88B876F51E2BB6ED00146934 /* DuellSpielstandViewController.swift */; };
@@ -53,6 +55,9 @@
 		6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NeuesSpielMenüViewController.swift"; sourceTree = "<group>"; };
 		61A8257F1E2E884A00471CB9 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MPCHandler.swift; path = ../MPCHandler.swift; sourceTree = "<group>"; };
 		8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenueViewController.swift; sourceTree = "<group>"; };
+		88250A401E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Allgemein+CoreDataClass.swift"; sourceTree = "<group>"; };
+		88250A421E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Allgemein+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		88250A451E2F97B800B6E1AB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		88274DC01E23B9E80092B516 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		88274DC21E23B9F20092B516 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -67,7 +72,6 @@
 		889502E81E200FE500A67A67 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		889502EA1E20126300A67A67 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
 		889502EB1E20126300A67A67 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
-		88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		88A234E21E2D03DF008B9E95 /* Spiel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spiel.swift; sourceTree = "<group>"; };
 		88B876F31E2BB65300146934 /* DuellMenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellMenueViewController.swift; sourceTree = "<group>"; };
 		88B876F51E2BB6ED00146934 /* DuellSpielstandViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuellSpielstandViewController.swift; sourceTree = "<group>"; };
@@ -275,9 +279,11 @@
 			isa = PBXGroup;
 			children = (
 				88E0EB6A1E1FFEFF006BAA78 /* AppDelegate.swift */,
-				88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */,
 				88FF0EB51E2CE4BA00513373 /* GlobalVariables.swift */,
 				61A8257F1E2E884A00471CB9 /* MPCHandler.swift */,
+				88250A401E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift */,
+				88250A421E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift */,
+				88250A441E2F97B800B6E1AB /* Model.xcdatamodeld */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -356,10 +362,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */,
-				88A234E11E2CFD80008B9E95 /* Model.xcdatamodeld in Sources */,
 				88E0EB6D1E1FFEFF006BAA78 /* MeineFaecherViewController.swift in Sources */,
+				88250A461E2F97B800B6E1AB /* Model.xcdatamodeld in Sources */,
 				88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */,
 				88B876FB1E2BBBB000146934 /* RundenTableViewCell.swift in Sources */,
+				88250A431E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift in Sources */,
 				6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */,
 				88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */,
 				61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */,
@@ -377,6 +384,7 @@
 				88B876F61E2BB6ED00146934 /* DuellSpielstandViewController.swift in Sources */,
 				88A234E31E2D03DF008B9E95 /* Spiel.swift in Sources */,
 				88E0EBB01E200335006BAA78 /* FachTableViewCell.swift in Sources */,
+				88250A411E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift in Sources */,
 				88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */,
 				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
 				88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */,
@@ -552,13 +560,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		88A234DF1E2CFD80008B9E95 /* Model.xcdatamodeld */ = {
+		88250A441E2F97B800B6E1AB /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */,
+				88250A451E2F97B800B6E1AB /* Model.xcdatamodel */,
 			);
-			currentVersion = 88A234E01E2CFD80008B9E95 /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 88250A451E2F97B800B6E1AB /* Model.xcdatamodel */;
+			name = Model.xcdatamodeld;
+			path = "../../../../../Downloads/Lernquiz-master/Lernquiz/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
