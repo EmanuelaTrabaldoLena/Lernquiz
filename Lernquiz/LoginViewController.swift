@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             loginButton.readPermissions = ["public_profile", "email"]
             loginButton.delegate = self
             self.view.addSubview(loginButton)
-        }
+            }
         
         // Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
@@ -216,24 +216,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        animateViewMoving(up: true, moveValue: 100)
-    }
-    
-    
-    func textFieldDidEndEditing(_ textField: UITextField) {
-        animateViewMoving(up: false, moveValue: 100)
-    }
-    
-    
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-        let movementDuration:TimeInterval = 0.3
-        let movement:CGFloat = ( up ? -moveValue : moveValue)
-        UIView.beginAnimations("animateView", context: nil)
-        UIView.setAnimationBeginsFromCurrentState(true)
-        UIView.setAnimationDuration(movementDuration)
-        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
-        UIView.commitAnimations()
-    }
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//        animateViewMoving(up: true, moveValue: 100)
+//    }
+//    
+//    
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        animateViewMoving(up: false, moveValue: 100)
+//    }
+//    
+//    
+//    func animateViewMoving (up:Bool, moveValue :CGFloat){
+//        let movementDuration:TimeInterval = 0.3
+//        let movement:CGFloat = ( up ? -moveValue : moveValue)
+//        UIView.beginAnimations("animateView", context: nil)
+//        UIView.setAnimationBeginsFromCurrentState(true)
+//        UIView.setAnimationDuration(movementDuration)
+//        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
+//        UIView.commitAnimations()
+//    }
     
 }
