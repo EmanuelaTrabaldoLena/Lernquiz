@@ -11,5 +11,5 @@ import CoreData
 
 @objc(Allgemein)
 public class Allgemein: NSManagedObject {
-    
+
 }

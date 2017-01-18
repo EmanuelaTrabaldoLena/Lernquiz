@@ -17,15 +17,13 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     var gefilterterInhalt = [String]()
     
     @IBOutlet weak var alleFaecher: UITableView!
-    
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         alleFaecher.dataSource = self
         alleFaecher.delegate = self
-        
-        tableFuellen()
         
         self.searchController = UISearchController(searchResultsController: nil)
         self.searchController.searchResultsUpdater = self
@@ -36,7 +34,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
-    //
+    // Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
     @IBAction func hinzufuegen(_ sender: Any) {
         save()
         _ = navigationController?.popViewController(animated: true)
@@ -46,17 +44,6 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "meineFaecherVC" {
             meineFaecherVC = segue.destination as! MeineFaecherViewController
-        }
-    }
-    
-    
-    // Zeilen der TableView mit dem Vorlesungsverzeichnis fuellen
-    func tableFuellen() {
-        // Array mit Vorlesungsverzeichnis
-        let verzeichnis = ["Einführung in die Programmierung", "Digitale Medien", "Betriebssysteme", "Grundlagen der Analysis", "Softwaretechnik", "Datenbanksysteme", "Zeichnen und Skizzieren",  "Concept Development", "Softwareentwicklungspraktikum", "Systempraktikum", "Projektkompetenz Multimedia", "Lineare Algebra für Informatiker", "Statistik für Medieninformatiker", "Javakurs für Anfänger", "IT Sicherheit", "Mobilkommunikation", "Automatentheorie", "Codierungstheorie", "Mensch-Maschine-Interaktion", "Multimedia im Netz" ]
-        // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
-        for i in verzeichnis {
-            vorlesungsverzeichnis.append(Fach(name: i))
         }
     }
     
@@ -121,7 +108,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     func updateSearchResults(for searchController: UISearchController) {
         self.gefilterterInhalt.removeAll(keepingCapacity: false)
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (gewaehlteVorlesungen as NSArray).filtered(using: searchPredicate)
+        let array = (verzeichnis as NSArray).filtered(using: searchPredicate)
         self.gefilterterInhalt = array as! [String]
         self.alleFaecher.reloadData()
     }

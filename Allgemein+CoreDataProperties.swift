@@ -11,11 +11,11 @@ import CoreData
 
 
 extension Allgemein {
-    
+
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Allgemein> {
         return NSFetchRequest<Allgemein>(entityName: "Allgemein");
     }
-    
+
     @NSManaged public var gewaehlteVorlesungenLS: NSObject?
-    
+
 }

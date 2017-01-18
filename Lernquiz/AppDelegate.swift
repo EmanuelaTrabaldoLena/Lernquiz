@@ -42,9 +42,19 @@
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
+            tableFuellen()
             initiateDefaultValues()
             localFetch()
             return true
+        }
+        
+        
+        // Zeilen der TableView in AlleFaecher mit dem Vorlesungsverzeichnis fuellen
+        func tableFuellen() {
+            // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
+            for i in verzeichnis {
+                vorlesungsverzeichnis.append(Fach(name: i))
+            }
         }
         
         
