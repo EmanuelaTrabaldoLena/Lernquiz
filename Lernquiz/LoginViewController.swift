@@ -6,11 +6,13 @@
 //  Copyright © 2017 iOS Praktikum. All rights reserved.
 //
 
+
 import UIKit
 import Parse
+import FBSDKLoginKit
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
     
     
     var signupMode = false
@@ -27,11 +29,48 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if (FBSDKAccessToken.current() != nil){
+            print ("Du bist eingeloggt")
+        }else {
+            let loginButton = FBSDKLoginButton()
+            loginButton.center = self.view.center
+            loginButton.readPermissions = ["public_proile", "email"]
+            loginButton.delegate = self
+            self.view.addSubview(loginButton)
+            
+            
+        }
+        
         // Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+        if error != nil {
+            print(error)
+        }else if result.isCancelled {
+            print("User cancelled login")
+        }else {
+            if result.grantedPermissions.contains("email"){
+                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
+                    graphRequest.start(completionHandler: { (connection, result, error) in
+                        if error != nil {
+                            print(error)
+                        }else {
+                            if let userDetails = result {
+                                print(userDetails)
+                            }
+                        }
+                    })
+                }
+            }
+        }
+    }
+    
+    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+        print ("Ausgeloggt")
+    }
     
     //Methode, die eine Fehlermeldung anzeigt wenn irgendwo etwas falsches eigegeben wurde z.B. Passwort, Emailadresse
     func createAlert(title: String, message: String){
@@ -55,7 +94,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             //Die Methode die eine Fehlermeldung anzeigt wird aufgerufen
             createAlert(title: "Fehler", message: "Bitte gebe deine Emailadress und Passwort an")
         }
-        //nachdem Username und Passwort eingegeben sind, jetzt eigentliche Anmeldung (weil wir Parse importiert haben, müssen wir nicht extra checken ob die Mailadresse gültig ist, das macht Parse für uns)
+            //nachdem Username und Passwort eingegeben sind, jetzt eigentliche Anmeldung (weil wir Parse importiert haben, müssen wir nicht extra checken ob die Mailadresse gültig ist, das macht Parse für uns)
             
         else {
             //das passiert wenn man im Registrieren-Modus ist
@@ -164,13 +203,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert und angemeldet ist
-    override func viewDidAppear(_ animated: Bool) {
-        if PFUser.current() != nil{
-            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-        }
-        self.navigationController?.navigationBar.isHidden = true
-    }
+    //    // Sorgt dafür, dass der User direkt in der App ist, falls er schon registriert und angemeldet ist
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        if PFUser.current() != nil{
+    //            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+    //        }
+    //        self.navigationController?.navigationBar.isHidden = true
+    //    }
     
     
     func dismissKeyboard() {

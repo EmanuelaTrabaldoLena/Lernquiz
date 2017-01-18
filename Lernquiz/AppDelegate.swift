@@ -5,22 +5,26 @@
     //  Created by Emanuela Trabaldo Lena on 06.01.17.
     //  Copyright © 2017 iOS Praktikum. All rights reserved.
     //
-    
     import UIKit
     import Parse
     import Bolts
     import CoreData
+    import FBSDKLoginKit
     
     
     @UIApplicationMain
     class AppDelegate: UIResponder, UIApplicationDelegate {
         
         var window: UIWindow?
-//        var mpcHandler: MCPHandler = MPCHandler()
+        //        var mpcHandler: MCPHandler = MPCHandler()
         
         
         // Wird gebraucht, wemm die App zum ersten Mal gespeichert wird
         func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+            
+            FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+            
+            
             
             // Damit Fehler fuer Constraints nicht immer in der Konsole angezeigt werden
             UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
@@ -42,19 +46,14 @@
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
-            tableFuellen()
             initiateDefaultValues()
             localFetch()
             return true
         }
         
         
-        // Zeilen der TableView in AlleFaecher mit dem Vorlesungsverzeichnis fuellen
-        func tableFuellen() {
-            // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
-            for i in verzeichnis {
-                vorlesungsverzeichnis.append(Fach(name: i))
-            }
+        func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+            return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         
         
@@ -118,13 +117,13 @@
         
         // Core Data Stack (oberstes Stack Element)
         lazy var persistentContainer: NSPersistentContainer = {
-                let container = NSPersistentContainer(name: "Model") //Verknüpfung zu unserem Model
-                container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                    if let error = error as NSError? {
-                        fatalError("Unresolved error \(error), \(error.userInfo)")
-                    }
-                })
-                return container
+            let container = NSPersistentContainer(name: "Model") //Verknüpfung zu unserem Model
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+            return container
         }()
         //@End: CoreData Setup
         
@@ -144,7 +143,7 @@
         }
         
         func applicationDidBecomeActive(_ application: UIApplication) {
-            // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+            FBSDKAppEvents.activateApp()
         }
         
         func applicationWillTerminate(_ application: UIApplication) {
