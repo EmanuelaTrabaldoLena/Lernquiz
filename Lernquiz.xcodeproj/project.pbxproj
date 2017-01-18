@@ -10,10 +10,13 @@
 		6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */; };
 		6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */; };
 		61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A8257F1E2E884A00471CB9 /* MPCHandler.swift */; };
+		61A825891E2F9C1600471CB9 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61A825871E2F9C1600471CB9 /* Model.xcdatamodeld */; };
+		61A8258D1E2F9DB600471CB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8258A1E2F9DB600471CB9 /* FBSDKCoreKit.framework */; };
+		61A8258E1E2F9DB600471CB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8258B1E2F9DB600471CB9 /* FBSDKLoginKit.framework */; };
+		61A8258F1E2F9DB600471CB9 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8258C1E2F9DB600471CB9 /* FBSDKShareKit.framework */; };
 		8822A3D21E2801F300ACDDD2 /* MenueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */; };
 		88250A411E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88250A401E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift */; };
 		88250A431E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88250A421E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift */; };
-		88250A461E2F97B800B6E1AB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 88250A441E2F97B800B6E1AB /* Model.xcdatamodeld */; };
 		88274DBF1E23B9DE0092B516 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */; };
 		88274DC11E23B9E80092B516 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC01E23B9E80092B516 /* CFNetwork.framework */; };
 		88274DC31E23B9F20092B516 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DC21E23B9F20092B516 /* CoreGraphics.framework */; };
@@ -54,10 +57,13 @@
 		6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielmodusViewController.swift; sourceTree = "<group>"; };
 		6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NeuesSpielMenüViewController.swift"; sourceTree = "<group>"; };
 		61A8257F1E2E884A00471CB9 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MPCHandler.swift; path = ../MPCHandler.swift; sourceTree = "<group>"; };
+		61A825881E2F9C1600471CB9 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		61A8258A1E2F9DB600471CB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
+		61A8258B1E2F9DB600471CB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = SOURCE_ROOT; };
+		61A8258C1E2F9DB600471CB9 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = Frameworks/FBSDKShareKit.framework; sourceTree = SOURCE_ROOT; };
 		8822A3D11E2801F300ACDDD2 /* MenueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenueViewController.swift; sourceTree = "<group>"; };
 		88250A401E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Allgemein+CoreDataClass.swift"; sourceTree = "<group>"; };
 		88250A421E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Allgemein+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		88250A451E2F97B800B6E1AB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		88274DBE1E23B9DE0092B516 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		88274DC01E23B9E80092B516 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		88274DC21E23B9F20092B516 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -102,13 +108,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				88274DD11E23BA2E0092B516 /* libsqlite3.tbd in Frameworks */,
+				61A8258D1E2F9DB600471CB9 /* FBSDKCoreKit.framework in Frameworks */,
 				88274DCF1E23BA250092B516 /* libz.tbd in Frameworks */,
 				88274DCD1E23BA1D0092B516 /* SystemConfiguration.framework in Frameworks */,
 				88274DC91E23BA0C0092B516 /* Security.framework in Frameworks */,
 				88274DC71E23BA040092B516 /* QuartzCore.framework in Frameworks */,
 				88274DC51E23B9FB0092B516 /* CoreLocation.framework in Frameworks */,
+				61A8258E1E2F9DB600471CB9 /* FBSDKLoginKit.framework in Frameworks */,
 				88274DC31E23B9F20092B516 /* CoreGraphics.framework in Frameworks */,
 				88274DC11E23B9E80092B516 /* CFNetwork.framework in Frameworks */,
+				61A8258F1E2F9DB600471CB9 /* FBSDKShareKit.framework in Frameworks */,
 				88274DBF1E23B9DE0092B516 /* AudioToolbox.framework in Frameworks */,
 				889502ED1E20126300A67A67 /* Parse.framework in Frameworks */,
 				889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */,
@@ -259,6 +268,9 @@
 		88E0EBBD1E20063D006BAA78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				61A8258A1E2F9DB600471CB9 /* FBSDKCoreKit.framework */,
+				61A8258B1E2F9DB600471CB9 /* FBSDKLoginKit.framework */,
+				61A8258C1E2F9DB600471CB9 /* FBSDKShareKit.framework */,
 				88274DD01E23BA2E0092B516 /* libsqlite3.tbd */,
 				88274DCE1E23BA250092B516 /* libz.tbd */,
 				88274DCC1E23BA1D0092B516 /* SystemConfiguration.framework */,
@@ -283,7 +295,7 @@
 				61A8257F1E2E884A00471CB9 /* MPCHandler.swift */,
 				88250A401E2F876A00B6E1AB /* Allgemein+CoreDataClass.swift */,
 				88250A421E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift */,
-				88250A441E2F97B800B6E1AB /* Model.xcdatamodeld */,
+				61A825871E2F9C1600471CB9 /* Model.xcdatamodeld */,
 			);
 			name = Global;
 			sourceTree = "<group>";
@@ -363,10 +375,10 @@
 			files = (
 				88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */,
 				88E0EB6D1E1FFEFF006BAA78 /* MeineFaecherViewController.swift in Sources */,
-				88250A461E2F97B800B6E1AB /* Model.xcdatamodeld in Sources */,
 				88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */,
 				88B876FB1E2BBBB000146934 /* RundenTableViewCell.swift in Sources */,
 				88250A431E2F878B00B6E1AB /* Allgemein+CoreDataProperties.swift in Sources */,
+				61A825891E2F9C1600471CB9 /* Model.xcdatamodeld in Sources */,
 				6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */,
 				88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */,
 				61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */,
@@ -508,6 +520,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Lernquiz",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -527,6 +540,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Lernquiz",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -560,14 +574,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		88250A441E2F97B800B6E1AB /* Model.xcdatamodeld */ = {
+		61A825871E2F9C1600471CB9 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				88250A451E2F97B800B6E1AB /* Model.xcdatamodel */,
+				61A825881E2F9C1600471CB9 /* Model.xcdatamodel */,
 			);
-			currentVersion = 88250A451E2F97B800B6E1AB /* Model.xcdatamodel */;
-			name = Model.xcdatamodeld;
-			path = "../../../../../Downloads/Lernquiz-master/Lernquiz/Model.xcdatamodeld";
+			currentVersion = 61A825881E2F9C1600471CB9 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
