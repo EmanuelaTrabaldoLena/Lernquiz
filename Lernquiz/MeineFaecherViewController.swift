@@ -9,25 +9,25 @@
 import UIKit
 import Parse
 
-// Controller fuer die gesamte View MeineFaecher
-class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+//Controller fuer die gesamte View MeineFaecher
+class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     
-    // User kann sich ausloggen und landet wieder auf der LoginView
-    @IBAction func logout(_ sender: Any) {
+    //User kann sich ausloggen und landet wieder auf der LoginView
+    @IBAction func logout(_ sender: Any){
         PFUser .logOut()
         performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
     }
     
-    // Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
-    @IBAction func hinzufuegen(_ sender: UIButton) {
+    //Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
+    @IBAction func hinzufuegen(_ sender: UIButton){
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
     
     @IBOutlet weak var meineFaecher: UITableView!
     
     
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
         
         meineFaecher.dataSource = self
@@ -36,7 +36,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
         
         meineFaecher.reloadData()
@@ -44,35 +44,33 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return gewaehlteVorlesungen.count
     }
     
     
-    // Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell {
+    //Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
+    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell{
             
             let row = indexPath.row
             fachCell.textLabel?.text = gewaehlteVorlesungen[row].name
             
             return fachCell
             
-        } else {
-            
+        }else{
             return GewaehltesFachTableViewCell()
-            
         }
     }
     
-    // Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    //Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row
         let menueVC = self.storyboard?.instantiateViewController(withIdentifier: "Menue") as! MenueViewController
         
-        // Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
+        //Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
         fachName = gewaehlteVorlesungen[row].name
         print("Gewaehltes Fach: \(fachName)")
                 

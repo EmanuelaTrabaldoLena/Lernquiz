@@ -54,7 +54,7 @@
                                         <rect key="frame" x="0.0" y="28" width="270" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pH7-gu-Z0K" id="yEJ-Jq-8hk">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUa-ra-Ku7">
@@ -146,7 +146,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSS-jm-9gH" id="cqL-4p-SA3">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="80"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="79"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qht-wI-S0j">
@@ -203,6 +203,8 @@
                     </view>
                     <connections>
                         <outlet property="alleFaecher" destination="YbM-oi-a9j" id="roS-Nc-txk"/>
+                        <outlet property="faecherHinzufuegen" destination="9UL-jQ-gsk" id="Mpu-JW-Puf"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="AlleFaecher2MeineFaecher" id="9vV-oY-gHf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDL-pc-aed" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -758,6 +760,9 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="beliebigerSpieler:" destination="794-C6-8xX" eventType="touchUpInside" id="Uer-z6-ZZN"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spieler suchen" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f1m-5g-z8F">
                                 <rect key="frame" x="54" y="165" width="212" height="82"/>
@@ -782,7 +787,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="288" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xzr-H3-qix" id="Yrv-ss-nba">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="25"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -810,6 +815,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="belSpieler" destination="cUL-yR-div" id="i1o-Kb-a1k"/>
                         <outlet property="spielerSuchen" destination="pjR-Lx-lhf" id="vfH-n3-b3E"/>
                         <outlet property="view" destination="LCo-Na-DjM" id="gnv-SE-gJj"/>
                         <segue destination="fa5-Ga-zjY" kind="show" identifier="NeuesSpielMenüVC2DuellVC" id="4gB-Jw-pKB"/>
@@ -841,7 +847,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3d-Z6-25E" id="Stg-Dt-iof">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pb3-AF-8Li" userLabel="DuS1">
@@ -1184,6 +1190,7 @@
                         <outlet property="AntwortCButton" destination="0l5-vy-Giw" id="Bpf-g7-Jx7"/>
                         <outlet property="CountdownLabel" destination="dZn-Bt-k2B" id="gs4-zp-vTu"/>
                         <outlet property="FrageLabel" destination="bRy-Fx-C57" id="bcr-pa-hcZ"/>
+                        <outlet property="NaechsteFrage" destination="gOB-xR-692" id="SHQ-Yq-uze"/>
                         <outlet property="naechsteFrageButton" destination="gOB-xR-692" id="OI4-lV-R24"/>
                     </connections>
                 </viewController>
@@ -1354,5 +1361,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="gyV-bM-mQh"/>
         <segue reference="udV-oF-PnC"/>
+        <segue reference="9vV-oY-gHf"/>
     </inferredMetricsTieBreakers>
 </document>

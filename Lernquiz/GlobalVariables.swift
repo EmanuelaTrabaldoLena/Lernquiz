@@ -8,20 +8,20 @@
 
 import Foundation
 
-// Erweiterbares Array vom Vorlesungsverzeichnis
+//Erweiterbares Array vom Vorlesungsverzeichnis
 var vorlesungsverzeichnis = [Fach]()
 
-// Erweiterbares Array von eigenen gewaehlten Faechern
+//Erweiterbares Array von eigenen gewaehlten Faechern
 var gewaehlteVorlesungen : [Fach]!
 
-// Name des Faches, dass man zum Spielen ausgewaehlt hat
+//Name des Faches, dass man zum Spielen ausgewaehlt hat
 var fachName = String()
 
-// Name des gewaehlten Gegenspielers
+//Name des gewaehlten Gegenspielers
 var mitSpieler = String()
 
-// Eigener Username
+//Eigener Username
 var eigenerName = String()
 
-//"Notizblockseite" vgl. Metaphorische Erklärung in AppDelegate localFetch()
+//"Notizblockseite"
 var allgemein : Allgemein!

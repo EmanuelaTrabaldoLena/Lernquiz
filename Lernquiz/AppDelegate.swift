@@ -13,26 +13,23 @@
     
     
     @UIApplicationMain
-    class AppDelegate: UIResponder, UIApplicationDelegate {
+    class AppDelegate: UIResponder, UIApplicationDelegate{
         
         var window: UIWindow?
-        //        var mpcHandler: MCPHandler = MPCHandler()
+        //var mpcHandler: MCPHandler = MPCHandler()
         
         
-        // Wird gebraucht, wemm die App zum ersten Mal gespeichert wird
-        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        //Wird gebraucht, wemm die App zum ersten Mal gespeichert wird
+        func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool{
             
             FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
             
-            
-            
-            // Damit Fehler fuer Constraints nicht immer in der Konsole angezeigt werden
+            //Damit Fehler fuer Constraints nicht immer in der Konsole angezeigt werden
             UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-            
-            // Override point for customization after application launch.
-            // ssh -i "/Users/emanuela/Downloads/LernquizKey.pem" ubuntu@35.157.28.174
-            // cd parse/htdocs
-            // nano server.js startet Server mit richtigen Einstellungen, Daten daraus bezogen
+
+            //ssh -i "/Users/emanuela/Downloads/LernquizKey.pem" ubuntu@35.157.28.174
+            //cd parse/htdocs
+            //nano server.js startet Server mit richtigen Einstellungen, Daten daraus bezogen
             let configuration = ParseClientConfiguration {
                 $0.applicationId = "8d3d7dc06b8564d24d7e478756f41390a0508ed2"
                 $0.clientKey = "341bee5061a2266364917e7c1d80b05c3ddf1a9a"
@@ -40,29 +37,32 @@
             }
             Parse.initialize(with: configuration)
             
-            // Wird fuer Login benoetigt, setzt Standardrechte fuer User
+            //Wird fuer Login benoetigt, setzt Standardrechte fuer User
             PFUser.enableAutomaticUser()
             let defaultACL = PFACL()
             defaultACL.getPublicReadAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
+            //AlleFaecherTV wird gefuellt
             tableFuellen()
+            //Erstellt das erste Speicherobjekt beim erstmaligen Ausfuehren der App
             initiateDefaultValues()
+            //Laedt bereits gespeicherte Daten wieder rein
             localFetch()
             return true
         }
         
         
-        // Zeilen der TableView mit dem Vorlesungsverzeichnis fuellen
-        func tableFuellen() {
-            // Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
-            for i in verzeichnis {
+        //Zeilen der TableView mit dem Vorlesungsverzeichnis fuellen
+        func tableFuellen(){
+            //Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
+            for i in verzeichnis{
                 vorlesungsverzeichnis.append(Fach(name: i))
             }
         }
         
         
-        func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool{
             return FBSDKApplicationDelegate.sharedInstance().application(application, open: url, sourceApplication: sourceApplication, annotation: annotation)
         }
         
@@ -71,14 +71,14 @@
         
         //Erstelle das erste Speicherobjekt, worauf später zugegriffen wird. Diese Methode wird effektiv nur beim ersten App-Start seit der Installation ausgeführt, sonst passiert nichts.
         //Metaphorisch: Nimm deinen leeren Block und füge eine neue leere Seite hinzu mit der du später arbeiten möchtest.
-        func initiateDefaultValues() {
+        func initiateDefaultValues(){
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Allgemein")
             
             //Überprüfe ob jemals ein Element abgespeichert wurde
-            do {
+            do{
                 let count = try persistentContainer.viewContext.count(for: fetchRequest)
                 if count > 0 { return }
-            } catch {}
+            }catch{}
             
             //Erstelle ein neues Speicherelement
             let entity = NSEntityDescription.entity(forEntityName: "Allgemein", in: persistentContainer.viewContext)
@@ -90,7 +90,7 @@
         
         //Hiermit wird alles was auf der Notizblockseite verändert wurde gespeichert.
         //Diese Methode sollte aus Effizienzgründen nur dann ausgeführt werden wenn der User die App verlässt, beendet etc.
-        func saveContext () {
+        func saveContext(){
             let context = persistentContainer.viewContext
             if context.hasChanges {
                 do {
@@ -102,7 +102,7 @@
         }
         
         
-        public func localFetch() {
+        public func localFetch(){
             //Erstelle Suche welche Notizblockseiten der Kategorie "Allgemein finden soll.
             let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Allgemein")
             //Greife auf den Hauptnotizblock zu
@@ -110,10 +110,10 @@
             //Lade unsere gefunden Hauptnotizblockseiten hier herein
             var result = [Allgemein]()
             
-            do {
+            do{
                 //Führe nun die Suche durch und speichere das Resultat
                 result = try context.fetch(fetchRequest as! NSFetchRequest<NSFetchRequestResult>) as! [Allgemein]
-            } catch let error as NSError {
+            }catch let error as NSError{
                 NSLog(error.domain, error.localizedDescription)
             }
             
@@ -129,7 +129,7 @@
         lazy var persistentContainer: NSPersistentContainer = {
             let container = NSPersistentContainer(name: "Model") //Verknüpfung zu unserem Model
             container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-                if let error = error as NSError? {
+                if let error = error as NSError?{
                     fatalError("Unresolved error \(error), \(error.userInfo)")
                 }
             })

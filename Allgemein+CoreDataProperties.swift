@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 
 
-extension Allgemein {
+extension Allgemein{
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<Allgemein> {
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<Allgemein>{
         return NSFetchRequest<Allgemein>(entityName: "Allgemein");
     }
 

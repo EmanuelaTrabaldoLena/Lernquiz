@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 @objc(Allgemein)
-public class Allgemein: NSManagedObject {
+public class Allgemein: NSManagedObject{
 
 }

@@ -39,11 +39,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             self.view.addSubview(loginButton)
             }
         
-        // Beruehrungserkennung um das Keyboard verschwinden zu lassen
+        //Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
+    
+    //Methode fuer den FacebookLoginButton
     func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
         if error != nil {
             print(error)
@@ -66,6 +68,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             }
         }
     }
+    
     
     func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
         print ("Ausgeloggt")

@@ -8,15 +8,15 @@
 
 import UIKit
 
-class MenueViewController: UIViewController {
+class MenueViewController: UIViewController{
     
     @IBOutlet weak var fachLabel: UILabel!
     
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_ animated: Bool){
         fachLabel.text = fachName
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
     }
     

@@ -10,51 +10,38 @@ import UIKit
 import Parse
 
 class SpielmodusViewController: UIViewController {
- 
-    @IBOutlet weak var ScoreLabel: UILabel!
+    
+    // Outlets fuer Buttons und Labels, die mit Storyboard verknuepft sind
     @IBOutlet weak var FrageLabel: UILabel!
     @IBOutlet weak var AntwortAButton: UIButton!
     @IBOutlet weak var AntwortBButton: UIButton!
     @IBOutlet weak var AntwortCButton: UIButton!
-    @IBOutlet var FrageBewerten: UIButton!
     @IBOutlet weak var NaechsteFrage: UIButton!
     
     var gewaehltesFach = [Fach]()
     
-    // Gewaehlte Antwort
+    //Gewaehlte Antwort
     var EineAntwort: Bool = true
-    // Aktuelle Frage
+    //Aktuelle Frage
     var CurrentQuestion: Int = 0
     
-    // Counter fuer Score, wird lokal gespeichert
-    var Score: Int = 0
-    
-    // Sorgt dafür, dass der Score nicht hochgeht, wenn erst eine falsche Antwort ausgewählt wird
+    //Sorgt dafür, dass der Score nicht hochgeht, wenn erst eine falsche Antwort ausgewählt wird
     var hasSelected = false;
-
+    
     
     var QNumber = Int()
     var frageKarten = [Fragekarte]()
     
-    override func viewDidLoad() {
+    override func viewDidLoad(){
         super.viewDidLoad()
         
         download()
         
-        //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
-        let ScoreDefault = UserDefaults.standard
-        
-        if (ScoreDefault.value(forKey: "Score") != nil){
-            Score = ScoreDefault.value(forKey: "Score") as! NSInteger!
-            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-        }
-        
-        PickQuestion()
+        pickQuestion()
     }
     
     //Weist den Buttons den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
-    func PickQuestion(){
-        
+    func pickQuestion(){
         //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird
         
         hasSelected = false
@@ -63,8 +50,7 @@ class SpielmodusViewController: UIViewController {
         AntwortBButton.backgroundColor = UIColor.white
         AntwortCButton.backgroundColor = UIColor.white
         
-        if QNumber < frageKarten.count
-        {
+        if (QNumber < frageKarten.count){
             FrageLabel.text = frageKarten[QNumber].Fragentext
             AntwortAButton.setTitle(frageKarten[QNumber].AntwortA, for: UIControlState.normal)
             AntwortBButton.setTitle(frageKarten[QNumber].AntwortB, for: UIControlState.normal)
@@ -74,34 +60,22 @@ class SpielmodusViewController: UIViewController {
             print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
             
             QNumber = QNumber + 1
-        }
-        else{
+        }else{
             NSLog("Keine weiteren Fragen")
         }
     }
     
-    @IBAction func naechsteFrage(_ sender: Any) {
-        PickQuestion()
+    @IBAction func naechsteFrage(_ sender: Any){
+        pickQuestion()
     }
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
-    
     enum Antwort : Int { case A ; case B ; case C }
     
-    func antwortAuswerten(antwort : Antwort)
-    {
+    func antwortAuswerten(antwort : Antwort){
         var button : UIButton!
-        switch antwort { case .A: button = AntwortAButton; case .B: button = AntwortBButton; case .C: button = AntwortCButton }
-        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue)
-        {
-            if (hasSelected != true)
-            {
-                Score += 1
-                ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-                let ScoreDefault = UserDefaults.standard
-                ScoreDefault.set(Score, forKey: "Score")
-                ScoreDefault.synchronize()
-            }
+        switch antwort{ case .A: button = AntwortAButton; case .B: button = AntwortBButton; case .C: button = AntwortCButton }
+        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
             button.backgroundColor = UIColor.green
             hasSelected = true
         }else{
@@ -111,41 +85,35 @@ class SpielmodusViewController: UIViewController {
     }
     
     
-    @IBAction func AntwortA(_ sender: Any)
-    {
+    @IBAction func AntwortA(_ sender: Any){
         antwortAuswerten(antwort: .A)
     }
     
-    @IBAction func AntwortB(_ sender: Any)
-    {
+    @IBAction func AntwortB(_ sender: Any){
         antwortAuswerten(antwort: .B)
     }
     
-    @IBAction func AntwortC(_ sender: Any)
-    {
+    @IBAction func AntwortC(_ sender: Any){
         antwortAuswerten(antwort: .C)
     }
     
-    func download()
-    {
+    
+    //Fragen werden vom Server gedownloadet
+    func download(){
         let projectQuery = PFQuery(className: "Fragekarte")
         //projectQuery.includeKey("Fach")
         //projectQuery.whereKey("Fach", equalTo: gewaehltesFach)
         
-        do {
+        do{
             let results = try projectQuery.findObjects()
-            for result in results
-            {
+            for result in results{
                 let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
                 let frageKarte = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
                 frageKarten.append(frageKarte)
                 print(frageKarte.toString())
             }
-            
-        } catch {}
+        }catch{}
     }
-    
-    
     // Frage bewerten (oder vllt nennen wir es eher Frage melden bzw schlechte Frage?): Auf dem Server muss gespeichert werden, wie oft er gedrückt wurde, bei 5 Mal von unterschiedlichen Usern wird die Frage aus dem System genommen
 }
 

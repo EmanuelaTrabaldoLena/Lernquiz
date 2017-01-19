@@ -8,16 +8,16 @@
 
 import UIKit
 
-// Controller fuer die TableViewCell von MeineFaecher
-class GewaehltesFachTableViewCell: UITableViewCell {
+//Controller fuer die TableViewCell von MeineFaecher
+class GewaehltesFachTableViewCell: UITableViewCell{
     
     @IBOutlet weak var gewaehltesFach: UILabel?
 
-    override func awakeFromNib() {
+    override func awakeFromNib(){
         super.awakeFromNib()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool){
         super.setSelected(selected, animated: animated)
 
     }
