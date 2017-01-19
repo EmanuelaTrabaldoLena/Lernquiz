@@ -24,6 +24,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     @IBOutlet weak var belSpieler: UIButton!
     @IBAction func beliebigerSpieler(_ sender: Any){
+        searchController.isActive = false
         performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: belSpieler)
     }
     
@@ -121,6 +122,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         let mitSpieler = Spieler(username: usernames[row], istDran: false)
         print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
+        searchController.isActive = false
         performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
     }
 }

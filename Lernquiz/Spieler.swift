@@ -15,33 +15,31 @@ class Spieler : NSObject, NSCoding {
     var istDran : Bool
     var einzelrunde : [Bool?]? = [nil, nil, nil]
     
-    init(username: String, runden: Int, einzelrunde: [Bool], istDran : Bool) {
+    init(username: String, runden: Int, einzelrunde: [Bool], istDran : Bool){
         self.username = username
         self.runden = runden
         self.einzelrunde = einzelrunde
         self.istDran = istDran
     }
     
-    init(username: String, istDran : Bool)
-    {
+    init(username: String, istDran : Bool){
         self.username = username
         self.istDran = istDran
     }
     
-    override init()
-    {
+    override init(){
         self.username = ""
         self.istDran = false
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder){
         self.username = aDecoder.decodeObject(forKey:"username") as? String ?? ""
         self.runden = aDecoder.decodeObject(forKey:"runden") as? Int ?? 0
         self.istDran = aDecoder.decodeObject(forKey:"istDran") as? Bool ?? false
         self.einzelrunde = aDecoder.decodeObject(forKey:"einzelrunde") as? [Bool?]? ??  [nil, nil, nil]
     }
     
-    // Daten werden verpackt, um an den Server geschickt zu werden
+    //Daten werden verpackt, um an den Server geschickt zu werden
     func encode(with aCoder: NSCoder) {
         aCoder.encode(username, forKey: "username")
         aCoder.encode(runden, forKey: "runden")

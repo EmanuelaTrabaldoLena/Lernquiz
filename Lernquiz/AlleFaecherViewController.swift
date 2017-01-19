@@ -14,7 +14,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     var meineFaecherVC: MeineFaecherViewController!
     var searchController = UISearchController()
-    var gefilterterInhalt = [String]()
+    var gefilterterInhalt = [Fach]()
     
     @IBOutlet weak var alleFaecher: UITableView!
     @IBOutlet weak var faecherHinzufuegen: UIButton!
@@ -38,6 +38,8 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
     @IBAction func hinzufuegen(_ sender: Any){
         save()
+        //Searchbar wird deaktiviert bevor die View gewechselt wird
+        searchController.isActive = false
         performSegue(withIdentifier: "AlleFaecher2MeineFaecher", sender: faecherHinzufuegen)
     }
     
@@ -64,14 +66,10 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
 
             //Falls man in der Searchbar ist, wird nur der gefilterte Inhalt angezeigt
             if(self.searchController.isActive){
-                for i in 0 ..< gewaehlteVorlesungen.count{
-                    fachCell.textLabel!.text = self.gefilterterInhalt[indexPath.row]
-                    fachCell.gewaehlt(cellFach: gewaehlteVorlesungen[i])
-                    fachCell.configure(fach: fach)
-                    return fachCell
-                }
+                    fachCell.textLabel!.text = self.gefilterterInhalt[indexPath.row].name
+                    fachCell.configure(fach: gefilterterInhalt[indexPath.row])
+                    fachCell.gewaehlt(cellFach: gefilterterInhalt[indexPath.row])
             }
-            
             return fachCell
             
         }else{
@@ -97,12 +95,25 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
+    //Um nur den Namen eines Facharrays auszugeben
+    func getName(fach: [Fach]) -> [String]{
+        var nameArray = [String]()
+        for i in 0 ..< vorlesungsverzeichnis.count{
+            nameArray.append(vorlesungsverzeichnis[i].name)
+        }
+        return nameArray
+    }
+    
+    
     //Sobald die Searchbar angewaehlt wird, leert sich die TableView und nur noch Ergebnisse, die mit geschriebenen Text teilweise uebereinstimmen, werden angezeigt
     func updateSearchResults(for searchController: UISearchController){
         self.gefilterterInhalt.removeAll(keepingCapacity: false)
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (verzeichnis as NSArray).filtered(using: searchPredicate)
-        self.gefilterterInhalt = array as! [String]
+        //let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        //let array = (vorlesungsverzeichnis as NSArray).filtered(using: searchPredicate)
+        let array = vorlesungsverzeichnis.filter{ result in
+            return result.name.contains(searchController.searchBar.text!)
+        }
+        self.gefilterterInhalt = array
         self.alleFaecher.reloadData()
     }
     

@@ -38,6 +38,7 @@ class FachTableViewCell: UITableViewCell{
                 //Angewaehlte Faecher in Array speichern
                 if gewaehlteVorlesungen.contains(fach){
                     self.checkbox!.markAsChecked()
+                    fach.isSelected = true
                     print(self.printAr(gewaehlteVorlesungen))
                 }else{
                     gewaehlteVorlesungen.append(fach)
@@ -45,11 +46,10 @@ class FachTableViewCell: UITableViewCell{
                     print(self.printAr(gewaehlteVorlesungen))
                 }
             }else{
-                self.checkbox!.markAsUnChecked()
-                fach.isSelected = false
-                
                 //Abgewaehlte Faecher aus Array entfernen
                 if gewaehlteVorlesungen.contains(fach) {
+                    self.checkbox!.markAsUnChecked()
+                    fach.isSelected = false
                     self.entfernen(id: fach)
                 }
                 print(self.printAr(gewaehlteVorlesungen))
@@ -62,6 +62,7 @@ class FachTableViewCell: UITableViewCell{
     func gewaehlt(cellFach : Fach){
         for fach in gewaehlteVorlesungen{
             if(fach.name == cellFach.name){
+                fach.isSelected = true
                 self.checkbox?.markAsChecked()
             }
         }
