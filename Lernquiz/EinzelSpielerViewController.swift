@@ -44,7 +44,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
         
         meldung += 1
         FrageBewerten.backgroundColor = UIColor.green
-        FrageBewerten.setTitle("Fehler gemeldet", for: [])
+        FrageBewerten.setTitle("Frage gemeldet", for: [])
         
         
         //als Test
@@ -59,7 +59,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
     func zuruecksetztenFrageBewertenButton(){
         
         FrageBewerten.backgroundColor = UIColor.red
-        FrageBewerten.setTitle("Fehler melden", for: [])
+        FrageBewerten.setTitle("Frage melden", for: [])
         
         //Man kann Button wieder klicken
         FrageBewerten.isEnabled = true
