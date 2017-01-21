@@ -18,7 +18,8 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     var spiel = Spiel()
     
     override func viewWillAppear(_ animated: Bool) {
-        gegenSpieler.text = mitSpieler
+        gegenSpieler.text = gegnerName
+        
     }
     
     override func viewDidLoad() {

@@ -32,7 +32,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if (tableView.isEqual(aktiveSpieleTV)){
             let cell = tableView.dequeueReusableCell(withIdentifier: "aktiveSpieleCell", for: indexPath)
-            cell.textLabel?.text = mitSpieler
+            cell.textLabel?.text = gegnerName
             return cell
             
         }else{

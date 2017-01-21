@@ -18,7 +18,7 @@ class SpielmodusViewController: UIViewController {
     @IBOutlet weak var AntwortCButton: UIButton!
     @IBOutlet weak var NaechsteFrage: UIButton!
     
-    var gewaehltesFach = [Fach]()
+//    var gewaehltesFach = [Fach]()
     
     //Gewaehlte Antwort
     var EineAntwort: Bool = true
@@ -101,8 +101,8 @@ class SpielmodusViewController: UIViewController {
     //Fragen werden vom Server gedownloadet
     func download(){
         let projectQuery = PFQuery(className: "Fragekarte")
-        //projectQuery.includeKey("Fach")
-        //projectQuery.whereKey("Fach", equalTo: gewaehltesFach)
+        projectQuery.includeKey("Fach")
+        projectQuery.whereKey("Fach", equalTo: fachName)
         
         do{
             let results = try projectQuery.findObjects()

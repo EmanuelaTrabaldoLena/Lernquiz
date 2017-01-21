@@ -18,7 +18,7 @@ var gewaehlteVorlesungen : [Fach]!
 var fachName = String()
 
 //Name des gewaehlten Gegenspielers
-var mitSpieler = String()
+var gegnerName = String()
 
 //Eigener Username
 var eigenerName = String()

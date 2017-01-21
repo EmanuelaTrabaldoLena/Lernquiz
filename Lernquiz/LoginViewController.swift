@@ -151,7 +151,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                     else{
                         
                         self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-                        print("Anmeldung mit Usernamen \(eigenerName) erfolgreich.")
+                        
+                        eigenerName = self.emailTextField.text!
+                        let userName = eigenerName.components(separatedBy: "@")
+                        print("Anmeldung mit Usernamen \(userName) erfolgreich.")
                     }
                 })
                 

@@ -40,22 +40,23 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         self.spielerSuchen.reloadData()
         
         let query = PFUser.query()
-        
+      
         query?.findObjectsInBackground(block: { (objects, error) in
             if (error != nil){
                 print(error!)
             }
-            else if let users = objects {
+                
+            else if  let users = objects {
                 self.usernames.removeAll()
                 
                 for object in users{
                     if let user = object as? PFUser{
-                        //schneidet den usernamen vor dem @Zeichen ab
+                        //schneidet den Usernamen vor dem @Zeichen ab
+                    
                         let usernameArray = user.username!.components(separatedBy: "@")
                         self.usernames.append(usernameArray[0])
-                    }
+                        }
                 }
-                //Ausnahme: eigener Username darf natürlich nicht auftauchen
             }
             self.spielerSuchen.reloadData()
         })
@@ -102,10 +103,12 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
-    //Fragekarte wird im Server hochgeladen, wird ausgefuehrt wenn frageErstellenButton ausgewaehlt wird
+    //Spiel wird im Server hochgeladen
     func upload(spiel: Spiel){
         let hochzuladendesObjekt = PFObject(className: "Spiele")
         hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
+        hochzuladendesObjekt["Spieler"] = eigenerName
+        hochzuladendesObjekt["Gegner"] = gegnerName
         do{
             try hochzuladendesObjekt.save()
         }catch{
@@ -119,10 +122,14 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         tableView.deselectRow(at: indexPath, animated: true)
         
         let row = indexPath.row
-        let mitSpieler = Spieler(username: usernames[row], istDran: false)
+        gegnerName = usernames[row]
+        let mitSpieler = Spieler(username: gegnerName, istDran: false)
+
         print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
         searchController.isActive = false
+        let erstesSpiel = Spiel.init()
+        upload(spiel: erstesSpiel)
         performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
     }
 }
