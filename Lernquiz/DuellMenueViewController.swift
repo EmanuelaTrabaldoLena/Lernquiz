@@ -11,8 +11,19 @@ import Parse
 
 class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    @IBOutlet weak var aktiveSpieleTV: UITableView!
-    @IBOutlet weak var inaktiveSpieleTV: UITableView!
+    @IBOutlet weak var aktiveSpieleTV: UITableView!{
+        didSet{
+            aktiveSpieleTV.dataSource = self
+            aktiveSpieleTV.delegate = self
+        }
+
+    }
+    @IBOutlet weak var inaktiveSpieleTV: UITableView!{
+        didSet{
+            inaktiveSpieleTV.dataSource = self
+            inaktiveSpieleTV.delegate = self
+        }
+    }
     
     var spiel = Spiel()
     var aktiveSpiele = [Spiel]()
@@ -20,24 +31,19 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        
-        aktiveSpieleTV.dataSource = self
-        aktiveSpieleTV.delegate = self
-        inaktiveSpieleTV.dataSource = self
-        inaktiveSpieleTV.delegate = self
-        
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if (tableView.isEqual(aktiveSpieleTV)){
-            let cell = tableView.dequeueReusableCell(withIdentifier: "aktiveSpieleCell", for: indexPath)
-            cell.textLabel?.text = gegnerName
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "aktiveSpieleCell", for: indexPath) as? SpielTableViewCell
+            cell?.textLabel?.text = "fuck"
+            return cell!
             
         }else{
-            let cell = tableView.dequeueReusableCell(withIdentifier: "inaktiveSpieleCell", for: indexPath)
-            return cell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "inaktiveSpieleCell", for: indexPath) as? SpielTableViewCell
+            cell?.textLabel?.text = spiel.gegner.username
+            return cell!
         }
     }
     
@@ -53,6 +59,8 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidAppear(_ animated: Bool){
         download()
+        aktiveSpieleTV.reloadData()
+        inaktiveSpieleTV.reloadData()
     }
     
     

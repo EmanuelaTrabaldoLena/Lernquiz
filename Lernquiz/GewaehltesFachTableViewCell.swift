@@ -10,8 +10,6 @@ import UIKit
 
 //Controller fuer die TableViewCell von MeineFaecher
 class GewaehltesFachTableViewCell: UITableViewCell{
-    
-    @IBOutlet weak var gewaehltesFach: UILabel?
 
     override func awakeFromNib(){
         super.awakeFromNib()

@@ -28,6 +28,7 @@
 		88274DCF1E23BA250092B516 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DCE1E23BA250092B516 /* libz.tbd */; };
 		88274DD11E23BA2E0092B516 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88274DD01E23BA2E0092B516 /* libsqlite3.tbd */; };
 		8834B4E51E21090C00A89182 /* GewaehltesFachTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8834B4E41E21090C00A89182 /* GewaehltesFachTableViewCell.swift */; };
+		888BAD291E340FF600C5C4EA /* SpielTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 888BAD281E340FF600C5C4EA /* SpielTableViewCell.swift */; };
 		889502E71E200FA100A67A67 /* FragenErstellenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */; };
 		889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 889502E81E200FE500A67A67 /* LoginViewController.swift */; };
 		889502EC1E20126300A67A67 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 889502EA1E20126300A67A67 /* Bolts.framework */; };
@@ -77,6 +78,7 @@
 		88274DCE1E23BA250092B516 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		88274DD01E23BA2E0092B516 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8834B4E41E21090C00A89182 /* GewaehltesFachTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GewaehltesFachTableViewCell.swift; sourceTree = "<group>"; };
+		888BAD281E340FF600C5C4EA /* SpielTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielTableViewCell.swift; sourceTree = "<group>"; };
 		889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FragenErstellenViewController.swift; sourceTree = "<group>"; };
 		889502E81E200FE500A67A67 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		889502EA1E20126300A67A67 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Bolts.framework; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				88B876F71E2BB99500146934 /* GegenspielerTableViewCell.swift */,
+				888BAD281E340FF600C5C4EA /* SpielTableViewCell.swift */,
 			);
 			name = TVCs;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				88FF0EB61E2CE4BA00513373 /* GlobalVariables.swift in Sources */,
 				889502E91E200FE500A67A67 /* LoginViewController.swift in Sources */,
 				88B876F41E2BB65300146934 /* DuellMenueViewController.swift in Sources */,
+				888BAD291E340FF600C5C4EA /* SpielTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
