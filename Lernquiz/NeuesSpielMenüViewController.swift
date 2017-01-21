@@ -51,15 +51,14 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                 
                 for object in users{
                     if let user = object as? PFUser{
-                        
-                        //schneidet den Usernamen vor dem @Zeichen ab
-                        let usernameArray = user.username!.components(separatedBy: "@")
-                        //Eigener Username wird nicht angezeigt
-                        for i in 0 ..< self.usernames.count {
-                            if(self.usernames[i] != eigenerName) {
-                                self.usernames.append(usernameArray[0])
-                            }
-                        }
+
+                        let usernameArray = user.username
+//                        //Eigener Username wird nicht angezeigt
+//                        for i in 0 ..< self.usernames.count {
+//                            if(self.usernames[i] != eigenerName) {
+                                self.usernames.append(usernameArray!)
+//                            }
+//                        }
                     }
                 }
             }

@@ -18,9 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     var signupMode = false
     
     @IBOutlet var loginView: UIView!
-    @IBOutlet var emailTextField: UITextField! {
-        didSet{emailTextField.delegate = self}
-    }
+
     @IBOutlet var usernameTextField: UITextField! {
         didSet{usernameTextField.delegate = self}
     }
@@ -94,10 +92,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBOutlet var signupOrLogin: UIButton!
     @IBAction func signupOrLogin(_ sender: AnyObject) {
         //Test ob Username oder Passwort fehlen
-        if emailTextField.text == "" || passwordTextField.text == "" {
+        if usernameTextField.text == "" || passwordTextField.text == "" {
             
             //Die Methode die eine Fehlermeldung anzeigt wird aufgerufen
-            createAlert(title: "Fehler", message: "Bitte gebe deine Emailadress und Passwort an")
+            createAlert(title: "Fehler", message: "Bitte gebe deinen Usernamen und dein Passwort an")
         }
             //nachdem Username und Passwort eingegeben sind, jetzt eigentliche Anmeldung (weil wir Parse importiert haben, müssen wir nicht extra checken ob die Mailadresse gültig ist, das macht Parse für uns)
             
@@ -107,8 +105,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 //im folgenden passiert die Registrierung
                 //als erstes Erstellen eines users vom Typ "PFUser" (ist speziell geeignet für Emailaccounts)
                 let user = PFUser()
-                
-                user.email = emailTextField.text
+
                 user.username = usernameTextField.text
                 user.password = passwordTextField.text
                 //jetzt nimmt man den user und meldet ihn im Hintergrund an (dabei gibt es zwei Booleanwerte, entweder success/error je nachdem ob erfolgreich oder nicht
@@ -146,7 +143,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         //-spezielle- Fehlermeldung
                         displayErrorMessage = e.localizedDescription
                         
-                        self.createAlert(title: "Fehler bei der Anmledung", message: displayErrorMessage)
+                        self.createAlert(title: "Fehler bei der Anmeldung", message: displayErrorMessage)
                     }
                         
                         //für den Fall dass es keine Fehler gibt
