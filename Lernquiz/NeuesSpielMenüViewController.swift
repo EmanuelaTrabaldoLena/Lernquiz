@@ -47,18 +47,17 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
             }
                 
             else if  let users = objects {
+                //Damit die erste Zeile nicht leer ist
                 self.usernames.removeAll()
                 
                 for object in users{
                     if let user = object as? PFUser{
-
-                        let usernameArray = user.username
-//                        //Eigener Username wird nicht angezeigt
-//                        for i in 0 ..< self.usernames.count {
-//                            if(self.usernames[i] != eigenerName) {
-                                self.usernames.append(usernameArray!)
-//                            }
-//                        }
+                        
+                        let usernameString = user.username
+                        //Eigener Username wird nicht angezeigt
+                        if(usernameString != eigenerName) {
+                            self.usernames.append(usernameString!)
+                        }
                     }
                 }
             }
