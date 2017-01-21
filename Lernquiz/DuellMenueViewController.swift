@@ -31,28 +31,50 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        let projectQuery = PFQuery(className: "Spiele")
+        
+        do{
+            let spiele = try projectQuery.findObjects()
+            for result in spiele{
+                let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
+                let spiel = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
+                
+                // Verlgeich von Spielpartnerwahl, ob Gegner mich als Gegenspieler gewaehlt hat
+                if ((spiel.gegner.username == eigenerName) || (spiel.spieler.username == eigenerName)){
+                    if (spiel.gegner.istDran){
+                        inaktiveSpiele.append(spiel)
+                        
+                    }else{
+                        aktiveSpiele.append(spiel)
+                    }
+                }
+            }
+        }catch{}
+        aktiveSpieleTV.reloadData()
+        inaktiveSpieleTV.reloadData()
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if (tableView.isEqual(aktiveSpieleTV)){
             let cell = tableView.dequeueReusableCell(withIdentifier: "aktiveSpieleCell", for: indexPath) as? SpielTableViewCell
-            cell?.textLabel?.text = "fuck"
+            cell?.textLabel?.text = gegnerName
             return cell!
             
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "inaktiveSpieleCell", for: indexPath) as? SpielTableViewCell
-            cell?.textLabel?.text = spiel.gegner.username
+            cell?.textLabel?.text = gegnerName
             return cell!
         }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if (tableView.isEqual(aktiveSpieleTV)){
-            return aktiveSpiele.count
-            
+//           return aktiveSpiele.count
+            return 2
         }else{
-            return inaktiveSpiele.count
+ //           return inaktiveSpiele.count
+            return 2
         }
     }
     

@@ -65,25 +65,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         })
         
     }
-    
-    
-    func updateSearchResults(for searchController: UISearchController){
-        self.gefilterterInhalt.removeAll(keepingCapacity: false)
-        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (self.usernames as NSArray).filtered(using: searchPredicate)
-        self.gefilterterInhalt = array as! [String]
-        self.spielerSuchen.reloadData()
-    }
-    
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if self.searchController.isActive{
-            return self.gefilterterInhalt.count
-        }else{
-            return self.usernames.count
-        }
-    }
-    
+
     
     //Beim auswaehlen eines Spielers aus der Suchtableview, wird man direkt in das DuellMenue weitergeleitet und das Spiel steht bei "Du bist dran"
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -119,6 +101,24 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
+    
+    
+    func updateSearchResults(for searchController: UISearchController){
+        self.gefilterterInhalt.removeAll(keepingCapacity: false)
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (self.usernames as NSArray).filtered(using: searchPredicate)
+        self.gefilterterInhalt = array as! [String]
+        self.spielerSuchen.reloadData()
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if self.searchController.isActive{
+            return self.gefilterterInhalt.count
+        }else{
+            return self.usernames.count
+        }
+    }
     
     //Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
