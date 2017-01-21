@@ -46,9 +46,12 @@ class EinzelSpielerViewController: SpielmodusViewController{
         FrageBewerten.backgroundColor = UIColor.green
         FrageBewerten.setTitle("Fehler gemeldet", for: [])
         
+        
         //als Test
         print(meldung)
         
+        //Man kann Button nur einmal klicken
+        FrageBewerten.isEnabled = false
     }
     
     
@@ -57,6 +60,9 @@ class EinzelSpielerViewController: SpielmodusViewController{
         
         FrageBewerten.backgroundColor = UIColor.red
         FrageBewerten.setTitle("Fehler melden", for: [])
+        
+        //Man kann Button wieder klicken
+        FrageBewerten.isEnabled = true
         
     }
     
