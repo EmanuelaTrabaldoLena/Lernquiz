@@ -17,6 +17,7 @@ class Fragekarte : NSObject, NSCoding{
     var AntwortC : String = ""
     var RichtigeAntwort : String = ""
     var RichtigeAntwortIndex : NSNumber = 0
+    //var frageGemeldet : Int = 0
     
     func toString () -> String{
         return "Fragentext: \(Fragentext)  |  AntwortA: \(AntwortA) | AntwortB: \(AntwortB) | AntwortC: \(AntwortC)"
@@ -33,7 +34,7 @@ class Fragekarte : NSObject, NSCoding{
         }
     }
     
-    
+
     //Antwortmoeglichkeiten werden vertauscht/ neu angeordnet (Algorithmus nicht sehr schoen)
     func swap(){
         let iniArray = [AntwortA, AntwortB, AntwortC]
@@ -72,6 +73,7 @@ class Fragekarte : NSObject, NSCoding{
         self.AntwortB = AntwortB
         self.AntwortC = AntwortC
         self.RichtigeAntwort = RichtigeAntwort
+        //self.frageGemeldet = frageGemeldet
     }
     
     //Die folgenden 2 Methoden sind wichtig um die Daten in Parse zu speichern
@@ -84,6 +86,7 @@ class Fragekarte : NSObject, NSCoding{
         self.AntwortC = aDecoder.decodeObject(forKey:"AntwortC") as? String ?? ""
         self.RichtigeAntwort = aDecoder.decodeObject(forKey:"RichtigeAntwort") as? String ?? ""
         self.RichtigeAntwortIndex = aDecoder.decodeObject(forKey:"RichtigeAntwortIndex") as? NSNumber ?? 11
+        //self.frageGemeldet = aDecoder.decodeObject(forKey:"FragenId") as? Int ?? 0
     }
     
     //Daten werden verpackt, um an den Server geschickt zu werden
@@ -95,6 +98,7 @@ class Fragekarte : NSObject, NSCoding{
         aCoder.encode(AntwortC, forKey: "AntwortC")
         aCoder.encode(RichtigeAntwort, forKey: "RichtigeAntwort")
         aCoder.encode(RichtigeAntwortIndex, forKey: "RichtigeAntwortIndex")
+        //aCoder.encode(frageGemeldet, forKey: "frageGemeldet")
     }
     
     //Schwaecherer Initializierer, der einen Parameter weniger hat
