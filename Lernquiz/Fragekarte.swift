@@ -103,7 +103,7 @@ class Fragekarte : NSObject, NSCoding{
     
     //Schwaecherer Initializierer, der einen Parameter weniger hat
     convenience init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String){
-        self.init(FragenId: FragenId, Fragentext: Fragentext, AntwortA: AntwortA, AntwortB: AntwortB, AntwortC: AntwortC, RichtigeAntwort: AntwortA)
+        self.init(FragenId: FragenId, Fragentext: Fragentext, AntwortA: AntwortA, AntwortB: AntwortB, AntwortC: AntwortC, RichtigeAntwort: AntwortA) //,frageGemeldet: frageGemeldet
     }
 
 }

@@ -46,12 +46,13 @@ class EinzelSpielerViewController: SpielmodusViewController{
         FrageBewerten.backgroundColor = UIColor.green
         FrageBewerten.setTitle("Frage gemeldet", for: [])
         
-        
         //als Test
         print(meldung)
         
         //Man kann Button nur einmal klicken
         FrageBewerten.isEnabled = false
+        
+        //hier gehört jetzt noch rein, dass die Anzahl an Meldungen für die eine Frage mit dem Index "bla" gespeichert wird. Dazu wurde die Klasse "Fragekarte" schon erweitert (aber in auskommentierter Form)
     }
     
     
@@ -65,12 +66,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
         FrageBewerten.isEnabled = true
         
     }
-    
-    
-    
-    
-    
-    
+
     
     
     // Fragen für das Fach werden heruntergeladen und eine wird ausgewählt
