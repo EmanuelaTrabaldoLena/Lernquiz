@@ -11,11 +11,60 @@ import Parse
 
 class EinzelSpielerViewController: SpielmodusViewController{
     
-    //Counter fuer Score, wird lokal gespeichert
+    //Counter für Score, wird lokal gespeichert
     var Score: Int = 0
+    
+    //Counter für "Frage melden"
+    var meldung: Int = 0
     
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet var FrageBewerten: UIButton!
+    
+    
+    //neu eingefügt um die Funktion naechsteFrage schreiben zu können, die beim Laden einer nächsten Frage auch den "Frage melden"-Button zurücksetzt
+    @IBOutlet var naechsteFrageButton: UIButton!
+    
+    
+    
+    //Wenn man den Button "Nächste Frage" anklicht wird eine neue Frage geladen und der "Frage melden"-Button zurücksetzt
+    @IBAction override func naechsteFrage(_ sender: Any) {
+        
+        zuruecksetztenFrageBewertenButton()
+        pickQuestion()
+    }
+    
+    
+    
+    
+    //Funktion die es erlaubt eine Frage zu melden, dabei wird der Text im Button zu "Fehler gemeldet" geändert und eine Meldung zur Variablen "meldung" hinzugefügt
+    
+    //es fehlt noch die explizite Speicherung dieser Meldung für die gerade gespielte Frage. Momentan existiert einfach nur die Zahl als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    
+    @IBAction func FrageBewerten(_ sender: Any) {
+        
+        meldung += 1
+        FrageBewerten.backgroundColor = UIColor.green
+        FrageBewerten.setTitle("Fehler gemeldet", for: [])
+        
+        //als Test
+        print(meldung)
+        
+    }
+    
+    
+    //Funktion um die Farbe des "Frage melden"-Button auf rot + den Text im Button wieder auf "Fehler melden" zurückzusetzten
+    func zuruecksetztenFrageBewertenButton(){
+        
+        FrageBewerten.backgroundColor = UIColor.red
+        FrageBewerten.setTitle("Fehler melden", for: [])
+        
+    }
+    
+    
+    
+    
+    
+    
     
     
     // Fragen für das Fach werden heruntergeladen und eine wird ausgewählt

@@ -681,24 +681,28 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="naechsteFrage:" destination="2Yb-MH-JLd" eventType="touchDown" id="d71-8L-c0d"/>
+                                    <action selector="naechsteFrage:" destination="2Yb-MH-JLd" eventType="touchUpInside" id="dyB-xn-gcj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSL-x1-lFu">
                                 <rect key="frame" x="10" y="518" width="120" height="30"/>
-                                <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.14593937779809052" blue="0.03780688625312878" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="d1e-3K-ybl"/>
                                     <constraint firstAttribute="height" constant="30" id="tfE-m6-fvX"/>
                                 </constraints>
-                                <state key="normal" title="Frage bewerten">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Frage melden">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="14"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="FrageBewerten:" destination="2Yb-MH-JLd" eventType="touchUpInside" id="CTz-T0-tX2"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -725,8 +729,8 @@
                         <outlet property="AntwortCButton" destination="9zV-iz-oBk" id="kv6-Dg-Y3X"/>
                         <outlet property="FrageBewerten" destination="CSL-x1-lFu" id="3Od-St-Y9l"/>
                         <outlet property="FrageLabel" destination="px7-3g-Kfy" id="NX9-mG-xiH"/>
-                        <outlet property="NaechsteFrage" destination="KXQ-OT-lIu" id="AMQ-Af-ldj"/>
                         <outlet property="ScoreLabel" destination="jmq-Lv-sNS" id="vho-Ub-UkP"/>
+                        <outlet property="naechsteFrageButton" destination="KXQ-OT-lIu" id="qBB-Wa-Ksc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCr-Kr-LSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
