@@ -54,7 +54,7 @@
                                         <rect key="frame" x="0.0" y="28" width="270" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pH7-gu-Z0K" id="yEJ-Jq-8hk">
-                                            <rect key="frame" x="0.0" y="0.0" width="270" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="270" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUa-ra-Ku7">
@@ -146,7 +146,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FSS-jm-9gH" id="cqL-4p-SA3">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="79"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qht-wI-S0j">
@@ -790,7 +790,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="288" height="25"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xzr-H3-qix" id="Yrv-ss-nba">
-                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -850,7 +850,7 @@
                                         <rect key="frame" x="0.0" y="28" width="288" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="k3d-Z6-25E" id="Stg-Dt-iof">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pb3-AF-8Li" userLabel="DuS1">
@@ -1260,7 +1260,22 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lernquiz" translatesAutoresizingMaskIntoConstraints="NO" id="1eA-Qa-KXu">
                                 <rect key="frame" x="43" y="108" width="234" height="179"/>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="emanuela@trabaldo.de" placeholder="Email Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-Z6-QxB">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email Adresse" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jWR-vh-5pi" userLabel="Email TextField">
+                                <rect key="frame" x="16" y="315" width="250" height="30"/>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OFi-FJ-HkP"/>
+                                </constraints>
+                                <color key="textColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-Z6-QxB" userLabel="Username TextField">
                                 <rect key="frame" x="16" y="362" width="250" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1275,7 +1290,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="fix666" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tso-18-KTb">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Passwort" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tso-18-KTb" userLabel="Password TextField">
                                 <rect key="frame" x="16" y="405" width="250" height="30"/>
                                 <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1318,12 +1333,14 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="JQs-Z6-QxB" firstAttribute="top" secondItem="jWR-vh-5pi" secondAttribute="bottom" constant="17" id="2Cg-uj-nD4"/>
                             <constraint firstItem="XsC-CS-uH7" firstAttribute="leading" secondItem="Uwk-O8-Yq0" secondAttribute="leadingMargin" constant="-5" id="3Wh-PA-zTX"/>
                             <constraint firstItem="gyo-FV-5ke" firstAttribute="trailing" secondItem="Uwk-O8-Yq0" secondAttribute="trailingMargin" id="3XQ-l6-2JU"/>
                             <constraint firstItem="dwx-Fm-y79" firstAttribute="bottom" secondItem="gFJ-UK-XEB" secondAttribute="top" id="4g9-IZ-0o7"/>
                             <constraint firstItem="JQs-Z6-QxB" firstAttribute="leading" secondItem="Uwk-O8-Yq0" secondAttribute="leadingMargin" id="4ph-gt-qUE"/>
                             <constraint firstItem="Dm4-84-djS" firstAttribute="leading" secondItem="XsC-CS-uH7" secondAttribute="trailing" constant="14" id="82K-xc-JYp"/>
                             <constraint firstItem="JQs-Z6-QxB" firstAttribute="leading" secondItem="Tso-18-KTb" secondAttribute="leading" id="Dha-K8-wmg"/>
+                            <constraint firstItem="jWR-vh-5pi" firstAttribute="leading" secondItem="JQs-Z6-QxB" secondAttribute="leading" id="EZG-Uj-JcV"/>
                             <constraint firstItem="JQs-Z6-QxB" firstAttribute="trailing" secondItem="Tso-18-KTb" secondAttribute="trailing" id="HCm-uO-miu"/>
                             <constraint firstItem="1eA-Qa-KXu" firstAttribute="centerX" secondItem="dwx-Fm-y79" secondAttribute="centerX" id="IYY-yy-rA1"/>
                             <constraint firstItem="gFJ-UK-XEB" firstAttribute="top" secondItem="XsC-CS-uH7" secondAttribute="bottom" constant="8" symbolic="YES" id="Iip-NQ-BDE"/>
@@ -1336,6 +1353,7 @@
                             <constraint firstItem="JQs-Z6-QxB" firstAttribute="top" secondItem="1eA-Qa-KXu" secondAttribute="bottom" constant="75" id="bvc-Bn-5rh"/>
                             <constraint firstItem="1eA-Qa-KXu" firstAttribute="centerX" secondItem="dwx-Fm-y79" secondAttribute="centerX" id="dlG-F6-LfO"/>
                             <constraint firstItem="gyo-FV-5ke" firstAttribute="top" secondItem="Tso-18-KTb" secondAttribute="bottom" constant="22" id="n1V-iF-Acs"/>
+                            <constraint firstItem="jWR-vh-5pi" firstAttribute="trailing" secondItem="JQs-Z6-QxB" secondAttribute="trailing" id="qSr-Kv-rMa"/>
                             <constraint firstItem="1eA-Qa-KXu" firstAttribute="top" secondItem="rzW-El-9BR" secondAttribute="bottom" constant="88" id="rI2-dS-ZPI"/>
                             <constraint firstItem="gFJ-UK-XEB" firstAttribute="top" secondItem="Dm4-84-djS" secondAttribute="bottom" constant="14" id="ucI-gW-hX6"/>
                             <constraint firstItem="XsC-CS-uH7" firstAttribute="top" secondItem="Tso-18-KTb" secondAttribute="bottom" constant="85" id="xnQ-TL-7ja"/>
@@ -1344,11 +1362,12 @@
                     </view>
                     <connections>
                         <outlet property="changeSignupModeButton" destination="Dm4-84-djS" id="X30-Bh-vUp"/>
-                        <outlet property="emailTextField" destination="JQs-Z6-QxB" id="rTN-nm-Zzd"/>
+                        <outlet property="emailTextField" destination="jWR-vh-5pi" id="lyE-wW-Owh"/>
                         <outlet property="loginView" destination="Uwk-O8-Yq0" id="WMh-Mt-UUl"/>
                         <outlet property="messageLabel" destination="XsC-CS-uH7" id="6iu-WH-tTJ"/>
                         <outlet property="passwordTextField" destination="Tso-18-KTb" id="T3a-eg-PvC"/>
                         <outlet property="signupOrLogin" destination="gyo-FV-5ke" id="jYA-ER-UTf"/>
+                        <outlet property="usernameTextField" destination="JQs-Z6-QxB" id="eTs-y7-81E"/>
                         <segue destination="Nb4-4H-c9G" kind="show" identifier="LoginView2MeineFaecher" id="9om-TQ-V83"/>
                     </connections>
                 </viewController>

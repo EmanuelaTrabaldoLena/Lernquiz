@@ -21,6 +21,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     @IBOutlet var emailTextField: UITextField! {
         didSet{emailTextField.delegate = self}
     }
+    @IBOutlet var usernameTextField: UITextField! {
+        didSet{usernameTextField.delegate = self}
+    }
     @IBOutlet var passwordTextField: UITextField! {
         didSet{passwordTextField.delegate = self}
     }
@@ -37,7 +40,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
             loginButton.readPermissions = ["public_profile", "email"]
             loginButton.delegate = self
             self.view.addSubview(loginButton)
-            }
+        }
         
         //Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
@@ -105,10 +108,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 //als erstes Erstellen eines users vom Typ "PFUser" (ist speziell geeignet für Emailaccounts)
                 let user = PFUser()
                 
-                user.username = emailTextField.text
                 user.email = emailTextField.text
+                user.username = usernameTextField.text
                 user.password = passwordTextField.text
-                
                 //jetzt nimmt man den user und meldet ihn im Hintergrund an (dabei gibt es zwei Booleanwerte, entweder success/error je nachdem ob erfolgreich oder nicht
                 user.signUpInBackground(block:{ (success, error) in
                     
@@ -132,7 +134,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 //das passiert wenn man nicht im Registriern-Modus (Anmelden-Modus) ist
             else {
                 //im folgenden passiert die Anmeldung
-                PFUser.logInWithUsername(inBackground: emailTextField.text!, password: passwordTextField.text!, block: {(user, error) in
+                PFUser.logInWithUsername(inBackground: usernameTextField.text!, password: passwordTextField.text!, block: {(user, error) in
                     
                     //zuerst checken ob es einen Fehler während der Registrierung gibt
                     if let e = error {
@@ -152,9 +154,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         
                         self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
                         
-                        eigenerName = self.emailTextField.text!
-                        let userName = eigenerName.components(separatedBy: "@")
-                        print("Anmeldung mit Usernamen \(userName) erfolgreich.")
+                        eigenerName = self.usernameTextField.text!
+                        print("Anmeldung mit Usernamen \(eigenerName) erfolgreich.")
                     }
                 })
                 
@@ -222,24 +223,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     }
     
     
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//        animateViewMoving(up: true, moveValue: 100)
-//    }
-//    
-//    
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        animateViewMoving(up: false, moveValue: 100)
-//    }
-//    
-//    
-//    func animateViewMoving (up:Bool, moveValue :CGFloat){
-//        let movementDuration:TimeInterval = 0.3
-//        let movement:CGFloat = ( up ? -moveValue : moveValue)
-//        UIView.beginAnimations("animateView", context: nil)
-//        UIView.setAnimationBeginsFromCurrentState(true)
-//        UIView.setAnimationDuration(movementDuration)
-//        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
-//        UIView.commitAnimations()
-//    }
+    //    func textFieldDidBeginEditing(_ textField: UITextField) {
+    //        animateViewMoving(up: true, moveValue: 100)
+    //    }
+    //
+    //
+    //    func textFieldDidEndEditing(_ textField: UITextField) {
+    //        animateViewMoving(up: false, moveValue: 100)
+    //    }
+    //
+    //
+    //    func animateViewMoving (up:Bool, moveValue :CGFloat){
+    //        let movementDuration:TimeInterval = 0.3
+    //        let movement:CGFloat = ( up ? -moveValue : moveValue)
+    //        UIView.beginAnimations("animateView", context: nil)
+    //        UIView.setAnimationBeginsFromCurrentState(true)
+    //        UIView.setAnimationDuration(movementDuration)
+    //        self.view.frame = self.view.frame.offsetBy(dx: 0,  dy: movement)
+    //        UIView.commitAnimations()
+    //    }
     
 }

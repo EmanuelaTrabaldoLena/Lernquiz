@@ -10,7 +10,7 @@ import UIKit
 import Parse
 
 class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchResultsUpdating{
-
+    
     var searchController = UISearchController()
     var usernames = [String]()
     var gefilterterInhalt = [String]()
@@ -40,7 +40,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         self.spielerSuchen.reloadData()
         
         let query = PFUser.query()
-      
+        
         query?.findObjectsInBackground(block: { (objects, error) in
             if (error != nil){
                 print(error!)
@@ -51,11 +51,16 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                 
                 for object in users{
                     if let user = object as? PFUser{
+                        
                         //schneidet den Usernamen vor dem @Zeichen ab
-                    
                         let usernameArray = user.username!.components(separatedBy: "@")
-                        self.usernames.append(usernameArray[0])
+                        //Eigener Username wird nicht angezeigt
+                        for i in 0 ..< self.usernames.count {
+                            if(self.usernames[i] != eigenerName) {
+                                self.usernames.append(usernameArray[0])
+                            }
                         }
+                    }
                 }
             }
             self.spielerSuchen.reloadData()
@@ -71,8 +76,8 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         self.gefilterterInhalt = array as! [String]
         self.spielerSuchen.reloadData()
     }
-
-
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if self.searchController.isActive{
             return self.gefilterterInhalt.count
@@ -81,7 +86,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     
-
+    
     //Beim auswaehlen eines Spielers aus der Suchtableview, wird man direkt in das DuellMenue weitergeleitet und das Spiel steht bei "Du bist dran"
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
@@ -124,7 +129,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         let row = indexPath.row
         gegnerName = usernames[row]
         let mitSpieler = Spieler(username: gegnerName, istDran: false)
-
+        
         print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
         searchController.isActive = false
