@@ -40,7 +40,6 @@ class CheckBoxView: UIView{
         
         //Erkennung der Beruehrung
         let tapRecognizer = UITapGestureRecognizer(target: self, action: selector)
-        
         self.addGestureRecognizer(tapRecognizer)
         
     }
