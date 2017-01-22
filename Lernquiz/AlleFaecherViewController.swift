@@ -37,7 +37,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
     @IBAction func hinzufuegen(_ sender: Any){
-        save()
+        save(fachArray: gewaehlteVorlesungen)
         //Searchbar wird deaktiviert bevor die View gewechselt wird
         searchController.isActive = false
         performSegue(withIdentifier: "AlleFaecher2MeineFaecher", sender: faecherHinzufuegen)
@@ -78,20 +78,31 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     //Gewaehlte Faecher werden in Parse hochgeladen und lokal im Systemspeicher abgelegt
-    func save(){
+    func save(fachArray: [Fach]){
         allgemein.gewaehlteVorlesungenLS = gewaehlteVorlesungen as NSObject?
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         appDelegate.saveContext()
         
-        let userTable = PFObject(className: "User")
-        userTable ["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: gewaehlteVorlesungen))
-        userTable.saveInBackground()
-        do{
-            print("Versuche gewaehlteVorlesungen in User hochzuladen")
-            try userTable.save()
-        }catch{
-            print("Fehler beim Hochladen!")
+        if let currentUser = PFUser.current(){
+            currentUser ["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: gewaehlteVorlesungen))
+            currentUser.saveInBackground()
+                    do{
+                        print("Versuche gewaehlteVorlesungen in User hochzuladen")
+                        try currentUser.save()
+                    }catch{
+                        print("Fehler beim Hochladen!")
+                    }
         }
+        
+//        let userTable = PFObject(className: "User")
+//        userTable ["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: gewaehlteVorlesungen))
+//        userTable.saveInBackground()
+//        do{
+//            print("Versuche gewaehlteVorlesungen in User hochzuladen")
+//            try userTable.save()
+//        }catch{
+//            print("Fehler beim Hochladen!")
+//        }
     }
     
     
