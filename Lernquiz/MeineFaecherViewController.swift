@@ -16,6 +16,9 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     //User kann sich ausloggen und landet wieder auf der LoginView
     @IBAction func logout(_ sender: Any){
         PFUser .logOut()
+       
+        ausgeloggt = true
+        
         performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
     }
     

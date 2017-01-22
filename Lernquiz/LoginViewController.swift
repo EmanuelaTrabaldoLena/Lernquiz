@@ -18,7 +18,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     var signupMode = false
     
     @IBOutlet var loginView: UIView!
-
+    
     @IBOutlet var usernameTextField: UITextField! {
         didSet{usernameTextField.delegate = self}
     }
@@ -28,7 +28,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
+        //vergleicht ob man schon vorher auf logout geklickt hat
+        if ausgeloggt == false && PFUser.current() != nil{
+            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+        }
+        self.navigationController?.navigationBar.isHidden = true
+        
         
         if (FBSDKAccessToken.current() != nil){
             print("Du bist eingeloggt")
@@ -105,7 +113,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                 //im folgenden passiert die Registrierung
                 //als erstes Erstellen eines users vom Typ "PFUser" (ist speziell geeignet für Emailaccounts)
                 let user = PFUser()
-
+                
                 user.username = usernameTextField.text
                 user.password = passwordTextField.text
                 //jetzt nimmt man den user und meldet ihn im Hintergrund an (dabei gibt es zwei Booleanwerte, entweder success/error je nachdem ob erfolgreich oder nicht
