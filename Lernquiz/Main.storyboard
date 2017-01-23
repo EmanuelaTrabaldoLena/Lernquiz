@@ -371,7 +371,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JqX-rU-Cec" id="IeN-XG-TNG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -411,7 +411,7 @@
                                         <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gf9-PP-McM" id="WeK-pX-QBo">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -446,6 +446,7 @@
                     <connections>
                         <outlet property="aktiveSpieleTV" destination="ECX-KH-1eb" id="6nm-HK-MV8"/>
                         <outlet property="inaktiveSpieleTV" destination="RnW-Wi-tIG" id="hHI-Sl-mRg"/>
+                        <segue destination="fa5-Ga-zjY" kind="show" identifier="DuellMenueVC2DuellVC" id="1nf-jn-KHj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsx-4K-Y7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1380,5 +1381,6 @@
         <segue reference="9vV-oY-gHf"/>
         <segue reference="udV-oF-PnC"/>
         <segue reference="gyV-bM-mQh"/>
+        <segue reference="1nf-jn-KHj"/>
     </inferredMetricsTieBreakers>
 </document>

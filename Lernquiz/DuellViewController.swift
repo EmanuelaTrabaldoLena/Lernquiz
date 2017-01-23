@@ -26,6 +26,7 @@ class DuellViewController: SpielmodusViewController{
         //            Score = ScoreDefault.value(forKey: "Score") as! NSInteger!
         //            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
         pickQuestion()
+
     }
     
     

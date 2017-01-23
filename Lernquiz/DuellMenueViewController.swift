@@ -28,13 +28,30 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
         inaktiveSpieleTV.dataSource = self
         inaktiveSpieleTV.delegate = self
         
-        download()
+        //download()
         
         
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }
     
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        if tableView.isEqual(aktiveSpieleTV)
+        {
+            performSegue(withIdentifier: "DuellMenueVC2DuellVC", sender: aktiveSpiele[indexPath.row])
+        }
+        
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "DuellMenueVC2DuellVC"
+        {
+            let vc = segue.destination as! DuellViewController
+            vc.spiel = sender as! Spiel
+        }
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
@@ -76,7 +93,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     override func viewDidAppear(_ animated: Bool){
-        //download()
+        download()
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }
@@ -130,8 +147,6 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
                             inaktiveSpiele.append(spiel)
                         }
                     }
-                    
-                    
                 }
             }
         }catch{}
