@@ -587,7 +587,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="WdP-5f-YkG">
                                 <rect key="frame" x="10" y="81" width="300" height="397"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welchen Dezimalwert hat 10011?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px7-3g-Kfy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FrageLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="px7-3g-Kfy">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="187"/>
                                         <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1101,7 +1101,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="LsU-Yk-qxt">
                                 <rect key="frame" x="10" y="40" width="300" height="387"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welchen Dezimalwert hat 10011?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6A-jc-2ht">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FrageLabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6A-jc-2ht">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="177"/>
                                         <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
@@ -1186,7 +1186,12 @@
                     </view>
                     <connections>
                         <outlet property="CountdownLabel" destination="dZn-Bt-k2B" id="gs4-zp-vTu"/>
+                        <outlet property="FrageLabel" destination="h6A-jc-2ht" id="rJD-oT-EeU"/>
                         <outlet property="NaechsteFrage" destination="gOB-xR-692" id="SHQ-Yq-uze"/>
+                        <outlet property="antwortA" destination="43S-hx-M77" id="VJy-ee-KrF"/>
+                        <outlet property="antwortB" destination="XnR-g9-vNY" id="2rS-g0-hB7"/>
+                        <outlet property="antwortC" destination="prX-Ty-OrD" id="GnC-Ju-rdZ"/>
+                        <outlet property="naechsteFrage" destination="gOB-xR-692" id="4Ix-HY-C9N"/>
                         <outlet property="naechsteFrageButton" destination="gOB-xR-692" id="OI4-lV-R24"/>
                     </connections>
                 </viewController>
