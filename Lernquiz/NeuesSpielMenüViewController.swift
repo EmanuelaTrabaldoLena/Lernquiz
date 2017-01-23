@@ -46,7 +46,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     func dowloadUser(){
         
         let query = PFUser.query()
-        
+        let spiele = downloadSpiele()
         query?.findObjectsInBackground(block: { (objects, error) in
             if (error != nil){
                 print(error!)
@@ -56,13 +56,23 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                 //Damit die erste Zeile nicht leer ist
                 self.usernames.removeAll()
                 
-                for object in users{
+                loop_Users: for object in users{
                     if let user = object as? PFUser{
                         
                         let usernameString = user.username
                         
                         //Eigener Username wird nicht angezeigt
                         
+                        
+                        for spiel in spiele
+                        {
+                            if (usernameString == spiel.gegner.username) || (usernameString == spiel.spieler.username)
+                            {
+                                continue loop_Users
+                            }
+                        }
+                        
+                        print(eigenerName)
                         if(usernameString != eigenerName) {
                             // Es werden nur die User angezeigt, die auch mein gewaehltes Fach in ihrem FaecherArray haben
                             let meinFaecherHuelle = user["MeineFaecher"] as! NSMutableArray
@@ -83,6 +93,25 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         })
     }
     
+    
+    func downloadSpiele () -> [Spiel]
+    {
+        var output : [Spiel] = [Spiel]()
+        let projectQuery = PFQuery(className: "Spiele")
+        
+        do{
+            let spiele = try projectQuery.findObjects()
+            for result in spiele{
+                let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
+                let spiel = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
+                output.append(spiel)
+            }
+        }catch{}
+        return output
+    }
+    
+
+
     //Beim auswaehlen eines Spielers aus der Suchtableview, wird man direkt in das DuellMenue weitergeleitet und das Spiel steht bei "Du bist dran"
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         

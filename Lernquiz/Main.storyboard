@@ -446,6 +446,7 @@
                     <connections>
                         <outlet property="aktiveSpieleTV" destination="ECX-KH-1eb" id="6nm-HK-MV8"/>
                         <outlet property="inaktiveSpieleTV" destination="RnW-Wi-tIG" id="hHI-Sl-mRg"/>
+                        <segue destination="fa5-Ga-zjY" kind="show" identifier="DuellMenueVC2DuellVC" id="1nf-jn-KHj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsx-4K-Y7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1356,5 +1357,6 @@
         <segue reference="9vV-oY-gHf"/>
         <segue reference="udV-oF-PnC"/>
         <segue reference="gyV-bM-mQh"/>
+        <segue reference="1nf-jn-KHj"/>
     </inferredMetricsTieBreakers>
 </document>
