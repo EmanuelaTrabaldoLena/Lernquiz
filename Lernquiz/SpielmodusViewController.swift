@@ -18,16 +18,13 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     @IBOutlet weak var antwortC: UITextView!
     @IBOutlet weak var naechsteFrage: UIButton!
     
-    
     //Gewaehlte Antwort
     var EineAntwort: Bool = true
     //Aktuelle Frage
     var CurrentQuestion: Int = 0
-    
     //Sorgt dafür, dass der Score nicht hochgeht, wenn erst eine falsche Antwort ausgewählt wird
     var hasSelected = false;
-    
-    
+    //Nummer der Frage fuer die Erkennung
     var QNumber = Int()
     var frageKarten = [Fragekarte]()
     
@@ -39,20 +36,21 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         
         download()
         
-        //pickQuestion()
-        
         antwortA.delegate = self
         antwortB.delegate = self
         antwortC.delegate = self
         
+        //Textview kann von Nutzer nicht bearbeitet werden
         antwortA.isEditable = false
         antwortB.isEditable = false
         antwortC.isEditable = false
         
+        //Text in der Textview wird horizontal zentriert
         antwortA.textAlignment = .center
         antwortB.textAlignment = .center
         antwortC.textAlignment = .center
         
+        //Beruehrungserkennung bei anwaehlen der 
         let tapA = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenA))
         antwortA.addGestureRecognizer(tapA)
         let tapB = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenB))
@@ -85,7 +83,6 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortB.backgroundColor = UIColor.white
         antwortC.backgroundColor = UIColor.white
         
-        
         if (QNumber < frageKarten.count){
             FrageLabel.text = frageKarten[QNumber].Fragentext
             antwortA.text! = frageKarten[QNumber].AntwortA
@@ -102,8 +99,8 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
 
     }
     
+    
     @IBAction func naechsteFrage(_ sender: Any){
-        
         antwortA.text = ""
         antwortB.text = ""
         antwortC.text = ""
@@ -143,7 +140,6 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
             }
         }catch{}
     }
-    // Frage bewerten (oder vllt nennen wir es eher Frage melden bzw schlechte Frage?): Auf dem Server muss gespeichert werden, wie oft er gedrückt wurde, bei 5 Mal von unterschiedlichen Usern wird die Frage aus dem System genommen
 }
 
 

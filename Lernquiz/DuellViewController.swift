@@ -32,13 +32,13 @@ class DuellViewController: SpielmodusViewController{
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
     override func antwortAuswerten(antwort : Antwort){
-        var button : UITextView!
-        switch antwort { case .A: button = antwortA; case .B: button = antwortB; case .C: button = antwortC}
+        var textView : UITextView!
+        switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
-            button.backgroundColor = UIColor.green
+            textView.backgroundColor = UIColor.green
             
         }else{
-            button.backgroundColor = UIColor.red
+            textView.backgroundColor = UIColor.red
         }
         
         hasSelected = true
