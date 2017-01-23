@@ -24,13 +24,18 @@ class EinzelSpielerViewController: SpielmodusViewController{
     @IBOutlet var naechsteFrageButton: UIButton!
     
     
-    //Wenn man den Button "Nächste Frage" anklicht wird eine neue Frage geladen und der "Frage melden"-Button zurücksetzt
-    @IBAction override func naechsteFrage(_ sender: Any) {
+    // Fragen für das Fach werden heruntergeladen und eine wird ausgewählt
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        zuruecksetztenFrageBewertenButton()
-        pickQuestion()
+        //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
+        let ScoreDefault = UserDefaults.standard
+        
+        if (ScoreDefault.value(forKey: "Score") != nil){
+            Score = ScoreDefault.value(forKey: "Score") as! NSInteger!
+            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
+        }
     }
-
     
     //Funktion die es erlaubt eine Frage zu melden, dabei wird der Text im Button zu "Fehler gemeldet" geändert und eine Meldung zur Variablen "meldung" hinzugefügt
     
@@ -61,43 +66,5 @@ class EinzelSpielerViewController: SpielmodusViewController{
         //Man kann Button wieder klicken
         FrageBewerten.isEnabled = true
         
-    }
-
-    
-    
-    // Fragen für das Fach werden heruntergeladen und eine wird ausgewählt
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        download()
-        
-        //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
-        let ScoreDefault = UserDefaults.standard
-        
-        if (ScoreDefault.value(forKey: "Score") != nil){
-            Score = ScoreDefault.value(forKey: "Score") as! NSInteger!
-            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-        }
-        
-        pickQuestion()
-    }
-    
-    override func antwortAuswerten(antwort : Antwort){
-        var textView : UITextView!
-        switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
-        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
-            if (hasSelected != true){
-                Score += 1
-                ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-                let ScoreDefault = UserDefaults.standard
-                ScoreDefault.set(Score, forKey: "Score")
-                ScoreDefault.synchronize()
-            }
-            textView.backgroundColor = UIColor.green
-            hasSelected = true
-        }else{
-            textView.backgroundColor = UIColor.red
-            hasSelected = true
-        }
     }
 }

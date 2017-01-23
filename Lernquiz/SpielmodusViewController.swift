@@ -35,6 +35,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         download()
+        pickQuestion()
         
         antwortA.delegate = self
         antwortB.delegate = self
@@ -50,7 +51,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortB.textAlignment = .center
         antwortC.textAlignment = .center
         
-        //Beruehrungserkennung bei anwaehlen der 
+        //Beruehrungserkennung bei anwaehlen der
         let tapA = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenA))
         antwortA.addGestureRecognizer(tapA)
         let tapB = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenB))
@@ -74,31 +75,6 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortAuswerten(antwort: .C)
     }
     
-    //Weist den Textviews den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
-    func pickQuestion(){
-        //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird
-        hasSelected = false
-        
-        antwortA.backgroundColor = UIColor.white
-        antwortB.backgroundColor = UIColor.white
-        antwortC.backgroundColor = UIColor.white
-        
-        if (QNumber < frageKarten.count){
-            FrageLabel.text = frageKarten[QNumber].Fragentext
-            antwortA.text! = frageKarten[QNumber].AntwortA
-            antwortB.text! = frageKarten[QNumber].AntwortB
-            antwortC.text! = frageKarten[QNumber].AntwortC
-            
-            print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
-            print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
-            
-            QNumber += 1
-        }else{
-            NSLog("Keine weiteren Fragen")
-        }
-
-    }
-    
     
     @IBAction func naechsteFrage(_ sender: Any){
         antwortA.text = ""
@@ -120,6 +96,31 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         }else{
             textView.backgroundColor = UIColor.red
             hasSelected = true
+        }
+    }
+    
+    
+    //Weist den Textviews den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
+    func pickQuestion(){
+        //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird
+        hasSelected = false
+        
+        antwortA.backgroundColor = UIColor.white
+        antwortB.backgroundColor = UIColor.white
+        antwortC.backgroundColor = UIColor.white
+        
+        if (QNumber < frageKarten.count){
+            FrageLabel.text = frageKarten[QNumber].Fragentext
+            antwortA.text! = frageKarten[QNumber].AntwortA
+            antwortB.text! = frageKarten[QNumber].AntwortB
+            antwortC.text! = frageKarten[QNumber].AntwortC
+            
+            print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
+            print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
+            
+            QNumber += 1
+        }else{
+            NSLog("Keine weiteren Fragen")
         }
     }
     

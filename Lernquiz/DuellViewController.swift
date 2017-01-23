@@ -16,17 +16,14 @@ class DuellViewController: SpielmodusViewController{
     
     var spiel = Spiel()
     
+    @IBAction override func naechsteFrage(_ sender: Any){
+        seconds = 60
+        pickQuestion()
+    }
+    
     
     override func viewDidLoad(){
-        download()
-        //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
-        //        let ScoreDefault = UserDefaults.standard
-        //
-        //        if (ScoreDefault.value(forKey: "Score") != nil){
-        //            Score = ScoreDefault.value(forKey: "Score") as! NSInteger!
-        //            ScoreLabel.text = NSString(format: "Score : %i", Score) as String
-        pickQuestion()
-
+        super.viewDidLoad()
     }
     
     
@@ -40,7 +37,7 @@ class DuellViewController: SpielmodusViewController{
         }else{
             textView.backgroundColor = UIColor.red
         }
-        
+
         hasSelected = true
         //Timer wird abgebrochen und restliche Sekunden bleiben stehen
         timer.invalidate()
@@ -49,36 +46,19 @@ class DuellViewController: SpielmodusViewController{
         naechsteFrageButton.isHidden = false
     }
     
-    override func pickQuestion() {
+    override func pickQuestion(){
+        super.pickQuestion()
         hasSelected = false
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DuellViewController.updateTimer), userInfo: nil, repeats: true)
-        
-        antwortA.backgroundColor = UIColor.white
-        antwortB.backgroundColor = UIColor.white
-        antwortC.backgroundColor = UIColor.white
-        
-        if (QNumber < frageKarten.count){
-            FrageLabel.text = frageKarten[QNumber].Fragentext
-            antwortA.text! = frageKarten[QNumber].AntwortA
-            antwortB.text! = frageKarten[QNumber].AntwortB
-            antwortC.text! = frageKarten[QNumber].AntwortC
-            
-            print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
-            print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
-            
-            QNumber += 1
-        }else{
-            NSLog("Keine weiteren Fragen")
-        }
         updateTimer()
         naechsteFrageButton.isHidden = true
     }
     
+    
     // Schleife basteln, damit pro Runde 3 zufällige Fragen gestellt werden, für die jeweils ein Countdown von 60 Sekunden läuft
     // Wir brauchen eine Function, die die richtig beantworteten Frage in der Runde zusammenzählt
     // Alle 3 Fragen wurden beantwortet, jetzt muss man zur Übersicht mit den Spielständen gelangen
-    
     
     // Timer gebastelt, der pro Frage 60 Sekunden runterzählt um die Frage zu beantworten
     var seconds: Int = 60
@@ -98,11 +78,6 @@ class DuellViewController: SpielmodusViewController{
             antwortAuswerten(antwort: .B)
             antwortAuswerten(antwort: .C)
         }
-    }
-    
-    @IBAction override func naechsteFrage(_ sender: Any){
-        seconds = 60
-        pickQuestion()
     }
     
 }
