@@ -35,5 +35,17 @@ class Spiel : NSObject, NSCoding {
         aCoder.encode(gegner, forKey: "gegner")
     }
     
+    static func == (lhs : Spiel, rhs: Spiel) -> Bool
+    {
+        if lhs.spieler == rhs.spieler
+        {
+            if lhs.gegner == rhs.gegner
+            {
+                return true
+            }
+        }
+        return false
+    }
+    
     
 }

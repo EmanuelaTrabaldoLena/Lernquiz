@@ -11,19 +11,9 @@ import Parse
 
 class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
-    @IBOutlet weak var aktiveSpieleTV: UITableView!{
-        didSet{
-            aktiveSpieleTV.dataSource = self
-            aktiveSpieleTV.delegate = self
-        }
+    @IBOutlet weak var aktiveSpieleTV: UITableView!
 
-    }
-    @IBOutlet weak var inaktiveSpieleTV: UITableView!{
-        didSet{
-            inaktiveSpieleTV.dataSource = self
-            inaktiveSpieleTV.delegate = self
-        }
-    }
+    @IBOutlet weak var inaktiveSpieleTV: UITableView!
     
     var spiel = Spiel()
     var aktiveSpiele = [Spiel]()
@@ -31,39 +21,45 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        let projectQuery = PFQuery(className: "Spiele")
         
-        do{
-            let spiele = try projectQuery.findObjects()
-            for result in spiele{
-                let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
-                let spiel = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
-                
-                // Verlgeich von Spielpartnerwahl, ob Gegner mich als Gegenspieler gewaehlt hat
-                if ((spiel.gegner.username == eigenerName) || (spiel.spieler.username == eigenerName)){
-                    if (spiel.gegner.istDran){
-                        inaktiveSpiele.append(spiel)
-                        
-                    }else{
-                        aktiveSpiele.append(spiel)
-                    }
-                }
-            }
-        }catch{}
+        
+        aktiveSpieleTV.dataSource = self
+        aktiveSpieleTV.delegate = self
+        inaktiveSpieleTV.dataSource = self
+        inaktiveSpieleTV.delegate = self
+        
+        download()
+        
+        
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        
         if (tableView.isEqual(aktiveSpieleTV)){
             let cell = tableView.dequeueReusableCell(withIdentifier: "aktiveSpieleCell", for: indexPath) as? SpielTableViewCell
-            cell?.textLabel?.text = gegnerName
+            
+            
+            if aktiveSpiele[indexPath.row].gegner.username == eigenerName
+            {
+                cell?.textLabel?.text = aktiveSpiele[indexPath.row].spieler.username
+            } else {
+                cell?.textLabel?.text = aktiveSpiele[indexPath.row].gegner.username
+            }
             return cell!
             
         }else{
             let cell = tableView.dequeueReusableCell(withIdentifier: "inaktiveSpieleCell", for: indexPath) as? SpielTableViewCell
-            cell?.textLabel?.text = gegnerName
+            
+            if inaktiveSpiele[indexPath.row].gegner.username == eigenerName
+            {
+                cell?.textLabel?.text = inaktiveSpiele[indexPath.row].spieler.username
+            } else {
+                cell?.textLabel?.text = inaktiveSpiele[indexPath.row].gegner.username
+            }
+            
             return cell!
         }
     }
@@ -80,7 +76,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     
     override func viewDidAppear(_ animated: Bool){
-        download()
+        //download()
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }
@@ -91,18 +87,51 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
         
         do{
             let spiele = try projectQuery.findObjects()
-            for result in spiele{
+            spiele_loop : for result in spiele{
                 let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
                 let spiel = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
                 
+                
+                for lokalesSpiel in aktiveSpiele
+                {
+                    if spiel == lokalesSpiel
+                    {
+                       continue spiele_loop
+                    }
+                }
+                for lokalesSpiel in inaktiveSpiele
+                {
+                    if spiel == lokalesSpiel
+                    {
+                        continue spiele_loop
+                    }
+                }
+                
+                
                 // Verlgeich von Spielpartnerwahl, ob Gegner mich als Gegenspieler gewaehlt hat
                 if ((spiel.gegner.username == eigenerName) || (spiel.spieler.username == eigenerName)){
-                    if (spiel.gegner.istDran){
-                        inaktiveSpiele.append(spiel)
-                        
-                    }else{
-                        aktiveSpiele.append(spiel)
+                    
+                    
+                    if (spiel.gegner.username != eigenerName) //Bin ich der Gegner?
+                    {
+                        if (spiel.gegner.istDran)
+                        {
+                            inaktiveSpiele.append(spiel)
+                            
+                        }else{
+                            aktiveSpiele.append(spiel)
+                        }
+                    } else {
+                        if (spiel.gegner.istDran)
+                        {
+                            aktiveSpiele.append(spiel)
+                            
+                        }else{
+                            inaktiveSpiele.append(spiel)
+                        }
                     }
+                    
+                    
                 }
             }
         }catch{}
