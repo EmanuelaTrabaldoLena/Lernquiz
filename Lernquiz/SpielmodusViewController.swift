@@ -9,16 +9,15 @@
 import UIKit
 import Parse
 
-class SpielmodusViewController: UIViewController {
+class SpielmodusViewController: UIViewController, UITextViewDelegate {
     
     // Outlets fuer Buttons und Labels, die mit Storyboard verknuepft sind
     @IBOutlet weak var FrageLabel: UILabel!
-    @IBOutlet weak var AntwortAButton: UIButton!
-    @IBOutlet weak var AntwortBButton: UIButton!
-    @IBOutlet weak var AntwortCButton: UIButton!
-    @IBOutlet weak var NaechsteFrage: UIButton!
+    @IBOutlet weak var antwortA: UITextView!
+    @IBOutlet weak var antwortB: UITextView!
+    @IBOutlet weak var antwortC: UITextView!
+    @IBOutlet weak var naechsteFrage: UIButton!
     
-//    var gewaehltesFach = [Fach]()
     
     //Gewaehlte Antwort
     var EineAntwort: Bool = true
@@ -32,40 +31,83 @@ class SpielmodusViewController: UIViewController {
     var QNumber = Int()
     var frageKarten = [Fragekarte]()
     
+    //als Identifikator/Nummerierung für textViewTagging()
+    enum TextFieldID : Int { case AntwortA, AntwortB, AntwortC}
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
         download()
         
-        pickQuestion()
+        //pickQuestion()
+        
+        antwortA.delegate = self
+        antwortB.delegate = self
+        antwortC.delegate = self
+        
+        antwortA.isEditable = false
+        antwortB.isEditable = false
+        antwortC.isEditable = false
+        
+        antwortA.textAlignment = .center
+        antwortB.textAlignment = .center
+        antwortC.textAlignment = .center
+        
+        let tapA = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenA))
+        antwortA.addGestureRecognizer(tapA)
+        let tapB = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenB))
+        antwortB.addGestureRecognizer(tapB)
+        let tapC = UITapGestureRecognizer(target: self, action: #selector(SpielmodusViewController.antwortAuswertenC))
+        antwortC.addGestureRecognizer(tapC)
     }
     
-    //Weist den Buttons den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
+    
+    func antwortAuswertenA(){
+        antwortAuswerten(antwort: .A)
+    }
+    
+    
+    func antwortAuswertenB(){
+        antwortAuswerten(antwort: .B)
+    }
+    
+    
+    func antwortAuswertenC(){
+        antwortAuswerten(antwort: .C)
+    }
+    
+    //Weist den Textviews den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
     func pickQuestion(){
         //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird
-        
         hasSelected = false
         
-        AntwortAButton.backgroundColor = UIColor.white
-        AntwortBButton.backgroundColor = UIColor.white
-        AntwortCButton.backgroundColor = UIColor.white
+        antwortA.backgroundColor = UIColor.white
+        antwortB.backgroundColor = UIColor.white
+        antwortC.backgroundColor = UIColor.white
+        
         
         if (QNumber < frageKarten.count){
             FrageLabel.text = frageKarten[QNumber].Fragentext
-            AntwortAButton.setTitle(frageKarten[QNumber].AntwortA, for: UIControlState.normal)
-            AntwortBButton.setTitle(frageKarten[QNumber].AntwortB, for: UIControlState.normal)
-            AntwortCButton.setTitle(frageKarten[QNumber].AntwortC, for: UIControlState.normal)
+            antwortA.text! = frageKarten[QNumber].AntwortA
+            antwortB.text! = frageKarten[QNumber].AntwortB
+            antwortC.text! = frageKarten[QNumber].AntwortC
             
             print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
             print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
             
-            QNumber = QNumber + 1
+            QNumber += 1
         }else{
             NSLog("Keine weiteren Fragen")
         }
+
     }
     
     @IBAction func naechsteFrage(_ sender: Any){
+        
+        antwortA.text = ""
+        antwortB.text = ""
+        antwortC.text = ""
+        
         pickQuestion()
     }
     
@@ -73,28 +115,15 @@ class SpielmodusViewController: UIViewController {
     enum Antwort : Int { case A ; case B ; case C }
     
     func antwortAuswerten(antwort : Antwort){
-        var button : UIButton!
-        switch antwort{ case .A: button = AntwortAButton; case .B: button = AntwortBButton; case .C: button = AntwortCButton }
+        var textView : UITextView!
+        switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
-            button.backgroundColor = UIColor.green
+            textView.backgroundColor = UIColor.green
             hasSelected = true
         }else{
-            button.backgroundColor = UIColor.red
+            textView.backgroundColor = UIColor.red
             hasSelected = true
         }
-    }
-    
-    
-    @IBAction func AntwortA(_ sender: Any){
-        antwortAuswerten(antwort: .A)
-    }
-    
-    @IBAction func AntwortB(_ sender: Any){
-        antwortAuswerten(antwort: .B)
-    }
-    
-    @IBAction func AntwortC(_ sender: Any){
-        antwortAuswerten(antwort: .C)
     }
     
     

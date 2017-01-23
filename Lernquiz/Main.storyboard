@@ -371,7 +371,7 @@
                                                 <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JqX-rU-Cec" id="IeN-XG-TNG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </tableViewCellContentView>
                                             </tableViewCell>
@@ -411,7 +411,7 @@
                                         <rect key="frame" x="0.0" y="28" width="300" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gf9-PP-McM" id="WeK-pX-QBo">
-                                            <rect key="frame" x="0.0" y="0.0" width="300" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -598,76 +598,51 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dLZ-Cy-XHv">
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="AYh-XR-y2W" userLabel="antwortA">
                                         <rect key="frame" x="0.0" y="197" width="300" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="Ry2-OI-rEZ"/>
+                                            <constraint firstAttribute="width" constant="300" id="5zS-94-b9D"/>
+                                            <constraint firstAttribute="height" constant="60" id="u9M-F6-Gto"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="19"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="AntwortA:" destination="2Yb-MH-JLd" eventType="touchDown" id="Rkp-55-fjM"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XzG-E6-XHV">
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1kR-46-Tx0" userLabel="antwortB">
                                         <rect key="frame" x="0.0" y="267" width="300" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="8Lx-U8-Iza"/>
+                                            <constraint firstAttribute="height" constant="60" id="RhW-tr-zfA"/>
+                                            <constraint firstAttribute="width" constant="300" id="uVf-AZ-sZM"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="37"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="AntwortB:" destination="2Yb-MH-JLd" eventType="touchDown" id="Gnl-cZ-Bfh"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zV-iz-oBk">
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="45f-uG-JEJ" userLabel="antwortC">
                                         <rect key="frame" x="0.0" y="337" width="300" height="60"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="bNQ-2u-hfq"/>
+                                            <constraint firstAttribute="height" constant="60" id="JHM-G1-kQl"/>
+                                            <constraint firstAttribute="width" constant="300" id="QM8-t8-wGJ"/>
                                         </constraints>
-                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" title="26"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="8"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="AntwortC:" destination="2Yb-MH-JLd" eventType="touchDown" id="d1h-7Z-lRw"/>
-                                        </connections>
-                                    </button>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                    </textView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="9zV-iz-oBk" firstAttribute="leading" secondItem="WdP-5f-YkG" secondAttribute="leading" id="0Vr-sb-0g8"/>
-                                    <constraint firstAttribute="bottom" secondItem="9zV-iz-oBk" secondAttribute="bottom" id="0d7-6y-Hhp"/>
-                                    <constraint firstAttribute="trailing" secondItem="XzG-E6-XHV" secondAttribute="trailing" id="LMV-hS-I5M"/>
+                                    <constraint firstItem="45f-uG-JEJ" firstAttribute="top" secondItem="1kR-46-Tx0" secondAttribute="bottom" constant="10" id="Kin-xd-zB3"/>
                                     <constraint firstItem="px7-3g-Kfy" firstAttribute="leading" secondItem="WdP-5f-YkG" secondAttribute="leading" id="M9b-b1-n25"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="290" id="PqB-7z-UGR"/>
-                                    <constraint firstItem="9zV-iz-oBk" firstAttribute="top" secondItem="XzG-E6-XHV" secondAttribute="bottom" constant="10" id="VkT-Gs-tGm"/>
-                                    <constraint firstItem="XzG-E6-XHV" firstAttribute="top" secondItem="dLZ-Cy-XHv" secondAttribute="bottom" constant="10" id="Wiz-Op-Lj7"/>
-                                    <constraint firstAttribute="trailing" secondItem="dLZ-Cy-XHv" secondAttribute="trailing" id="XbZ-k7-T4X"/>
-                                    <constraint firstItem="dLZ-Cy-XHv" firstAttribute="leading" secondItem="WdP-5f-YkG" secondAttribute="leading" id="ZaG-zw-qOP"/>
-                                    <constraint firstItem="9zV-iz-oBk" firstAttribute="top" secondItem="XzG-E6-XHV" secondAttribute="bottom" constant="10" id="cUM-TT-71z"/>
+                                    <constraint firstItem="1kR-46-Tx0" firstAttribute="top" secondItem="AYh-XR-y2W" secondAttribute="bottom" constant="10" id="QOp-EW-3zY"/>
                                     <constraint firstItem="px7-3g-Kfy" firstAttribute="leading" secondItem="WdP-5f-YkG" secondAttribute="leading" id="dT2-cj-kma"/>
                                     <constraint firstAttribute="trailing" secondItem="px7-3g-Kfy" secondAttribute="trailing" id="hfM-l0-Zxj"/>
-                                    <constraint firstItem="XzG-E6-XHV" firstAttribute="leading" secondItem="WdP-5f-YkG" secondAttribute="leading" id="psR-Kh-pgY"/>
+                                    <constraint firstItem="px7-3g-Kfy" firstAttribute="leading" secondItem="WdP-5f-YkG" secondAttribute="leading" id="oa5-6u-gak"/>
                                     <constraint firstAttribute="trailing" secondItem="px7-3g-Kfy" secondAttribute="trailing" id="rTc-uG-zVk"/>
-                                    <constraint firstAttribute="trailing" secondItem="9zV-iz-oBk" secondAttribute="trailing" id="tXA-MX-Qdo"/>
-                                    <constraint firstItem="XzG-E6-XHV" firstAttribute="top" secondItem="dLZ-Cy-XHv" secondAttribute="bottom" constant="10" id="tda-8Y-wwM"/>
-                                    <constraint firstItem="dLZ-Cy-XHv" firstAttribute="top" secondItem="px7-3g-Kfy" secondAttribute="bottom" constant="10" id="zls-zR-tZg"/>
+                                    <constraint firstAttribute="trailing" secondItem="px7-3g-Kfy" secondAttribute="trailing" id="xvn-ZF-9Mr"/>
+                                    <constraint firstItem="px7-3g-Kfy" firstAttribute="top" secondItem="WdP-5f-YkG" secondAttribute="top" id="zdZ-7c-IWd"/>
+                                    <constraint firstItem="AYh-XR-y2W" firstAttribute="top" secondItem="px7-3g-Kfy" secondAttribute="bottom" constant="10" id="zhK-9s-c0B"/>
                                 </constraints>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score : " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmq-Lv-sNS" userLabel="Score Label">
@@ -739,18 +714,19 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="AntwortAButton" destination="dLZ-Cy-XHv" id="1nM-CZ-FcZ"/>
-                        <outlet property="AntwortBButton" destination="XzG-E6-XHV" id="QfV-T9-BkI"/>
-                        <outlet property="AntwortCButton" destination="9zV-iz-oBk" id="kv6-Dg-Y3X"/>
                         <outlet property="FrageBewerten" destination="CSL-x1-lFu" id="3Od-St-Y9l"/>
                         <outlet property="FrageLabel" destination="px7-3g-Kfy" id="NX9-mG-xiH"/>
                         <outlet property="ScoreLabel" destination="jmq-Lv-sNS" id="vho-Ub-UkP"/>
+                        <outlet property="antwortA" destination="AYh-XR-y2W" id="ApD-pI-jCE"/>
+                        <outlet property="antwortB" destination="1kR-46-Tx0" id="D5u-Bn-hq4"/>
+                        <outlet property="antwortC" destination="45f-uG-JEJ" id="EtL-qM-IBI"/>
+                        <outlet property="naechsteFrage" destination="KXQ-OT-lIu" id="HZE-z4-ixM"/>
                         <outlet property="naechsteFrageButton" destination="KXQ-OT-lIu" id="qBB-Wa-Ksc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCr-Kr-LSv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-485.625" y="1177.5"/>
+            <point key="canvasLocation" x="-485.625" y="1176.7605633802816"/>
         </scene>
         <!--NeuesSpielMenü-->
         <scene sceneID="ple-k1-C7d">

@@ -20,10 +20,8 @@ class EinzelSpielerViewController: SpielmodusViewController{
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet var FrageBewerten: UIButton!
     
-    
     //neu eingefügt um die Funktion naechsteFrage schreiben zu können, die beim Laden einer nächsten Frage auch den "Frage melden"-Button zurücksetzt
     @IBOutlet var naechsteFrageButton: UIButton!
-    
     
     
     //Wenn man den Button "Nächste Frage" anklicht wird eine neue Frage geladen und der "Frage melden"-Button zurücksetzt
@@ -32,9 +30,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
         zuruecksetztenFrageBewertenButton()
         pickQuestion()
     }
-    
-    
-    
+
     
     //Funktion die es erlaubt eine Frage zu melden, dabei wird der Text im Button zu "Fehler gemeldet" geändert und eine Meldung zur Variablen "meldung" hinzugefügt
     
@@ -87,8 +83,8 @@ class EinzelSpielerViewController: SpielmodusViewController{
     }
     
     override func antwortAuswerten(antwort : Antwort){
-        var button : UIButton!
-        switch antwort{ case .A: button = AntwortAButton; case .B: button = AntwortBButton; case .C: button = AntwortCButton }
+        var textView : UITextView!
+        switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
             if (hasSelected != true){
                 Score += 1
@@ -97,10 +93,10 @@ class EinzelSpielerViewController: SpielmodusViewController{
                 ScoreDefault.set(Score, forKey: "Score")
                 ScoreDefault.synchronize()
             }
-            button.backgroundColor = UIColor.green
+            textView.backgroundColor = UIColor.green
             hasSelected = true
         }else{
-            button.backgroundColor = UIColor.red
+            textView.backgroundColor = UIColor.red
             hasSelected = true
         }
     }

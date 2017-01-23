@@ -43,7 +43,6 @@
 		88E0EB721E1FFEFF006BAA78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB711E1FFEFF006BAA78 /* Assets.xcassets */; };
 		88E0EB751E1FFEFF006BAA78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB731E1FFEFF006BAA78 /* LaunchScreen.storyboard */; };
 		88E0EB7D1E1FFF1F006BAA78 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88E0EB7C1E1FFF1F006BAA78 /* Main.storyboard */; };
-		88E0EB821E20004F006BAA78 /* Duell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB811E20004F006BAA78 /* Duell.swift */; };
 		88E0EB841E200075006BAA78 /* Fach.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB831E200075006BAA78 /* Fach.swift */; };
 		88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EB851E200089006BAA78 /* Fragekarte.swift */; };
 		88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */; };
@@ -95,7 +94,6 @@
 		88E0EB741E1FFEFF006BAA78 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88E0EB761E1FFEFF006BAA78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		88E0EB7C1E1FFF1F006BAA78 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		88E0EB811E20004F006BAA78 /* Duell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Duell.swift; sourceTree = "<group>"; };
 		88E0EB831E200075006BAA78 /* Fach.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fach.swift; sourceTree = "<group>"; };
 		88E0EB851E200089006BAA78 /* Fragekarte.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fragekarte.swift; sourceTree = "<group>"; };
 		88E0EBAD1E2002E6006BAA78 /* AlleFaecherViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlleFaecherViewController.swift; sourceTree = "<group>"; };
@@ -238,7 +236,6 @@
 		88E0EB7E1E1FFFAD006BAA78 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				88E0EB811E20004F006BAA78 /* Duell.swift */,
 				88E0EB831E200075006BAA78 /* Fach.swift */,
 				88E0EB851E200089006BAA78 /* Fragekarte.swift */,
 				88FF0EB71E2CE63D00513373 /* Spieler.swift */,
@@ -396,7 +393,6 @@
 				88E0EB6B1E1FFEFF006BAA78 /* AppDelegate.swift in Sources */,
 				61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */,
 				88E0EBB21E20035C006BAA78 /* CheckBoxView.swift in Sources */,
-				88E0EB821E20004F006BAA78 /* Duell.swift in Sources */,
 				88E0EBB61E2003C4006BAA78 /* DuellViewController.swift in Sources */,
 				88E0EB841E200075006BAA78 /* Fach.swift in Sources */,
 				88250A5D1E2FA8DE00B6E1AB /* Model.xcdatamodeld in Sources */,

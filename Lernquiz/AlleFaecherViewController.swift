@@ -93,16 +93,6 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
                         print("Fehler beim Hochladen!")
                     }
         }
-        
-//        let userTable = PFObject(className: "User")
-//        userTable ["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: gewaehlteVorlesungen))
-//        userTable.saveInBackground()
-//        do{
-//            print("Versuche gewaehlteVorlesungen in User hochzuladen")
-//            try userTable.save()
-//        }catch{
-//            print("Fehler beim Hochladen!")
-//        }
     }
     
     
@@ -119,8 +109,6 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     //Sobald die Searchbar angewaehlt wird, leert sich die TableView und nur noch Ergebnisse, die mit geschriebenen Text teilweise uebereinstimmen, werden angezeigt
     func updateSearchResults(for searchController: UISearchController){
         self.gefilterterInhalt.removeAll(keepingCapacity: false)
-        //let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        //let array = (vorlesungsverzeichnis as NSArray).filtered(using: searchPredicate)
         let array = vorlesungsverzeichnis.filter{ result in
             return result.name.contains(searchController.searchBar.text!)
         }
