@@ -70,11 +70,11 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if (tableView.isEqual(aktiveSpieleTV)){
-//           return aktiveSpiele.count
-            return 2
+           return aktiveSpiele.count
+           
         }else{
- //           return inaktiveSpiele.count
-            return 2
+            return inaktiveSpiele.count
+           
         }
     }
     

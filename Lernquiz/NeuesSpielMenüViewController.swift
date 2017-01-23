@@ -39,6 +39,12 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         self.searchController.searchBar.placeholder = "Welchen Spieler suchst du?"
         self.spielerSuchen.reloadData()
         
+        dowloadUser()
+        
+    }
+
+    func dowloadUser(){
+        
         let query = PFUser.query()
         
         query?.findObjectsInBackground(block: { (objects, error) in
@@ -54,18 +60,28 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                     if let user = object as? PFUser{
                         
                         let usernameString = user.username
+                        
                         //Eigener Username wird nicht angezeigt
+                        
                         if(usernameString != eigenerName) {
-                            self.usernames.append(usernameString!)
+                            // Es werden nur die User angezeigt, die auch mein gewaehltes Fach in ihrem FaecherArray haben
+                            let meinFaecherHuelle = user["MeineFaecher"] as! NSMutableArray
+                            let meineFaecherl = NSKeyedUnarchiver.unarchiveObject(with: meinFaecherHuelle.firstObject as! Data) as! [Fach]
+                            
+                            for mitSpielerFach in meineFaecherl
+                            {
+                                if fachName == mitSpielerFach.name
+                                {
+                                    self.usernames.append(usernameString!)
+                                }
+                            }
                         }
                     }
                 }
             }
             self.spielerSuchen.reloadData()
         })
-        
     }
-
     
     //Beim auswaehlen eines Spielers aus der Suchtableview, wird man direkt in das DuellMenue weitergeleitet und das Spiel steht bei "Du bist dran"
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
@@ -127,11 +143,12 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         let row = indexPath.row
         gegnerName = usernames[row]
         let mitSpieler = Spieler(username: gegnerName, istDran: false)
+        let dieserSpieler = Spieler(username: eigenerName, istDran: true)
         
         print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
         searchController.isActive = false
-        let erstesSpiel = Spiel.init()
+        let erstesSpiel = Spiel(spieler: dieserSpieler, gegner: mitSpieler)
         upload(spiel: erstesSpiel)
         performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
     }
