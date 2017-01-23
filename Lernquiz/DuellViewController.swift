@@ -49,6 +49,31 @@ class DuellViewController: SpielmodusViewController{
         naechsteFrageButton.isHidden = false
     }
     
+    override func pickQuestion() {
+        hasSelected = false
+        
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DuellViewController.updateTimer), userInfo: nil, repeats: true)
+        
+        antwortA.backgroundColor = UIColor.white
+        antwortB.backgroundColor = UIColor.white
+        antwortC.backgroundColor = UIColor.white
+        
+        if (QNumber < frageKarten.count){
+            FrageLabel.text = frageKarten[QNumber].Fragentext
+            antwortA.text! = frageKarten[QNumber].AntwortA
+            antwortB.text! = frageKarten[QNumber].AntwortB
+            antwortC.text! = frageKarten[QNumber].AntwortC
+            
+            print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
+            print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
+            
+            QNumber += 1
+        }else{
+            NSLog("Keine weiteren Fragen")
+        }
+        updateTimer()
+        naechsteFrageButton.isHidden = true
+    }
     
     // Schleife basteln, damit pro Runde 3 zufällige Fragen gestellt werden, für die jeweils ein Countdown von 60 Sekunden läuft
     // Wir brauchen eine Function, die die richtig beantworteten Frage in der Runde zusammenzählt
