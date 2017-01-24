@@ -4,7 +4,7 @@
 <dict>
 	<key>keychain-access-groups</key>
 	<array>
-		<string>$(AppIdentifierPrefix)de.LisaLohner.lernquiz</string>
+		<string>$(AppIdentifierPrefix)de.etl.lernquiz</string>
 	</array>
 </dict>
 </plist>

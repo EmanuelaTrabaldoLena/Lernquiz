@@ -35,12 +35,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
-        //vergleicht ob man schon vorher auf logout geklickt hat
-        if ausgeloggt == false && PFUser.current() != nil{
-            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-        }
-        self.navigationController?.navigationBar.isHidden = true
-        
         
         if (FBSDKAccessToken.current() != nil){
             print("Du bist eingeloggt")
@@ -55,6 +49,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         //Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //vergleicht ob man schon vorher auf logout geklickt hat
+        if ausgeloggt == false && PFUser.current() != nil{
+            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+        }
+        self.navigationController?.navigationBar.isHidden = true
+        ausgeloggt = false
     }
     
     
