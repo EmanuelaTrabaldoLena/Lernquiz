@@ -26,7 +26,8 @@
             
             //Damit Fehler fuer Constraints nicht immer in der Konsole angezeigt werden
             UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
-
+            IQKeyboardManager.sharedManager().enable = true
+            
             //ssh -i "/Users/emanuela/Downloads/LernquizKey.pem" ubuntu@35.157.28.174
             //cd parse/htdocs
             //nano server.js startet Server mit richtigen Einstellungen, Daten daraus bezogen

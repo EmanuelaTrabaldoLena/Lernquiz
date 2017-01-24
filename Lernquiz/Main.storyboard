@@ -1361,9 +1361,9 @@
         <image name="Lernquiz" width="259" height="98"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gyV-bM-mQh"/>
-        <segue reference="HDp-6Q-9mS"/>
+        <segue reference="VOF-yz-IOJ"/>
         <segue reference="1nf-jn-KHj"/>
+        <segue reference="gyV-bM-mQh"/>
         <segue reference="9vV-oY-gHf"/>
     </inferredMetricsTieBreakers>
 </document>
