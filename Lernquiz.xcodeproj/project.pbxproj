@@ -337,7 +337,7 @@
 				TargetAttributes = {
 					88E0EB661E1FFEFF006BAA78 = {
 						CreatedOnToolsVersion = 8.2;
-						DevelopmentTeam = F9D7M7QL2K;
+						DevelopmentTeam = XP8YAJV2B2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Keychain = {
@@ -527,7 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lernquiz/Lernquiz.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = F9D7M7QL2K;
+				DEVELOPMENT_TEAM = XP8YAJV2B2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -536,7 +536,7 @@
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.etl.lernquiz;
+				PRODUCT_BUNDLE_IDENTIFIER = de.LisaLohner.lernquiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -548,7 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Lernquiz/Lernquiz.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = F9D7M7QL2K;
+				DEVELOPMENT_TEAM = XP8YAJV2B2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -557,7 +557,7 @@
 				);
 				INFOPLIST_FILE = Lernquiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = de.etl.lernquiz;
+				PRODUCT_BUNDLE_IDENTIFIER = de.LisaLohner.lernquiz;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

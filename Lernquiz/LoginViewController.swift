@@ -165,6 +165,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
                         //In der globalen Variable eigenerName wird der eingegebene Username gespeichert
                         eigenerName = self.usernameTextField.text!
                         print("Anmeldung mit Usernamen \(eigenerName) erfolgreich.")
+                        ausgeloggt = false
                     }
                 })
                 

@@ -180,5 +180,6 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         let erstesSpiel = Spiel(spieler: dieserSpieler, gegner: mitSpieler)
         upload(spiel: erstesSpiel)
         performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
+        self.navigationController?.popViewController(animated: true)
     }
 }
