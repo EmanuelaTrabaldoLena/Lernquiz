@@ -23,13 +23,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         didSet{usernameTextField.delegate = self}
     }
     @IBOutlet var passwordTextField: UITextField! {
+        
         didSet{passwordTextField.delegate = self}
     }
     
-    
+
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        usernameTextField.autocapitalizationType = UITextAutocapitalizationType.none
+        passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         //vergleicht ob man schon vorher auf logout geklickt hat
         if ausgeloggt == false && PFUser.current() != nil{
