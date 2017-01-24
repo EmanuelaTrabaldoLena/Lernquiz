@@ -55,12 +55,10 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     //Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
     internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell{
-            
             let row = indexPath.row
             fachCell.textLabel?.text = gewaehlteVorlesungen[row].name
             
             return fachCell
-            
         }else{
             return GewaehltesFachTableViewCell()
         }

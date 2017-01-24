@@ -10,10 +10,9 @@ import UIKit
 import Parse
 
 //Controller fuer die gesamte View von AlleFaecher
-class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchResultsUpdating{
+class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
     var meineFaecherVC: MeineFaecherViewController!
-    var searchController = UISearchController()
     var gefilterterInhalt = [Fach]()
     
     @IBOutlet weak var alleFaecher: UITableView!
@@ -25,32 +24,19 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         
         alleFaecher.dataSource = self
         alleFaecher.delegate = self
-        
-        self.searchController = UISearchController(searchResultsController: nil)
-        self.searchController.searchResultsUpdater = self
-        self.searchController.dimsBackgroundDuringPresentation = false
-        self.alleFaecher.tableHeaderView = self.searchController.searchBar
-        self.searchController.searchBar.placeholder = "Welches Fach suchst du?"
-        self.alleFaecher.reloadData()
     }
     
     
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
     @IBAction func hinzufuegen(_ sender: Any){
         save(fachArray: gewaehlteVorlesungen)
-        //Searchbar wird deaktiviert bevor die View gewechselt wird
-        searchController.isActive = false
         performSegue(withIdentifier: "AlleFaecher2MeineFaecher", sender: faecherHinzufuegen)
     }
     
     
     //Zeilen werden gezaehlt, Anzahl der Zeilen wird zurueckgegeben
     internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if(self.searchController.isActive){
-            return self.gefilterterInhalt.count
-        }else{
             return vorlesungsverzeichnis.count
-        }
     }
     
     
@@ -63,15 +49,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
             fachCell.configure(fach: fach)
             //Falls bereits Faecher ausgewaehlt sind, werden die Checkboxen gefuellt
             fachCell.gewaehlt(cellFach: fach)
-
-            //Falls man in der Searchbar ist, wird nur der gefilterte Inhalt angezeigt
-            if(self.searchController.isActive){
-                    fachCell.textLabel!.text = self.gefilterterInhalt[indexPath.row].name
-                    fachCell.configure(fach: gefilterterInhalt[indexPath.row])
-                    fachCell.gewaehlt(cellFach: gefilterterInhalt[indexPath.row])
-            }
             return fachCell
-            
         }else{
             return FachTableViewCell()
         }
@@ -104,16 +82,4 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         }
         return nameArray
     }
-    
-    
-    //Sobald die Searchbar angewaehlt wird, leert sich die TableView und nur noch Ergebnisse, die mit geschriebenen Text teilweise uebereinstimmen, werden angezeigt
-    func updateSearchResults(for searchController: UISearchController){
-        self.gefilterterInhalt.removeAll(keepingCapacity: false)
-        let array = vorlesungsverzeichnis.filter{ result in
-            return result.name.contains(searchController.searchBar.text!)
-        }
-        self.gefilterterInhalt = array
-        self.alleFaecher.reloadData()
-    }
-    
 }
