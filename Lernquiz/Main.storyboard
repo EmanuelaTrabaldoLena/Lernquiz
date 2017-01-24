@@ -447,6 +447,7 @@
                         <outlet property="aktiveSpieleTV" destination="ECX-KH-1eb" id="6nm-HK-MV8"/>
                         <outlet property="inaktiveSpieleTV" destination="RnW-Wi-tIG" id="hHI-Sl-mRg"/>
                         <segue destination="fa5-Ga-zjY" kind="show" identifier="DuellMenueVC2DuellVC" id="1nf-jn-KHj"/>
+                        <segue destination="rZY-1E-0Eq" kind="show" identifier="DuellMenue2Menue" id="HDp-6Q-9mS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsx-4K-Y7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1360,9 +1361,9 @@
         <image name="Lernquiz" width="259" height="98"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9vV-oY-gHf"/>
-        <segue reference="udV-oF-PnC"/>
         <segue reference="gyV-bM-mQh"/>
+        <segue reference="HDp-6Q-9mS"/>
         <segue reference="1nf-jn-KHj"/>
+        <segue reference="9vV-oY-gHf"/>
     </inferredMetricsTieBreakers>
 </document>

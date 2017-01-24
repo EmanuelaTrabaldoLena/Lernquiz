@@ -37,6 +37,26 @@ class EinzelSpielerViewController: SpielmodusViewController{
         }
     }
     
+    
+    override func antwortAuswerten(antwort : Antwort){
+        var textView : UITextView!
+        switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
+        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
+            if (hasSelected != true){
+                Score += 1
+                ScoreLabel.text = NSString(format: "Score : %i", Score) as String
+                let ScoreDefault = UserDefaults.standard
+                ScoreDefault.set(Score, forKey: "Score")
+                ScoreDefault.synchronize()
+            }
+            textView.backgroundColor = UIColor.green
+            hasSelected = true
+        }else{
+            textView.backgroundColor = UIColor.red
+            hasSelected = true
+        }
+    }
+    
     //Funktion die es erlaubt eine Frage zu melden, dabei wird der Text im Button zu "Fehler gemeldet" geändert und eine Meldung zur Variablen "meldung" hinzugefügt
     
     //es fehlt noch die explizite Speicherung dieser Meldung für die gerade gespielte Frage. Momentan existiert einfach nur die Zahl als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

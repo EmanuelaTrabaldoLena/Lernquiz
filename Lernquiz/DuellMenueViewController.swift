@@ -19,9 +19,10 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     var aktiveSpiele = [Spiel]()
     var inaktiveSpiele = [Spiel]()
     
+    
+    
     override func viewDidLoad(){
         super.viewDidLoad()
-        
         
         aktiveSpieleTV.dataSource = self
         aktiveSpieleTV.delegate = self
@@ -30,9 +31,9 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
         
         //download()
         
-        
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
+        
     }
     
     
