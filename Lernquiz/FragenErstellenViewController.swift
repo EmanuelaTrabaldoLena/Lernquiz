@@ -30,6 +30,12 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         antwortBerstellen.delegate = self
         antwortCerstellen.delegate = self
         
+        //Erster Buchstabe im Feld wird nicht gezwungenermaßen groß geschrieben
+        frageErstellen.autocapitalizationType = UITextAutocapitalizationType.none
+        antwortAerstellen.autocapitalizationType = UITextAutocapitalizationType.none
+        antwortBerstellen.autocapitalizationType = UITextAutocapitalizationType.none
+        antwortCerstellen.autocapitalizationType = UITextAutocapitalizationType.none
+        
         textViewTagging()
         
         //Berührungserkennung um das Keyboard verschwinden zu lassen
