@@ -12,23 +12,7 @@ import Parse
 //Controller fuer die gesamte View MeineFaecher
 class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
     
-    
-    //User kann sich ausloggen und landet wieder auf der LoginView
-    @IBAction func logout(_ sender: Any){
-        PFUser .logOut()
-       
-        ausgeloggt = true
-        
-        performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
-    }
-    
-    //Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
-    @IBAction func hinzufuegen(_ sender: UIButton){
-        performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
-    }
-    
     @IBOutlet weak var meineFaecher: UITableView!
-    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -36,6 +20,20 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         meineFaecher.dataSource = self
         meineFaecher.delegate = self
         meineFaecher.register(GewaehltesFachTableViewCell.self, forCellReuseIdentifier: "GewaehltesFachTableViewCell")
+    }
+    
+    
+    //User kann sich ausloggen und landet wieder auf der LoginView
+    @IBAction func logout(_ sender: Any){
+        PFUser .logOut()
+        ausgeloggt = true
+        performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
+    }
+    
+    
+    //Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
+    @IBAction func hinzufuegen(_ sender: UIButton){
+        performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
     
     
@@ -63,6 +61,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
             return GewaehltesFachTableViewCell()
         }
     }
+    
     
     //Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){

@@ -55,6 +55,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
+    
     //Gewaehlte Faecher werden in Parse hochgeladen und lokal im Systemspeicher abgelegt
     func save(fachArray: [Fach]){
         allgemein.gewaehlteVorlesungenLS = gewaehlteVorlesungen as NSObject?
