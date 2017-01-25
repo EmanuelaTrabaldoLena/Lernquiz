@@ -1194,6 +1194,7 @@
                         <outlet property="antwortC" destination="prX-Ty-OrD" id="GnC-Ju-rdZ"/>
                         <outlet property="naechsteFrage" destination="gOB-xR-692" id="4Ix-HY-C9N"/>
                         <outlet property="naechsteFrageButton" destination="gOB-xR-692" id="OI4-lV-R24"/>
+                        <segue destination="8xc-mo-yjm" kind="show" identifier="DuellVC2DuellSpielstandVC" id="c4W-3n-34C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVy-zx-nn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1361,9 +1362,10 @@
         <image name="Lernquiz" width="259" height="98"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="9vV-oY-gHf"/>
         <segue reference="VOF-yz-IOJ"/>
+        <segue reference="c4W-3n-34C"/>
         <segue reference="1nf-jn-KHj"/>
         <segue reference="gyV-bM-mQh"/>
-        <segue reference="9vV-oY-gHf"/>
     </inferredMetricsTieBreakers>
 </document>

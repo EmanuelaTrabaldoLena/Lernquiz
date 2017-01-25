@@ -29,6 +29,7 @@ class DuellViewController: SpielmodusViewController{
     override func viewDidLoad(){
         super.viewDidLoad()
         ermittleRelevanteFragen()
+        pickQuestion(frageKartenLokal: relevanteFragen)
     }
     
     
@@ -72,17 +73,38 @@ class DuellViewController: SpielmodusViewController{
     }
     
     
+    
+    
+    func einzelRundenAuswertung(richtigeAntwort : Bool)
+    {
+        if spiel.spieler.username == eigenerName
+        {
+            spiel.spieler.einzelrunde[runde - 1][QNumber - 1] = richtigeAntwort
+        } else {
+            spiel.gegner.einzelrunde[runde - 1][QNumber - 1] = richtigeAntwort
+        }
+    }
+    
+    
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
     override func antwortAuswerten(antwort : Antwort, firstTime : Bool)
     {
         var textView : UITextView!
         switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         
-        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue)
+        if Int(relevanteFragen[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue)
         {
             textView.backgroundColor = UIColor.green
             
+            if firstTime {
+            einzelRundenAuswertung(richtigeAntwort: true)
+            }
+            
         }else{
+            if firstTime {
+            einzelRundenAuswertung(richtigeAntwort: false)
+            }
+            
             textView.backgroundColor = UIColor.red
             
             
@@ -102,23 +124,78 @@ class DuellViewController: SpielmodusViewController{
                 }
             }
             
-            
         }
-
-        hasSelected = true
-        //Timer wird abgebrochen und restliche Sekunden bleiben stehen
-        timer.invalidate()
-        
-        
-       
-        
-        
-        CountdownLabel.text = "\(seconds)"
-        //Nachdem eine Antwort gedrückt wurde, erscheint der "Naechste Frage Button"
-        naechsteFrageButton.isHidden = false
+        if firstTime {
+            upload()
+            
+            hasSelected = true
+            //Timer wird abgebrochen und restliche Sekunden bleiben stehen
+            timer.invalidate()
+            
+            CountdownLabel.text = "\(seconds)"
+            //Nachdem eine Antwort gedrückt wurde, erscheint der "Naechste Frage Button"
+            naechsteFrageButton.isHidden = false
+            //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
+            
+            
+            if (super.QNumber == 3)
+            {
+                naechsteFrageButton.isHidden = true
+                delay(2.5, closure: {
+                self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
+                })
+            }
+        }
     }
     
     
+    //Überreiche Spiel an Übersicht
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        let vc = segue.destination as! DuellSpielstandViewController
+        vc.spiel = sender as! Spiel
+    }
+    
+    
+    func upload()
+    {
+        loescheAltesSpiel()
+
+        let hochzuladendesObjekt = PFObject(className: "Spiele")
+        hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
+        hochzuladendesObjekt["Spieler"] = eigenerName
+        hochzuladendesObjekt["Gegner"] = gegnerName
+        do{
+            try hochzuladendesObjekt.save()
+        }catch{
+            print("Fehler beim Upload der Spieldateien!")
+        }
+        
+    }
+    
+    
+    func loescheAltesSpiel()
+    {
+        
+        let projectQuery = PFQuery(className: "Spiele")
+        do{
+            let spiele = try projectQuery.findObjects()
+            for result in spiele{
+                let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
+                let spielLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
+                
+                if spiel == spielLokal
+                {
+                    do {
+                        try result.delete()
+                    } catch {}
+                }
+                
+            }
+        }catch{}
+        
+        
+    }
     
     override func pickQuestion(frageKartenLokal : [Fragekarte])
     {

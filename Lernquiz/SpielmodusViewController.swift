@@ -35,7 +35,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         download()
-        pickQuestion(frageKartenLokal: frageKarten)
+        //pickQuestion(frageKartenLokal: frageKarten)
         
         antwortA.delegate = self
         antwortB.delegate = self

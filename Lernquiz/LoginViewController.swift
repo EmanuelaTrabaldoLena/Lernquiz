@@ -55,6 +55,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     override func viewDidAppear(_ animated: Bool) {
         //vergleicht ob man schon vorher auf logout geklickt hat
         if ausgeloggt == false && PFUser.current() != nil{
+            eigenerName = self.usernameTextField.text!
             performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
         }
         self.navigationController?.navigationBar.isHidden = true

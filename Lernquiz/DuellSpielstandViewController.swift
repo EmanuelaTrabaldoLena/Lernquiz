@@ -17,7 +17,9 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
 
     var spiel = Spiel()
     
-    override func viewWillAppear(_ animated: Bool) {
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
         gegenSpieler.text = gegnerName
         
     }
@@ -43,37 +45,42 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
         
         cell.rundenLabel.text = "Runde \(indexPath.row + 1)"
         
-        if let runde = spiel.spieler.einzelrunde?[0]
+        
+        
+        
+        if let runde = spiel.spieler.runden[indexPath.row][0]
         {
             if runde == true {cell.duS1.backgroundColor = UIColor.green}
             if runde == false {cell.duS1.backgroundColor = UIColor.red}
         }
-        if let runde = spiel.spieler.einzelrunde?[1]
+        if let runde = spiel.spieler.runden[indexPath.row][1]
         {
             if runde == true {cell.duS2.backgroundColor = UIColor.green}
             if runde == false {cell.duS2.backgroundColor = UIColor.red}
         }
-        if let runde = spiel.spieler.einzelrunde?[2]
+        if let runde = spiel.spieler.runden[indexPath.row][2]
         {
             if runde == true {cell.duS3.backgroundColor = UIColor.green}
             if runde == false {cell.duS3.backgroundColor = UIColor.red}
         }
         
-        if let runde = spiel.gegner.einzelrunde?[0]
+        if let runde = spiel.gegner.runden[indexPath.row][0]
         {
             if runde == true {cell.gsS1.backgroundColor = UIColor.green}
             if runde == false {cell.gsS1.backgroundColor = UIColor.red}
         }
-        if let runde = spiel.gegner.einzelrunde?[1]
+        if let runde = spiel.gegner.runden[indexPath.row][1]
         {
             if runde == true {cell.gsS2.backgroundColor = UIColor.green}
             if runde == false {cell.gsS2.backgroundColor = UIColor.red}
         }
-        if let runde = spiel.gegner.einzelrunde?[2]
+        if let runde = spiel.gegner.runden[indexPath.row][2]
         {
             if runde == true {cell.gsS3.backgroundColor = UIColor.green}
             if runde == false {cell.gsS3.backgroundColor = UIColor.red}
         }
+        
+        
 
         return cell
     }
