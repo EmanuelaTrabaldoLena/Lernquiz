@@ -17,6 +17,8 @@ class Spiel : NSObject, NSCoding {
     
     
     override init(){
+        //
+        let x = 0
     }
     
     
