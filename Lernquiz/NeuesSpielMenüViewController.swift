@@ -24,8 +24,10 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     @IBOutlet weak var belSpieler: UIButton!
     @IBAction func beliebigerSpieler(_ sender: Any){
+        _ = self.navigationController?.popViewController(animated: true)
+
         searchController.isActive = false
-        performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: belSpieler)
+        
     }
     
     
@@ -179,7 +181,6 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         searchController.isActive = false
         let erstesSpiel = Spiel(spieler: dieserSpieler, gegner: mitSpieler, fach: Fach(name: fachName), runde: 0)
         upload(spiel: erstesSpiel)
-        performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
-        self.navigationController?.popViewController(animated: true)
+        _ = self.navigationController?.popViewController(animated: true)
     }
 }

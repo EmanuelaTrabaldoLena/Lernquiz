@@ -141,6 +141,20 @@ class DuellViewController: SpielmodusViewController{
             if (super.QNumber == 3)
             {
                 spiel.runde += 1
+                
+                
+                
+                if spiel.gegner.username == eigenerName
+                {
+                    spiel.gegner.istDran = false
+                    spiel.spieler.istDran = true
+                } else {
+                    spiel.gegner.istDran = true
+                    spiel.spieler.istDran = false
+                }
+                
+                
+                
                 naechsteFrageButton.isHidden = true
                 delay(2.5, closure: {
                 self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
