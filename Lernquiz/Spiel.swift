@@ -66,7 +66,7 @@ class Spiel : NSObject, NSCoding {
         aCoder.encode(spieler, forKey: "spieler")
         aCoder.encode(gegner, forKey: "gegner")
         aCoder.encode(fachName, forKey: "fachName")
-        //aCoder.encode((runde as! String), forKey: "runde")
+        aCoder.encode(String(runde), forKey: "runde")
         
         //Der Decoder hat Probleme mit Swift Datenstrukturen, weswegen hier in Obj-C Datenstrukturen umgecastet wird.
 

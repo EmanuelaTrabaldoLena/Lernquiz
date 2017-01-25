@@ -15,8 +15,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "20"
             endingLineNumber = "20"
-            landmarkName = "naechsteFrage(_:)"
-            landmarkType = "7">
+            landmarkName = "DuellViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
             endingLineNumber = "78"
-            landmarkName = "updateTimer()"
+            landmarkName = "einzelRundenAuswertung(richtigeAntwort:)"
             landmarkType = "7">
             <Locations>
                <Location

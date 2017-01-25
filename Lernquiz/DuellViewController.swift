@@ -79,9 +79,9 @@ class DuellViewController: SpielmodusViewController{
     {
         if spiel.spieler.username == eigenerName
         {
-            spiel.spieler.einzelrunde[runde - 1][QNumber - 1] = richtigeAntwort
+            spiel.spieler.runden[spiel.runde][QNumber - 1] = richtigeAntwort
         } else {
-            spiel.gegner.einzelrunde[runde - 1][QNumber - 1] = richtigeAntwort
+            spiel.gegner.runden[spiel.runde][QNumber - 1] = richtigeAntwort
         }
     }
     
@@ -135,11 +135,12 @@ class DuellViewController: SpielmodusViewController{
             CountdownLabel.text = "\(seconds)"
             //Nachdem eine Antwort gedrückt wurde, erscheint der "Naechste Frage Button"
             naechsteFrageButton.isHidden = false
+            
+            
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
-            
-            
             if (super.QNumber == 3)
             {
+                spiel.runde += 1
                 naechsteFrageButton.isHidden = true
                 delay(2.5, closure: {
                 self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)

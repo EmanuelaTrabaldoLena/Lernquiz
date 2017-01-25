@@ -11,16 +11,16 @@ import Foundation
 class Spieler : NSObject, NSCoding {
     
     var username : String
+    var istDranString : String = "false"
+    var runden : [[Bool?]] = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
     var istDran : Bool = false
-    {
+        {
         didSet
         {
             if istDran == true {istDranString = "true"}
             if istDran == false {istDranString = "false"}
         }
     }
-    var istDranString : String = "false"
-    var runden : [[Bool?]] = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
     
     init(username: String, runden: [[Bool]], istDran : Bool){
         self.username = username
@@ -53,7 +53,12 @@ class Spieler : NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder){
         self.username = aDecoder.decodeObject(forKey:"username") as? String ?? ""
         self.istDranString = aDecoder.decodeObject(forKey:"istDranString") as? String ?? "ein fehler ist aufgetreten"
-        self.runden = aDecoder.decodeObject(forKey:"runden") as! [[Bool?]]
+        
+        //Der Decoder hat Probleme mit Swift Datenstrukturen, weswegen hier in Obj-C Datenstrukturen umgecastet wird.
+        let objC_runden = aDecoder.decodeObject(forKey:"runden") as! NSMutableArray
+        self.runden = [objC_runden[0] as! [Bool?], objC_runden[1] as! [Bool?], objC_runden[2] as! [Bool?], objC_runden[3] as! [Bool?], objC_runden[4] as! [Bool?], objC_runden[5] as! [Bool?]]
+        
+        
         if self.istDranString == "true"
         {
             self.istDran = true
@@ -67,7 +72,9 @@ class Spieler : NSObject, NSCoding {
     func encode(with aCoder: NSCoder) {
         aCoder.encode(username, forKey: "username")
         aCoder.encode(istDranString, forKey: "istDranString")
-        aCoder.encode(runden, forKey: "runden")
+        
+        //Der Decoder hat Probleme mit Swift Datenstrukturen, weswegen hier in Obj-C Datenstrukturen umgecastet wird.
+        aCoder.encode(NSMutableArray(array: runden), forKey: "runden")
     }
     
      static func == (lhs : Spieler, rhs : Spieler) -> Bool
