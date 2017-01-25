@@ -51,7 +51,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         view.addGestureRecognizer(tap)
     }
     
-    //ist zuständlich für den automatischen Login
+ /*   //ist zuständlich für den automatischen Login
     override func viewDidAppear(_ animated: Bool) {
         //vergleicht ob man schon vorher auf logout geklickt hat
         if ausgeloggt == false && PFUser.current() != nil{
@@ -60,7 +60,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         }
         self.navigationController?.navigationBar.isHidden = true
         ausgeloggt = false
-    }
+    }*/
     
     
     //Methode fuer den FacebookLoginButton

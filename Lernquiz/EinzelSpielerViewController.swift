@@ -28,6 +28,9 @@ class EinzelSpielerViewController: SpielmodusViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        pickQuestion(frageKartenLokal: frageKarten)
+
+        
         //Sorgt dafuer, dass der Score beim Schließen der App nicht geloescht wird sondern lokal gespeichert (Muss aus irgendeinem Grund in der viewDidLoad Funktion stehen)
         let ScoreDefault = UserDefaults.standard
         
