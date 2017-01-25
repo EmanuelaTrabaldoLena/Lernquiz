@@ -56,8 +56,10 @@
         
         //Zeilen der TableView mit dem Vorlesungsverzeichnis fuellen
         func tableFuellen(){
+            //Verzeichnis alphabetisch sortieren
+            let sortedVerzeichnis = verzeichnis.sorted{$0.localizedCaseInsensitiveCompare($1) == ComparisonResult.orderedAscending}
             //Ueber die Laenge des Arrays iterieren und die Namen des Verzeichnisses in den einzelnen Zellen einfuegen
-            for i in verzeichnis{
+            for i in sortedVerzeichnis{
                 vorlesungsverzeichnis.append(Fach(name: i))
             }
         }
