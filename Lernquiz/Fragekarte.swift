@@ -20,6 +20,7 @@ class Fragekarte : NSObject, NSCoding{
     var fachName = String()
     //var frageGemeldet : Int = 0
     
+    
     func toString () -> String{
         return "Fragentext: \(Fragentext)  |  AntwortA: \(AntwortA) | AntwortB: \(AntwortB) | AntwortC: \(AntwortC)"
     }
