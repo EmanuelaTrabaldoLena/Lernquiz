@@ -17,6 +17,7 @@ class Fragekarte : NSObject, NSCoding{
     var AntwortC : String = ""
     var RichtigeAntwort : String = ""
     var RichtigeAntwortIndex : NSNumber = 0
+    var fachName = String()
     //var frageGemeldet : Int = 0
     
     func toString () -> String{
@@ -66,7 +67,8 @@ class Fragekarte : NSObject, NSCoding{
     }
     
     //Standard Initializer
-    init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String){
+    init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String)
+    {
         self.FragenId = FragenId
         self.Fragentext = Fragentext
         self.AntwortA = AntwortA
@@ -86,6 +88,7 @@ class Fragekarte : NSObject, NSCoding{
         self.AntwortC = aDecoder.decodeObject(forKey:"AntwortC") as? String ?? ""
         self.RichtigeAntwort = aDecoder.decodeObject(forKey:"RichtigeAntwort") as? String ?? ""
         self.RichtigeAntwortIndex = aDecoder.decodeObject(forKey:"RichtigeAntwortIndex") as? NSNumber ?? 11
+        self.fachName = aDecoder.decodeObject(forKey: "fachName") as? String ?? ""
         //self.frageGemeldet = aDecoder.decodeObject(forKey:"FragenId") as? Int ?? 0
     }
     
@@ -98,6 +101,7 @@ class Fragekarte : NSObject, NSCoding{
         aCoder.encode(AntwortC, forKey: "AntwortC")
         aCoder.encode(RichtigeAntwort, forKey: "RichtigeAntwort")
         aCoder.encode(RichtigeAntwortIndex, forKey: "RichtigeAntwortIndex")
+        aCoder.encode(fachName, forKey : "fachName")
         //aCoder.encode(frageGemeldet, forKey: "frageGemeldet")
     }
     

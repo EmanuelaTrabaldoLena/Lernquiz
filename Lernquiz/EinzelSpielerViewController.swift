@@ -38,7 +38,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
     }
     
     
-    override func antwortAuswerten(antwort : Antwort){
+    override func antwortAuswerten(antwort : Antwort, firstTime: Bool = true){
         var textView : UITextView!
         switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){

@@ -16,44 +16,123 @@ class DuellViewController: SpielmodusViewController{
     
     var spiel = Spiel()
     
-    @IBAction override func naechsteFrage(_ sender: Any){
+    var relevanteFragen = [Fragekarte]()
+    
+    
+    @IBAction override func naechsteFrage(_ sender: Any)
+    {
         seconds = 60
-        pickQuestion()
+        pickQuestion(frageKartenLokal: relevanteFragen)
     }
     
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        ermittleRelevanteFragen()
+    }
+    
+    
+    //Wähle 3 zufällige FrageKarten aus dem Array "frageKarten" aus, die für jeden Spieler gleich sind.
+    func ermittleRelevanteFragen()
+    {
+        var x = spiel.fragenKartenID[0]
+        var y = spiel.fragenKartenID[1]
+        var z = spiel.fragenKartenID[2]
+        
+        
+        if (x == y) && (y == z)
+        {
+            // Fallunterscheidung Beachte Grenzstellen!!!
+        } else {
+            if ((x == y) && x < frageKarten.count - 1)
+            {
+                x += 1
+            } else if (x == y){
+                x -= 1
+            }
+            
+            if ((x == z ) && x < frageKarten.count - 1)
+            {
+                x += 1
+            } else if (x == z){
+                x -= 1
+            }
+            
+            if ((y == z) && y < frageKarten.count - 1)
+            {
+                y += 1
+            } else if (y == z){
+                y -= 1
+            }
+        }
+        
+        relevanteFragen = [ frageKarten[x],
+                            frageKarten[y],
+                            frageKarten[z]]
     }
     
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
-    override func antwortAuswerten(antwort : Antwort){
+    override func antwortAuswerten(antwort : Antwort, firstTime : Bool)
+    {
         var textView : UITextView!
         switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
-        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
+        
+        if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue)
+        {
             textView.backgroundColor = UIColor.green
             
         }else{
             textView.backgroundColor = UIColor.red
+            
+            
+            if firstTime == true
+            {
+                switch antwort
+                {
+                case .A:
+                    antwortAuswerten(antwort: Antwort.B, firstTime: false)
+                    antwortAuswerten(antwort: Antwort.C, firstTime: false)
+                case .B:
+                    antwortAuswerten(antwort: Antwort.A, firstTime: false)
+                    antwortAuswerten(antwort: Antwort.C, firstTime: false)
+                case .C:
+                    antwortAuswerten(antwort: Antwort.A, firstTime: false)
+                    antwortAuswerten(antwort: Antwort.B, firstTime: false)
+                }
+            }
+            
+            
         }
 
         hasSelected = true
         //Timer wird abgebrochen und restliche Sekunden bleiben stehen
         timer.invalidate()
+        
+        
+       
+        
+        
         CountdownLabel.text = "\(seconds)"
         //Nachdem eine Antwort gedrückt wurde, erscheint der "Naechste Frage Button"
         naechsteFrageButton.isHidden = false
     }
     
-    override func pickQuestion(){
-        super.pickQuestion()
+    
+    
+    override func pickQuestion(frageKartenLokal : [Fragekarte])
+    {
+        
+        super.pickQuestion(frageKartenLokal: frageKartenLokal)
+
         hasSelected = false
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DuellViewController.updateTimer), userInfo: nil, repeats: true)
         updateTimer()
         naechsteFrageButton.isHidden = true
     }
+    
+ 
     
     
     // Schleife basteln, damit pro Runde 3 zufällige Fragen gestellt werden, für die jeweils ein Countdown von 60 Sekunden läuft
@@ -74,9 +153,7 @@ class DuellViewController: SpielmodusViewController{
         }
         
         if(seconds == 0){
-            antwortAuswerten(antwort: .A)
-            antwortAuswerten(antwort: .B)
-            antwortAuswerten(antwort: .C)
+            antwortAuswerten(antwort: .A, firstTime: true)
         }
     }
     

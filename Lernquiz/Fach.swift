@@ -7,13 +7,18 @@
 //
 
 import Foundation
+import Parse
 
 class Fach : NSObject, NSCoding{
     
     var name: String
     var isSelected: Bool = false
     var Fragen = [Fragekarte]()
-    var VorhandeneFragen: Int = 0
+    
+    override init()
+    {
+        self.name = String()
+    }
     
     
     //Konstruktor nur mit uebergebenen Namen
@@ -23,9 +28,8 @@ class Fach : NSObject, NSCoding{
     
     
     //Konstruktor mit uebergebenen Namen, Anzahl der Fragen und der Fragenkarten selbst
-    init(name:String, VorhandeneFragen: Int, Fragen: [Fragekarte]){
+    init(name:String, Fragen: [Fragekarte]){
         self.name = name
-        self.VorhandeneFragen = VorhandeneFragen
         self.Fragen = Fragen
     }
     
@@ -34,8 +38,23 @@ class Fach : NSObject, NSCoding{
     required init?(coder aDecoder: NSCoder){
         self.name = aDecoder.decodeObject(forKey:"name") as! String
         self.isSelected = aDecoder.decodeObject(forKey:"isSelected") as? Bool ?? false
-        self.VorhandeneFragen = aDecoder.decodeObject(forKey:"VorhandeneFragen") as? Int ?? 0
         self.Fragen = aDecoder.decodeObject(forKey:"Fragen") as! [Fragekarte]
+    }
+    
+    
+    //Lade alle Fragekarten aus dem jeweiligen Fach aus der Tabelle "Fragekarte" herunter und ermittle davon die Anzahl.
+    //Hilfsfunktion für Spiel.init(spieler : Spieler, gegner : Spieler, fach : Fach)
+    func ermittleMaxID() -> Int
+    {
+        let projectQuery = PFQuery(className: "Fragekarte")
+        projectQuery.includeKey("Fach")
+        projectQuery.whereKey("Fach", equalTo: name)
+        
+        do{
+            let results = try projectQuery.findObjects()
+            return results.count
+        }catch{}
+        return 0
     }
     
     
@@ -44,14 +63,6 @@ class Fach : NSObject, NSCoding{
         aCoder.encode(name, forKey: "name")
         aCoder.encode(isSelected, forKey: "isSelected")
         aCoder.encode(Fragen, forKey: "Fragen")
-        aCoder.encode(VorhandeneFragen, forKey: "VorhandeneFragen")
-    }
-    
-    
-    //Sobald eine Frage hinzugefuegt wird, wird die Anzahl der Fragen hochgezaehlt
-    func frageHinzufügen(Frage: Fragekarte){
-        Fragen.append(Frage)
-        VorhandeneFragen = VorhandeneFragen + 1
     }
     
     

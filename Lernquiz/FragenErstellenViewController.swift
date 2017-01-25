@@ -91,7 +91,9 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
     /* Der Text wird in der zu erstellenden Fragekarte gespeichert und man wird anschliessend von der
      ausgewaehlten Textview abgemeldet */
-    func textViewDidEndEditing(_ textView: UITextView){
+    func textViewDidEndEditing(_ textView: UITextView)
+    {
+        
         switch textView.tag{
         case 0: frageKarte.Fragentext = frageErstellen.text; frageErstellen.resignFirstResponder()
         case 1: frageKarte.AntwortA = antwortAerstellen.text; frageKarte.RichtigeAntwort = antwortAerstellen.text ; antwortAerstellen.resignFirstResponder()
@@ -99,6 +101,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         case 3: frageKarte.AntwortC = antwortCerstellen.text; antwortCerstellen.resignFirstResponder()
         default: fatalError("Fehler in FrageErstellenVC - textViewShouldEndEditing - switch - wrong case")
         }
+        frageKarte.fachName = fachName
         print(frageKarte.toString())
     }
     

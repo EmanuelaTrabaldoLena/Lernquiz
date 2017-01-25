@@ -35,7 +35,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         
         download()
-        pickQuestion()
+        pickQuestion(frageKartenLokal: frageKarten)
         
         antwortA.delegate = self
         antwortB.delegate = self
@@ -61,18 +61,40 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    func antwortAuswertenA(){
-        antwortAuswerten(antwort: .A)
+    func antwortAuswertenA()
+    {
+        antwortAufblinkenLassen(antwort: .A)
+        
+        delay(0.5) {
+            self.antwortAuswerten(antwort: .A)
+        }
     }
     
     
-    func antwortAuswertenB(){
-        antwortAuswerten(antwort: .B)
+    func antwortAuswertenB()
+    {
+        antwortAufblinkenLassen(antwort: .B)
+        
+        delay(0.5) {
+            self.antwortAuswerten(antwort: .B)
+        }
+        
     }
     
     
-    func antwortAuswertenC(){
-        antwortAuswerten(antwort: .C)
+    func antwortAuswertenC()
+    {
+        antwortAufblinkenLassen(antwort: .C)
+        
+        delay(0.5) {
+            self.antwortAuswerten(antwort: .C)
+        }
+        
+    }
+    
+    func delay(_ delay:Double, closure:@escaping ()->()) {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
     }
     
     
@@ -81,13 +103,13 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortB.text = ""
         antwortC.text = ""
         
-        pickQuestion()
+        pickQuestion(frageKartenLokal: frageKarten)
     }
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
     enum Antwort : Int { case A ; case B ; case C }
     
-    func antwortAuswerten(antwort : Antwort){
+    func antwortAuswerten(antwort : Antwort, firstTime : Bool = true){
         var textView : UITextView!
         switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         if Int(frageKarten[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
@@ -99,9 +121,18 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    func antwortAufblinkenLassen(antwort : Antwort)
+    {
+        var textView : UITextView!
+        switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
+        
+        textView.backgroundColor = UIColor.yellow
+    }
+    
+    
     
     //Weist den Textviews den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
-    func pickQuestion(){
+    func pickQuestion(frageKartenLokal : [Fragekarte]){
         //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird
         hasSelected = false
         
@@ -109,14 +140,14 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortB.backgroundColor = UIColor.white
         antwortC.backgroundColor = UIColor.white
         
-        if (QNumber < frageKarten.count){
-            FrageLabel.text = frageKarten[QNumber].Fragentext
-            antwortA.text! = frageKarten[QNumber].AntwortA
-            antwortB.text! = frageKarten[QNumber].AntwortB
-            antwortC.text! = frageKarten[QNumber].AntwortC
+        if (QNumber < frageKartenLokal.count){
+            FrageLabel.text = frageKartenLokal[QNumber].Fragentext
+            antwortA.text! = frageKartenLokal[QNumber].AntwortA
+            antwortB.text! = frageKartenLokal[QNumber].AntwortB
+            antwortC.text! = frageKartenLokal[QNumber].AntwortC
             
-            print("Richtige Antwort-Index: \(frageKarten[QNumber].RichtigeAntwortIndex)")
-            print("Richtige Antwort: \(frageKarten[QNumber].RichtigeAntwort)")
+            print("Richtige Antwort-Index: \(frageKartenLokal[QNumber].RichtigeAntwortIndex)")
+            print("Richtige Antwort: \(frageKartenLokal[QNumber].RichtigeAntwort)")
             
             QNumber += 1
         }else{

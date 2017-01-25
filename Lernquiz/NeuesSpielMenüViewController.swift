@@ -177,7 +177,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         print("Gewaehlter Gegenspieler: \(mitSpieler.username)")
         
         searchController.isActive = false
-        let erstesSpiel = Spiel(spieler: dieserSpieler, gegner: mitSpieler)
+        let erstesSpiel = Spiel(spieler: dieserSpieler, gegner: mitSpieler, fach: Fach(name: fachName))
         upload(spiel: erstesSpiel)
         performSegue(withIdentifier: "NeuesSpiel2DuellMenue", sender: mitSpieler)
         self.navigationController?.popViewController(animated: true)
