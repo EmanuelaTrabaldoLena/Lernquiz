@@ -140,20 +140,18 @@ class DuellViewController: SpielmodusViewController{
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
             if (super.QNumber == 3)
             {
-                spiel.runde += 1
-                
-                
                 
                 if spiel.gegner.username == eigenerName
                 {
                     spiel.gegner.istDran = false
                     spiel.spieler.istDran = true
+                    spiel.runde += 1
+                    
+                    
                 } else {
                     spiel.gegner.istDran = true
                     spiel.spieler.istDran = false
                 }
-                
-                
                 
                 naechsteFrageButton.isHidden = true
                 delay(2.5, closure: {

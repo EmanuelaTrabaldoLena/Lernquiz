@@ -10,14 +10,64 @@ import UIKit
 
 
 class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
     
     @IBOutlet weak var gegenSpieler: UILabel!
     @IBOutlet weak var rundenTable: UITableView!
-
-
+    @IBOutlet weak var gegnerPunktestand: UILabel!
+    @IBOutlet weak var spielerPunktestand: UILabel!
+    
+    var spielerScore: Int = 0
+    var gegnerScore: Int = 0
+    
     var spiel = Spiel()
     
+    @IBAction func zumDuellmenue(_ sender: Any) {
+        performSegue(withIdentifier: "DuellSpielstand2Duellmenue", sender: spiel)
+    }
     
+    func score(){
+        if let runde = spiel.spieler.runden[spiel.runde][0]
+        {
+            if runde == true {        self.spielerScore += 1
+                spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
+           
+        }
+        if let runde = spiel.spieler.runden[spiel.runde][1]
+        {
+            if runde == true {        spielerScore += 1
+                spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
+            
+        }
+        if let runde = spiel.spieler.runden[spiel.runde][2]
+        {
+            if runde == true {        spielerScore += 1
+                spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
+ 
+        }
+        
+        if let runde = spiel.gegner.runden[spiel.runde][0]
+        {
+            if runde == true {        gegnerScore += 1
+                gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
+          
+        }
+        
+        if let runde = spiel.gegner.runden[spiel.runde][1]
+        {
+            if runde == true {         gegnerScore += 1
+                gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
+         
+        }
+        if let runde = spiel.gegner.runden[spiel.runde][2]
+        {
+            if runde == true {       gegnerScore += 1
+                gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
+        
+        }
+
+    }
+
     override func viewWillAppear(_ animated: Bool)
     {
         gegenSpieler.text = gegnerName
@@ -28,7 +78,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
         
         rundenTable.dataSource = self
         rundenTable.delegate = self
-        
+        score()
         super.viewDidLoad()
     }
     
@@ -44,9 +94,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "RundenCell", for: indexPath) as! RundenTableViewCell
         
         cell.rundenLabel.text = "Runde \(indexPath.row + 1)"
-        
-        
-        
+    
         
         if let runde = spiel.spieler.runden[indexPath.row][0]
         {
@@ -80,8 +128,6 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
             if runde == false {cell.gsS3.backgroundColor = UIColor.red}
         }
         
-        
-
         return cell
     }
     
