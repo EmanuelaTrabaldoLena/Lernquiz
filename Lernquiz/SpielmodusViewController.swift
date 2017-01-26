@@ -140,6 +140,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortB.backgroundColor = UIColor.white
         antwortC.backgroundColor = UIColor.white
         
+    
         if (QNumber < frageKartenLokal.count){
             FrageLabel.text = frageKartenLokal[QNumber].Fragentext
             antwortA.text! = frageKartenLokal[QNumber].AntwortA
@@ -149,9 +150,9 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
             print("Richtige Antwort-Index: \(frageKartenLokal[QNumber].RichtigeAntwortIndex)")
             print("Richtige Antwort: \(frageKartenLokal[QNumber].RichtigeAntwort)")
             
-            QNumber += 1
+             QNumber += 1
         }else{
-            NSLog("Keine weiteren Fragen")
+            
         }
     }
     
