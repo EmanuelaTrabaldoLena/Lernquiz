@@ -25,6 +25,10 @@ class DuellViewController: SpielmodusViewController{
         pickQuestion(frageKartenLokal: relevanteFragen)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+
+    }
     
     override func viewDidLoad(){
         super.viewDidLoad()

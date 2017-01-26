@@ -95,6 +95,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidAppear(_ animated: Bool){
         download()
+        self.navigationController?.navigationBar.isHidden = false
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }

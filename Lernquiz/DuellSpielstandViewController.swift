@@ -24,6 +24,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func zumDuellmenue(_ sender: Any) {
         performSegue(withIdentifier: "DuellSpielstand2Duellmenue", sender: spiel)
+            
     }
     
     func score(){
@@ -68,14 +69,11 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
 
     }
 
-    override func viewWillAppear(_ animated: Bool)
-    {
-        gegenSpieler.text = gegnerName
-        
-    }
+  
     
     override func viewDidLoad() {
-        
+        self.navigationController?.navigationBar.isHidden = true
+        gegenSpieler.text = gegnerName
         rundenTable.dataSource = self
         rundenTable.delegate = self
         score()
