@@ -31,6 +31,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     //als Identifikator/Nummerierung für textViewTagging()
     enum TextFieldID : Int { case AntwortA, AntwortB, AntwortC}
     
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
@@ -61,8 +62,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    func antwortAuswertenA()
-    {
+    func antwortAuswertenA(){
         antwortAufblinkenLassen(antwort: .A)
         
         delay(0.5) {
@@ -71,27 +71,25 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    func antwortAuswertenB()
-    {
+    func antwortAuswertenB(){
         antwortAufblinkenLassen(antwort: .B)
         
         delay(0.5) {
             self.antwortAuswerten(antwort: .B)
         }
-        
     }
     
     
-    func antwortAuswertenC()
-    {
+    func antwortAuswertenC(){
         antwortAufblinkenLassen(antwort: .C)
         
         delay(0.5) {
             self.antwortAuswerten(antwort: .C)
         }
-        
     }
     
+    
+    //Halbe Sekunde warten bis naechste Methode ausgefuehrt wird
     func delay(_ delay:Double, closure:@escaping ()->()) {
         let when = DispatchTime.now() + delay
         DispatchQueue.main.asyncAfter(deadline: when, execute: closure)
@@ -105,6 +103,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         
         pickQuestion(frageKartenLokal: frageKarten)
     }
+    
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
     enum Antwort : Int { case A ; case B ; case C }
@@ -121,8 +120,9 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    func antwortAufblinkenLassen(antwort : Antwort)
-    {
+    
+    //Wenn die Antwort ausgewaehlt wird, leuchtet sie zunaechst gelb auf
+    func antwortAufblinkenLassen(antwort : Antwort){
         var textView : UITextView!
         switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         

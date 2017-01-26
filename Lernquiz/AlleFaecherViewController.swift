@@ -30,7 +30,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
     @IBAction func hinzufuegen(_ sender: Any){
         save(fachArray: gewaehlteVorlesungen)
-        performSegue(withIdentifier: "AlleFaecher2MeineFaecher", sender: faecherHinzufuegen)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     

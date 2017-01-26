@@ -19,17 +19,6 @@ class DuellViewController: SpielmodusViewController{
     var relevanteFragen = [Fragekarte]()
     
     
-    @IBAction override func naechsteFrage(_ sender: Any)
-    {
-        seconds = 60
-        pickQuestion(frageKartenLokal: relevanteFragen)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-
-    }
-    
     override func viewDidLoad(){
         super.viewDidLoad()
         ermittleRelevanteFragen()
@@ -37,70 +26,68 @@ class DuellViewController: SpielmodusViewController{
     }
     
     
+    @IBAction override func naechsteFrage(_ sender: Any){
+        seconds = 60
+        pickQuestion(frageKartenLokal: relevanteFragen)
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
+    }
+    
+    
     //Wähle 3 zufällige FrageKarten aus dem Array "frageKarten" aus, die für jeden Spieler gleich sind.
-    func ermittleRelevanteFragen()
-    {
+    func ermittleRelevanteFragen(){
         var x = spiel.fragenKartenID[0]
         var y = spiel.fragenKartenID[1]
-        var z = spiel.fragenKartenID[2]
+        let z = spiel.fragenKartenID[2]
         
         
-        if (x == y) && (y == z)
-        {
+        if (x == y) && (y == z){
             // Fallunterscheidung Beachte Grenzstellen!!!
-        } else {
-            if ((x == y) && x < frageKarten.count - 1)
-            {
+        }else{
+            if ((x == y) && x < frageKarten.count - 1){
                 x += 1
-            } else if (x == y){
+            }else if (x == y){
                 x -= 1
             }
             
-            if ((x == z ) && x < frageKarten.count - 1)
-            {
+            if ((x == z ) && x < frageKarten.count - 1){
                 x += 1
-            } else if (x == z){
+            }else if (x == z){
                 x -= 1
             }
             
-            if ((y == z) && y < frageKarten.count - 1)
-            {
+            if ((y == z) && y < frageKarten.count - 1){
                 y += 1
             } else if (y == z){
                 y -= 1
             }
         }
         
-        relevanteFragen = [ frageKarten[x],
-                            frageKarten[y],
-                            frageKarten[z]]
+        relevanteFragen = [ frageKarten[x], frageKarten[y], frageKarten[z]]
     }
     
     
-    
-    
-    func einzelRundenAuswertung(richtigeAntwort : Bool)
-    {
-        if spiel.spieler.username == eigenerName
-        {
+    func einzelRundenAuswertung(richtigeAntwort : Bool){
+        if spiel.spieler.username == eigenerName{
             spiel.spieler.runden[spiel.runde][QNumber - 1] = richtigeAntwort
-        } else {
+        }else{
             spiel.gegner.runden[spiel.runde][QNumber - 1] = richtigeAntwort
         }
     }
     
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
-    override func antwortAuswerten(antwort : Antwort, firstTime : Bool)
-    {
+    override func antwortAuswerten(antwort : Antwort, firstTime : Bool){
         var textView : UITextView!
         switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         
-        if Int(relevanteFragen[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue)
-        {
+        if Int(relevanteFragen[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
             textView.backgroundColor = UIColor.green
             
-            if firstTime {
+            if firstTime{
             einzelRundenAuswertung(richtigeAntwort: true)
             }
             
@@ -111,11 +98,8 @@ class DuellViewController: SpielmodusViewController{
             
             textView.backgroundColor = UIColor.red
             
-            
-            if firstTime == true
-            {
-                switch antwort
-                {
+            if firstTime == true{
+                switch antwort{
                 case .A:
                     antwortAuswerten(antwort: Antwort.B, firstTime: false)
                     antwortAuswerten(antwort: Antwort.C, firstTime: false)
@@ -129,7 +113,7 @@ class DuellViewController: SpielmodusViewController{
             }
             
         }
-        if firstTime {
+        if firstTime{
             upload()
             
             hasSelected = true
@@ -142,17 +126,13 @@ class DuellViewController: SpielmodusViewController{
             
             
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
-            if (super.QNumber == 3)
-            {
+            if (super.QNumber == 3){
                 
-                if spiel.gegner.username == eigenerName
-                {
+                if spiel.gegner.username == eigenerName{
                     spiel.gegner.istDran = false
                     spiel.spieler.istDran = true
                     spiel.runde += 1
-                    
-                    
-                } else {
+                }else{
                     spiel.gegner.istDran = true
                     spiel.spieler.istDran = false
                 }
@@ -167,15 +147,14 @@ class DuellViewController: SpielmodusViewController{
     
     
     //Überreiche Spiel an Übersicht
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
         let vc = segue.destination as! DuellSpielstandViewController
         vc.spiel = sender as! Spiel
     }
     
     
-    func upload()
-    {
+    //Neuer Spielstand wird auf Server gespeichert
+    func upload(){
         loescheAltesSpiel()
 
         let hochzuladendesObjekt = PFObject(className: "Spiele")
@@ -191,9 +170,8 @@ class DuellViewController: SpielmodusViewController{
     }
     
     
-    func loescheAltesSpiel()
-    {
-        
+    //Altes Spiel wird vom Server geloescht
+    func loescheAltesSpiel(){
         let projectQuery = PFQuery(className: "Spiele")
         do{
             let spiele = try projectQuery.findObjects()
@@ -201,8 +179,7 @@ class DuellViewController: SpielmodusViewController{
                 let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
                 let spielLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
                 
-                if spiel == spielLokal
-                {
+                if spiel == spielLokal{
                     do {
                         try result.delete()
                     } catch {}
@@ -210,13 +187,11 @@ class DuellViewController: SpielmodusViewController{
                 
             }
         }catch{}
-        
-        
     }
     
-    override func pickQuestion(frageKartenLokal : [Fragekarte])
-    {
-        
+    
+    //Weist den Textviews den Text zu, laedt die Fragen nacheinander rein, wertet diese aus und laesst den Timer laufen
+    override func pickQuestion(frageKartenLokal : [Fragekarte]){
         super.pickQuestion(frageKartenLokal: frageKartenLokal)
 
         hasSelected = false
@@ -225,13 +200,7 @@ class DuellViewController: SpielmodusViewController{
         updateTimer()
         naechsteFrageButton.isHidden = true
     }
-    
- 
-    
-    
-    // Schleife basteln, damit pro Runde 3 zufällige Fragen gestellt werden, für die jeweils ein Countdown von 60 Sekunden läuft
-    // Wir brauchen eine Function, die die richtig beantworteten Frage in der Runde zusammenzählt
-    // Alle 3 Fragen wurden beantwortet, jetzt muss man zur Übersicht mit den Spielständen gelangen
+
     
     // Timer gebastelt, der pro Frage 60 Sekunden runterzählt um die Frage zu beantworten
     var seconds: Int = 60
