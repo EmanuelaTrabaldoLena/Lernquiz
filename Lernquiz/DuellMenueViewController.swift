@@ -14,11 +14,18 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var aktiveSpieleTV: UITableView!
 
     @IBOutlet weak var inaktiveSpieleTV: UITableView!
+
+
+    @IBAction func zumHauptmenue(_ sender: Any) {
+        
+        _ = self.navigationController?.popViewController(animated: true)
+    }
     
-    var spiel = Spiel()
+    
+    
     var aktiveSpiele = [Spiel]()
     var inaktiveSpiele = [Spiel]()
-    
+    var spiel = Spiel()
     
     
     override func viewDidLoad(){
@@ -95,7 +102,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewDidAppear(_ animated: Bool){
         download()
-        self.navigationController?.navigationBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = true
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }

@@ -73,7 +73,7 @@
                                 </prototypes>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.70189402466457196" blue="0.44017846353401047" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gZd-3Q-CBU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="0qI-tb-ypC"/>
                             <constraint firstItem="a2O-zq-hxK" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HL1-yU-yla"/>
@@ -183,7 +183,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.70189402469999995" blue="0.44017846350000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="YbM-oi-a9j" firstAttribute="centerX" secondItem="XaK-zR-LVK" secondAttribute="centerX" id="6yU-jR-O4f"/>
                             <constraint firstItem="9UL-jQ-gsk" firstAttribute="top" secondItem="YbM-oi-a9j" secondAttribute="bottom" constant="19" id="95v-zG-5lF"/>
@@ -417,11 +417,32 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AOL-A2-UHW">
+                                <rect key="frame" x="98" y="530" width="124" height="30"/>
+                                <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="UQD-HN-N1z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Zum Hauptmenü">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="zumHauptmenue:" destination="Arp-C8-4dj" eventType="touchUpInside" id="aL5-Rw-c0z"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="ECX-KH-1eb" firstAttribute="top" secondItem="mBm-Fa-Xtm" secondAttribute="bottom" constant="10" id="0M3-Pc-TMR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="AOL-A2-UHW" secondAttribute="trailing" constant="82" id="4v9-sG-YPT"/>
                             <constraint firstItem="DFc-m8-ill" firstAttribute="trailing" secondItem="ddx-wL-Og1" secondAttribute="trailing" id="527-69-f94"/>
+                            <constraint firstItem="AOL-A2-UHW" firstAttribute="leading" secondItem="hYC-XB-lrT" secondAttribute="leadingMargin" constant="82" id="6m4-ZP-brZ"/>
                             <constraint firstItem="mBm-Fa-Xtm" firstAttribute="top" secondItem="b9q-ck-8pj" secondAttribute="bottom" constant="8" symbolic="YES" id="8f6-yS-xm0"/>
                             <constraint firstItem="a1B-kc-w3k" firstAttribute="top" secondItem="DFc-m8-ill" secondAttribute="bottom" constant="43" id="9N8-xh-SLP"/>
                             <constraint firstAttribute="trailing" secondItem="DFc-m8-ill" secondAttribute="trailing" constant="10" id="9Xl-kc-JRA"/>
@@ -431,9 +452,11 @@
                             <constraint firstItem="b9q-ck-8pj" firstAttribute="centerX" secondItem="hYC-XB-lrT" secondAttribute="centerX" id="Epf-uC-NLR"/>
                             <constraint firstItem="DFc-m8-ill" firstAttribute="top" secondItem="ECX-KH-1eb" secondAttribute="bottom" constant="20" id="KuI-ka-Hvi"/>
                             <constraint firstItem="ECX-KH-1eb" firstAttribute="leading" secondItem="hYC-XB-lrT" secondAttribute="leading" constant="10" id="LsS-mh-MeZ"/>
+                            <constraint firstItem="a1B-kc-w3k" firstAttribute="top" secondItem="AOL-A2-UHW" secondAttribute="bottom" constant="8" id="MoO-de-TLs"/>
                             <constraint firstItem="ECX-KH-1eb" firstAttribute="leading" secondItem="ddx-wL-Og1" secondAttribute="leading" id="OQt-0r-hWZ"/>
                             <constraint firstItem="mBm-Fa-Xtm" firstAttribute="leading" secondItem="hYC-XB-lrT" secondAttribute="leadingMargin" constant="-6" id="W1M-wk-hc9"/>
                             <constraint firstItem="ECX-KH-1eb" firstAttribute="trailing" secondItem="ddx-wL-Og1" secondAttribute="trailing" id="YsJ-zU-HL3"/>
+                            <constraint firstItem="AOL-A2-UHW" firstAttribute="top" secondItem="DFc-m8-ill" secondAttribute="bottom" constant="5" id="aEc-Kf-4s5"/>
                             <constraint firstItem="b9q-ck-8pj" firstAttribute="leading" secondItem="hYC-XB-lrT" secondAttribute="leadingMargin" constant="71" id="f3M-gA-4xW"/>
                             <constraint firstItem="DFc-m8-ill" firstAttribute="leading" secondItem="ddx-wL-Og1" secondAttribute="leading" id="hvy-zw-mnJ"/>
                             <constraint firstItem="DFc-m8-ill" firstAttribute="top" secondItem="ddx-wL-Og1" secondAttribute="bottom" constant="1" id="mbd-Iu-mcd"/>
@@ -447,7 +470,6 @@
                         <outlet property="aktiveSpieleTV" destination="ECX-KH-1eb" id="6nm-HK-MV8"/>
                         <outlet property="inaktiveSpieleTV" destination="RnW-Wi-tIG" id="hHI-Sl-mRg"/>
                         <segue destination="fa5-Ga-zjY" kind="show" identifier="DuellMenueVC2DuellVC" id="1nf-jn-KHj"/>
-                        <segue destination="rZY-1E-0Eq" kind="show" identifier="DuellMenue2Menue" id="HDp-6Q-9mS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsx-4K-Y7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1067,6 +1089,7 @@
                         <outlet property="gegenSpieler" destination="wqV-mU-ivz" id="PD9-9L-WoL"/>
                         <outlet property="gegnerPunktestand" destination="ikY-bP-M7K" id="iTR-tB-72m"/>
                         <outlet property="rundenTable" destination="d07-3Z-rKN" id="sdF-aW-opj"/>
+                        <outlet property="spieler" destination="uPS-ml-cTo" id="gKT-uf-R2r"/>
                         <outlet property="spielerPunktestand" destination="w6X-Xl-muf" id="FVT-Dx-rN5"/>
                         <segue destination="Arp-C8-4dj" kind="show" identifier="DuellSpielstand2DuellMenue" id="F1R-Ld-GQL"/>
                     </connections>
@@ -1087,7 +1110,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-Bt-k2B">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZn-Bt-k2B">
                                 <rect key="frame" x="130" y="492" width="60" height="56"/>
                                 <color key="backgroundColor" red="1" green="0.80000001190000003" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <rect key="contentStretch" x="1" y="0.5" width="1" height="1"/>
@@ -1387,11 +1410,10 @@
         <image name="Lernquiz" width="259" height="98"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="udV-oF-PnC"/>
-        <segue reference="9vV-oY-gHf"/>
-        <segue reference="UZu-Dp-s4a"/>
-        <segue reference="c4W-3n-34C"/>
+        <segue reference="gyV-bM-mQh"/>
+        <segue reference="2az-q9-jh9"/>
         <segue reference="1nf-jn-KHj"/>
+        <segue reference="udV-oF-PnC"/>
         <segue reference="9vV-oY-gHf"/>
     </inferredMetricsTieBreakers>
 </document>

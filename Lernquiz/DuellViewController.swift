@@ -27,7 +27,7 @@ class DuellViewController: SpielmodusViewController{
     
     
     @IBAction override func naechsteFrage(_ sender: Any){
-        seconds = 60
+        seconds = 30
         pickQuestion(frageKartenLokal: relevanteFragen)
     }
     
@@ -41,7 +41,7 @@ class DuellViewController: SpielmodusViewController{
     func ermittleRelevanteFragen(){
         var x = spiel.fragenKartenID[0]
         var y = spiel.fragenKartenID[1]
-        let z = spiel.fragenKartenID[2]
+        var z = spiel.fragenKartenID[2]
         
         
         if (x == y) && (y == z){
@@ -203,7 +203,7 @@ class DuellViewController: SpielmodusViewController{
 
     
     // Timer gebastelt, der pro Frage 60 Sekunden runterzählt um die Frage zu beantworten
-    var seconds: Int = 60
+    var seconds: Int = 30
     var timer = Timer()
     var timerIsOn = false
     

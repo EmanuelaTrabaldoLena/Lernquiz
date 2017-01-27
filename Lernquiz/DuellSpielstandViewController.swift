@@ -11,6 +11,7 @@ import UIKit
 
 class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var spieler: UILabel!
     
     @IBOutlet weak var gegenSpieler: UILabel!
     @IBOutlet weak var rundenTable: UITableView!
@@ -26,6 +27,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
         gegenSpieler.text = gegnerName
+        spieler.text = spiel.spieler.username
         rundenTable.dataSource = self
         rundenTable.delegate = self
         score()
@@ -34,7 +36,9 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     
     @IBAction func zumDuellmenue(_ sender: Any) {
-        performSegue(withIdentifier: "DuellSpielstand2DuellMenue", sender: spiel)
+        let controller = self.navigationController?.viewControllers[2] // it is at index 1. index start from 0, 1 .. N
+        self.navigationController?.popToViewController(controller!, animated: true)
+  
     }
     
     
