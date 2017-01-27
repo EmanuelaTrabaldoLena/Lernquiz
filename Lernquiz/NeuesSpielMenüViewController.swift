@@ -23,12 +23,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     @IBOutlet weak var belSpieler: UIButton!
-    @IBAction func beliebigerSpieler(_ sender: Any){
-        _ = self.navigationController?.popViewController(animated: true)
 
-        searchController.isActive = false
-        
-    }
     
     
     override func viewDidLoad(){
@@ -170,7 +165,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     //Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+  
         let row = indexPath.row
         gegnerName = usernames[row]
         let mitSpieler = Spieler(username: gegnerName, istDran: false)

@@ -136,6 +136,7 @@ class DuellViewController: SpielmodusViewController{
                     spiel.gegner.istDran = true
                     spiel.spieler.istDran = false
                 }
+                
                 upload()
                 naechsteFrageButton.isHidden = true
                 delay(2.5, closure: {

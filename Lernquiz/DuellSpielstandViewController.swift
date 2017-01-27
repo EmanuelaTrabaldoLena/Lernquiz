@@ -37,6 +37,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
         let controller = self.navigationController?.viewControllers[2] // it is at index 1. index start from 0, 1 .. N
         self.navigationController?.popToViewController(controller!, animated: true)
     }
+
     
     
     //Spielstaende der einzelnen Runden werden gespeichert
