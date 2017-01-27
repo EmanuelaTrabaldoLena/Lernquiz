@@ -39,9 +39,9 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-        
+                self.navigationController?.navigationBar.isHidden = false
+
         meineFaecher.reloadData()
-        self.navigationController?.navigationBar.isHidden = false
     }
     
     

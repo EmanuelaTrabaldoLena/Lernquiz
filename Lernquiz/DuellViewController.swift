@@ -114,7 +114,7 @@ class DuellViewController: SpielmodusViewController{
             
         }
         if firstTime{
-            upload()
+            //upload()
             
             hasSelected = true
             //Timer wird abgebrochen und restliche Sekunden bleiben stehen
@@ -136,7 +136,7 @@ class DuellViewController: SpielmodusViewController{
                     spiel.gegner.istDran = true
                     spiel.spieler.istDran = false
                 }
-                
+                upload()
                 naechsteFrageButton.isHidden = true
                 delay(2.5, closure: {
                 self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)

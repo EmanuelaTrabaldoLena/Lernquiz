@@ -12,7 +12,6 @@ import UIKit
 class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var spieler: UILabel!
-    
     @IBOutlet weak var gegenSpieler: UILabel!
     @IBOutlet weak var rundenTable: UITableView!
     @IBOutlet weak var gegnerPunktestand: UILabel!
@@ -20,7 +19,6 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     var spielerScore: Int = 0
     var gegnerScore: Int = 0
-    
     var spiel = Spiel()
     
     
@@ -38,7 +36,6 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     @IBAction func zumDuellmenue(_ sender: Any) {
         let controller = self.navigationController?.viewControllers[2] // it is at index 1. index start from 0, 1 .. N
         self.navigationController?.popToViewController(controller!, animated: true)
-  
     }
     
     

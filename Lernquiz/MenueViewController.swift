@@ -14,6 +14,7 @@ class MenueViewController: UIViewController{
     
     override func viewWillAppear(_ animated: Bool){
         fachLabel.text = fachName
+         self.navigationController?.navigationBar.isHidden = false
     }
     
     override func viewDidLoad(){
