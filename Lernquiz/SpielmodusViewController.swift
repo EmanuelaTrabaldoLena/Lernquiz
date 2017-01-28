@@ -139,7 +139,6 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortA.backgroundColor = UIColor.white
         antwortB.backgroundColor = UIColor.white
         antwortC.backgroundColor = UIColor.white
-        
     
         if (QNumber < frageKartenLokal.count){
             FrageLabel.text = frageKartenLokal[QNumber].Fragentext
@@ -152,8 +151,8 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
             
             QNumber += 1
         }else{
-            
             QNumber = 0
+            FrageLabel.text = "Alle Fragen durchgespielt. Wähle nächste Frage, um von vorne zu beginnen."
         }
     }
     
