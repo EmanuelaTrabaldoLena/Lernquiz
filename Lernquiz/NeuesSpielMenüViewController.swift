@@ -24,7 +24,9 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     @IBOutlet weak var belSpieler: UIButton!
 
-    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
     
     override func viewDidLoad(){
         super.viewDidLoad()
