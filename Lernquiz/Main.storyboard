@@ -493,11 +493,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvg-2t-KVN">
-                                <rect key="frame" x="210" y="483" width="100" height="75"/>
+                                <rect key="frame" x="190" y="508" width="120" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="ydS-n2-GzW"/>
+                                    <constraint firstAttribute="height" constant="50" id="5WP-Oy-shu"/>
+                                    <constraint firstAttribute="width" constant="120" id="ydS-n2-GzW"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Erstellen">
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -511,13 +513,13 @@
                                 </connections>
                             </button>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xAS-je-ix5">
-                                <rect key="frame" x="10" y="28" width="300" height="435"/>
+                                <rect key="frame" x="10" y="28" width="300" height="460"/>
                                 <subviews>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Schreibe hier deine Frage hinein." translatesAutoresizingMaskIntoConstraints="NO" id="kdF-BA-IXc">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="120"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="145"/>
                                         <color key="backgroundColor" red="0.0" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="120" id="nfK-nK-6Ba"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="nfK-nK-6Ba"/>
                                             <constraint firstAttribute="width" constant="300" id="z2K-bH-Tvb"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -529,7 +531,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Schreibe die richtige Antwort hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6U1-j0-GWg">
-                                        <rect key="frame" x="0.0" y="125" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="150" width="300" height="100"/>
                                         <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="Gq9-od-c7t"/>
@@ -544,7 +546,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Schreibe eine falsche Antwort hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="71S-X0-0P7">
-                                        <rect key="frame" x="0.0" y="230" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="255" width="300" height="100"/>
                                         <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="0PI-5d-h6g"/>
@@ -559,7 +561,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </textView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Schreibe eine weitere falsche Antwort hinein." textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wWe-0z-K2p">
-                                        <rect key="frame" x="0.0" y="335" width="300" height="100"/>
+                                        <rect key="frame" x="0.0" y="360" width="300" height="100"/>
                                         <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="300" id="Oud-Hu-FIb"/>
@@ -1380,10 +1382,10 @@
         <image name="Lernquiz" width="259" height="98"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="VOF-yz-IOJ"/>
         <segue reference="9vV-oY-gHf"/>
-        <segue reference="udV-oF-PnC"/>
-        <segue reference="2az-q9-jh9"/>
-        <segue reference="F1R-Ld-GQL"/>
         <segue reference="4gB-Jw-pKB"/>
+        <segue reference="F1R-Ld-GQL"/>
+        <segue reference="2az-q9-jh9"/>
     </inferredMetricsTieBreakers>
 </document>
