@@ -12,7 +12,7 @@ import Parse
 import FBSDKLoginKit
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButtonDelegate {
+class LoginViewController: UIViewController, UITextFieldDelegate {
     
     
     var signupMode = false
@@ -36,15 +36,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         
-        if (FBSDKAccessToken.current() != nil){
-            print("Du bist eingeloggt")
-        } else {
-            let loginButton = FBSDKLoginButton()
-            loginButton.center = self.view.center
-            loginButton.readPermissions = ["public_profile", "email"]
-            loginButton.delegate = self
-            self.view.addSubview(loginButton)
-        }
+//        if (FBSDKAccessToken.current() != nil){
+//            print("Du bist eingeloggt")
+//        } else {
+//            let loginButton = FBSDKLoginButton()
+//            loginButton.center = self.view.center
+//            loginButton.readPermissions = ["public_profile", "email"]
+//            loginButton.delegate = self
+//            self.view.addSubview(loginButton)
+//        }
         
         //Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
@@ -64,33 +64,33 @@ class LoginViewController: UIViewController, UITextFieldDelegate, FBSDKLoginButt
     
     
     //Methode fuer den FacebookLoginButton
-    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-        if error != nil {
-            print(error)
-        }else if result.isCancelled {
-            print("User cancelled login")
-        }else {
-            if result.grantedPermissions.contains("email"){
-                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
-                    graphRequest.start(completionHandler: { (connection, result, error) in
-                        if error != nil {
-                            print(error!)
-                        }else {
-                            self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-                            if let userDetails = result as? [String: String] {
-                                print(userDetails["email"]!)
-                            }
-                        }
-                    })
-                }
-            }
-        }
-    }
-    
-    
-    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-        print ("Ausgeloggt")
-    }
+//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+//        if error != nil {
+//            print(error)
+//        }else if result.isCancelled {
+//            print("User cancelled login")
+//        }else {
+//            if result.grantedPermissions.contains("email"){
+//                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
+//                    graphRequest.start(completionHandler: { (connection, result, error) in
+//                        if error != nil {
+//                            print(error!)
+//                        }else {
+//                            self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+//                            if let userDetails = result as? [String: String] {
+//                                print(userDetails["email"]!)
+//                            }
+//                        }
+//                    })
+//                }
+//            }
+//        }
+//    }
+//    
+//    
+//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+//        print ("Ausgeloggt")
+//    }
     
     //Methode, die eine Fehlermeldung anzeigt wenn irgendwo etwas falsches eigegeben wurde z.B. Passwort, Emailadresse
     func createAlert(title: String, message: String){
