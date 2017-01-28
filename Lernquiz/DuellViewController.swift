@@ -88,12 +88,12 @@ class DuellViewController: SpielmodusViewController{
             textView.backgroundColor = UIColor.green
             
             if firstTime{
-            einzelRundenAuswertung(richtigeAntwort: true)
+                einzelRundenAuswertung(richtigeAntwort: true)
             }
             
         }else{
             if firstTime {
-            einzelRundenAuswertung(richtigeAntwort: false)
+                einzelRundenAuswertung(richtigeAntwort: false)
             }
             
             textView.backgroundColor = UIColor.red
@@ -140,7 +140,7 @@ class DuellViewController: SpielmodusViewController{
                 upload()
                 naechsteFrageButton.isHidden = true
                 delay(2.5, closure: {
-                self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
+                    self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
                 })
             }
         }
@@ -157,7 +157,7 @@ class DuellViewController: SpielmodusViewController{
     //Neuer Spielstand wird auf Server gespeichert
     func upload(){
         loescheAltesSpiel()
-
+        
         let hochzuladendesObjekt = PFObject(className: "Spiele")
         hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
         hochzuladendesObjekt["Spieler"] = eigenerName
@@ -194,14 +194,14 @@ class DuellViewController: SpielmodusViewController{
     //Weist den Textviews den Text zu, laedt die Fragen nacheinander rein, wertet diese aus und laesst den Timer laufen
     override func pickQuestion(frageKartenLokal : [Fragekarte]){
         super.pickQuestion(frageKartenLokal: frageKartenLokal)
-
+        
         hasSelected = false
         
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DuellViewController.updateTimer), userInfo: nil, repeats: true)
         updateTimer()
         naechsteFrageButton.isHidden = true
     }
-
+    
     
     // Timer gebastelt, der pro Frage 60 Sekunden runterzählt um die Frage zu beantworten
     var seconds: Int = 30

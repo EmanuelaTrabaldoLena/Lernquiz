@@ -160,6 +160,10 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ctx-XE-m11" customClass="CheckBoxView" customModule="Lernquiz" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="24" width="30" height="30"/>
                                                     <color key="backgroundColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="30" id="SnZ-0i-aem"/>
+                                                        <constraint firstAttribute="height" constant="30" id="zIY-Nc-OJo"/>
+                                                    </constraints>
                                                 </view>
                                             </subviews>
                                             <constraints>
@@ -1376,10 +1380,10 @@
         <image name="Lernquiz" width="259" height="98"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="gyV-bM-mQh"/>
-        <segue reference="4gB-Jw-pKB"/>
-        <segue reference="2az-q9-jh9"/>
-        <segue reference="udV-oF-PnC"/>
         <segue reference="9vV-oY-gHf"/>
+        <segue reference="udV-oF-PnC"/>
+        <segue reference="2az-q9-jh9"/>
+        <segue reference="F1R-Ld-GQL"/>
+        <segue reference="4gB-Jw-pKB"/>
     </inferredMetricsTieBreakers>
 </document>
