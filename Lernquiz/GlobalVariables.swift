@@ -28,3 +28,5 @@ var allgemein : Allgemein!
 
 //Anzeige, dass man sich soeben ausgeloggt hat und jetzt nicht automatisch neu angemeldet wird
 var ausgeloggt = false
+
+var frageGemeldet = 0

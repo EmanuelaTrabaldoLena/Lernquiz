@@ -24,7 +24,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     override func viewDidLoad() {
         self.navigationController?.navigationBar.isHidden = true
-        gegenSpieler.text = gegnerName
+        gegenSpieler.text = spiel.gegner.username
         spieler.text = spiel.spieler.username
         rundenTable.dataSource = self
         rundenTable.delegate = self

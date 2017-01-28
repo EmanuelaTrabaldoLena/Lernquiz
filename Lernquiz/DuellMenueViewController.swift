@@ -113,6 +113,8 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func download(){
         let projectQuery = PFQuery(className: "Spiele")
+        projectQuery.includeKey("Fach")
+        projectQuery.whereKey("Fach", equalTo: fachName)
         
         do{
             let spiele = try projectQuery.findObjects()

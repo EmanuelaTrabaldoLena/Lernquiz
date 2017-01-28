@@ -138,6 +138,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
         hochzuladendesObjekt["Spieler"] = eigenerName
         hochzuladendesObjekt["Gegner"] = gegnerName
+        hochzuladendesObjekt["Fach"] = fachName
         do{
             try hochzuladendesObjekt.save()
         }catch{
