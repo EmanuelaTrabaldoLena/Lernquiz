@@ -23,7 +23,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         }
     }
     @IBOutlet weak var belSpieler: UIButton!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
@@ -41,7 +41,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         dowloadUser()
         
     }
-
+    
     func dowloadUser(){
         
         let query = PFUser.query()
@@ -57,16 +57,10 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                 
                 loop_Users: for object in users{
                     if let user = object as? PFUser{
-                        
                         let usernameString = user.username
                         
-                        //Eigener Username wird nicht angezeigt
-                        
-                        
-                        for spiel in spiele
-                        {
-                            if (usernameString == spiel.gegner.username) || (usernameString == spiel.spieler.username)
-                            {
+                        for spiel in spiele{
+                            if ((usernameString == spiel.gegner.username) && (eigenerName == spiel.spieler.username) || (usernameString == spiel.spieler.username) && (eigenerName == spiel.gegner.username)){
                                 continue loop_Users
                             }
                         }
@@ -77,10 +71,8 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                             let meinFaecherHuelle = user["MeineFaecher"] as! NSMutableArray
                             let meineFaecherl = NSKeyedUnarchiver.unarchiveObject(with: meinFaecherHuelle.firstObject as! Data) as! [Fach]
                             
-                            for mitSpielerFach in meineFaecherl
-                            {
-                                if fachName == mitSpielerFach.name
-                                {
+                            for mitSpielerFach in meineFaecherl{
+                                if fachName == mitSpielerFach.name{
                                     self.usernames.append(usernameString!)
                                 }
                             }
@@ -93,8 +85,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
-    func downloadSpiele () -> [Spiel]
-    {
+    func downloadSpiele () -> [Spiel]{
         var output : [Spiel] = [Spiel]()
         let projectQuery = PFQuery(className: "Spiele")
         
@@ -109,8 +100,8 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         return output
     }
     
-
-
+    
+    
     //Beim auswaehlen eines Spielers aus der Suchtableview, wird man direkt in das DuellMenue weitergeleitet und das Spiel steht bei "Du bist dran"
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
@@ -168,7 +159,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     //Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-  
+        
         let row = indexPath.row
         gegnerName = usernames[row]
         let mitSpieler = Spieler(username: gegnerName, istDran: false)
