@@ -152,7 +152,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
             QNumber += 1
         }else{
             QNumber = 0
-            FrageLabel.text = "Alle Fragen durchgespielt. Wähle nächste Frage, um von vorne zu beginnen."
+            FrageLabel.text = "Alle Fragen durchgespielt. Wähle \"Nächste Frage\", um von vorne zu beginnen."
         }
     }
     
