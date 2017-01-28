@@ -150,9 +150,10 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
             print("Richtige Antwort-Index: \(frageKartenLokal[QNumber].RichtigeAntwortIndex)")
             print("Richtige Antwort: \(frageKartenLokal[QNumber].RichtigeAntwort)")
             
-             QNumber += 1
+            QNumber += 1
         }else{
             
+            QNumber = 0
         }
     }
     
