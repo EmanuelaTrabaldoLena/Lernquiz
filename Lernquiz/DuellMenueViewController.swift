@@ -17,7 +17,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
 
 
     @IBAction func zumHauptmenue(_ sender: Any) {
-        
+       //View wird mit pop vom Stack genommen
         _ = self.navigationController?.popViewController(animated: true)
     }
     

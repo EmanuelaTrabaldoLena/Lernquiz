@@ -34,42 +34,31 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     
     @IBAction func zumDuellmenue(_ sender: Any) {
-        let controller = self.navigationController?.viewControllers[2] // it is at index 1. index start from 0, 1 .. N
-        self.navigationController?.popToViewController(controller!, animated: true)
+        // Es werden zwei Views vom Stack genommen
+        let controller = self.navigationController?.viewControllers[2]
+        _ = self.navigationController?.popToViewController(controller!, animated: true)
     }
 
     
     
     //Spielstaende der einzelnen Runden werden gespeichert
     func score(){
-        if let runde = spiel.spieler.runden[spiel.runde][0]{
-            if runde == true{        self.spielerScore += 1
-                spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
+        for i in 0 ..< 6 {
+            for j in 0 ..< 3 {
+                let rundeS = spiel.spieler.runden[i][j]
+                if rundeS == true{
+                    spielerScore += 1
+                    spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
+            }
         }
         
-        if let runde = spiel.spieler.runden[spiel.runde][1]{
-            if runde == true{        spielerScore += 1
-                spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
-        }
-        
-        if let runde = spiel.spieler.runden[spiel.runde][2]{
-            if runde == true{        spielerScore += 1
-                spielerPunktestand.text = NSString(format: "%i", spielerScore) as String}
-        }
-        
-        if let runde = spiel.gegner.runden[spiel.runde][0]{
-            if runde == true{        gegnerScore += 1
-                gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
-        }
-        
-        if let runde = spiel.gegner.runden[spiel.runde][1]{
-            if runde == true{         gegnerScore += 1
-                gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
-        }
-        
-        if let runde = spiel.gegner.runden[spiel.runde][2]{
-            if runde == true{       gegnerScore += 1
-                gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
+        for k in 0 ..< 6 {
+            for l in 0 ..< 3 {
+                let rundeG = spiel.gegner.runden[k][l]
+                if rundeG == true{
+                    gegnerScore += 1
+                    gegnerPunktestand.text = NSString(format: "%i", gegnerScore) as String}
+            }
         }
     }
     
