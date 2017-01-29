@@ -20,6 +20,8 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     
     //Gewaehlte Antwort
     var EineAntwort: Bool = true
+    //Aktuelle Frage
+    var CurrentQuestion: Int = 0
     //Sorgt dafür, dass der Score nicht hochgeht, wenn erst eine falsche Antwort ausgewählt wird
     var hasSelected = false;
     //Nummer der Frage fuer die Erkennung
@@ -137,7 +139,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortA.backgroundColor = UIColor.white
         antwortB.backgroundColor = UIColor.white
         antwortC.backgroundColor = UIColor.white
-    
+        
         if (QNumber < frageKartenLokal.count){
             FrageLabel.text = frageKartenLokal[QNumber].Fragentext
             antwortA.text! = frageKartenLokal[QNumber].AntwortA

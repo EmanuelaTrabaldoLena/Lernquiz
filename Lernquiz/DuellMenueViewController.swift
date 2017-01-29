@@ -12,30 +12,52 @@ import Parse
 class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
     
     @IBOutlet weak var aktiveSpieleTV: UITableView!
-
     @IBOutlet weak var inaktiveSpieleTV: UITableView!
-
-
-    @IBAction func zumHauptmenue(_ sender: Any) {
-       //View wird mit pop vom Stack genommen
-        _ = self.navigationController?.popViewController(animated: true)
-    }
-    
     
     
     var aktiveSpiele = [Spiel]()
     var inaktiveSpiele = [Spiel]()
-    var spiel = Spiel()
     
-    
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        
+    override func viewDidLoad()
+    {
         aktiveSpieleTV.dataSource = self
         aktiveSpieleTV.delegate = self
         inaktiveSpieleTV.dataSource = self
         inaktiveSpieleTV.delegate = self
-
+        
+        startRefreshTimer()
+    }
+    
+    func startRefreshTimer()
+    {
+        Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { (timer) in
+            self.inaktiveSpiele.removeAll()
+            self.aktiveSpiele.removeAll()
+            
+            self.download()
+            
+            self.aktiveSpieleTV.reloadData()
+            self.inaktiveSpieleTV.reloadData()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        self.navigationController?.navigationBar.isHidden = true
+        aktiveSpiele = [Spiel]()
+        inaktiveSpiele = [Spiel]()
+        
+        download()
+        
+        aktiveSpieleTV.reloadData()
+        inaktiveSpieleTV.reloadData()
+    }
+    
+    
+    @IBAction func zumHauptmenue(_ sender: Any)
+    {
+        //View wird mit pop vom Stack genommen
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     
@@ -43,14 +65,20 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     {
         if tableView.isEqual(aktiveSpieleTV)
         {
-            if eigenerName == aktiveSpiele[indexPath.row].gegner.username //Bin ich der Gegner?
+            //Spiel schon fertig gespielt
+            if aktiveSpiele[indexPath.row].runde > 5
             {
-                gegnerName = aktiveSpiele[indexPath.row].spieler.username
-            } else {                                                     //Bin ich der Spielersteller?
-                gegnerName = aktiveSpiele[indexPath.row].gegner.username
+                performSegue(withIdentifier: "DuellMenueVC2ResultatVC", sender: aktiveSpiele[indexPath.row])
+            } else {
+                if eigenerName == aktiveSpiele[indexPath.row].gegner.username //Bin ich der Gegner?
+                {
+                    gegnerName = aktiveSpiele[indexPath.row].spieler.username
+                } else {                                                     //Bin ich der Spielersteller?
+                    gegnerName = aktiveSpiele[indexPath.row].gegner.username
+                }
+                
+                performSegue(withIdentifier: "DuellMenueVC2DuellVC", sender: aktiveSpiele[indexPath.row])
             }
-            
-            performSegue(withIdentifier: "DuellMenueVC2DuellVC", sender: aktiveSpiele[indexPath.row])
         }
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
@@ -59,6 +87,11 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
         {
             let vc = segue.destination as! DuellViewController
             vc.spiel = sender as! Spiel
+        } else if segue.identifier == "DuellMenueVC2ResultatVC"
+        {
+            let vc = segue.destination as! ResultatViewController
+            vc.spiel = sender as! Spiel
+            vc.allowDelete = true
         }
     }
     
@@ -92,25 +125,15 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if (tableView.isEqual(aktiveSpieleTV)){
-           return aktiveSpiele.count
-           
+            return aktiveSpiele.count
+            
         }else{
             return inaktiveSpiele.count
-           
+            
         }
     }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
-        aktiveSpiele = [Spiel]()
-        inaktiveSpiele = [Spiel]()
-        
-        download()
-        
-        aktiveSpieleTV.reloadData()
-        inaktiveSpieleTV.reloadData()
-    }
     
     
     func download(){
@@ -129,7 +152,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
                 {
                     if spiel == lokalesSpiel
                     {
-                       continue spiele_loop
+                        continue spiele_loop
                     }
                 }
                 for lokalesSpiel in inaktiveSpiele
@@ -147,25 +170,27 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
                     
                     if (spiel.gegner.username != eigenerName) //Bin ich der Gegner?
                     {
-                            if (spiel.gegner.getIstDran())
-                            {
-                                inaktiveSpiele.append(spiel)
-                                
-                            }else{
-                                aktiveSpiele.append(spiel)
-                            }
-                        } else {
-                            if (spiel.gegner.getIstDran())
-                            {
-                                aktiveSpiele.append(spiel)
-                                
-                            }else{
-                                inaktiveSpiele.append(spiel)
+                        if (spiel.gegner.getIstDran())
+                        {
+                            inaktiveSpiele.append(spiel)
+                            
+                        }else{
+                            aktiveSpiele.append(spiel)
+                        }
+                    } else {
+                        if (spiel.gegner.getIstDran())
+                        {
+                            aktiveSpiele.append(spiel)
+                            
+                        }else{
+                            inaktiveSpiele.append(spiel)
                         }
                     }
                 }
             }
         }catch{}
+        aktiveSpieleTV.reloadData()
+        inaktiveSpieleTV.reloadData()
     }
     
 }

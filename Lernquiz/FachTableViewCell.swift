@@ -7,65 +7,108 @@
 //
 
 import UIKit
+import Parse
 
 //Controller fuer die TableViewCell von AlleFaecher
 class FachTableViewCell: UITableViewCell{
     
-    @IBOutlet weak var name :UILabel?
-    @IBOutlet weak var checkbox :CheckBoxView?
+    @IBOutlet weak var name : UILabel?
+    @IBOutlet weak var checkbox : CheckBoxView?
     
-    override func awakeFromNib(){
-        super.awakeFromNib()
-    }
+    var fach : Fach = Fach()
+    
     
     //Ueberpruefung und Umsetzung des Anwaehlens der Checkboxen
-    func configure(fach :Fach){
+    func configure(fach : Fach)
+    {
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FachTableViewCell.tap))
+        checkbox!.addGestureRecognizer(gestureRecognizer)
         
-        if(fach.isSelected){
+        self.fach = fach.copy() as! Fach
+        if compareFach(in: gewaehlteVorlesungen, for: fach)
+        {
+            self.fach.isSelected = true
+        }
+        self.name!.text = fach.name
+        
+        
+        if(self.fach.isSelected)
+        {
             self.checkbox!.markAsChecked()
-        }else{
+        } else {
             self.checkbox!.markAsUnChecked()
         }
-        
-        self.name?.text = fach.name
-        
-        self.checkbox?.checkBoxChanged = {
-            
-            if(!fach.isSelected){
-                self.checkbox!.markAsChecked()
-                fach.isSelected = true
-                
-                //Angewaehlte Faecher in Array speichern
-                if gewaehlteVorlesungen.contains(fach){
-                    self.checkbox!.markAsChecked()
-                    fach.isSelected = true
-                    print(self.printAr(gewaehlteVorlesungen))
-                }else{
-                    gewaehlteVorlesungen.append(fach)
-                    fach.isSelected = true
-                    print(self.printAr(gewaehlteVorlesungen))
+    }
+    
+    
+    func tap()
+    {
+        if self.fach.isSelected
+        {
+            checkbox?.markAsUnChecked()
+            self.fach.isSelected = false
+            for f in gewaehlteVorlesungen
+            {
+                if f == self.fach
+                {
+                    f.isSelected = false
                 }
-            }else{
-                //Abgewaehlte Faecher aus Array entfernen
-                if gewaehlteVorlesungen.contains(fach) {
-                    self.checkbox!.markAsUnChecked()
-                    fach.isSelected = false
-                    self.entfernen(id: fach)
+            }
+            self.entfernen(id: fach)
+        } else {
+            checkbox?.markAsChecked()
+            self.fach.isSelected = true
+            for f in gewaehlteVorlesungen
+            {
+                if f == self.fach
+                {
+                    f.isSelected = true
                 }
-                print(self.printAr(gewaehlteVorlesungen))
+            }
+            gewaehlteVorlesungen.append(fach)
+        }
+        upload(fachArray: gewaehlteVorlesungen)
+    }
+    
+    
+    // Funktion, um Elemente korrekt aus Array zu entfernen
+    func entfernen (id: Fach)
+    {
+        for j in gewaehlteVorlesungen.indices.reversed()
+        {
+            if (gewaehlteVorlesungen[j].name == id.name)
+            {
+                gewaehlteVorlesungen.remove(at: j)
             }
         }
     }
     
     
-    //Falls Faecher bereits gespeichert sind, sollen die Checkboxen bereits ausgewaehlt sein, wenn man auf AlleFaecher kommt
-    func gewaehlt(cellFach : Fach){
-        for fach in gewaehlteVorlesungen{
-            if(fach.name == cellFach.name){
-                fach.isSelected = true
-                self.checkbox?.markAsChecked()
+    func upload(fachArray: [Fach])
+    {
+        if let currentUser = PFUser.current()
+        {
+            currentUser["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: fachArray))
+            do {
+                print("Versuche gewaehlteVorlesungen in User hochzuladen")
+                try currentUser.save()
+            } catch {
+                print("Fehler beim Hochladen!")
             }
         }
+    }
+    
+    
+    func compareFach(in faecher : [Fach], for fach : Fach) -> Bool
+    {
+        for f in faecher
+        {
+            if f == fach
+            {
+                return true
+            }
+        }
+        return false
     }
     
     
@@ -79,18 +122,5 @@ class FachTableViewCell: UITableViewCell{
     }
     
     
-    // Haken wird gezeichnet, falls ein Fach gewaehlt wird
-    override func setSelected(_ selected: Bool, animated: Bool){
-        super.setSelected(selected, animated: animated)
-    }
-    
-    // Funktion, um Elemente korrekt aus Array zu entfernen
-    func entfernen (id: Fach){
-        for j in gewaehlteVorlesungen.indices.reversed(){
-            if (gewaehlteVorlesungen[j].name == id.name){
-                gewaehlteVorlesungen.remove(at: j)
-            }
-        }
-    }
     
 }

@@ -24,23 +24,25 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     
     //User kann sich ausloggen und landet wieder auf der LoginView
-    @IBAction func logout(_ sender: Any){
-        PFUser .logOut()
+    @IBAction func logout(_ sender: Any)
+    {
+        PFUser.logOut()
         ausgeloggt = true
+        gewaehlteVorlesungen.removeAll()
         performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
     }
     
     
     //Durch klicken auf den hinzufuegen Button, wird man auf AlleFaecher weitergeleitet
-    @IBAction func hinzufuegen(_ sender: UIButton){
-        performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
+    @IBAction func hinzufuegen(_ sender: Any) {
+        performSegue(withIdentifier: "MeineFaecher2AlleFacher", sender: nil)
     }
-    
+
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-                self.navigationController?.navigationBar.isHidden = false
-
+        self.navigationController?.navigationBar.isHidden = false
+        
         meineFaecher.reloadData()
     }
     
@@ -51,8 +53,10 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     
     //Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
-        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
+        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell
+        {
             let row = indexPath.row
             fachCell.textLabel?.text = gewaehlteVorlesungen[row].name
             
@@ -73,7 +77,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         //Label in MenueView wird auf gewaehltes Fach aus der TableView gesetzt
         fachName = gewaehlteVorlesungen[row].name
         print("Gewaehltes Fach: \(fachName)")
-                
+        
         self.navigationController?.pushViewController(menueVC, animated: true)
     }
     

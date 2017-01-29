@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6149B63F1E265B3F005120DF /* SpielmodusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */; };
 		6149B6411E27D978005120DF /* NeuesSpielMenüViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */; };
+		614E3DC21E3E61D1008E435D /* ResultatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 614E3DC11E3E61D1008E435D /* ResultatViewController.swift */; };
 		61A825801E2E884A00471CB9 /* MPCHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A8257F1E2E884A00471CB9 /* MPCHandler.swift */; };
 		61A8258D1E2F9DB600471CB9 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8258A1E2F9DB600471CB9 /* FBSDKCoreKit.framework */; };
 		61A8258E1E2F9DB600471CB9 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 61A8258B1E2F9DB600471CB9 /* FBSDKLoginKit.framework */; };
@@ -74,6 +75,7 @@
 /* Begin PBXFileReference section */
 		6149B63E1E265B3F005120DF /* SpielmodusViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpielmodusViewController.swift; sourceTree = "<group>"; };
 		6149B6401E27D978005120DF /* NeuesSpielMenüViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NeuesSpielMenüViewController.swift"; sourceTree = "<group>"; };
+		614E3DC11E3E61D1008E435D /* ResultatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultatViewController.swift; sourceTree = "<group>"; };
 		61A8257F1E2E884A00471CB9 /* MPCHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MPCHandler.swift; path = ../MPCHandler.swift; sourceTree = "<group>"; };
 		61A8258A1E2F9DB600471CB9 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = Frameworks/FBSDKCoreKit.framework; sourceTree = SOURCE_ROOT; };
 		61A8258B1E2F9DB600471CB9 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = Frameworks/FBSDKLoginKit.framework; sourceTree = SOURCE_ROOT; };
@@ -366,6 +368,7 @@
 				8822A3CE1E28017500ACDDD2 /* SpielmodusVCs */,
 				88B876F91E2BBB8500146934 /* DuellSpielstandVC & TVC */,
 				889502E61E200FA100A67A67 /* FragenErstellenViewController.swift */,
+				614E3DC11E3E61D1008E435D /* ResultatViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 				881BA5E41E3781ED006649CD /* IQPreviousNextView.swift in Sources */,
 				88E0EB861E200089006BAA78 /* Fragekarte.swift in Sources */,
 				881BA5DA1E3781ED006649CD /* IQUITextFieldView+Additions.swift in Sources */,
+				614E3DC21E3E61D1008E435D /* ResultatViewController.swift in Sources */,
 				88E0EB6D1E1FFEFF006BAA78 /* MeineFaecherViewController.swift in Sources */,
 				881BA5DC1E3781ED006649CD /* IQUIViewController+Additions.swift in Sources */,
 				88E0EBAE1E2002E6006BAA78 /* AlleFaecherViewController.swift in Sources */,

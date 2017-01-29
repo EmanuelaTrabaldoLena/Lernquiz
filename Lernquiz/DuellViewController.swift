@@ -66,11 +66,12 @@ class DuellViewController: SpielmodusViewController{
             }
         }
         
-        relevanteFragen = [ frageKarten[x], frageKarten[y], frageKarten[z]]
+        relevanteFragen = [ frageKarten[x], frageKarten[y], frageKarten[z] ]
     }
     
     
-    func einzelRundenAuswertung(richtigeAntwort : Bool){
+    func einzelRundenAuswertung(richtigeAntwort : Bool)
+    {
         if spiel.spieler.username == eigenerName{
             spiel.spieler.runden[spiel.runde][QNumber - 1] = richtigeAntwort
         }else{
@@ -80,7 +81,8 @@ class DuellViewController: SpielmodusViewController{
     
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
-    override func antwortAuswerten(antwort : Antwort, firstTime : Bool){
+    override func antwortAuswerten(antwort : Antwort, firstTime : Bool)
+    {
         var textView : UITextView!
         switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         
@@ -98,7 +100,7 @@ class DuellViewController: SpielmodusViewController{
             
             textView.backgroundColor = UIColor.red
             
-            if firstTime == true{
+            if firstTime == true {
                 switch antwort{
                 case .A:
                     antwortAuswerten(antwort: Antwort.B, firstTime: false)
@@ -114,7 +116,6 @@ class DuellViewController: SpielmodusViewController{
             
         }
         if firstTime{
-            //upload()
             
             hasSelected = true
             //Timer wird abgebrochen und restliche Sekunden bleiben stehen
@@ -126,13 +127,18 @@ class DuellViewController: SpielmodusViewController{
             
             
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
-            if (super.QNumber == 3){
-                
+            if (super.QNumber == 3)
+            {
                 updateRound()
                 upload()
                 naechsteFrageButton.isHidden = true
                 delay(2, closure: {
-                    self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
+                    if self.spiel.runde > 5
+                    {
+                        self.performSegue(withIdentifier: "DuellVC2ResultatVC", sender: self.spiel)
+                    } else {
+                        self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
+                    }
                 })
             }
         }
@@ -140,10 +146,19 @@ class DuellViewController: SpielmodusViewController{
     
     
     //Überreiche Spiel an Übersicht
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
-        let vc = segue.destination as! DuellSpielstandViewController
-        vc.spiel = sender as! Spiel
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "DuellVC2DuellSpielstandVC"
+        {
+            let vc = segue.destination as! DuellSpielstandViewController
+            vc.spiel = sender as! Spiel
+        } else if segue.identifier == "DuellVC2ResultatVC"
+        {
+            let vc = segue.destination as! ResultatViewController
+            vc.spiel = sender as! Spiel
+        }
     }
+    
     
     func updateRound()
     {
@@ -167,9 +182,9 @@ class DuellViewController: SpielmodusViewController{
         }
     }
     
-    
     //Neuer Spielstand wird auf Server gespeichert
-    func upload(){
+    func upload()
+    {
         let spieleQuery = PFQuery(className: "Spiele")
         do{
             let spiele = try spieleQuery.findObjects()
@@ -196,13 +211,6 @@ class DuellViewController: SpielmodusViewController{
         }catch{}
     }
     
-    func synced(lock: AnyObject, closure: () -> ()) {
-        objc_sync_enter(lock)
-        closure()
-        objc_sync_exit(lock)
-    }
-
-
     
     //Weist den Textviews den Text zu, laedt die Fragen nacheinander rein, wertet diese aus und laesst den Timer laufen
     override func pickQuestion(frageKartenLokal : [Fragekarte]){
@@ -213,6 +221,12 @@ class DuellViewController: SpielmodusViewController{
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(DuellViewController.updateTimer), userInfo: nil, repeats: true)
         updateTimer()
         naechsteFrageButton.isHidden = true
+    }
+    
+    func synced(lock: AnyObject, closure: () -> ()) {
+        objc_sync_enter(lock)
+        closure()
+        objc_sync_exit(lock)
     }
     
     

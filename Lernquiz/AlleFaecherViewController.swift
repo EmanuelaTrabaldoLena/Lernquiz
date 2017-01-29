@@ -17,60 +17,62 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var alleFaecher: UITableView!
     @IBOutlet weak var faecherHinzufuegen: UIButton!
-
     
-    override func viewDidLoad(){
+    
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         alleFaecher.dataSource = self
         alleFaecher.delegate = self
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        alleFaecher.reloadData()
     }
     
     
+    
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
-    @IBAction func hinzufuegen(_ sender: Any){
-        save(fachArray: gewaehlteVorlesungen)
+    @IBAction func hinzufuegen(_ sender: Any)
+    {
+        upload(fachArray: gewaehlteVorlesungen)
         _ = self.navigationController?.popViewController(animated: true)
     }
     
     
     //Zeilen werden gezaehlt, Anzahl der Zeilen wird zurueckgegeben
-    internal func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-            return vorlesungsverzeichnis.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return vorlesungsverzeichnis.count
     }
     
     
     //Vorlesungsverzeichnis in einzelne Zellen geladen, Checkboxen anwaehlbar und TableView scrollbar
-    internal func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         //Ansonsten ganz normal die gesamte Liste
-        if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell{
-            
+        if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell
+        {
             let fach = vorlesungsverzeichnis[indexPath.row]
             fachCell.configure(fach: fach)
-            //Falls bereits Faecher ausgewaehlt sind, werden die Checkboxen gefuellt
-            fachCell.gewaehlt(cellFach: fach)
             return fachCell
         }else{
             return FachTableViewCell()
         }
     }
     
-    
-    //Gewaehlte Faecher werden in Parse hochgeladen und lokal im Systemspeicher abgelegt
-    func save(fachArray: [Fach]){
-        allgemein.gewaehlteVorlesungenLS = gewaehlteVorlesungen as NSObject?
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
-        appDelegate.saveContext()
-        
-        if let currentUser = PFUser.current(){
-            currentUser ["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: gewaehlteVorlesungen))
-            currentUser.saveInBackground()
-                    do{
-                        print("Versuche gewaehlteVorlesungen in User hochzuladen")
-                        try currentUser.save()
-                    }catch{
-                        print("Fehler beim Hochladen!")
-                    }
+    func upload(fachArray: [Fach])
+    {
+        if let currentUser = PFUser.current()
+        {
+            currentUser["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: fachArray))
+            do {
+                print("Versuche gewaehlteVorlesungen in User hochzuladen")
+                try currentUser.save()
+            } catch {
+                print("Fehler beim Hochladen!")
+            }
         }
     }
     
