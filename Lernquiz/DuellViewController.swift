@@ -128,18 +128,10 @@ class DuellViewController: SpielmodusViewController{
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
             if (super.QNumber == 3){
                 
-                if spiel.gegner.username == eigenerName{
-                    spiel.gegner.istDran = false
-                    spiel.spieler.istDran = true
-                    spiel.runde += 1
-                }else{
-                    spiel.gegner.istDran = true
-                    spiel.spieler.istDran = false
-                }
-                
+                updateRound()
                 upload()
                 naechsteFrageButton.isHidden = true
-                delay(2.5, closure: {
+                delay(2, closure: {
                     self.performSegue(withIdentifier: "DuellVC2DuellSpielstandVC", sender: self.spiel)
                 })
             }
@@ -153,43 +145,64 @@ class DuellViewController: SpielmodusViewController{
         vc.spiel = sender as! Spiel
     }
     
-    
-    //Neuer Spielstand wird auf Server gespeichert
-    func upload(){
-        loescheAltesSpiel()
-        
-        let hochzuladendesObjekt = PFObject(className: "Spiele")
-        hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
-        hochzuladendesObjekt["Spieler"] = eigenerName
-        hochzuladendesObjekt["Gegner"] = gegnerName
-        do{
-            try hochzuladendesObjekt.save()
-        }catch{
-            print("Fehler beim Upload der Spieldateien!")
+    func updateRound()
+    {
+        synced(lock: self) {
+            if spiel.gegner.username == eigenerName { //Bin ich der Gegenspieler?
+                spiel.gegner.setRundeBeendet(true)
+                spiel.gegner.setIstDran(false)
+                spiel.spieler.setIstDran(true)
+            }else{                                  //Bin ich der Spielersteller?
+                spiel.spieler.setRundeBeendet(true)
+                spiel.spieler.setIstDran(false)
+                spiel.gegner.setIstDran(true)
+            }
+            if spiel.gegner.getRundeBeendet() && spiel.spieler.getRundeBeendet()
+            {
+                spiel.gegner.setRundeBeendet(false)
+                spiel.spieler.setRundeBeendet(false)
+                spiel.generateRandomQuestions()
+                spiel.runde += 1
+            }
         }
-        
     }
     
     
-    //Altes Spiel wird vom Server geloescht
-    func loescheAltesSpiel(){
-        let projectQuery = PFQuery(className: "Spiele")
+    //Neuer Spielstand wird auf Server gespeichert
+    func upload(){
+        let spieleQuery = PFQuery(className: "Spiele")
         do{
-            let spiele = try projectQuery.findObjects()
+            let spiele = try spieleQuery.findObjects()
             for result in spiele{
                 let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
                 let spielLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
                 
-                if spiel == spielLokal{
-                    do {
-                        try result.delete()
-                    } catch {}
+                if spiel == spielLokal
+                {
+                    let hochzuladendesObjekt = result
+                    
+                    hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
+                    hochzuladendesObjekt["Spieler"] = eigenerName
+                    hochzuladendesObjekt["Gegner"] = gegnerName
+                    hochzuladendesObjekt["Fach"] = fachName
+                    
+                    do{
+                        try hochzuladendesObjekt.save()
+                    }catch let error {
+                        print("Fehler beim Upload der Spieldateien!\n\(error)")
+                    }
                 }
-                
             }
         }catch{}
     }
     
+    func synced(lock: AnyObject, closure: () -> ()) {
+        objc_sync_enter(lock)
+        closure()
+        objc_sync_exit(lock)
+    }
+
+
     
     //Weist den Textviews den Text zu, laedt die Fragen nacheinander rein, wertet diese aus und laesst den Timer laufen
     override func pickQuestion(frageKartenLokal : [Fragekarte]){

@@ -16,8 +16,7 @@ class Spiel : NSObject, NSCoding {
     var fragenKartenID = [Int]()
     var runde = 0
     
-    override init(){
-    }
+    override init(){}
     
     
     //Initialisiere ein Spiel mit einem Gegner und sich selbst, wobei gleichzeitig 3 gleiche Fragen ausgewaehlt werden.
@@ -28,18 +27,21 @@ class Spiel : NSObject, NSCoding {
         self.fachName = fach.name
         self.runde = runde
         
+        super.init()
+        
+        generateRandomQuestions()
+    }
+    
+    func generateRandomQuestions()
+    {
+        let fach = Fach(name: self.fachName)
         let maxID4Fach =  fach.ermittleMaxID()
-        
-        
         let zufaelligeID1 = Int(arc4random_uniform(UInt32(maxID4Fach)))
         let zufaelligeID2 = Int(arc4random_uniform(UInt32(maxID4Fach)))
         let zufaelligeID3 = Int(arc4random_uniform(UInt32(maxID4Fach)))
         
-        
         fragenKartenID = [zufaelligeID1, zufaelligeID2, zufaelligeID3]
     }
-    
-    
     
     required init?(coder aDecoder: NSCoder){
         self.spieler = aDecoder.decodeObject(forKey:"spieler") as? Spieler ?? Spieler()
@@ -57,7 +59,6 @@ class Spiel : NSObject, NSCoding {
         let objC_fragenKartenID = aDecoder.decodeObject(forKey: "fragenKartenID") as! NSMutableArray
         
         self.fragenKartenID = [objC_fragenKartenID[0] as! Int, objC_fragenKartenID[1] as! Int, objC_fragenKartenID[2] as! Int]
-        
     }
     
     
@@ -69,7 +70,7 @@ class Spiel : NSObject, NSCoding {
         aCoder.encode(String(runde), forKey: "runde")
         
         //Der Decoder hat Probleme mit Swift Datenstrukturen, weswegen hier in Obj-C Datenstrukturen umgecastet wird.
-
+        
         aCoder.encode(NSMutableArray(array: fragenKartenID), forKey: "fragenKartenID")
     }
     

@@ -35,12 +35,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
         aktiveSpieleTV.delegate = self
         inaktiveSpieleTV.dataSource = self
         inaktiveSpieleTV.delegate = self
-        
-        //download()
-        
-        aktiveSpieleTV.reloadData()
-        inaktiveSpieleTV.reloadData()
-        
+
     }
     
     
@@ -48,9 +43,15 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     {
         if tableView.isEqual(aktiveSpieleTV)
         {
+            if eigenerName == aktiveSpiele[indexPath.row].gegner.username //Bin ich der Gegner?
+            {
+                gegnerName = aktiveSpiele[indexPath.row].spieler.username
+            } else {                                                     //Bin ich der Spielersteller?
+                gegnerName = aktiveSpiele[indexPath.row].gegner.username
+            }
+            
             performSegue(withIdentifier: "DuellMenueVC2DuellVC", sender: aktiveSpiele[indexPath.row])
         }
-        
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -102,10 +103,11 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool){
+        aktiveSpiele = [Spiel]()
+        inaktiveSpiele = [Spiel]()
+        
         download()
+        
         aktiveSpieleTV.reloadData()
         inaktiveSpieleTV.reloadData()
     }
@@ -145,20 +147,20 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
                     
                     if (spiel.gegner.username != eigenerName) //Bin ich der Gegner?
                     {
-                        if (spiel.gegner.istDran)
-                        {
-                            inaktiveSpiele.append(spiel)
-                            
-                        }else{
-                            aktiveSpiele.append(spiel)
-                        }
-                    } else {
-                        if (spiel.gegner.istDran)
-                        {
-                            aktiveSpiele.append(spiel)
-                            
-                        }else{
-                            inaktiveSpiele.append(spiel)
+                            if (spiel.gegner.getIstDran())
+                            {
+                                inaktiveSpiele.append(spiel)
+                                
+                            }else{
+                                aktiveSpiele.append(spiel)
+                            }
+                        } else {
+                            if (spiel.gegner.getIstDran())
+                            {
+                                aktiveSpiele.append(spiel)
+                                
+                            }else{
+                                inaktiveSpiele.append(spiel)
                         }
                     }
                 }

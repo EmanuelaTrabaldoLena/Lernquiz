@@ -13,9 +13,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
     
     //Counter für Score, wird lokal gespeichert
     var Score: Int = 0
-    
-    //Counter für "Frage melden"
-    var meldung: Int = 0
+
     
     @IBOutlet weak var ScoreLabel: UILabel!
     @IBOutlet var FrageBewerten: UIButton!
@@ -66,17 +64,47 @@ class EinzelSpielerViewController: SpielmodusViewController{
     
     @IBAction func FrageBewerten(_ sender: Any) {
         
-        meldung += 1
+        frageGemeldet += 1
         FrageBewerten.backgroundColor = UIColor.green
         FrageBewerten.setTitle("Frage gemeldet", for: [])
         
         //als Test
-        print(meldung)
+        print(frageGemeldet)
         
         //Man kann Button nur einmal klicken
         FrageBewerten.isEnabled = false
-        
+        update()
         //hier gehört jetzt noch rein, dass die Anzahl an Meldungen für die eine Frage mit dem Index "bla" gespeichert wird. Dazu wurde die Klasse "Fragekarte" schon erweitert (aber in auskommentierter Form)
+    }
+
+    
+    func update(){
+        if Int(frageKarten[QNumber-1].frageGemeldet) < 3{
+            print("Frage selten gemeldet")
+        }else{
+            loescheFragekarte()
+            print("Fragekarte gelöscht")
+        }
+    }
+    
+    func loescheFragekarte()
+    {
+        let projectQuery = PFQuery(className: "Fragekarte")
+        do{
+            let frage = try projectQuery.findObjects()
+            for result in frage{
+                let encodedData = (result["Fragekarte"] as! NSMutableArray).firstObject as! NSData
+                let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
+                
+                if frageKarten[QNumber-1] == frageKarteLokal
+
+                {
+                    do {
+                        try result.delete()
+                    } catch {}
+                }
+            }
+        }catch{}
     }
     
     

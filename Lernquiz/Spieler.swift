@@ -11,73 +11,88 @@ import Foundation
 class Spieler : NSObject, NSCoding {
     
     var username : String
-    var istDranString : String = "false"
     var runden : [[Bool?]] = [[nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil], [nil, nil, nil]]
-    var istDran : Bool = false
-        {
-        didSet
-        {
-            if istDran == true {istDranString = "true"}
-            if istDran == false {istDranString = "false"}
-        }
-    }
+    var istDranString = "false"
+    var rundeBeendetString = "false"
     
-    init(username: String, runden: [[Bool]], istDran : Bool){
+    
+    init(username: String, runden: [[Bool]], istDran : Bool)
+    {
         self.username = username
         self.runden = runden
-        self.istDran = istDran
-        if self.istDran == true
-        {
-            self.istDranString = "true"
-        } else {
-            self.istDranString = "false"
-        }
+        super.init()
+        setIstDran(istDran)
     }
     
-    init(username: String, istDran : Bool){
+    init(username: String, istDran : Bool)
+    {
         self.username = username
-        self.istDran = istDran
-        if self.istDran == true
-        {
-            self.istDranString = "true"
-        } else {
-            self.istDranString = "false"
-        }
+        super.init()
+        setIstDran(istDran)
     }
     
-    override init(){
+    override init()
+    {
         self.username = ""
-        self.istDran = false
     }
     
-    required init?(coder aDecoder: NSCoder){
+    required init?(coder aDecoder: NSCoder)
+    {
         self.username = aDecoder.decodeObject(forKey:"username") as? String ?? ""
-        self.istDranString = aDecoder.decodeObject(forKey:"istDranString") as? String ?? "ein fehler ist aufgetreten"
+        self.istDranString = aDecoder.decodeObject(forKey:"istDranString") as! String
+        self.rundeBeendetString = aDecoder.decodeObject(forKey:"rundeBeendetString") as! String
         
         //Der Decoder hat Probleme mit Swift Datenstrukturen, weswegen hier in Obj-C Datenstrukturen umgecastet wird.
         let objC_runden = aDecoder.decodeObject(forKey:"runden") as! NSMutableArray
         self.runden = [objC_runden[0] as! [Bool?], objC_runden[1] as! [Bool?], objC_runden[2] as! [Bool?], objC_runden[3] as! [Bool?], objC_runden[4] as! [Bool?], objC_runden[5] as! [Bool?]]
-        
-        
-        if self.istDranString == "true"
+    }
+    
+    func getIstDran() -> Bool
+    {
+        if istDranString == "true" { return true }
+        return false
+    }
+    
+    func setIstDran(_ istDran : Bool)
+    {
+        if istDran == true
         {
-            self.istDran = true
-        } else if self.istDranString == "false" {
-            self.istDran = false
+            self.istDranString = "true"
+        } else if istDran == false {
+            self.istDranString = "false"
         }
     }
-
+    
+    func getRundeBeendet() -> Bool
+    {
+        if rundeBeendetString == "true" { return true }
+        return false
+    }
+    
+    func setRundeBeendet(_ rundeBeendet : Bool)
+    {
+        if rundeBeendet == true
+        {
+            self.rundeBeendetString = "true"
+        } else if rundeBeendet == false {
+            self.rundeBeendetString = "false"
+        }
+    }
+    
     
     //Daten werden verpackt, um an den Server geschickt zu werden
-    func encode(with aCoder: NSCoder) {
+    func encode(with aCoder: NSCoder)
+    {
         aCoder.encode(username, forKey: "username")
         aCoder.encode(istDranString, forKey: "istDranString")
+        aCoder.encode(rundeBeendetString, forKey: "rundeBeendetString")
         
         //Der Decoder hat Probleme mit Swift Datenstrukturen, weswegen hier in Obj-C Datenstrukturen umgecastet wird.
         aCoder.encode(NSMutableArray(array: runden), forKey: "runden")
     }
     
-     static func == (lhs : Spieler, rhs : Spieler) -> Bool
+    
+    static func == (lhs : Spieler, rhs : Spieler) -> Bool
     {
         if (lhs.username == rhs.username)
         {

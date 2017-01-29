@@ -18,7 +18,7 @@ class Fragekarte : NSObject, NSCoding{
     var RichtigeAntwort : String = ""
     var RichtigeAntwortIndex : NSNumber = 0
     var fachName = String()
-    //var frageGemeldet : Int = 0
+    var frageGemeldet : Int = 0
     
     
     func toString () -> String{
@@ -68,7 +68,7 @@ class Fragekarte : NSObject, NSCoding{
     }
     
     //Standard Initializer
-    init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String)
+    init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String, frageGemeldet: Int)
     {
         self.FragenId = FragenId
         self.Fragentext = Fragentext
@@ -76,7 +76,7 @@ class Fragekarte : NSObject, NSCoding{
         self.AntwortB = AntwortB
         self.AntwortC = AntwortC
         self.RichtigeAntwort = RichtigeAntwort
-        //self.frageGemeldet = frageGemeldet
+        self.frageGemeldet = frageGemeldet
     }
     
     //Die folgenden 2 Methoden sind wichtig um die Daten in Parse zu speichern
@@ -90,7 +90,7 @@ class Fragekarte : NSObject, NSCoding{
         self.RichtigeAntwort = aDecoder.decodeObject(forKey:"RichtigeAntwort") as? String ?? ""
         self.RichtigeAntwortIndex = aDecoder.decodeObject(forKey:"RichtigeAntwortIndex") as? NSNumber ?? 11
         self.fachName = aDecoder.decodeObject(forKey: "fachName") as? String ?? ""
-        //self.frageGemeldet = aDecoder.decodeObject(forKey:"FragenId") as? Int ?? 0
+        self.frageGemeldet = aDecoder.decodeObject(forKey:"FragenId") as? Int ?? 0
     }
     
     //Daten werden verpackt, um an den Server geschickt zu werden
@@ -103,12 +103,12 @@ class Fragekarte : NSObject, NSCoding{
         aCoder.encode(RichtigeAntwort, forKey: "RichtigeAntwort")
         aCoder.encode(RichtigeAntwortIndex, forKey: "RichtigeAntwortIndex")
         aCoder.encode(fachName, forKey : "fachName")
-        //aCoder.encode(frageGemeldet, forKey: "frageGemeldet")
+        aCoder.encode(frageGemeldet, forKey: "frageGemeldet")
     }
     
     //Schwaecherer Initializierer, der einen Parameter weniger hat
-    convenience init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String){
-        self.init(FragenId: FragenId, Fragentext: Fragentext, AntwortA: AntwortA, AntwortB: AntwortB, AntwortC: AntwortC, RichtigeAntwort: AntwortA) //,frageGemeldet: frageGemeldet
+    convenience init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, frageGemeldet: Int){
+        self.init(FragenId: FragenId, Fragentext: Fragentext, AntwortA: AntwortA, AntwortB: AntwortB, AntwortC: AntwortC, RichtigeAntwort: AntwortA, frageGemeldet: frageGemeldet)
     }
 
 }
