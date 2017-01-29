@@ -42,14 +42,15 @@
             PFUser.enableAutomaticUser()
             let defaultACL = PFACL()
             defaultACL.getPublicReadAccess = true
+            defaultACL.getPublicWriteAccess = true
             PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             
             //AlleFaecherTV wird gefuellt
             tableFuellen()
             //Erstellt das erste Speicherobjekt beim erstmaligen Ausfuehren der App
-            initiateDefaultValues()
+            //initiateDefaultValues()
             //Laedt bereits gespeicherte Daten wieder rein
-            localFetch()
+            //localFetch()
             return true
         }
         
