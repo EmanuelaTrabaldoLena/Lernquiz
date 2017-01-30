@@ -54,7 +54,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         frageKarte.swap()
         frageKarte.ermittleRichtigeAntwortIndex()
         upload()
-        performSegue(withIdentifier: "FrageErstellen2ES/Duell/Frage", sender: nil)
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
     
