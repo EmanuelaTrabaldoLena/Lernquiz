@@ -31,7 +31,8 @@ class ResultatViewController: UIViewController
     
     @IBAction func zumHauptMenueA(_ sender: UIButton)
     {
-        performSegue(withIdentifier: "ResultatVC2DuellMenueVC", sender: nil)
+        let controller = self.navigationController?.viewControllers[2]
+        _ = self.navigationController?.popToViewController(controller!, animated: true)
     }
     
     func deleteGame()
@@ -88,11 +89,11 @@ class ResultatViewController: UIViewController
         
         if spielerScore > gegnerScore
         {
-            resultatL.text = "Du hast gewonnen!"
+            resultatL.text = "Herzlichen Glückwunsch! Du hast gewonnen!"
         } else if spielerScore == gegnerScore {
             resultatL.text = "Unentschieden!"
         } else if spielerScore < gegnerScore {
-            resultatL.text = "Du hast verloren!"
+            resultatL.text = "Du hast leider verloren!"
         }
     }
     
