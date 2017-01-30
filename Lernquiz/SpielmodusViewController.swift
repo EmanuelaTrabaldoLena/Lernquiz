@@ -130,7 +130,6 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     }
     
     
-    
     //Weist den Textviews den Text zu und laedt die Fragen nacheinander rein bis keine mehr vorhanden sind
     func pickQuestion(frageKartenLokal : [Fragekarte]){
         //Bei jeder neuen Frage werden die Farben der Antworten wieder auf weiß gesetzt und der Bool wieder auf false gesetzt bevor der erste Antwortbutton gedrückt wird

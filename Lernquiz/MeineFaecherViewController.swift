@@ -23,6 +23,14 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
+    override func viewDidAppear(_ animated: Bool){
+        super.viewDidAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+        
+        meineFaecher.reloadData()
+    }
+    
+    
     //User kann sich ausloggen und landet wieder auf der LoginView
     @IBAction func logout(_ sender: Any){
         PFUser.logOut()
@@ -38,14 +46,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    override func viewDidAppear(_ animated: Bool){
-        super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        
-        meineFaecher.reloadData()
-    }
-    
-    
+    //TableView ist entweder leer oder wird mit den bereits gewählten Vorlesungen gefüllt
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if gewaehlteVorlesungen != nil{
             return gewaehlteVorlesungen.count

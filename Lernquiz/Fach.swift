@@ -15,36 +15,35 @@ class Fach : NSObject, NSCoding, NSCopying {
     var isSelected: Bool = false
     var Fragen = [Fragekarte]()
     
+    
+    //Leerer Konstruktor, der den Namen als String setzt
     override init(){
         self.name = String()
     }
     
     
     //Konstruktor nur mit uebergebenen Namen
-    init(name : String)
-    {
+    init(name : String){
         self.name = name
     }
     
     
-    init(name: String, isSelected : Bool)
-    {
+    //Konstruktor mit uebergebenen Namen und Wert ob das Fach gewählt wurde
+    init(name: String, isSelected : Bool){
         self.name = name
         self.isSelected = isSelected
     }
     
     
-    //Konstruktor mit uebergebenen Namen, Anzahl der Fragen und der Fragenkarten selbst
-    init(name:String, Fragen: [Fragekarte])
-    {
+    //Konstruktor mit uebergebenen Namen und der Fragenkarten selbst
+    init(name:String, Fragen: [Fragekarte]){
         self.name = name
         self.Fragen = Fragen
     }
     
     
     //Benoetigter Konstruktor fuer das entpacken der Daten
-    required init?(coder aDecoder: NSCoder)
-    {
+    required init?(coder aDecoder: NSCoder){
         self.name = aDecoder.decodeObject(forKey:"name") as! String
         self.isSelected = aDecoder.decodeObject(forKey:"isSelected") as? Bool ?? false
         self.Fragen = aDecoder.decodeObject(forKey:"Fragen") as! [Fragekarte]
@@ -73,19 +72,16 @@ class Fach : NSObject, NSCoding, NSCopying {
     
     
     //Daten werden verpackt, um an den Server geschickt zu werden
-    func encode(with aCoder: NSCoder)
-    {
+    func encode(with aCoder: NSCoder){
         aCoder.encode(name, forKey: "name")
         aCoder.encode(isSelected, forKey: "isSelected")
         aCoder.encode(Fragen, forKey: "Fragen")
     }
     
     
-    public static func ==(lhs: Fach, rhs: Fach) -> Bool
-    {
+    //Statische Funktion zum Vergleich der Strings, nicht ob die Objekte identisch sind
+    public static func ==(lhs: Fach, rhs: Fach) -> Bool{
         if lhs.name == rhs.name { return true }
         return false
     }
-    
-    
 }

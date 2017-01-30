@@ -19,8 +19,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     @IBOutlet weak var faecherHinzufuegen: UIButton!
     
     
-    override func viewDidLoad()
-    {
+    override func viewDidLoad(){
         super.viewDidLoad()
         
         alleFaecher.dataSource = self
@@ -28,10 +27,11 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         
     }
     
+    
+    //Jedes Mal wenn die View wieder erscheint, wird der Inhalt neu geladen
     override func viewDidAppear(_ animated: Bool) {
         alleFaecher.reloadData()
     }
-    
     
     
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
@@ -42,8 +42,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     //Zeilen werden gezaehlt, Anzahl der Zeilen wird zurueckgegeben
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
-    {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         return vorlesungsverzeichnis.count
     }
     
@@ -51,8 +50,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     //Vorlesungsverzeichnis in einzelne Zellen geladen, Checkboxen anwaehlbar und TableView scrollbar
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         //Ansonsten ganz normal die gesamte Liste
-        if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell
-        {
+        if let fachCell = tableView.dequeueReusableCell(withIdentifier: "FachTableViewCell", for: indexPath) as? FachTableViewCell{
             let fach = vorlesungsverzeichnis[indexPath.row]
             fachCell.configure(fach: fach)
             return fachCell
@@ -61,10 +59,10 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
         }
     }
     
-    func upload(fachArray: [Fach])
-    {
-        if let currentUser = PFUser.current()
-        {
+    
+    //Gewählte Fächer werden in den User im Server hochgeladen
+    func upload(fachArray: [Fach]){
+        if let currentUser = PFUser.current(){
             currentUser["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: fachArray))
             do {
                 print("Versuche gewaehlteVorlesungen in User hochzuladen")

@@ -15,7 +15,6 @@ class DuellViewController: SpielmodusViewController{
     @IBOutlet weak var naechsteFrageButton: UIButton!
     
     var spiel = Spiel()
-    
     var relevanteFragen = [Fragekarte]()
     
     
@@ -26,14 +25,15 @@ class DuellViewController: SpielmodusViewController{
     }
     
     
-    @IBAction override func naechsteFrage(_ sender: Any){
-        seconds = 30
-        pickQuestion(frageKartenLokal: relevanteFragen)
+    //Jedes Mal wenn die View erscheint, wird die Navigationbar versteckt
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = true
+    @IBAction override func naechsteFrage(_ sender: Any){
+        seconds = 30
+        pickQuestion(frageKartenLokal: relevanteFragen)
     }
     
     
@@ -70,8 +70,8 @@ class DuellViewController: SpielmodusViewController{
     }
     
     
-    func einzelRundenAuswertung(richtigeAntwort : Bool)
-    {
+    //Überprüfung und Auswertung der einzelnen Runden
+    func einzelRundenAuswertung(richtigeAntwort : Bool){
         if spiel.spieler.username == eigenerName{
             spiel.spieler.runden[spiel.runde][QNumber - 1] = richtigeAntwort
         }else{
@@ -81,8 +81,7 @@ class DuellViewController: SpielmodusViewController{
     
     
     //Hier werden die Hintergrundfarben der Antwortbutton je nach richtiger Antwort geändert und der Score erhöht, wenn die richtige Antwort zuerst gedrückt wird.
-    override func antwortAuswerten(antwort : Antwort, firstTime : Bool)
-    {
+    override func antwortAuswerten(antwort : Antwort, firstTime : Bool){
         var textView : UITextView!
         switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
         
@@ -127,8 +126,7 @@ class DuellViewController: SpielmodusViewController{
             
             
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
-            if (super.QNumber == 3)
-            {
+            if (super.QNumber == 3){
                 updateRound()
                 upload()
                 naechsteFrageButton.isHidden = true
@@ -146,22 +144,19 @@ class DuellViewController: SpielmodusViewController{
     
     
     //Überreiche Spiel an Übersicht
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
-    {
-        if segue.identifier == "DuellVC2DuellSpielstandVC"
-        {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "DuellVC2DuellSpielstandVC"{
             let vc = segue.destination as! DuellSpielstandViewController
             vc.spiel = sender as! Spiel
-        } else if segue.identifier == "DuellVC2ResultatVC"
-        {
+        }else if segue.identifier == "DuellVC2ResultatVC"{
             let vc = segue.destination as! ResultatViewController
             vc.spiel = sender as! Spiel
         }
     }
     
     
-    func updateRound()
-    {
+    //Wenn die Runde beendet wurde, wird diese hochgezählt und 3 neue Fragen geladen
+    func updateRound(){
         synced(lock: self) {
             if spiel.gegner.username == eigenerName { //Bin ich der Gegenspieler?
                 spiel.gegner.setRundeBeendet(true)
@@ -172,8 +167,7 @@ class DuellViewController: SpielmodusViewController{
                 spiel.spieler.setIstDran(false)
                 spiel.gegner.setIstDran(true)
             }
-            if spiel.gegner.getRundeBeendet() && spiel.spieler.getRundeBeendet()
-            {
+            if spiel.gegner.getRundeBeendet() && spiel.spieler.getRundeBeendet(){
                 spiel.gegner.setRundeBeendet(false)
                 spiel.spieler.setRundeBeendet(false)
                 spiel.generateRandomQuestions()
@@ -182,9 +176,9 @@ class DuellViewController: SpielmodusViewController{
         }
     }
     
+    
     //Neuer Spielstand wird auf Server gespeichert
-    func upload()
-    {
+    func upload(){
         let spieleQuery = PFQuery(className: "Spiele")
         do{
             let spiele = try spieleQuery.findObjects()
@@ -192,8 +186,7 @@ class DuellViewController: SpielmodusViewController{
                 let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
                 let spielLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
                 
-                if spiel == spielLokal
-                {
+                if spiel == spielLokal{
                     let hochzuladendesObjekt = result
                     
                     hochzuladendesObjekt["Spiel"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: spiel))
@@ -223,6 +216,8 @@ class DuellViewController: SpielmodusViewController{
         naechsteFrageButton.isHidden = true
     }
     
+    
+    //Es müssen erst die notwendigen Funktionen ausgeführt werden, bevor man weitere ausführen kann
     func synced(lock: AnyObject, closure: () -> ()) {
         objc_sync_enter(lock)
         closure()

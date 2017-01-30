@@ -21,9 +21,11 @@ class Fragekarte : NSObject, NSCoding{
     private var frageGemeldetString : String = "0"
     
     
+    //Die Fragekarte wird als String zurückgegeben
     func toString () -> String{
         return "Fragentext: \(Fragentext)  |  AntwortA: \(AntwortA) | AntwortB: \(AntwortB) | AntwortC: \(AntwortC)"
     }
+    
     
     //Der Index wird anhand der richtigen Antwort ermittelt
     func ermittleRichtigeAntwortIndex(){
@@ -63,14 +65,13 @@ class Fragekarte : NSObject, NSCoding{
         AntwortC = array[2]
     }
   
-    override init(){
-        
-    }
+    
+    //Leerer Konstruktor
+    override init(){}
     
     
     //Standard Initializer
-    init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String, frageGemeldet: Int)
-    {
+    init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String, frageGemeldet: Int){
         self.FragenId = FragenId
         self.Fragentext = Fragentext
         self.AntwortA = AntwortA
@@ -80,6 +81,7 @@ class Fragekarte : NSObject, NSCoding{
         super.init()
         self.setFrageGemeldet(anzahl: frageGemeldet)
     }
+    
     
     //Die folgenden 2 Methoden sind wichtig um die Daten in Parse zu speichern
     //Daten, die bereits vom Server gezogen wurden, werden ausgepackt
@@ -95,6 +97,7 @@ class Fragekarte : NSObject, NSCoding{
         self.frageGemeldetString = aDecoder.decodeObject(forKey:"frageGemeldet") as? String ?? String()
     }
     
+    
     //Daten werden verpackt, um an den Server geschickt zu werden
     func encode(with aCoder: NSCoder){
         aCoder.encode(FragenId, forKey: "FragenId")
@@ -109,13 +112,14 @@ class Fragekarte : NSObject, NSCoding{
     }
     
     
-    func getFrageGemeldet() -> Int
-    {
+    //Gibt den String der gemeldeten Zahl als Int zurück
+    func getFrageGemeldet() -> Int{
         return Int(frageGemeldetString)!
     }
     
-    func setFrageGemeldet(anzahl : Int)
-    {
+    
+    //Setzt den Int der Zahl als String dann wieder neu
+    func setFrageGemeldet(anzahl : Int){
         frageGemeldetString = String(anzahl)
     }
     
@@ -126,10 +130,10 @@ class Fragekarte : NSObject, NSCoding{
         self.init(FragenId: FragenId, Fragentext: Fragentext, AntwortA: AntwortA, AntwortB: AntwortB, AntwortC: AntwortC, RichtigeAntwort: AntwortA, frageGemeldet: frageGemeldet)
     }
     
-    static func == (lhs : Fragekarte, rhs : Fragekarte) -> Bool
-    {
-        if (lhs.Fragentext == rhs.Fragentext)
-        {
+    
+    //Statische Funktion zum Vergleich der Strings, nicht ob die Objekte identisch sind
+    static func == (lhs : Fragekarte, rhs : Fragekarte) -> Bool{
+        if (lhs.Fragentext == rhs.Fragentext){
             return true
         }
         return false

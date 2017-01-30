@@ -38,6 +38,7 @@ class FachTableViewCell: UITableViewCell{
     }
     
     
+    //Falls eine Box markiert ist, wird sie durch anwählen wieder frei, falls sie nicht markiert ist, wird sie durch anwählen markiert
     func tap(){
         if self.fach.isSelected{
             checkbox?.markAsUnChecked()
@@ -72,6 +73,7 @@ class FachTableViewCell: UITableViewCell{
     }
     
     
+    //Fächer werden in den User im Server hochgeladen
     func upload(fachArray: [Fach]){
         if let currentUser = PFUser.current(){
             currentUser["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: fachArray))
@@ -85,6 +87,7 @@ class FachTableViewCell: UITableViewCell{
     }
     
     
+    //Vergleich, ob sich das Fach in den Fächern befindet
     func compareFach(in faecher : [Fach], for fach : Fach) -> Bool{
         for f in faecher{
             if f == fach{

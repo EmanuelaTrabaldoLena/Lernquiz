@@ -16,28 +16,29 @@ class Spieler : NSObject, NSCoding {
     var rundeBeendetString = "false"
     
     
-    init(username: String, runden: [[Bool]], istDran : Bool)
-    {
+    init(username: String, runden: [[Bool]], istDran : Bool){
         self.username = username
         self.runden = runden
         super.init()
         setIstDran(istDran)
     }
     
-    init(username: String, istDran : Bool)
-    {
+    
+    init(username: String, istDran : Bool){
         self.username = username
         super.init()
         setIstDran(istDran)
     }
     
-    override init()
-    {
+    
+    //Leerer Konstruktor, der den Usernamen leer setzt
+    override init(){
         self.username = ""
     }
     
-    required init?(coder aDecoder: NSCoder)
-    {
+    
+    //Benoetigter Konstruktor fuer das entpacken der Daten
+    required init?(coder aDecoder: NSCoder){
         self.username = aDecoder.decodeObject(forKey:"username") as? String ?? ""
         self.istDranString = aDecoder.decodeObject(forKey:"istDranString") as! String
         self.rundeBeendetString = aDecoder.decodeObject(forKey:"rundeBeendetString") as! String
@@ -47,32 +48,34 @@ class Spieler : NSObject, NSCoding {
         self.runden = [objC_runden[0] as! [Bool?], objC_runden[1] as! [Bool?], objC_runden[2] as! [Bool?], objC_runden[3] as! [Bool?], objC_runden[4] as! [Bool?], objC_runden[5] as! [Bool?]]
     }
     
-    func getIstDran() -> Bool
-    {
+    
+    //Gibt den Wert zurück, ob der Spieler dran ist
+    func getIstDran() -> Bool{
         if istDranString == "true" { return true }
         return false
     }
     
-    func setIstDran(_ istDran : Bool)
-    {
-        if istDran == true
-        {
+    
+    //Setzt den Wert, falls der Spieler dran ist
+    func setIstDran(_ istDran : Bool){
+        if istDran == true{
             self.istDranString = "true"
         } else if istDran == false {
             self.istDranString = "false"
         }
     }
     
-    func getRundeBeendet() -> Bool
-    {
+    
+    //Gibt den Wert für eine beendete Runde zurück
+    func getRundeBeendet() -> Bool{
         if rundeBeendetString == "true" { return true }
         return false
     }
     
-    func setRundeBeendet(_ rundeBeendet : Bool)
-    {
-        if rundeBeendet == true
-        {
+    
+    //Setzt den Wert einer beendeten Runde
+    func setRundeBeendet(_ rundeBeendet : Bool){
+        if rundeBeendet == true{
             self.rundeBeendetString = "true"
         } else if rundeBeendet == false {
             self.rundeBeendetString = "false"
@@ -81,8 +84,7 @@ class Spieler : NSObject, NSCoding {
     
     
     //Daten werden verpackt, um an den Server geschickt zu werden
-    func encode(with aCoder: NSCoder)
-    {
+    func encode(with aCoder: NSCoder){
         aCoder.encode(username, forKey: "username")
         aCoder.encode(istDranString, forKey: "istDranString")
         aCoder.encode(rundeBeendetString, forKey: "rundeBeendetString")
@@ -92,10 +94,9 @@ class Spieler : NSObject, NSCoding {
     }
     
     
-    static func == (lhs : Spieler, rhs : Spieler) -> Bool
-    {
-        if (lhs.username == rhs.username)
-        {
+    //Statische Funktion zum Vergleich der Strings, nicht ob die Objekte identisch sind
+    static func == (lhs : Spieler, rhs : Spieler) -> Bool{
+        if (lhs.username == rhs.username){
             return true
         }
         return false

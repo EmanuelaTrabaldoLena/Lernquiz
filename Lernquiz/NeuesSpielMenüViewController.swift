@@ -22,10 +22,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
             spielerSuchen.delegate = self
         }
     }
-        
-    override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.isHidden = false
-    }
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -38,11 +35,16 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         self.spielerSuchen.reloadData()
         
         dowloadUser()
-        
     }
     
-    func dowloadUser()
-    {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.navigationBar.isHidden = false
+    }
+    
+    
+    //Die User mit allen ihren Daten werden gewonloadet. Nur die User die dasselbe Fach gewählt haben und sich darin gerade nicht mit dir in einem Spiel befinden, werden angezeigt.
+    func dowloadUser(){
         let query = PFUser.query()
         let spiele = downloadSpiele()
         query?.findObjectsInBackground(block: { (objects, error) in
@@ -97,6 +99,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
+    //Spiel wird im Server erstellt und gedownloadet
     func downloadSpiele () -> [Spiel]{
         var output : [Spiel] = [Spiel]()
         let projectQuery = PFQuery(className: "Spiele")
@@ -118,7 +121,6 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         
         if let userCell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as? GegenspielerTableViewCell{
-            
             let row = indexPath.row
             userCell.textLabel?.text = usernames[row]
             
@@ -150,7 +152,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
-    
+    //Ergebnisse der Searchbar werden je nachdem was man sucht, aktualisiert
     func updateSearchResults(for searchController: UISearchController){
         self.gefilterterInhalt.removeAll(keepingCapacity: false)
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
@@ -160,6 +162,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
     }
     
     
+    //TableView wird entweder mit den Ergenissen der Suche oder mit allen existierenden Usernames gefüllt
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if self.searchController.isActive{
             return self.gefilterterInhalt.count
@@ -167,6 +170,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
             return self.usernames.count
         }
     }
+    
     
     //Beim Auswaehlen eines Fachs aus der TableView wird man direkt zum Menue weitergeleitet
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -39,6 +39,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
     }
     
     
+    //Wenn die Antwort gewählt wurde, wird sie je nachdem ob sie wahr oder falsch ist, ausgewertet und grün oder rot eingefärbt
     override func antwortAuswerten(antwort : Antwort, firstTime: Bool = true){
         var textView : UITextView!
         switch antwort{ case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
@@ -58,8 +59,9 @@ class EinzelSpielerViewController: SpielmodusViewController{
         }
     }
     
-    @IBAction func FrageBewerten(_ sender: Any)
-    {
+    
+    //Wenn die Frage gemeldet wird, wird der Zähler im Server um 1 hochgezählt, dafür muss zunächst die Karte nochmal gedownloadet werden, der Wert verändert werden und dann wieder hochgeladen werden
+    @IBAction func FrageBewerten(_ sender: Any){
         downloadFrageKarte()
         uploadFrageKarte()
         
@@ -71,20 +73,19 @@ class EinzelSpielerViewController: SpielmodusViewController{
         update()
     }
     
-    func downloadFrageKarte()
-    {
+    
+    //Fragekarte wird vom Server geholt und die Anzahl der Meldungen wird hochgezählt
+    func downloadFrageKarte(){
         let projectQuery = PFQuery(className: "Fragekarte")
         projectQuery.includeKey("Fach")
         projectQuery.whereKey("Fach", equalTo: fachName)
         do{
             let results = try projectQuery.findObjects()
-            for result in results
-            {
+            for result in results{
                 let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
                 let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
                 
-                if frageKarteLokal == frageKarten[QNumber - 1]
-                {
+                if frageKarteLokal == frageKarten[QNumber - 1]{
                     frageKarteLokal.setFrageGemeldet(anzahl: frageKarteLokal.getFrageGemeldet() + 1)
                     frageKarten[QNumber - 1] = frageKarteLokal
                 }
@@ -93,18 +94,17 @@ class EinzelSpielerViewController: SpielmodusViewController{
         }catch{}
     }
 
-    func uploadFrageKarte()
-    {
+    
+    //Die veränderte Fragekarte wird wieder im Server hochgeladen
+    func uploadFrageKarte(){
         let frageKartenQuery = PFQuery(className: "Fragekarte")
         do{
             let frageKartenPFO = try frageKartenQuery.findObjects()
-            for result in frageKartenPFO
-            {
+            for result in frageKartenPFO{
                 let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
                 let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
                 
-                if frageKarten[QNumber - 1] == frageKarteLokal
-                {
+                if frageKarten[QNumber - 1] == frageKarteLokal{
                     let hochzuladendesObjekt = result
                     
                     hochzuladendesObjekt["Frage"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: frageKarten[QNumber - 1]))
@@ -120,8 +120,9 @@ class EinzelSpielerViewController: SpielmodusViewController{
         }catch{}
     }
     
-    func update()
-    {
+    
+    //Falls die Frage weniger als 3 Mal gemeldet wurde, passiert nichts, ansonsten wird sie gelöscht
+    func update(){
         if Int(frageKarten[QNumber-1].getFrageGemeldet()) < 3 {
             print("Frage selten gemeldet. Frage wird nicht gelöscht, da \(frageKarten[QNumber-1].getFrageGemeldet()) von 3 Meldungen.")
         }else{
@@ -130,18 +131,17 @@ class EinzelSpielerViewController: SpielmodusViewController{
         }
     }
     
-    func loescheFragekarte()
-    {
+    
+    //Fragekarte wird bei 3 Meldungen aus dem Server gelöscht
+    func loescheFragekarte(){
         let projectQuery = PFQuery(className: "Fragekarte")
         do{
             let frage = try projectQuery.findObjects()
-            for result in frage
-            {
+            for result in frage{
                 let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
                 let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
                 
-                if frageKarten[QNumber-1] == frageKarteLokal
-                {
+                if frageKarten[QNumber-1] == frageKarteLokal{
                     do {
                         try result.delete()
                     } catch let error {

@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 
 
+//Ursprünglich zur lokalen Speicherung der Fächer angedacht, nun aber für Cachen des Usernamen und des Passwortes
 extension Allgemein{
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Allgemein>{

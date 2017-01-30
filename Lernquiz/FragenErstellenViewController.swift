@@ -45,8 +45,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
     
     // Frage wird erstellt und wenn auf den Button geklickt wird, werden überall die Texteingaben beendet und hochgeladen
-    @IBAction func upload_A(_ sender: UIButton)
-    {
+    @IBAction func upload_A(_ sender: UIButton){
         textViewDidEndEditing(frageErstellen)
         textViewDidEndEditing(antwortAerstellen)
         textViewDidEndEditing(antwortBerstellen)
@@ -66,6 +65,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         antwortBerstellen.tag = FrageKartenID.AntwortB.rawValue;
         antwortCerstellen.tag = FrageKartenID.AntwortC.rawValue;
     }
+    
     
     //Zeichenbeschränkung ist jetzt bei Frage auf 200 und bei Antworten auf 100
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
@@ -92,8 +92,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
     /* Der Text wird in der zu erstellenden Fragekarte gespeichert und man wird anschliessend von der
      ausgewaehlten Textview abgemeldet */
-    func textViewDidEndEditing(_ textView: UITextView)
-    {
+    func textViewDidEndEditing(_ textView: UITextView){
         
         switch textView.tag{
         case 0: frageKarte.Fragentext = frageErstellen.text; frageErstellen.resignFirstResponder()

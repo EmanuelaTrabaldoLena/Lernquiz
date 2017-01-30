@@ -71,6 +71,7 @@
         }
         
         
+        //Wird derzeit nicht genutzt, wäre später für den Autologin praktisch, da Username und Passwort gecacht werden würden.
         //Core Data Setup:
         
         //Erstelle das erste Speicherobjekt, worauf später zugegriffen wird. Diese Methode wird effektiv nur beim ersten App-Start seit der Installation ausgeführt, sonst passiert nichts.

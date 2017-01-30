@@ -9,14 +9,13 @@
 import UIKit
 
 //Controller fuer die CheckBoxen von AlleFaecher
-class CheckBoxView: UIView
-{
+class CheckBoxView: UIView{
+    
     var isChecked : Bool
     var checkBoxImageView : UIImageView
     
     //NSCoder wird gebraucht, um Instanzen einer Klasse zu en- bzw. decoden
-    required init(coder aDecoder: NSCoder)
-    {
+    required init(coder aDecoder: NSCoder){
         self.isChecked = false
         self.checkBoxImageView = UIImageView(image: nil)
         
@@ -31,14 +30,12 @@ class CheckBoxView: UIView
     
     
     //Wenn Box ausgewaehlt erscheint Bild vom Haken
-    func markAsChecked()
-    {
+    func markAsChecked(){
         self.checkBoxImageView.image = UIImage(named: "small-check")
     }
     
     //Wenn Box nicht ausgewaehlt, sieht man nur die leere Box
-    func markAsUnChecked()
-    {
+    func markAsUnChecked(){
         self.checkBoxImageView.image = nil
     }
 }
