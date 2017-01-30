@@ -9,8 +9,7 @@
 import Foundation
 import Parse
 
-class ResultatViewController: UIViewController
-{
+class ResultatViewController: UIViewController{
     
     @IBOutlet weak var gegnerName: UILabel!
     @IBOutlet weak var username: UILabel!
@@ -22,8 +21,8 @@ class ResultatViewController: UIViewController
     var spiel = Spiel()
     var allowDelete = Bool()
     
-    override func viewDidLoad()
-    {
+    
+    override func viewDidLoad(){
         // Schreibt über die Punkte den Namen der Spieler
         username.text = eigenerName
         if spiel.gegner.username == eigenerName{
@@ -34,20 +33,21 @@ class ResultatViewController: UIViewController
         
         super.viewDidLoad()
         populateLabelsWithData()
-        if allowDelete == true
-        {
+        if allowDelete == true{
             deleteGame()
         }
     }
     
-    @IBAction func zumHauptMenueA(_ sender: UIButton)
-    {
+    
+    //Button führt direkt zum Hauptmenü zurück
+    @IBAction func zumHauptMenueA(_ sender: UIButton){
         let controller = self.navigationController?.viewControllers[2]
         _ = self.navigationController?.popToViewController(controller!, animated: true)
     }
     
-    func deleteGame()
-    {
+    
+    //Wenn ein Spiel beendet wurde, wird es vom Server gelöscht
+    func deleteGame(){
         let spieleQuery = PFQuery(className: "Spiele")
         do{
             let spiele = try spieleQuery.findObjects()
@@ -55,8 +55,7 @@ class ResultatViewController: UIViewController
                 let encodedData = (result["Spiel"] as! NSMutableArray).firstObject as! NSData
                 let spielLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Spiel
                 
-                if spiel == spielLokal
-                {
+                if spiel == spielLokal{
                     let zuloeschendeObjekt = result
                     do{
                         try zuloeschendeObjekt.delete()
@@ -68,28 +67,24 @@ class ResultatViewController: UIViewController
         }catch{}
     }
     
-    func populateLabelsWithData()
-    {
+    
+    //Die Labels bekommen die richtigen Namen und Scores zugewiesen und lustige Texte und Bilder erscheinen
+    func populateLabelsWithData(){
         var spielerScore = 0
         var gegnerScore = 0
         
-        for i in 0 ..< 6
-        {
-            for j in 0 ..< 3
-            {
-                if spiel.spieler.runden[i][j] == true
-                {
+        for i in 0 ..< 6{
+            for j in 0 ..< 3{
+                if spiel.spieler.runden[i][j] == true{
                     spielerScore += 1
                 }
-                if spiel.gegner.runden[i][j] == true
-                {
+                if spiel.gegner.runden[i][j] == true{
                     gegnerScore += 1
                 }
             }
         }
         
-        if spiel.gegner.username == eigenerName
-        {
+        if spiel.gegner.username == eigenerName{
             let x = spielerScore
             spielerScore = gegnerScore
             gegnerScore = x
@@ -98,37 +93,31 @@ class ResultatViewController: UIViewController
         meinPunkteL.text = NSString(format: "%i", spielerScore) as String
         gegnerPunkteL.text = NSString(format: "%i", gegnerScore) as String
         
-    
         if gegnerScore-5 > spielerScore {
             resultatL.text = "Du wurdest gefressen!"
             image.image = UIImage(named: "Fish")
-            }else if spielerScore == 18{
-                resultatL.text = "Du bist eine richtige Strebereule!"
-                image.image = UIImage(named: "owl")
-            } else if spielerScore >= 15{
-                resultatL.text = "Deine Gegner können sich warm anziehen!"
-                image.image = UIImage(named: "bird")
-            } else if spielerScore >= 12 {
-                resultatL.text = "Du bist ein Fuchs!"
-                image.image = UIImage(named: "fox")
-            } else if spielerScore == gegnerScore {
-                resultatL.text = "Ihr seid zwei fleißige Bienen!"
-                image.image = UIImage(named: "bees-2")
-            } else if spielerScore >= 9 {
-                resultatL.text = "Übung macht den Meister!"
-                image.image = UIImage(named: "elephant")
-            } else if spielerScore >= 6 {
-                resultatL.text = "Du lagst wohl zu viel auf der faulen Haut!"
-                image.image = UIImage(named: "hippopotamus")
-            } else if spielerScore < 6 {
-                resultatL.text = "Das war wohl nix!"
-                image.image = UIImage(named: "bulldog")
+        }else if spielerScore == 18{
+            resultatL.text = "Du bist eine richtige Strebereule!"
+            image.image = UIImage(named: "owl")
+        } else if spielerScore >= 15{
+            resultatL.text = "Deine Gegner können sich warm anziehen!"
+            image.image = UIImage(named: "bird")
+        } else if spielerScore >= 12 {
+            resultatL.text = "Du bist ein Fuchs!"
+            image.image = UIImage(named: "fox")
+        } else if spielerScore == gegnerScore {
+            resultatL.text = "Ihr seid zwei fleißige Bienen!"
+            image.image = UIImage(named: "bees-2")
+        } else if spielerScore >= 9 {
+            resultatL.text = "Übung macht den Meister!"
+            image.image = UIImage(named: "elephant")
+        } else if spielerScore >= 6 {
+            resultatL.text = "Du lagst wohl zu viel auf der faulen Haut!"
+            image.image = UIImage(named: "hippopotamus")
+        } else if spielerScore < 6 {
+            resultatL.text = "Das war wohl nix!"
+            image.image = UIImage(named: "bulldog")
         }
-        }
-        
-        
     }
-
     
-    
-
+}
