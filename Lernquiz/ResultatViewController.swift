@@ -98,19 +98,37 @@ class ResultatViewController: UIViewController
         meinPunkteL.text = NSString(format: "%i", spielerScore) as String
         gegnerPunkteL.text = NSString(format: "%i", gegnerScore) as String
         
-        if spielerScore > gegnerScore
-        {
-            resultatL.text = "Herzlichen Glückwunsch! Du hast gewonnen!"
-            image.image = UIImage(named: "Trophy")
-        } else if spielerScore == gegnerScore {
-            resultatL.text = "Unentschieden!"
-            image.image = UIImage(named: "Chimp")
-        } else if spielerScore < gegnerScore {
-            resultatL.text = "Du hast leider verloren!"
+    
+        if gegnerScore-5 > spielerScore {
+            resultatL.text = "Du wurdest gefressen!"
             image.image = UIImage(named: "Fish")
+            }else if spielerScore == 18{
+                resultatL.text = "Du bist eine richtige Strebereule!"
+                image.image = UIImage(named: "owl")
+            } else if spielerScore >= 15{
+                resultatL.text = "Deine Gegner können sich warm anziehen!"
+                image.image = UIImage(named: "bird")
+            } else if spielerScore >= 12 {
+                resultatL.text = "Du bist ein Fuchs!"
+                image.image = UIImage(named: "fox")
+            } else if spielerScore == gegnerScore {
+                resultatL.text = "Ihr seid zwei fleißige Bienen!"
+                image.image = UIImage(named: "bees-2")
+            } else if spielerScore >= 9 {
+                resultatL.text = "Übung macht den Meister!"
+                image.image = UIImage(named: "elephant")
+            } else if spielerScore >= 6 {
+                resultatL.text = "Du lagst wohl zu viel auf der faulen Haut!"
+                image.image = UIImage(named: "hippopotamus")
+            } else if spielerScore < 6 {
+                resultatL.text = "Das war wohl nix!"
+                image.image = UIImage(named: "bulldog")
         }
+        }
+        
+        
     }
+
     
     
-    
-}
+
