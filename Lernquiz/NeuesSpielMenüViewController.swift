@@ -58,6 +58,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                     if let user = object as? PFUser{
                         let usernameString = user.username ?? ""
                         
+                        //überprüft ob spiel schon vorhanden ist (ob mit diesem spieler in diesem fach bereits ein aktives spiel vorhanden ist)
                         for spiel in spiele{
                             if ((usernameString == spiel.gegner.username) && (eigenerName == spiel.spieler.username) && (fachName == spiel.fachName))
                                 ||
@@ -70,13 +71,22 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                         print(eigenerName)
                         if(usernameString != eigenerName) {
                             // Es werden nur die User angezeigt, die auch mein gewaehltes Fach in ihrem FaecherArray haben
-                            let meinFaecherHuelle = user["MeineFaecher"] as! NSMutableArray
-                            let meineFaecherl = NSKeyedUnarchiver.unarchiveObject(with: meinFaecherHuelle.firstObject as! Data) as! [Fach]
+                            let meinFaecherHuelle = user["MeineFaecher"] as? NSMutableArray ?? NSMutableArray()
                             
-                            for mitSpielerFach in meineFaecherl{
-                                if fachName == mitSpielerFach.name{
-                                    self.usernames.append(usernameString)
+                            //wir wollen überprüfen ob wir überhaupt jemals was hochgleaden haben, wenn ja dann führt aus wenn nein, dann skip
+                            if let data = meinFaecherHuelle.firstObject as? Data
+                            {
+                                let meineFaecherl = NSKeyedUnarchiver.unarchiveObject(with: data) as? [Fach] ?? [Fach]()
+                                //as ? "if-Bedinungung" schaut ob man zu Fach casten kann, dann wird es zu Fach gecastet
+                                //as ?? : "else-Bedinung" wenn casten nicht geht, erstellen wir ein neues leeres Fach
+                                
+                                for mitSpielerFach in meineFaecherl{
+                                    if fachName == mitSpielerFach.name{
+                                        self.usernames.append(usernameString)
+                                    }
                                 }
+                            } else {
+                                print("Keine Daten für Spieler \(usernameString) vorhanden.")
                             }
                         }
                     }

@@ -58,29 +58,72 @@ class EinzelSpielerViewController: SpielmodusViewController{
         }
     }
     
-    //Funktion die es erlaubt eine Frage zu melden, dabei wird der Text im Button zu "Fehler gemeldet" geändert und eine Meldung zur Variablen "meldung" hinzugefügt
-    
-    //es fehlt noch die explizite Speicherung dieser Meldung für die gerade gespielte Frage. Momentan existiert einfach nur die Zahl als Variable!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
-    @IBAction func FrageBewerten(_ sender: Any) {
+    @IBAction func FrageBewerten(_ sender: Any)
+    {
+        downloadFrageKarte()
+        uploadFrageKarte()
         
-        frageGemeldet += 1
         FrageBewerten.backgroundColor = UIColor.green
-        FrageBewerten.setTitle("Frage gemeldet", for: [])
-        
-        //als Test
-        print(frageGemeldet)
+        FrageBewerten.setTitle("Frage gemeldet", for: .normal)
         
         //Man kann Button nur einmal klicken
         FrageBewerten.isEnabled = false
         update()
-        //hier gehört jetzt noch rein, dass die Anzahl an Meldungen für die eine Frage mit dem Index "bla" gespeichert wird. Dazu wurde die Klasse "Fragekarte" schon erweitert (aber in auskommentierter Form)
+    }
+    
+    func downloadFrageKarte()
+    {
+        let projectQuery = PFQuery(className: "Fragekarte")
+        projectQuery.includeKey("Fach")
+        projectQuery.whereKey("Fach", equalTo: fachName)
+        do{
+            let results = try projectQuery.findObjects()
+            for result in results
+            {
+                let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
+                let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
+                
+                if frageKarteLokal == frageKarten[QNumber - 1]
+                {
+                    frageKarteLokal.setFrageGemeldet(anzahl: frageKarteLokal.getFrageGemeldet() + 1)
+                    frageKarten[QNumber - 1] = frageKarteLokal
+                }
+                
+            }
+        }catch{}
     }
 
+    func uploadFrageKarte()
+    {
+        let frageKartenQuery = PFQuery(className: "Fragekarte")
+        do{
+            let frageKartenPFO = try frageKartenQuery.findObjects()
+            for result in frageKartenPFO
+            {
+                let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
+                let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
+                
+                if frageKarten[QNumber - 1] == frageKarteLokal
+                {
+                    let hochzuladendesObjekt = result
+                    
+                    hochzuladendesObjekt["Frage"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: frageKarten[QNumber - 1]))
+                    hochzuladendesObjekt["FrageGemeldet"] = frageKarten[QNumber - 1].getFrageGemeldet()
+
+                    do{
+                        try hochzuladendesObjekt.save()
+                    }catch let error {
+                        print("Fehler beim Upload der FrageKarte!\n\(error)")
+                    }
+                }
+            }
+        }catch{}
+    }
     
-    func update(){
-        if Int(frageKarten[QNumber-1].frageGemeldet) < 3{
-            print("Frage selten gemeldet")
+    func update()
+    {
+        if Int(frageKarten[QNumber-1].getFrageGemeldet()) < 3 {
+            print("Frage selten gemeldet. Frage wird nicht gelöscht, da \(frageKarten[QNumber-1].getFrageGemeldet()) von 3 Meldungen.")
         }else{
             loescheFragekarte()
             print("Fragekarte gelöscht")
@@ -92,16 +135,18 @@ class EinzelSpielerViewController: SpielmodusViewController{
         let projectQuery = PFQuery(className: "Fragekarte")
         do{
             let frage = try projectQuery.findObjects()
-            for result in frage{
-                let encodedData = (result["Fragekarte"] as! NSMutableArray).firstObject as! NSData
+            for result in frage
+            {
+                let encodedData = (result["Frage"] as! NSMutableArray).firstObject as! NSData
                 let frageKarteLokal = NSKeyedUnarchiver.unarchiveObject(with: encodedData as Data) as! Fragekarte
                 
                 if frageKarten[QNumber-1] == frageKarteLokal
-
                 {
                     do {
                         try result.delete()
-                    } catch {}
+                    } catch let error {
+                        print("Fehler beim löschen der Fragekarte\(error)")
+                    }
                 }
             }
         }catch{}

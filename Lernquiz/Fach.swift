@@ -81,21 +81,6 @@ class Fach : NSObject, NSCoding, NSCopying {
     }
     
     
-    func frageLöschen(Frage: Fragekarte)
-    {
-        var counting = 0
-        while counting < Fragen.count{
-            if Fragen[counting].FragenId ==  Frage.FragenId{
-                Fragen.remove(at: counting)
-                counting = counting + 1
-            }
-            else{
-                counting = counting + 1
-            }
-            
-        }
-    }
-    
     public static func ==(lhs: Fach, rhs: Fach) -> Bool
     {
         if lhs.name == rhs.name { return true }

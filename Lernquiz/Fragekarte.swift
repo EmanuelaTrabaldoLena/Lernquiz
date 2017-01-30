@@ -18,7 +18,7 @@ class Fragekarte : NSObject, NSCoding{
     var RichtigeAntwort : String = ""
     var RichtigeAntwortIndex : NSNumber = 0
     var fachName = String()
-    var frageGemeldet : Int = 0
+    private var frageGemeldetString : String = "0"
     
     
     func toString () -> String{
@@ -67,6 +67,7 @@ class Fragekarte : NSObject, NSCoding{
         
     }
     
+    
     //Standard Initializer
     init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, RichtigeAntwort:String, frageGemeldet: Int)
     {
@@ -76,7 +77,8 @@ class Fragekarte : NSObject, NSCoding{
         self.AntwortB = AntwortB
         self.AntwortC = AntwortC
         self.RichtigeAntwort = RichtigeAntwort
-        self.frageGemeldet = frageGemeldet
+        super.init()
+        self.setFrageGemeldet(anzahl: frageGemeldet)
     }
     
     //Die folgenden 2 Methoden sind wichtig um die Daten in Parse zu speichern
@@ -90,7 +92,7 @@ class Fragekarte : NSObject, NSCoding{
         self.RichtigeAntwort = aDecoder.decodeObject(forKey:"RichtigeAntwort") as? String ?? ""
         self.RichtigeAntwortIndex = aDecoder.decodeObject(forKey:"RichtigeAntwortIndex") as? NSNumber ?? 11
         self.fachName = aDecoder.decodeObject(forKey: "fachName") as? String ?? ""
-        self.frageGemeldet = aDecoder.decodeObject(forKey:"FragenId") as? Int ?? 0
+        self.frageGemeldetString = aDecoder.decodeObject(forKey:"frageGemeldet") as? String ?? String()
     }
     
     //Daten werden verpackt, um an den Server geschickt zu werden
@@ -103,12 +105,34 @@ class Fragekarte : NSObject, NSCoding{
         aCoder.encode(RichtigeAntwort, forKey: "RichtigeAntwort")
         aCoder.encode(RichtigeAntwortIndex, forKey: "RichtigeAntwortIndex")
         aCoder.encode(fachName, forKey : "fachName")
-        aCoder.encode(frageGemeldet, forKey: "frageGemeldet")
+        aCoder.encode(frageGemeldetString, forKey: "frageGemeldet")
     }
+    
+    
+    func getFrageGemeldet() -> Int
+    {
+        return Int(frageGemeldetString)!
+    }
+    
+    func setFrageGemeldet(anzahl : Int)
+    {
+        frageGemeldetString = String(anzahl)
+    }
+    
+    
     
     //Schwaecherer Initializierer, der einen Parameter weniger hat
     convenience init(FragenId: Int,Fragentext:String, AntwortA: String, AntwortB: String, AntwortC: String, frageGemeldet: Int){
         self.init(FragenId: FragenId, Fragentext: Fragentext, AntwortA: AntwortA, AntwortB: AntwortB, AntwortC: AntwortC, RichtigeAntwort: AntwortA, frageGemeldet: frageGemeldet)
+    }
+    
+    static func == (lhs : Fragekarte, rhs : Fragekarte) -> Bool
+    {
+        if (lhs.Fragentext == rhs.Fragentext)
+        {
+            return true
+        }
+        return false
     }
 
 }

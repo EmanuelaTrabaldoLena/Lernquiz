@@ -1351,7 +1351,7 @@
                     <connections>
                         <outlet property="gegnerName" destination="9ef-wG-YzT" id="xgb-7j-vUi"/>
                         <outlet property="gegnerPunkteL" destination="deF-Vu-3Wz" id="DKV-NZ-dLG"/>
-                        <outlet property="imageSieg" destination="039-Lp-5xF" id="2E0-kk-OpV"/>
+                        <outlet property="image" destination="039-Lp-5xF" id="kwv-L9-Zzt"/>
                         <outlet property="meinPunkteL" destination="SxB-AK-Ojq" id="arc-TN-6hB"/>
                         <outlet property="resultatL" destination="CIZ-fR-KFo" id="tgT-QT-YwZ"/>
                         <outlet property="username" destination="Ozg-gR-n7D" id="ACy-0e-J74"/>

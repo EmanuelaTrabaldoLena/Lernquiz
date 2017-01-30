@@ -158,7 +158,8 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     
     
     //Fragen werden vom Server gedownloadet
-    func download(){
+    func download()
+    {
         let projectQuery = PFQuery(className: "Fragekarte")
         projectQuery.includeKey("Fach")
         projectQuery.whereKey("Fach", equalTo: fachName)

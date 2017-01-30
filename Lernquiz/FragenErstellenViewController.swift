@@ -45,7 +45,8 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
     
     
     // Frage wird erstellt und wenn auf den Button geklickt wird, werden überall die Texteingaben beendet und hochgeladen
-    @IBAction func upload_A(_ sender: UIButton) {
+    @IBAction func upload_A(_ sender: UIButton)
+    {
         textViewDidEndEditing(frageErstellen)
         textViewDidEndEditing(antwortAerstellen)
         textViewDidEndEditing(antwortBerstellen)
@@ -111,7 +112,7 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         let hochzuladendesObjekt = PFObject(className: "Fragekarte")
         hochzuladendesObjekt["Frage"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: frageKarte))
         hochzuladendesObjekt["Fach"] = fachName
-        hochzuladendesObjekt["FrageGemeldet"] = frageGemeldet
+        hochzuladendesObjekt["FrageGemeldet"] = 0
         hochzuladendesObjekt.saveInBackground()
     }
     
