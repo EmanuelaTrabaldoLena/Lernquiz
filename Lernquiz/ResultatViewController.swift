@@ -12,6 +12,8 @@ import Parse
 class ResultatViewController: UIViewController
 {
     
+    @IBOutlet weak var gegnerName: UILabel!
+    @IBOutlet weak var username: UILabel!
     @IBOutlet weak var meinPunkteL: UILabel!
     @IBOutlet weak var gegnerPunkteL: UILabel!
     @IBOutlet weak var resultatL: UILabel!
@@ -21,6 +23,14 @@ class ResultatViewController: UIViewController
     
     override func viewDidLoad()
     {
+        // Schreibt über die Punkte den Namen der Spieler
+        username.text = eigenerName
+        if spiel.gegner.username == eigenerName{
+            gegnerName.text = spiel.spieler.username
+        }else{
+            gegnerName.text = spiel.gegner.username
+        }
+        
         super.viewDidLoad()
         populateLabelsWithData()
         if allowDelete == true

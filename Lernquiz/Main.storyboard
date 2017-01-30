@@ -1265,7 +1265,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="MeinePunkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxB-AK-Ojq">
-                                <rect key="frame" x="20" y="77" width="110" height="50"/>
+                                <rect key="frame" x="47" y="83" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="Pya-nT-dRz"/>
@@ -1275,8 +1275,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GegnerPunkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deF-Vu-3Wz">
-                                <rect key="frame" x="189" y="77" width="110" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="GegnerPunkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deF-Vu-3Wz">
+                                <rect key="frame" x="219" y="83" width="50" height="50"/>
                                 <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="110" id="SoT-he-f7w"/>
@@ -1293,7 +1293,7 @@
                                     <constraint firstAttribute="width" constant="150" id="Pye-Lb-0IW"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Zum Hauptmenü">
+                                <state key="normal" title="Zum Duellmenü">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -1309,6 +1309,28 @@
                                 <rect key="frame" x="91" y="255" width="139" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Deine Punkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozg-gR-n7D">
+                                <rect key="frame" x="20" y="25" width="110" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="W5X-op-jMY"/>
+                                    <constraint firstAttribute="height" constant="50" id="zs2-IY-O8w"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="GegnerPunkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ef-wG-YzT">
+                                <rect key="frame" x="189" y="25" width="110" height="50"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="bBA-DD-gix"/>
+                                    <constraint firstAttribute="height" constant="50" id="eGe-A6-YWk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1323,9 +1345,11 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="gegnerName" destination="9ef-wG-YzT" id="xgb-7j-vUi"/>
                         <outlet property="gegnerPunkteL" destination="deF-Vu-3Wz" id="DKV-NZ-dLG"/>
                         <outlet property="meinPunkteL" destination="SxB-AK-Ojq" id="arc-TN-6hB"/>
                         <outlet property="resultatL" destination="CIZ-fR-KFo" id="tgT-QT-YwZ"/>
+                        <outlet property="username" destination="Ozg-gR-n7D" id="ACy-0e-J74"/>
                         <segue destination="rZY-1E-0Eq" kind="show" identifier="ResultatVC2DuellMenueVC" id="EH7-9l-LTC"/>
                     </connections>
                 </viewController>
