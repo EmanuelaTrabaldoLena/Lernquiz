@@ -19,21 +19,18 @@ class FachTableViewCell: UITableViewCell{
     
     
     //Ueberpruefung und Umsetzung des Anwaehlens der Checkboxen
-    func configure(fach : Fach)
-    {
+    func configure(fach : Fach){
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(FachTableViewCell.tap))
         checkbox!.addGestureRecognizer(gestureRecognizer)
         
         self.fach = fach.copy() as! Fach
-        if compareFach(in: gewaehlteVorlesungen, for: fach)
-        {
+        if compareFach(in: gewaehlteVorlesungen, for: fach){
             self.fach.isSelected = true
         }
         self.name!.text = fach.name
         
         
-        if(self.fach.isSelected)
-        {
+        if(self.fach.isSelected){
             self.checkbox!.markAsChecked()
         } else {
             self.checkbox!.markAsUnChecked()
@@ -41,16 +38,12 @@ class FachTableViewCell: UITableViewCell{
     }
     
     
-    func tap()
-    {
-        if self.fach.isSelected
-        {
+    func tap(){
+        if self.fach.isSelected{
             checkbox?.markAsUnChecked()
             self.fach.isSelected = false
-            for f in gewaehlteVorlesungen
-            {
-                if f == self.fach
-                {
+            for f in gewaehlteVorlesungen{
+                if f == self.fach{
                     f.isSelected = false
                 }
             }
@@ -58,10 +51,8 @@ class FachTableViewCell: UITableViewCell{
         } else {
             checkbox?.markAsChecked()
             self.fach.isSelected = true
-            for f in gewaehlteVorlesungen
-            {
-                if f == self.fach
-                {
+            for f in gewaehlteVorlesungen{
+                if f == self.fach{
                     f.isSelected = true
                 }
             }
@@ -72,22 +63,17 @@ class FachTableViewCell: UITableViewCell{
     
     
     // Funktion, um Elemente korrekt aus Array zu entfernen
-    func entfernen (id: Fach)
-    {
-        for j in gewaehlteVorlesungen.indices.reversed()
-        {
-            if (gewaehlteVorlesungen[j].name == id.name)
-            {
+    func entfernen (id: Fach){
+        for j in gewaehlteVorlesungen.indices.reversed(){
+            if (gewaehlteVorlesungen[j].name == id.name){
                 gewaehlteVorlesungen.remove(at: j)
             }
         }
     }
     
     
-    func upload(fachArray: [Fach])
-    {
-        if let currentUser = PFUser.current()
-        {
+    func upload(fachArray: [Fach]){
+        if let currentUser = PFUser.current(){
             currentUser["MeineFaecher"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: fachArray))
             do {
                 print("Versuche gewaehlteVorlesungen in User hochzuladen")
@@ -99,12 +85,9 @@ class FachTableViewCell: UITableViewCell{
     }
     
     
-    func compareFach(in faecher : [Fach], for fach : Fach) -> Bool
-    {
-        for f in faecher
-        {
-            if f == fach
-            {
+    func compareFach(in faecher : [Fach], for fach : Fach) -> Bool{
+        for f in faecher{
+            if f == fach{
                 return true
             }
         }
@@ -120,7 +103,4 @@ class FachTableViewCell: UITableViewCell{
         }
         print(str + "]")
     }
-    
-    
-    
 }

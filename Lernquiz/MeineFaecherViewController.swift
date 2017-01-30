@@ -24,8 +24,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     
     //User kann sich ausloggen und landet wieder auf der LoginView
-    @IBAction func logout(_ sender: Any)
-    {
+    @IBAction func logout(_ sender: Any){
         PFUser.logOut()
         ausgeloggt = true
         gewaehlteVorlesungen.removeAll()
@@ -37,7 +36,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     @IBAction func faecherhinzufuegen(_ sender: UIButton) {
         performSegue(withIdentifier: "MeineFaecher2AlleFaecher", sender: nil)
     }
-
+    
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
@@ -48,15 +47,16 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return gewaehlteVorlesungen.count
+        if gewaehlteVorlesungen != nil{
+            return gewaehlteVorlesungen.count
+        }
+        return 0
     }
     
     
     //Gewaehlte Faecher in einzelne Zellen geladen und TableView scrollbar
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
-    {
-        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell
-        {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
+        if let fachCell = meineFaecher.dequeueReusableCell(withIdentifier: "GewaehltesFachTableViewCell", for: indexPath) as? GewaehltesFachTableViewCell{
             let row = indexPath.row
             fachCell.textLabel?.text = gewaehlteVorlesungen[row].name
             

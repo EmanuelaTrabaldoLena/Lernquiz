@@ -15,8 +15,7 @@ class Fach : NSObject, NSCoding, NSCopying {
     var isSelected: Bool = false
     var Fragen = [Fragekarte]()
     
-    override init()
-    {
+    override init(){
         self.name = String()
     }
     
@@ -60,8 +59,7 @@ class Fach : NSObject, NSCoding, NSCopying {
     
     //Lade alle Fragekarten aus dem jeweiligen Fach aus der Tabelle "Fragekarte" herunter und ermittle davon die Anzahl.
     //Hilfsfunktion für Spiel.init(spieler : Spieler, gegner : Spieler, fach : Fach)
-    func ermittleMaxID() -> Int
-    {
+    func ermittleMaxID() -> Int{
         let projectQuery = PFQuery(className: "Fragekarte")
         projectQuery.includeKey("Fach")
         projectQuery.whereKey("Fach", equalTo: name)

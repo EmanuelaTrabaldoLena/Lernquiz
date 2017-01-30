@@ -35,8 +35,7 @@ class AlleFaecherViewController: UIViewController, UITableViewDataSource, UITabl
     
     
     //Ausgewaehlte Faecher werden gespeichert und man wird auf die MeineFaecherView weitergeleitet
-    @IBAction func hinzufuegen(_ sender: Any)
-    {
+    @IBAction func hinzufuegen(_ sender: Any){
         upload(fachArray: gewaehlteVorlesungen)
         _ = self.navigationController?.popViewController(animated: true)
     }
