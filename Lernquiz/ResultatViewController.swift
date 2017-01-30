@@ -17,6 +17,7 @@ class ResultatViewController: UIViewController
     @IBOutlet weak var meinPunkteL: UILabel!
     @IBOutlet weak var gegnerPunkteL: UILabel!
     @IBOutlet weak var resultatL: UILabel!
+    @IBOutlet weak var image: UIImageView!
     
     var spiel = Spiel()
     var allowDelete = Bool()
@@ -100,10 +101,13 @@ class ResultatViewController: UIViewController
         if spielerScore > gegnerScore
         {
             resultatL.text = "Herzlichen Glückwunsch! Du hast gewonnen!"
+            image.image = UIImage(named: "Trophy")
         } else if spielerScore == gegnerScore {
             resultatL.text = "Unentschieden!"
+            image.image = UIImage(named: "Chimp")
         } else if spielerScore < gegnerScore {
             resultatL.text = "Du hast leider verloren!"
+            image.image = UIImage(named: "Fish")
         }
     }
     
