@@ -22,8 +22,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
             spielerSuchen.delegate = self
         }
     }
-    @IBOutlet weak var belSpieler: UIButton!
-    
+        
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.navigationBar.isHidden = false
     }
@@ -42,8 +41,8 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
         
     }
     
-    func dowloadUser(){
-        
+    func dowloadUser()
+    {
         let query = PFUser.query()
         let spiele = downloadSpiele()
         query?.findObjectsInBackground(block: { (objects, error) in
@@ -51,17 +50,20 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                 print(error!)
             }
                 
-            else if  let users = objects {
+            else if let users = objects {
                 //Damit die erste Zeile nicht leer ist
                 self.usernames.removeAll()
                 
                 loop_Users: for object in users{
                     if let user = object as? PFUser{
-                        let usernameString = user.username
+                        let usernameString = user.username ?? ""
                         
                         for spiel in spiele{
-                            if ((usernameString == spiel.gegner.username) && (eigenerName == spiel.spieler.username) || (usernameString == spiel.spieler.username) && (eigenerName == spiel.gegner.username)){
-                                continue loop_Users
+                            if ((usernameString == spiel.gegner.username) && (eigenerName == spiel.spieler.username) && (fachName == spiel.fachName))
+                                ||
+                                ((usernameString == spiel.spieler.username) && (eigenerName == spiel.gegner.username) && (fachName == spiel.fachName))
+                            {
+                                continue loop_Users //skip dieses Spiel da es schon vorhanden ist...
                             }
                         }
                         
@@ -73,7 +75,7 @@ class NeuesSpielMenüViewController: UIViewController, UITableViewDelegate, UITa
                             
                             for mitSpielerFach in meineFaecherl{
                                 if fachName == mitSpielerFach.name{
-                                    self.usernames.append(usernameString!)
+                                    self.usernames.append(usernameString)
                                 }
                             }
                         }

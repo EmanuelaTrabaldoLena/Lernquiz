@@ -42,7 +42,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="hinzufuegen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fMZ-7T-3Vi"/>
+                                    <action selector="faecherhinzufuegen:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Dm-NL-eEr"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HXw-gm-Y5Q">
@@ -94,8 +94,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="meineFaecher" destination="HXw-gm-Y5Q" id="PUj-4u-ooK"/>
+                        <segue destination="xfP-uG-3Cn" kind="show" identifier="MeineFaecher2AlleFaecher" id="pVd-tw-sEm"/>
                         <segue destination="Xmp-9E-8la" kind="show" identifier="MeineFaecher2Login" id="Fag-Sq-s0w"/>
-                        <segue destination="xfP-uG-3Cn" kind="show" identifier="MeineFaecher2AlleFacher" id="Rcf-kt-Pii"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -483,6 +483,7 @@
                         <outlet property="aktiveSpieleTV" destination="ECX-KH-1eb" id="6nm-HK-MV8"/>
                         <outlet property="inaktiveSpieleTV" destination="RnW-Wi-tIG" id="hHI-Sl-mRg"/>
                         <segue destination="fa5-Ga-zjY" kind="show" identifier="DuellMenueVC2DuellVC" id="1nf-jn-KHj"/>
+                        <segue destination="gBB-z7-S7h" kind="show" identifier="DuellMenueVC2ResultatVC" id="F4a-20-b3Z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zsx-4K-Y7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -850,71 +851,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fc4-gq-sfM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1327.5" y="1177.8169014084508"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="iQC-ut-Oj2">
-            <objects>
-                <viewController id="ZbD-Zj-bPX" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="COG-NJ-Ts9"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZTh-0g-xNO"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="mr9-9k-C5m">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Trophy" translatesAutoresizingMaskIntoConstraints="NO" id="0Ly-C1-VjV">
-                                <rect key="frame" x="101" y="186" width="119" height="115"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="SpielerPunkte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFC-Cn-d3Y">
-                                <rect key="frame" x="21" y="81" width="114" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GegnerPunkte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2z-nf-9C6">
-                                <rect key="frame" x="186" y="81" width="112" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Gewonnen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="igZ-l8-PUA">
-                                <rect key="frame" x="116" y="334" width="88" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bBy-8k-WRM">
-                                <rect key="frame" x="85" y="470" width="150" height="29"/>
-                                <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="ybQ-cG-amm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
-                                <state key="normal" title="Zum Duellmenü">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="zumDuellmenue:" destination="8xc-mo-yjm" eventType="touchUpInside" id="kJf-NN-lrH"/>
-                                    <segue destination="Arp-C8-4dj" kind="show" identifier="Resultat2DuellMenue" id="i5Z-jD-ffQ"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ST9-ku-w5e" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-168.75" y="1981.6901408450703"/>
         </scene>
         <!--DuellSpielstand-->
         <scene sceneID="q8f-AR-bIK">
@@ -1299,11 +1235,103 @@
                         <outlet property="naechsteFrage" destination="gOB-xR-692" id="4Ix-HY-C9N"/>
                         <outlet property="naechsteFrageButton" destination="gOB-xR-692" id="OI4-lV-R24"/>
                         <segue destination="8xc-mo-yjm" kind="show" identifier="DuellVC2DuellSpielstandVC" id="c4W-3n-34C"/>
+                        <segue destination="gBB-z7-S7h" kind="show" identifier="DuellVC2ResultatVC" id="awi-K9-kRh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LVy-zx-nn2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1327.5" y="1973.2394366197184"/>
+        </scene>
+        <!--Resultat View Controller-->
+        <scene sceneID="xcV-jV-Lvj">
+            <objects>
+                <viewController id="gBB-z7-S7h" customClass="ResultatViewController" customModule="Lernquiz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6te-iF-oPe"/>
+                        <viewControllerLayoutGuide type="bottom" id="hmL-Wc-K71"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3eo-0I-Af8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gewonnen?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CIZ-fR-KFo">
+                                <rect key="frame" x="90" y="171" width="140" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="NGK-fx-Unr"/>
+                                    <constraint firstAttribute="width" constant="140" id="e6U-sf-Tpd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MeinePunkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SxB-AK-Ojq">
+                                <rect key="frame" x="20" y="77" width="100" height="50"/>
+                                <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="Pya-nT-dRz"/>
+                                    <constraint firstAttribute="width" constant="100" id="TP5-zH-Gnc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GegnerPunkte" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deF-Vu-3Wz">
+                                <rect key="frame" x="189" y="77" width="110" height="50"/>
+                                <color key="backgroundColor" red="0.59347493650000005" green="0.95686274510000002" blue="0.92013469209999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="SoT-he-f7w"/>
+                                    <constraint firstAttribute="height" constant="50" id="TlX-YN-hVb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h6f-CB-9UM">
+                                <rect key="frame" x="85" y="502" width="150" height="29"/>
+                                <color key="backgroundColor" red="1" green="0.65912203479999998" blue="0.17839458389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="Pye-Lb-0IW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
+                                <state key="normal" title="Zum Hauptmenü">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="zumHauptMenueA:" destination="gBB-z7-S7h" eventType="touchUpInside" id="Qel-XU-4wb"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Trophy" translatesAutoresizingMaskIntoConstraints="NO" id="039-Lp-5xF">
+                                <rect key="frame" x="91" y="255" width="139" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="CIZ-fR-KFo" firstAttribute="centerY" secondItem="3eo-0I-Af8" secondAttribute="centerY" constant="-88" id="7sm-b7-NIb"/>
+                            <constraint firstItem="CIZ-fR-KFo" firstAttribute="centerX" secondItem="3eo-0I-Af8" secondAttribute="centerX" id="G8G-79-hAS"/>
+                            <constraint firstItem="SxB-AK-Ojq" firstAttribute="centerY" secondItem="3eo-0I-Af8" secondAttribute="centerY" constant="-182" id="HoT-Pz-u8A"/>
+                            <constraint firstItem="h6f-CB-9UM" firstAttribute="centerX" secondItem="3eo-0I-Af8" secondAttribute="centerX" id="Ubb-Rf-MH4"/>
+                            <constraint firstItem="deF-Vu-3Wz" firstAttribute="centerY" secondItem="3eo-0I-Af8" secondAttribute="centerY" constant="-182" id="d1O-mD-f4W"/>
+                            <constraint firstItem="h6f-CB-9UM" firstAttribute="centerY" secondItem="3eo-0I-Af8" secondAttribute="centerY" constant="232.5" id="dIU-81-YJ5"/>
+                            <constraint firstItem="SxB-AK-Ojq" firstAttribute="centerX" secondItem="3eo-0I-Af8" secondAttribute="centerX" constant="-90" id="rCZ-ya-WVj"/>
+                            <constraint firstItem="deF-Vu-3Wz" firstAttribute="centerX" secondItem="3eo-0I-Af8" secondAttribute="centerX" constant="84" id="sDz-5j-y6h"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="gegnerPunkteL" destination="deF-Vu-3Wz" id="DKV-NZ-dLG"/>
+                        <outlet property="meinPunkteL" destination="SxB-AK-Ojq" id="arc-TN-6hB"/>
+                        <outlet property="resultatL" destination="CIZ-fR-KFo" id="tgT-QT-YwZ"/>
+                        <segue destination="rZY-1E-0Eq" kind="show" identifier="ResultatVC2DuellMenueVC" id="EH7-9l-LTC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JrR-lp-b7R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2133.75" y="1972.1830985915494"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="EWi-Jg-f7j">
@@ -1470,8 +1498,9 @@
     <inferredMetricsTieBreakers>
         <segue reference="udV-oF-PnC"/>
         <segue reference="9vV-oY-gHf"/>
+        <segue reference="qr5-a5-QKU"/>
         <segue reference="1nf-jn-KHj"/>
-        <segue reference="i5Z-jD-ffQ"/>
-        <segue reference="2az-q9-jh9"/>
+        <segue reference="F4a-20-b3Z"/>
+        <segue reference="c4W-3n-34C"/>
     </inferredMetricsTieBreakers>
 </document>

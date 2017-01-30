@@ -111,14 +111,8 @@ class FragenErstellenViewController: UIViewController, UITextViewDelegate {
         let hochzuladendesObjekt = PFObject(className: "Fragekarte")
         hochzuladendesObjekt["Frage"] = NSMutableArray(object: NSKeyedArchiver.archivedData(withRootObject: frageKarte))
         hochzuladendesObjekt["Fach"] = fachName
-        frageGemeldet = 0
         hochzuladendesObjekt["FrageGemeldet"] = frageGemeldet
-        hochzuladendesObjekt.saveInBackground{ (success, error) -> Void in
-            if success {
-                frageId = hochzuladendesObjekt.objectId!
-                print(frageId)
-            }
-        }
+        hochzuladendesObjekt.saveInBackground()
     }
     
     

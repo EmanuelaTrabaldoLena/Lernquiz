@@ -27,9 +27,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         didSet{passwordTextField.delegate = self}
     }
     
-
+    
     override func viewWillAppear(_ animated: Bool) {
-            self.navigationController?.navigationBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
     }
     
     override func viewDidLoad() {
@@ -40,61 +40,61 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         passwordTextField.autocapitalizationType = UITextAutocapitalizationType.none
         
         
-//        if (FBSDKAccessToken.current() != nil){
-//            print("Du bist eingeloggt")
-//        } else {
-//            let loginButton = FBSDKLoginButton()
-//            loginButton.center = self.view.center
-//            loginButton.readPermissions = ["public_profile", "email"]
-//            loginButton.delegate = self
-//            self.view.addSubview(loginButton)
-//        }
+        //        if (FBSDKAccessToken.current() != nil){
+        //            print("Du bist eingeloggt")
+        //        } else {
+        //            let loginButton = FBSDKLoginButton()
+        //            loginButton.center = self.view.center
+        //            loginButton.readPermissions = ["public_profile", "email"]
+        //            loginButton.delegate = self
+        //            self.view.addSubview(loginButton)
+        //        }
         
         //Beruehrungserkennung um das Keyboard verschwinden zu lassen
         let tap = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
     
- /*   //ist zuständlich für den automatischen Login
-    override func viewDidAppear(_ animated: Bool) {
-        //vergleicht ob man schon vorher auf logout geklickt hat
-        if ausgeloggt == false && PFUser.current() != nil{
-            eigenerName = self.usernameTextField.text!
-            performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-        }
-        self.navigationController?.navigationBar.isHidden = true
-        ausgeloggt = false
-    }*/
+    /*   //ist zuständlich für den automatischen Login
+     override func viewDidAppear(_ animated: Bool) {
+     //vergleicht ob man schon vorher auf logout geklickt hat
+     if ausgeloggt == false && PFUser.current() != nil{
+     eigenerName = self.usernameTextField.text!
+     performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+     }
+     self.navigationController?.navigationBar.isHidden = true
+     ausgeloggt = false
+     }*/
     
     
     //Methode fuer den FacebookLoginButton
-//    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
-//        if error != nil {
-//            print(error)
-//        }else if result.isCancelled {
-//            print("User cancelled login")
-//        }else {
-//            if result.grantedPermissions.contains("email"){
-//                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
-//                    graphRequest.start(completionHandler: { (connection, result, error) in
-//                        if error != nil {
-//                            print(error!)
-//                        }else {
-//                            self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
-//                            if let userDetails = result as? [String: String] {
-//                                print(userDetails["email"]!)
-//                            }
-//                        }
-//                    })
-//                }
-//            }
-//        }
-//    }
-//    
-//    
-//    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
-//        print ("Ausgeloggt")
-//    }
+    //    func loginButton(_ loginButton: FBSDKLoginButton!, didCompleteWith result: FBSDKLoginManagerLoginResult!, error: Error!) {
+    //        if error != nil {
+    //            print(error)
+    //        }else if result.isCancelled {
+    //            print("User cancelled login")
+    //        }else {
+    //            if result.grantedPermissions.contains("email"){
+    //                if let graphRequest = FBSDKGraphRequest(graphPath: "me", parameters: ["fields":"email,name"]){
+    //                    graphRequest.start(completionHandler: { (connection, result, error) in
+    //                        if error != nil {
+    //                            print(error!)
+    //                        }else {
+    //                            self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
+    //                            if let userDetails = result as? [String: String] {
+    //                                print(userDetails["email"]!)
+    //                            }
+    //                        }
+    //                    })
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //
+    //    func loginButtonDidLogOut(_ loginButton: FBSDKLoginButton!) {
+    //        print ("Ausgeloggt")
+    //    }
     
     //Methode, die eine Fehlermeldung anzeigt wenn irgendwo etwas falsches eigegeben wurde z.B. Passwort, Emailadresse
     func createAlert(title: String, message: String){
@@ -156,19 +156,18 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     //zuerst checken ob es einen Fehler während der Registrierung gibt
                     if let e = error {
-                        
                         //-allgemeine- Fehlermeldung
                         var displayErrorMessage = "Bitte versuche es später nochmal."
-                        
                         
                         //-spezielle- Fehlermeldung
                         displayErrorMessage = e.localizedDescription
                         
                         self.createAlert(title: "Fehler bei der Anmeldung", message: displayErrorMessage)
                     }
-                        
                         //für den Fall dass es keine Fehler gibt
                     else{
+                        
+                        self.downloadMeineFaecher(for : user!)
                         
                         self.performSegue(withIdentifier: "LoginView2MeineFaecher", sender: nil)
                         //In der globalen Variable eigenerName wird der eingegebene Username gespeichert
@@ -179,6 +178,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 })
                 
             }
+        }
+    }
+    
+    
+    func downloadMeineFaecher(for user : PFUser)
+    {
+        if let data = user["MeineFaecher"] as? NSMutableArray
+        {
+            gewaehlteVorlesungen = NSKeyedUnarchiver.unarchiveObject(with: data.firstObject as! Data) as! [Fach]
+        } else {
+            gewaehlteVorlesungen = [Fach]()
         }
     }
     
@@ -241,6 +251,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         view.endEditing(true)
     }
     
-
+    
     
 }
