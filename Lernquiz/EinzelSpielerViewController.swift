@@ -25,6 +25,7 @@ class EinzelSpielerViewController: SpielmodusViewController{
     // Fragen für das Fach werden heruntergeladen und eine wird ausgewählt
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         pickQuestion(frageKartenLokal: frageKarten)
 
@@ -73,6 +74,9 @@ class EinzelSpielerViewController: SpielmodusViewController{
         update()
     }
     
+    @IBAction override func naechsteFrage(_ sender: Any) {
+        zuruecksetztenFrageBewertenButton()
+    }
     
     //Fragekarte wird vom Server geholt und die Anzahl der Meldungen wird hochgezählt
     func downloadFrageKarte(){

@@ -726,7 +726,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="naechsteFrage:" destination="2Yb-MH-JLd" eventType="touchUpInside" id="dyB-xn-gcj"/>
+                                    <action selector="naechsteFrage:" destination="2Yb-MH-JLd" eventType="touchUpInside" id="IoH-4p-whd"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSL-x1-lFu">

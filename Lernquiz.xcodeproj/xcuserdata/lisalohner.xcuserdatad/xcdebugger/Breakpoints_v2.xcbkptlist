@@ -58,11 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lernquiz/EinzelSpielerViewController.swift"
-            timestampString = "507321111.968083"
+            timestampString = "507644340.734834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "127"
-            endingLineNumber = "127">
+            startingLineNumber = "131"
+            endingLineNumber = "131"
+            landmarkName = "update()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -72,12 +74,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lernquiz/EinzelSpielerViewController.swift"
-            timestampString = "507321111.968083"
+            timestampString = "507644340.734834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "82"
-            endingLineNumber = "82"
-            landmarkName = "update()"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "downloadFrageKarte()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -88,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lernquiz/EinzelSpielerViewController.swift"
-            timestampString = "507318618.790018"
+            timestampString = "507644340.734834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
+            startingLineNumber = "69"
+            endingLineNumber = "69"
             landmarkName = "FrageBewerten(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -104,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lernquiz/EinzelSpielerViewController.swift"
-            timestampString = "507318698.637234"
+            timestampString = "507644340.734834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
             landmarkName = "FrageBewerten(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -120,12 +122,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Lernquiz/EinzelSpielerViewController.swift"
-            timestampString = "507321111.968083"
+            timestampString = "507644340.734834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
-            landmarkName = "update()"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
+            landmarkName = "downloadFrageKarte()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

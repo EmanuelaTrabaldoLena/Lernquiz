@@ -36,7 +36,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         PFUser.logOut()
         ausgeloggt = true
         gewaehlteVorlesungen.removeAll()
-        performSegue(withIdentifier: "MeineFaecher2Login", sender: self)
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     
