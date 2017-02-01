@@ -5,7 +5,6 @@
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)de.etl.lernquiz</string>
-		<string>$(AppIdentifierPrefix)de.Lisa.lernquiz</string>
 	</array>
 </dict>
 </plist>

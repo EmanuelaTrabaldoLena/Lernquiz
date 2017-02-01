@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Xmp-9E-8la">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Nb4-4H-c9G">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -1377,12 +1377,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="XHh-Qb-O8t"/>
+                        <segue destination="Xmp-9E-8la" kind="relationship" relationship="rootViewController" id="ee5-2C-1DO"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="svh-vR-cyl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-410.39999999999998" y="-329.68515742128938"/>
+            <point key="canvasLocation" x="-1744" y="-332"/>
         </scene>
         <!--LogIn-->
         <scene sceneID="pJN-er-r5n">
@@ -1423,7 +1423,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lernquiz" translatesAutoresizingMaskIntoConstraints="NO" id="1eA-Qa-KXu">
-                                <rect key="frame" x="43" y="133" width="234" height="163"/>
+                                <rect key="frame" x="43" y="177" width="234" height="119"/>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-Z6-QxB" userLabel="Username TextField">
                                 <rect key="frame" x="16" y="328" width="250" height="35"/>
@@ -1508,6 +1508,7 @@
                             <constraint firstItem="Tso-18-KTb" firstAttribute="top" secondItem="JQs-Z6-QxB" secondAttribute="bottom" constant="13" id="yh9-et-8dk"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="VMf-WC-h7L"/>
                     <connections>
                         <outlet property="changeSignupModeButton" destination="Dm4-84-djS" id="X30-Bh-vUp"/>
                         <outlet property="loginView" destination="Uwk-O8-Yq0" id="WMh-Mt-UUl"/>
@@ -1515,12 +1516,12 @@
                         <outlet property="passwordTextField" destination="Tso-18-KTb" id="T3a-eg-PvC"/>
                         <outlet property="signupOrLogin" destination="gyo-FV-5ke" id="jYA-ER-UTf"/>
                         <outlet property="usernameTextField" destination="JQs-Z6-QxB" id="eTs-y7-81E"/>
-                        <segue destination="Nb4-4H-c9G" kind="show" identifier="LoginView2MeineFaecher" id="9om-TQ-V83"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="LoginView2MeineFaecher" id="3O7-CD-na6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="27g-sM-oiJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="-1056.338028169014"/>
+            <point key="canvasLocation" x="-711" y="-333"/>
         </scene>
     </scenes>
     <resources>
@@ -1534,6 +1535,7 @@
         <segue reference="F4a-20-b3Z"/>
         <segue reference="1nf-jn-KHj"/>
         <segue reference="c4W-3n-34C"/>
-        <segue reference="9vV-oY-gHf"/>
+        <segue reference="3O7-CD-na6"/>
+        <segue reference="ee5-2C-1DO"/>
     </inferredMetricsTieBreakers>
 </document>

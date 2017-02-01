@@ -16,6 +16,11 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidLoad(){
         super.viewDidLoad()
+        self.navigationController?.navigationBar.isHidden = false
+        //Navigationbar wird weiterhin angezeigt, aber ohne Backbutton
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
+        self.navigationController?.navigationItem.hidesBackButton = true
         
         meineFaecher.dataSource = self
         meineFaecher.delegate = self
@@ -25,8 +30,6 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-        self.navigationController?.navigationBar.isHidden = false
-        
         meineFaecher.reloadData()
     }
     
@@ -36,7 +39,7 @@ class MeineFaecherViewController: UIViewController, UITableViewDataSource, UITab
         PFUser.logOut()
         ausgeloggt = true
         gewaehlteVorlesungen.removeAll()
-        self.navigationController?.popToRootViewController(animated: true)
+        _ = self.navigationController?.popToRootViewController(animated: true)
     }
     
     
