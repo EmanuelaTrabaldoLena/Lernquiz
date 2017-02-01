@@ -23,13 +23,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meine Fächer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZd-3Q-CBU">
-                                <rect key="frame" x="70" y="40" width="180" height="36"/>
+                                <rect key="frame" x="70" y="84" width="180" height="36"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a2O-zq-hxK">
-                                <rect key="frame" x="82" y="86" width="157" height="30"/>
+                                <rect key="frame" x="82" y="130" width="157" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="157" id="CEa-KQ-5av"/>
@@ -46,7 +46,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HXw-gm-Y5Q">
-                                <rect key="frame" x="25" y="136" width="270" height="402"/>
+                                <rect key="frame" x="25" y="180" width="270" height="358"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="GewaehlteFaecher" selectionStyle="default" indentationWidth="10" reuseIdentifier="GewaehltesFachTableViewCell" id="pH7-gu-Z0K" customClass="GewaehltesFachTableViewCell" customModule="Lernquiz" customModuleProvider="target">
@@ -131,13 +131,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vorlesungsverzeichnis" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VDK-Vl-M6o">
-                                <rect key="frame" x="11" y="28" width="298" height="30"/>
+                                <rect key="frame" x="11" y="72" width="298" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YbM-oi-a9j">
-                                <rect key="frame" x="16" y="78" width="288" height="422"/>
+                                <rect key="frame" x="16" y="122" width="288" height="378"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FachTableViewCell" rowHeight="80" id="FSS-jm-9gH" customClass="FachTableViewCell" customModule="Lernquiz" customModuleProvider="target">
@@ -1271,7 +1271,7 @@
                                     <constraint firstAttribute="height" constant="50" id="Pya-nT-dRz"/>
                                     <constraint firstAttribute="width" constant="50" id="TP5-zH-Gnc"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1282,7 +1282,7 @@
                                     <constraint firstAttribute="width" constant="50" id="SoT-he-f7w"/>
                                     <constraint firstAttribute="height" constant="50" id="TlX-YN-hVb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1296,7 +1296,7 @@
                                     <constraint firstAttribute="width" constant="110" id="W5X-op-jMY"/>
                                     <constraint firstAttribute="height" constant="50" id="zs2-IY-O8w"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1307,7 +1307,7 @@
                                     <constraint firstAttribute="width" constant="110" id="bBA-DD-gix"/>
                                     <constraint firstAttribute="height" constant="50" id="eGe-A6-YWk"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1530,12 +1530,12 @@
         <image name="Trophy" width="1667" height="1667"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="qr5-a5-QKU"/>
         <segue reference="EH7-9l-LTC"/>
         <segue reference="F4a-20-b3Z"/>
+        <segue reference="qr5-a5-QKU"/>
         <segue reference="1nf-jn-KHj"/>
         <segue reference="c4W-3n-34C"/>
         <segue reference="3O7-CD-na6"/>
-        <segue reference="ee5-2C-1DO"/>
+        <segue reference="Fag-Sq-s0w"/>
     </inferredMetricsTieBreakers>
 </document>

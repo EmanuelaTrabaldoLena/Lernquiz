@@ -64,7 +64,9 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     
     func antwortAuswertenA(){
         antwortAufblinkenLassen(antwort: .A)
-        
+        antwortA.isUserInteractionEnabled = false
+        antwortB.isUserInteractionEnabled = false
+        antwortC.isUserInteractionEnabled = false
         delay(0.5) {
             self.antwortAuswerten(antwort: .A)
         }
@@ -73,7 +75,9 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     
     func antwortAuswertenB(){
         antwortAufblinkenLassen(antwort: .B)
-        
+        antwortA.isUserInteractionEnabled = false
+        antwortB.isUserInteractionEnabled = false
+        antwortC.isUserInteractionEnabled = false
         delay(0.5) {
             self.antwortAuswerten(antwort: .B)
         }
@@ -82,7 +86,9 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
     
     func antwortAuswertenC(){
         antwortAufblinkenLassen(antwort: .C)
-        
+        antwortA.isUserInteractionEnabled = false
+        antwortB.isUserInteractionEnabled = false
+        antwortC.isUserInteractionEnabled = false
         delay(0.5) {
             self.antwortAuswerten(antwort: .C)
         }
@@ -100,7 +106,7 @@ class SpielmodusViewController: UIViewController, UITextViewDelegate {
         antwortA.text = ""
         antwortB.text = ""
         antwortC.text = ""
-        
+
         pickQuestion(frageKartenLokal: frageKarten)
     }
     

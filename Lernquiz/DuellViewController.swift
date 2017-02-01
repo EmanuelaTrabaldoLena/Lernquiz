@@ -34,6 +34,10 @@ class DuellViewController: SpielmodusViewController{
     @IBAction override func naechsteFrage(_ sender: Any){
         seconds = 30
         pickQuestion(frageKartenLokal: relevanteFragen)
+        antwortA.isUserInteractionEnabled = true
+        antwortB.isUserInteractionEnabled = true
+        antwortC.isUserInteractionEnabled = true
+        
     }
     
     
@@ -84,17 +88,19 @@ class DuellViewController: SpielmodusViewController{
     override func antwortAuswerten(antwort : Antwort, firstTime : Bool){
         var textView : UITextView!
         switch antwort { case .A: textView = antwortA; case .B: textView = antwortB; case .C: textView = antwortC}
-        
+
         if Int(relevanteFragen[QNumber-1].RichtigeAntwortIndex) == Int(antwort.rawValue){
             textView.backgroundColor = UIColor.green
             
             if firstTime{
                 einzelRundenAuswertung(richtigeAntwort: true)
+
             }
             
         }else{
             if firstTime {
                 einzelRundenAuswertung(richtigeAntwort: false)
+         
             }
             
             textView.backgroundColor = UIColor.red
@@ -104,12 +110,15 @@ class DuellViewController: SpielmodusViewController{
                 case .A:
                     antwortAuswerten(antwort: Antwort.B, firstTime: false)
                     antwortAuswerten(antwort: Antwort.C, firstTime: false)
+                
                 case .B:
                     antwortAuswerten(antwort: Antwort.A, firstTime: false)
                     antwortAuswerten(antwort: Antwort.C, firstTime: false)
+              
                 case .C:
                     antwortAuswerten(antwort: Antwort.A, firstTime: false)
                     antwortAuswerten(antwort: Antwort.B, firstTime: false)
+
                 }
             }
             
@@ -123,7 +132,7 @@ class DuellViewController: SpielmodusViewController{
             CountdownLabel.text = "\(seconds)"
             //Nachdem eine Antwort gedrückt wurde, erscheint der "Naechste Frage Button"
             naechsteFrageButton.isHidden = false
-            
+
             
             //Falls hier die letzte Frage ausgewertet wird, leite über zur Auswertung/Übersichts
             if (super.QNumber == 3){
