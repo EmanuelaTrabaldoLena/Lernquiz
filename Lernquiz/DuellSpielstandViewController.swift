@@ -35,7 +35,7 @@ class DuellSpielstandViewController: UIViewController, UITableViewDataSource, UI
     
     @IBAction func zumDuellmenue(_ sender: Any) {
         // Es werden zwei Views vom Stack genommen
-        let controller = self.navigationController?.viewControllers[2]
+        let controller = self.navigationController?.viewControllers[3]
         _ = self.navigationController?.popToViewController(controller!, animated: true)
     }
 
