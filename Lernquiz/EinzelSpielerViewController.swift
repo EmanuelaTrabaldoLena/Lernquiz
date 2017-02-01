@@ -54,6 +54,22 @@ class EinzelSpielerViewController: SpielmodusViewController{
             hasSelected = true
         }else{
             textView.backgroundColor = UIColor.red
+            if firstTime == true {
+                switch antwort{
+                case .A:
+                    antwortAuswerten(antwort: Antwort.B, firstTime: false)
+                    antwortAuswerten(antwort: Antwort.C, firstTime: false)
+                    
+                case .B:
+                    antwortAuswerten(antwort: Antwort.A, firstTime: false)
+                    antwortAuswerten(antwort: Antwort.C, firstTime: false)
+                    
+                case .C:
+                    antwortAuswerten(antwort: Antwort.A, firstTime: false)
+                    antwortAuswerten(antwort: Antwort.B, firstTime: false)
+                    
+                }
+            }
             hasSelected = true
         }
     }
@@ -75,6 +91,9 @@ class EinzelSpielerViewController: SpielmodusViewController{
     @IBAction override func naechsteFrage(_ sender: Any) {
         pickQuestion(frageKartenLokal: frageKarten)
         zuruecksetztenFrageBewertenButton()
+        antwortA.isUserInteractionEnabled = true
+        antwortB.isUserInteractionEnabled = true
+        antwortC.isUserInteractionEnabled = true
     }
     
     //Fragekarte wird vom Server geholt und die Anzahl der Meldungen wird hochgezählt
