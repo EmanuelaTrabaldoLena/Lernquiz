@@ -50,6 +50,8 @@ class Spiel : NSObject, NSCoding {
     required init?(coder aDecoder: NSCoder){
         self.spieler = aDecoder.decodeObject(forKey:"spieler") as? Spieler ?? Spieler()
         self.gegner = aDecoder.decodeObject(forKey:"gegner") as? Spieler ?? Spieler()
+        //as ? "if-Bedinungung" schaut ob man zu String casten kann, dann wird es zu String gecastet
+        //as ?? : "else-Bedinung" wenn casten nicht geht, erstellen wir ein neuen leeren String
         self.fachName = aDecoder.decodeObject(forKey: "fachName") as? String ?? ""
         
         let objC_runde = aDecoder.decodeObject(forKey: "runde") as! String
