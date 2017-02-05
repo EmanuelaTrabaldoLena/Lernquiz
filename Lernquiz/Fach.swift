@@ -16,7 +16,7 @@ class Fach : NSObject, NSCoding, NSCopying {
     var Fragen = [Fragekarte]()
     
     
-    //Leerer Konstruktor, der den Namen als String setzt
+    //Leerer Konstruktor, der den Namen als String setzt 
     override init(){
         self.name = String()
     }

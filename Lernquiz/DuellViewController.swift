@@ -247,8 +247,16 @@ class DuellViewController: SpielmodusViewController{
             CountdownLabel.text = "\(seconds)"
         }
         
+        //Nachträglich ausgebessert, damit immer wenn der Timer abläuft, die Antwort als falsch gewertet wird
         if(seconds == 0){
-            antwortAuswerten(antwort: .A, firstTime: true)
+            if Int(relevanteFragen[QNumber-1].RichtigeAntwortIndex) != Int(Antwort.A.rawValue) {
+                antwortAuswerten(antwort: .A, firstTime: true)
+            } else if Int(relevanteFragen[QNumber-1].RichtigeAntwortIndex) != Int(Antwort.B.rawValue){
+                antwortAuswerten(antwort: .B, firstTime: true)
+            } else {
+                antwortAuswerten(antwort: .C, firstTime: true)
+            }
+            
         }
     }
     

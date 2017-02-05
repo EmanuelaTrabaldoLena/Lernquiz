@@ -40,6 +40,7 @@ class FachTableViewCell: UITableViewCell{
     
     //Falls eine Box markiert ist, wird sie durch anwählen wieder frei, falls sie nicht markiert ist, wird sie durch anwählen markiert
     func tap(){
+        //
         if self.fach.isSelected{
             checkbox?.markAsUnChecked()
             self.fach.isSelected = false

@@ -98,6 +98,7 @@ class DuellMenueViewController: UIViewController, UITableViewDelegate, UITableVi
         if (tableView.isEqual(aktiveSpieleTV)){
             let cell = tableView.dequeueReusableCell(withIdentifier: "aktiveSpieleCell", for: indexPath) as? SpielTableViewCell
             
+            //Wird überprüft wer Gegner ist, aber eigener GegnerName wird immer reingeladen
             if aktiveSpiele[indexPath.row].gegner.username == eigenerName{
                 cell?.textLabel?.text = aktiveSpiele[indexPath.row].spieler.username
             } else {
